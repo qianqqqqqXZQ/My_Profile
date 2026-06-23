@@ -46,3 +46,14 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update workspace documentation
+
+## 2026-06-24 React Bits-Style 3D Lanyard Replacement
+
+- [x] Create a Git backup commit before replacing the existing lanyard
+- [x] Install a React 18-compatible `three` / `@react-three/*` / `meshline` stack
+- [x] Replace the CSS-only widget with a true 3D physics lanyard
+- [x] Use the user's portrait and name as the card content
+- [x] Reduce the widget footprint so it fits the hero column cleanly
+- [x] Validate with `npm run lint`
+- [x] Validate with `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new implementation notes

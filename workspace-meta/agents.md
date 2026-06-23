@@ -27,14 +27,18 @@ This repository is used to build a personal resume website. The active site live
 
 - The site includes Hero, About, Projects, Strengths, and Contact sections
 - The hero uses a fixed frosted-glass navbar and a right-side hanging profile widget
-- The `ProfileLanyard` component is implemented in-project instead of importing the original React Bits 3D version
+- The `ProfileLanyard` component now uses a React 18-compatible 3D physics stack:
+  - `three`
+  - `@react-three/fiber`
+  - `@react-three/drei`
+  - `@react-three/rapier`
+  - `meshline`
 - The current lanyard behavior now includes:
-  - a longer rope
-  - an anchor hidden above the viewport
-  - a page-load drop-in animation
-  - drag, release, and swing-back motion
-  - rope bend/stretch linked to card movement
-- The previous hero signature panel has been moved below the hero into its own section to avoid overlap with the hanging widget
+  - a real rope simulation with connected rigid bodies
+  - drag-to-pull interaction and release swing-back motion
+  - a smaller card footprint to keep the hero column balanced
+  - the user's portrait and name rendered directly in the hanging card
+- The previous hero signature panel remains below the hero in its own section and matches the tightened widget scale
 
 ## Notes About The React Bits Lanyard Reference
 
@@ -48,7 +52,7 @@ The user-provided reference describes the React Bits `Lanyard` component, which 
 - `card.glb`
 - `lanyard.png`
 
-The current repository does not include the required `card.glb` and `lanyard.png` assets. To avoid pulling in an incomplete 3D stack and missing asset pipeline, the implemented solution keeps the current React/CSS approach and reproduces the desired physical behavior inside the existing site.
+The current repository still does not include the original `card.glb` and `lanyard.png` assets. The implemented solution recreates the interaction and visual balance with a programmatic 3D card so the widget stays self-contained and does not depend on missing model files.
 
 ## Run And Test
 

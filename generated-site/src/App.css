@@ -202,7 +202,7 @@
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 460px);
+  grid-template-columns: minmax(0, 1.28fr) minmax(280px, 350px);
   align-items: center;
   gap: 56px;
   min-height: calc(100svh - 96px);
@@ -221,6 +221,7 @@
   position: relative;
   z-index: 1;
   justify-items: end;
+  width: 100%;
 }
 
 .eyebrow,
@@ -283,6 +284,7 @@
 
 .hero-widget-panel {
   margin-top: 0;
+  max-width: 460px;
 }
 
 .hero-signature-section {
@@ -699,6 +701,10 @@
     justify-content: center;
   }
 
+  .hero-visual-column {
+    justify-items: center;
+  }
+
   .featured-visual,
   .portrait-card,
   .strength-card {
@@ -747,6 +753,10 @@
 
   .hero-content {
     padding-top: 214px;
+  }
+
+  .hero-visual-column {
+    justify-items: center;
   }
 
   .hero-signature-section {
