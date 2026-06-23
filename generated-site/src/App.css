@@ -177,7 +177,7 @@
 
 .hero-visual-column {
   display: grid;
-  gap: 24px;
+  gap: 28px;
   align-self: center;
   position: relative;
   z-index: 1;
@@ -239,6 +239,10 @@
 .hero-panel {
   padding: 28px;
   border-radius: 28px;
+}
+
+.hero-widget-panel {
+  margin-top: 8px;
 }
 
 .panel-grid {
@@ -630,6 +634,7 @@
   .hero-panel,
   .hero-widget-panel {
     max-width: 520px;
+    margin-top: 0;
   }
 
   .featured-visual,

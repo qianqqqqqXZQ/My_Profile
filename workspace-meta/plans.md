@@ -31,3 +31,12 @@
 - [x] 增加基于指针位置的倾斜、摆动与高光反馈
 - [x] 移除导致说明卡遮挡挂件的负外边距布局
 - [x] 再次运行 `npm run lint` 与 `npm run build`
+
+## 2026-06-24 Draggable Lanyard Motion Update
+
+- [x] 在重大交互调整前完成 Git 备份提交
+- [x] 缩小挂件尺寸，避免遮挡下方 signature 面板
+- [x] 增加页面初次加载时自上而下的掉落动画
+- [x] 实现按住卡片可拖拽、松手后回摆的交互
+- [x] 将掉落摆动层与拖拽层拆分，避免 transform 冲突
+- [x] 重新运行 `npm run lint` 与 `npm run build`
