@@ -1,3 +1,4 @@
+import ProfileLanyard from './components/ProfileLanyard'
 import './App.css'
 
 const heroVideo =
@@ -96,6 +97,13 @@ const featuredProjects = [
   },
 ]
 
+const heroHighlights = [
+  { label: 'Identity', value: 'Ziqian Xiong / UNNC CS' },
+  { label: 'Direction', value: 'Research + Portfolio Presence' },
+  { label: 'Visual', value: 'Lanyard Signature Widget' },
+  { label: 'Status', value: 'Ready To Personalize Further' },
+]
+
 const strengths = [
   {
     title: 'Technical Communication',
@@ -184,30 +192,24 @@ function App() {
             </div>
           </div>
 
-          <aside className="hero-panel">
-            <p className="panel-label">Base Version / Ready For Iteration</p>
-            <div className="panel-grid">
-              <article>
-                <span>Identity</span>
-                <strong>UNNC CS Student</strong>
-              </article>
-              <article>
-                <span>Style</span>
-                <strong>Dark / Refined</strong>
-              </article>
-              <article>
-                <span>Layout</span>
-                <strong>Single Page</strong>
-              </article>
-              <article>
-                <span>Status</span>
-                <strong>Ready To Customize</strong>
-              </article>
+          <aside className="hero-visual-column">
+            <ProfileLanyard />
+
+            <div className="hero-panel hero-widget-panel">
+              <p className="panel-label">Profile Signature / Hero Widget</p>
+              <div className="panel-grid">
+                {heroHighlights.map((item) => (
+                  <article key={item.label}>
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </article>
+                ))}
+              </div>
+              <p className="panel-note">
+                The hanging card now uses the provided portrait and turns the
+                right side of the hero into a stronger personal identifier.
+              </p>
             </div>
-            <p className="panel-note">
-              Slots are already prepared for dance reels, project screenshots,
-              research output, and real contact details.
-            </p>
           </aside>
         </div>
       </header>
