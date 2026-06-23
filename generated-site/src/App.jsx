@@ -194,7 +194,13 @@ function App() {
 
           <aside className="hero-visual-column">
             <ProfileLanyard />
+          </aside>
+        </div>
+      </header>
 
+      <main>
+        <section className="content-section hero-signature-section">
+          <div className="section-shell hero-signature-shell">
             <div className="hero-panel hero-widget-panel">
               <p className="panel-label">Profile Signature / Hero Widget</p>
               <div className="panel-grid">
@@ -210,11 +216,9 @@ function App() {
                 right side of the hero into a stronger personal identifier.
               </p>
             </div>
-          </aside>
-        </div>
-      </header>
+          </div>
+        </section>
 
-      <main>
         <section className="content-section about-section" id="about">
           <div className="section-shell">
             <div className="section-header">

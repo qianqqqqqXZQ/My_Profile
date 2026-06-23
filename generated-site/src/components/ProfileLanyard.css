@@ -1,18 +1,24 @@
 .lanyard-scene {
   position: relative;
-  width: min(100%, 392px);
-  min-height: 648px;
+  width: min(100%, 410px);
+  min-height: 760px;
   margin-left: auto;
-  padding-top: 40px;
   --pointer-x: 0px;
   --pointer-y: 0px;
   --tilt-x: 0deg;
   --tilt-y: 0deg;
-  --swing-rotate: 0deg;
-  --swing-shift: 0px;
-  --drag-x: 0px;
-  perspective: 1600px;
+  --card-rotate: -5deg;
+  --card-offset-x: 0px;
+  --card-offset-y: 0px;
+  --rope-curve: 0px;
+  --rope-stretch: 0px;
+  perspective: 1800px;
   user-select: none;
+}
+
+.lanyard-fall-layer {
+  position: relative;
+  min-height: inherit;
 }
 
 .lanyard-rig {
@@ -24,25 +30,26 @@
 .lanyard-anchor {
   position: absolute;
   left: 50%;
-  top: 0;
-  width: 104px;
-  height: 104px;
+  top: -146px;
+  width: 112px;
+  height: 112px;
   transform: translateX(-50%);
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 42%),
-    linear-gradient(180deg, rgba(31, 31, 31, 0.98), rgba(10, 10, 10, 0.98));
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.24), transparent 38%),
+    linear-gradient(180deg, rgba(30, 30, 30, 0.96), rgba(7, 7, 7, 0.98));
   box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.48),
+    0 24px 90px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  opacity: 0.92;
 }
 
 .lanyard-hook {
   position: absolute;
   inset: 18px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .lanyard-hook::before,
@@ -54,64 +61,107 @@
 }
 
 .lanyard-hook::before {
-  top: 18px;
-  width: 18px;
-  height: 18px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #d9d9d4, #696963);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #ecece7, #6b6b66);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.2);
 }
 
 .lanyard-hook::after {
-  top: 36px;
-  width: 54px;
-  height: 36px;
-  border: 2px solid rgba(229, 229, 223, 0.86);
+  top: 32px;
+  width: 56px;
+  height: 40px;
+  border: 2px solid rgba(231, 231, 226, 0.88);
   border-top: 0;
-  border-radius: 0 0 18px 18px;
+  border-radius: 0 0 20px 20px;
 }
 
-.lanyard-strap {
+.lanyard-rope {
   position: absolute;
-  top: 68px;
-  width: calc(50% - 40px);
-  height: 196px;
+  left: 50%;
+  top: -28px;
+  width: 266px;
+  height: 338px;
+  transform:
+    translateX(calc(-50% + var(--card-offset-x) * 0.08))
+    translateY(calc(var(--card-offset-y) * 0.18));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.22));
+}
+
+.lanyard-rope-line {
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: calc(266px + var(--rope-stretch));
   border-radius: 999px;
   background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26%),
     repeating-linear-gradient(
       90deg,
-      rgba(246, 246, 242, 0.92) 0,
-      rgba(246, 246, 242, 0.92) 10px,
-      rgba(160, 160, 156, 0.9) 10px,
-      rgba(160, 160, 156, 0.9) 20px
+      rgba(243, 243, 239, 0.95) 0,
+      rgba(243, 243, 239, 0.95) 7px,
+      rgba(158, 158, 154, 0.94) 7px,
+      rgba(158, 158, 154, 0.94) 14px
     );
   box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.36),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
-.lanyard-strap-left {
+.lanyard-rope-left {
   left: 50%;
-  transform-origin: top left;
-  transform: translateX(-100%) rotate(19deg);
+  transform-origin: top center;
+  transform:
+    translateX(calc(-50% - 30px))
+    rotate(calc(5deg + var(--rope-curve) * -0.12deg));
 }
 
-.lanyard-strap-right {
-  right: 50%;
-  transform-origin: top right;
-  transform: translateX(100%) rotate(-19deg);
+.lanyard-rope-center {
+  left: 50%;
+  width: 12px;
+  opacity: 0.5;
+  transform-origin: top center;
+  transform:
+    translateX(calc(-50% + var(--rope-curve) * 0.1))
+    rotate(calc(var(--rope-curve) * -0.04deg));
+}
+
+.lanyard-rope-right {
+  left: 50%;
+  transform-origin: top center;
+  transform:
+    translateX(calc(-50% + 30px))
+    rotate(calc(-5deg + var(--rope-curve) * -0.12deg));
+}
+
+.lanyard-clip {
+  position: absolute;
+  left: 50%;
+  top: calc(246px + var(--rope-stretch));
+  width: 54px;
+  height: 34px;
+  border-radius: 18px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(228, 228, 222, 0.88), rgba(96, 96, 91, 0.88));
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .lanyard-card {
   position: absolute;
   left: 50%;
-  top: 164px;
-  width: min(100%, 372px);
+  top: 250px;
+  width: min(100%, 368px);
   padding: 16px;
   transform:
-    translate3d(var(--drag-x), var(--swing-shift), 0)
     translateX(-50%)
-    rotate(calc(-4deg + var(--swing-rotate)))
+    translate3d(var(--card-offset-x), calc(28px + var(--card-offset-y)), 0)
+    rotate(var(--card-rotate))
     rotateX(var(--tilt-x))
     rotateY(var(--tilt-y));
   transform-origin: top center;
@@ -119,17 +169,13 @@
   border-radius: 34px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
-    linear-gradient(160deg, rgba(245, 245, 243, 0.1), rgba(255, 255, 255, 0.02) 28%),
+    linear-gradient(160deg, rgba(245, 245, 243, 0.11), rgba(255, 255, 255, 0.02) 28%),
     rgba(12, 12, 12, 0.92);
   box-shadow:
-    0 40px 120px rgba(0, 0, 0, 0.48),
+    0 44px 140px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(24px);
-  transition:
-    transform 160ms ease-out,
-    box-shadow 180ms ease,
-    border-color 180ms ease;
   cursor: grab;
   z-index: 2;
   will-change: transform;
@@ -145,17 +191,18 @@
 }
 
 .lanyard-scene.is-active .lanyard-card {
-  animation-play-state: paused;
   box-shadow:
-    0 52px 140px rgba(0, 0, 0, 0.58),
+    0 52px 160px rgba(0, 0, 0, 0.58),
     0 0 0 1px rgba(255, 255, 255, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
+.lanyard-scene.is-dropped .lanyard-fall-layer {
+  animation: lanyard-drop-in 1480ms cubic-bezier(0.16, 0.9, 0.21, 1) both;
+}
+
 .lanyard-scene.is-dropped .lanyard-rig {
-  animation:
-    lanyard-drop 1200ms cubic-bezier(0.18, 0.92, 0.24, 1),
-    lanyard-rig-idle 8.2s 1200ms ease-in-out infinite;
+  animation: lanyard-rig-idle 8.8s 1480ms ease-in-out infinite;
 }
 
 .lanyard-scene.is-active.is-dropped .lanyard-rig {
@@ -164,7 +211,6 @@
 
 .lanyard-scene.is-dragging .lanyard-card {
   cursor: grabbing;
-  transition: none;
 }
 
 .lanyard-card-rim {
@@ -280,29 +326,29 @@
   }
 
   25% {
-    transform: translate3d(0, 4px, 0) rotate(2.2deg);
+    transform: translate3d(0, 6px, 0) rotate(2.6deg);
   }
 
   50% {
-    transform: translate3d(0, 10px, 0) rotate(-1.6deg);
+    transform: translate3d(0, 12px, 0) rotate(-2.1deg);
   }
 
   75% {
-    transform: translate3d(0, 3px, 0) rotate(1.2deg);
+    transform: translate3d(0, 5px, 0) rotate(1.6deg);
   }
 }
 
-@keyframes lanyard-drop {
+@keyframes lanyard-drop-in {
   0% {
-    transform: translate3d(0, -220px, 0) rotate(-16deg);
+    transform: translate3d(0, -420px, 0) rotate(-16deg);
   }
 
-  55% {
-    transform: translate3d(0, 20px, 0) rotate(5deg);
+  50% {
+    transform: translate3d(0, 38px, 0) rotate(8deg);
   }
 
   74% {
-    transform: translate3d(0, -8px, 0) rotate(-3deg);
+    transform: translate3d(0, -16px, 0) rotate(-4deg);
   }
 
   100% {
@@ -313,30 +359,38 @@
 @media (max-width: 1100px) {
   .lanyard-scene {
     width: min(100%, 420px);
-    min-height: 620px;
-    margin: 0;
+    min-height: 700px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 720px) {
   .lanyard-scene {
-    min-height: 560px;
-    padding-top: 34px;
+    min-height: 628px;
   }
 
   .lanyard-anchor {
-    width: 88px;
-    height: 88px;
+    width: 92px;
+    height: 92px;
+    top: -122px;
   }
 
-  .lanyard-strap {
-    top: 58px;
-    height: 164px;
+  .lanyard-rope {
+    width: 220px;
+    height: 308px;
+  }
+
+  .lanyard-rope-line {
+    height: calc(228px + var(--rope-stretch));
+  }
+
+  .lanyard-clip {
+    top: calc(210px + var(--rope-stretch));
   }
 
   .lanyard-card {
-    top: 138px;
-    width: min(100%, 340px);
+    top: 220px;
+    width: min(100%, 338px);
     padding: 14px;
   }
 

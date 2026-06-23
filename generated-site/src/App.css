@@ -202,8 +202,8 @@
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 460px);
-  align-items: end;
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 460px);
+  align-items: center;
   gap: 56px;
   min-height: calc(100svh - 96px);
   padding-top: 156px;
@@ -216,10 +216,11 @@
 
 .hero-visual-column {
   display: grid;
-  gap: 28px;
+  gap: 20px;
   align-self: center;
   position: relative;
   z-index: 1;
+  justify-items: end;
 }
 
 .eyebrow,
@@ -281,7 +282,20 @@
 }
 
 .hero-widget-panel {
-  margin-top: 8px;
+  margin-top: 0;
+}
+
+.hero-signature-section {
+  padding: 0 0 28px;
+}
+
+.hero-signature-shell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-signature-shell .hero-widget-panel {
+  width: min(100%, 460px);
 }
 
 .panel-grid {
@@ -677,6 +691,14 @@
     margin-top: 0;
   }
 
+  .hero-signature-section {
+    padding: 0 0 20px;
+  }
+
+  .hero-signature-shell {
+    justify-content: center;
+  }
+
   .featured-visual,
   .portrait-card,
   .strength-card {
@@ -725,5 +747,9 @@
 
   .hero-content {
     padding-top: 214px;
+  }
+
+  .hero-signature-section {
+    padding: 0 0 8px;
   }
 }

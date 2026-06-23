@@ -7,23 +7,31 @@ const metrics = [
   { label: 'Base', value: 'UNNC Computer Science' },
 ]
 
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
+
 function ProfileLanyard() {
   const sceneRef = useRef(null)
   const animationRef = useRef(null)
-  const dragRef = useRef({
-    dragging: false,
-    releaseVelocityX: 0,
-    releaseVelocityY: 0,
-    lastX: 0,
-    lastY: 0,
+  const physicsRef = useRef({
+    pointerX: 0,
+    pointerY: 0,
+    velocityX: 0,
+    velocityY: 0,
+    spin: 0,
+    dragOffsetX: 0,
+    dragOffsetY: 0,
     lastTime: 0,
+    dragging: false,
+    entered: false,
   })
   const [motion, setMotion] = useState({
-    dragX: 0,
-    dragY: 0,
-    rotateX: 0,
-    rotateY: 0,
-    swingRotate: 0,
+    offsetX: 0,
+    offsetY: 0,
+    tiltX: 0,
+    tiltY: 0,
+    rotate: -5,
+    ropeCurve: 0,
+    ropeStretch: 0,
     shineX: 0,
     shineY: 0,
     active: false,
@@ -33,8 +41,10 @@ function ProfileLanyard() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setMotion((current) => ({ ...current, dropped: true }))
-    }, 40)
+      physicsRef.current.entered = true
+      setMotion((current) => ({ ...current, dropped: true, active: true }))
+      startPhysicsLoop()
+    }, 90)
 
     return () => window.clearTimeout(timer)
   }, [])
@@ -47,172 +57,166 @@ function ProfileLanyard() {
     }
   }, [])
 
-  const resetMotion = () => {
-    if (animationRef.current) {
-      window.cancelAnimationFrame(animationRef.current)
-      animationRef.current = null
+  const startPhysicsLoop = () => {
+    if (animationRef.current) return
+
+    const step = (time) => {
+      const state = physicsRef.current
+      const previous = state.lastTime || time
+      const dt = Math.min(32, time - previous || 16) / 16.6667
+      state.lastTime = time
+
+      if (state.dragging) {
+        state.velocityX *= 0.82
+        state.velocityY *= 0.82
+        state.spin *= 0.78
+      } else {
+        state.velocityX += (-state.pointerX * 0.065 - state.velocityX * 0.12) * dt
+        state.velocityY += (-state.pointerY * 0.07 - state.velocityY * 0.15) * dt
+        state.spin += ((-state.pointerX * 0.038) - state.spin * 0.13) * dt
+        state.pointerX += state.velocityX * dt
+        state.pointerY += state.velocityY * dt
+      }
+
+      state.pointerX = clamp(state.pointerX, -150, 150)
+      state.pointerY = clamp(state.pointerY, -170, 210)
+      state.spin = clamp(state.spin, -16, 16)
+
+      const nextOffsetX = state.pointerX
+      const nextOffsetY = state.pointerY
+      const nextTiltX = clamp(nextOffsetY * -0.06, -14, 14)
+      const nextTiltY = clamp(nextOffsetX * 0.07, -16, 16)
+      const nextRotate = clamp(-5 + state.spin + nextOffsetX * 0.022, -20, 14)
+      const nextCurve = clamp(nextOffsetX * 0.2, -26, 26)
+      const nextStretch = clamp(Math.max(0, nextOffsetY) * 0.36, 0, 74)
+      const nextShineX = clamp(nextOffsetX * 0.78, -120, 120)
+      const nextShineY = clamp(nextOffsetY * 0.7, -150, 150)
+
+      const settled =
+        !state.dragging &&
+        Math.abs(nextOffsetX) < 0.25 &&
+        Math.abs(nextOffsetY) < 0.25 &&
+        Math.abs(state.velocityX) < 0.02 &&
+        Math.abs(state.velocityY) < 0.02 &&
+        Math.abs(state.spin) < 0.02
+
+      setMotion((current) => ({
+        ...current,
+        offsetX: settled ? 0 : nextOffsetX,
+        offsetY: settled ? 0 : nextOffsetY,
+        tiltX: settled ? 0 : nextTiltX,
+        tiltY: settled ? 0 : nextTiltY,
+        rotate: settled ? -5 : nextRotate,
+        ropeCurve: settled ? 0 : nextCurve,
+        ropeStretch: settled ? 0 : nextStretch,
+        shineX: settled ? 0 : nextShineX,
+        shineY: settled ? 0 : nextShineY,
+        active: state.dragging || !settled,
+        dragging: state.dragging,
+      }))
+
+      if (settled && state.entered) {
+        animationRef.current = null
+        state.lastTime = 0
+        return
+      }
+
+      animationRef.current = window.requestAnimationFrame(step)
     }
 
-    const animateBack = () => {
-      setMotion((current) => {
-        const nextDragX = current.dragX * 0.84
-        const nextDragY = current.dragY * 0.84
-        const nextRotateX = current.rotateX * 0.8
-        const nextRotateY = current.rotateY * 0.8
-        const nextSwing = current.swingRotate * 0.8
-        const nextShineX = current.shineX * 0.82
-        const nextShineY = current.shineY * 0.82
-
-        const settled =
-          Math.abs(nextDragX) < 0.4 &&
-          Math.abs(nextDragY) < 0.4 &&
-          Math.abs(nextRotateX) < 0.15 &&
-          Math.abs(nextRotateY) < 0.15 &&
-          Math.abs(nextSwing) < 0.15
-
-        if (settled) {
-          animationRef.current = null
-          return {
-            ...current,
-            dragX: 0,
-            dragY: 0,
-            rotateX: 0,
-            rotateY: 0,
-            swingRotate: 0,
-            shineX: 0,
-            shineY: 0,
-            active: false,
-            dragging: false,
-          }
-        }
-
-        animationRef.current = window.requestAnimationFrame(animateBack)
-        return {
-          ...current,
-          dragX: nextDragX,
-          dragY: nextDragY,
-          rotateX: nextRotateX,
-          rotateY: nextRotateY,
-          swingRotate: nextSwing,
-          shineX: nextShineX,
-          shineY: nextShineY,
-          active: true,
-          dragging: false,
-        }
-      })
-    }
-
-    animationRef.current = window.requestAnimationFrame(animateBack)
+    animationRef.current = window.requestAnimationFrame(step)
   }
 
   const sceneStyle = useMemo(
-    () =>
-      ({
-        '--pointer-x': `${motion.shineX}px`,
-        '--pointer-y': `${motion.shineY}px`,
-        '--tilt-x': `${motion.rotateX}deg`,
-        '--tilt-y': `${motion.rotateY}deg`,
-        '--swing-rotate': `${motion.swingRotate}deg`,
-        '--swing-shift': `${motion.dragY}px`,
-        '--drag-x': `${motion.dragX}px`,
-      }),
+    () => ({
+      '--pointer-x': `${motion.shineX}px`,
+      '--pointer-y': `${motion.shineY}px`,
+      '--tilt-x': `${motion.tiltX}deg`,
+      '--tilt-y': `${motion.tiltY}deg`,
+      '--card-rotate': `${motion.rotate}deg`,
+      '--card-offset-x': `${motion.offsetX}px`,
+      '--card-offset-y': `${motion.offsetY}px`,
+      '--rope-curve': `${motion.ropeCurve}px`,
+      '--rope-stretch': `${motion.ropeStretch}px`,
+    }),
     [motion]
   )
 
-  const updateMotionFromEvent = (event, dragging = false) => {
+  const updatePointer = (event, dragging = false) => {
     const rect = sceneRef.current?.getBoundingClientRect()
     if (!rect) return
 
-    const x = event.clientX - rect.left - rect.width / 2
-    const y = event.clientY - rect.top - rect.height / 2
-    const boundedX = Math.max(-120, Math.min(120, x))
-    const boundedY = Math.max(-150, Math.min(150, y))
+    const localX = event.clientX - rect.left - rect.width / 2
+    const localY = event.clientY - rect.top - 228
+    const targetX = clamp(localX, -150, 150)
+    const targetY = clamp(localY, -170, 210)
+    const state = physicsRef.current
 
-    setMotion((current) => ({
-      ...current,
-      dragX: dragging ? boundedX * 0.32 : current.dragX,
-      dragY: dragging ? boundedY * 0.3 : current.dragY,
-      rotateX: boundedY * -0.055,
-      rotateY: boundedX * 0.06,
-      swingRotate: boundedX * 0.036,
-      shineX: boundedX,
-      shineY: boundedY,
-      active: true,
-      dragging,
-    }))
+    if (dragging) {
+      const nextX = clamp(targetX - state.dragOffsetX, -150, 150)
+      const nextY = clamp(targetY - state.dragOffsetY, -170, 210)
+      state.velocityX = (nextX - state.pointerX) * 0.22
+      state.velocityY = (nextY - state.pointerY) * 0.22
+      state.spin = clamp(nextX * 0.045, -16, 16)
+      state.pointerX = nextX
+      state.pointerY = nextY
+    } else {
+      state.pointerX = targetX * 0.16
+      state.pointerY = targetY * 0.1
+      state.velocityX += (state.pointerX - targetX * 0.08) * 0.015
+      state.velocityY += (state.pointerY - targetY * 0.05) * 0.015
+    }
+
+    startPhysicsLoop()
   }
 
   const handlePointerMove = (event) => {
-    if (dragRef.current.dragging) {
-      handlePointerDrag(event)
+    if (physicsRef.current.dragging) {
+      updatePointer(event, true)
       return
     }
 
-    updateMotionFromEvent(event, false)
+    updatePointer(event, false)
   }
 
   const handlePointerLeave = () => {
-    if (!dragRef.current.dragging) {
-      resetMotion()
-    }
+    const state = physicsRef.current
+    if (state.dragging) return
+
+    state.pointerX *= 0.4
+    state.pointerY *= 0.3
+    startPhysicsLoop()
   }
 
   const handlePointerDown = (event) => {
     const rect = sceneRef.current?.getBoundingClientRect()
     if (!rect) return
 
-    const x = event.clientX - rect.left - rect.width / 2
-    const y = event.clientY - rect.top - rect.height / 2
+    const localX = event.clientX - rect.left - rect.width / 2
+    const localY = event.clientY - rect.top - 228
+    const state = physicsRef.current
 
-    dragRef.current = {
-      dragging: true,
-      releaseVelocityX: 0,
-      releaseVelocityY: 0,
-      lastX: x,
-      lastY: y,
-      lastTime: performance.now(),
-    }
+    state.dragging = true
+    state.dragOffsetX = localX - state.pointerX
+    state.dragOffsetY = localY - state.pointerY
+    state.velocityX = 0
+    state.velocityY = 0
+    state.lastTime = 0
 
     event.currentTarget.setPointerCapture(event.pointerId)
-    updateMotionFromEvent(event, true)
-  }
-
-  const handlePointerDrag = (event) => {
-    if (!dragRef.current.dragging) return
-
-    const rect = sceneRef.current?.getBoundingClientRect()
-    if (!rect) return
-
-    const currentX = event.clientX - rect.left - rect.width / 2
-    const currentY = event.clientY - rect.top - rect.height / 2
-    const now = performance.now()
-    const dt = Math.max(16, now - dragRef.current.lastTime)
-
-    dragRef.current.releaseVelocityX =
-      (currentX - dragRef.current.lastX) / dt
-    dragRef.current.releaseVelocityY =
-      (currentY - dragRef.current.lastY) / dt
-    dragRef.current.lastX = currentX
-    dragRef.current.lastY = currentY
-    dragRef.current.lastTime = now
-
-    updateMotionFromEvent(event, true)
+    updatePointer(event, true)
   }
 
   const handlePointerUp = (event) => {
-    if (!dragRef.current.dragging) return
+    const state = physicsRef.current
+    if (!state.dragging) return
 
     event.currentTarget.releasePointerCapture(event.pointerId)
-    dragRef.current.dragging = false
-
-    setMotion((current) => ({
-      ...current,
-      dragX: current.dragX + dragRef.current.releaseVelocityX * 42,
-      dragY: current.dragY + dragRef.current.releaseVelocityY * 55,
-      swingRotate: current.swingRotate + dragRef.current.releaseVelocityX * 12,
-    }))
-
-    resetMotion()
+    state.dragging = false
+    state.velocityX *= 1.45
+    state.velocityY *= 1.28
+    state.spin += state.pointerX * 0.02
+    startPhysicsLoop()
   }
 
   return (
@@ -223,45 +227,53 @@ function ProfileLanyard() {
       style={sceneStyle}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
     >
-      <div className="lanyard-anchor" aria-hidden="true">
-        <span className="lanyard-hook" />
-      </div>
+      <div className="lanyard-fall-layer">
+        <div className="lanyard-anchor" aria-hidden="true">
+          <span className="lanyard-hook" />
+        </div>
 
-      <div className="lanyard-rig">
-        <div className="lanyard-strap lanyard-strap-left" aria-hidden="true" />
-        <div className="lanyard-strap lanyard-strap-right" aria-hidden="true" />
-
-        <article className="lanyard-card">
-          <div className="lanyard-card-rim" aria-hidden="true" />
-          <div className="lanyard-photo-frame">
-            <img
-              src={profileImage}
-              alt="Portrait of Ziqian Xiong"
-              className="lanyard-photo"
-            />
+        <div className="lanyard-rig">
+          <div className="lanyard-rope" aria-hidden="true">
+            <span className="lanyard-rope-line lanyard-rope-left" />
+            <span className="lanyard-rope-line lanyard-rope-center" />
+            <span className="lanyard-rope-line lanyard-rope-right" />
+            <span className="lanyard-clip" />
           </div>
 
-          <div className="lanyard-copy">
-            <p className="lanyard-role">Ziqian Xiong</p>
-            <h3>Computer Science Student</h3>
-            <p className="lanyard-summary">
-              Research-driven builder focused on intelligent systems, visual
-              computing, and polished digital presentation.
-            </p>
-
-            <div className="lanyard-metrics">
-              {metrics.map((item) => (
-                <div key={item.label} className="lanyard-metric">
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                </div>
-              ))}
+          <article
+            className="lanyard-card"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+          >
+            <div className="lanyard-card-rim" aria-hidden="true" />
+            <div className="lanyard-photo-frame">
+              <img
+                src={profileImage}
+                alt="Portrait of Ziqian Xiong"
+                className="lanyard-photo"
+              />
             </div>
-          </div>
-        </article>
+
+            <div className="lanyard-copy">
+              <p className="lanyard-role">Ziqian Xiong</p>
+              <h3>Computer Science Student</h3>
+              <p className="lanyard-summary">
+                Research-driven builder focused on intelligent systems, visual
+                computing, and polished digital presentation.
+              </p>
+
+              <div className="lanyard-metrics">
+                {metrics.map((item) => (
+                  <div key={item.label} className="lanyard-metric">
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   )

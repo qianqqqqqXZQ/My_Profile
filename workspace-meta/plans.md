@@ -1,42 +1,48 @@
 # Resume Website Plan
 
-- [x] 建立隔离目录 `workspace-meta` 与 `generated-site`
-- [x] 创建工作流文档 `plans.md` 与 `agents.md`
-- [x] 完成首次 Git 基线备份
-- [x] 在 `generated-site` 下初始化 React + Vite 项目
-- [x] 搭建全局页面结构与数据模型
-- [x] 实现 Hero 首屏，包含视频背景、导航、联系按钮
-- [x] 实现个人经历模块，包含介绍、联系方式、项目与科研经历
-- [x] 实现精选项目模块，大卡片展示作品
-- [x] 实现个人优势模块，卡片展示能力
-- [x] 实现底部整屏联系收尾页
-- [x] 适配 PC 端版心，控制在约 1700px
-- [x] 运行构建与基础检查
-- [x] 完成自审并回写工作流文档
+- [x] Create isolated workspace docs under `workspace-meta/`
+- [x] Create and maintain `workspace-meta/plans.md` and `workspace-meta/agents.md`
+- [x] Make baseline Git backup commits before major code changes
+- [x] Initialize the React + Vite site under `generated-site/`
+- [x] Build the base single-page resume layout and content structure
+- [x] Implement the hero section with video background, nav, and CTA area
+- [x] Implement About, Projects, Strengths, and Contact sections
+- [x] Tune the desktop-first layout around a wide `1700px` shell
+- [x] Verify the generated site with `npm run lint` and `npm run build`
 
 ## 2026-06-24 Lanyard Widget Integration
 
-- [x] 在 Hero 区域确定挂件接入位置
-- [x] 评估 React Bits 原版 `Lanyard` 依赖与当前仓库兼容性
-- [x] 在 `generated-site/src` 实现 lanyard 风格个人挂件组件
-- [x] 使用 `img/Ziqian.jpg` 替换挂件主图
-- [x] 为挂件增加高级感边框、金属细节、姓名与简介信息
-- [x] 运行 `npm run lint` 验证代码质量
-- [x] 运行 `npm run build` 验证产物可构建
-- [x] 完成改动后的自查与文档更新
+- [x] Place a personal lanyard widget in the Hero area
+- [x] Evaluate the React Bits `Lanyard` reference against the current stack
+- [x] Implement an equivalent in-project lanyard component without introducing incomplete 3D assets
+- [x] Use `img/Ziqian.jpg` as the hanging card portrait
+- [x] Add premium card styling, identity copy, and supporting metrics
+- [x] Verify with `npm run lint`
+- [x] Verify with `npm run build`
 
 ## 2026-06-24 Lanyard Interaction Fix
 
-- [x] 修复挂件缺少鼠标交互的问题
-- [x] 增加基于指针位置的倾斜、摆动与高光反馈
-- [x] 移除导致说明卡遮挡挂件的负外边距布局
-- [x] 再次运行 `npm run lint` 与 `npm run build`
+- [x] Restore hover and pointer-driven interaction for the lanyard
+- [x] Add tilt, swing, and highlight response from pointer movement
+- [x] Remove the layout overlap between the widget and the signature panel
+- [x] Re-run `npm run lint` and `npm run build`
 
 ## 2026-06-24 Draggable Lanyard Motion Update
 
-- [x] 在重大交互调整前完成 Git 备份提交
-- [x] 缩小挂件尺寸，避免遮挡下方 signature 面板
-- [x] 增加页面初次加载时自上而下的掉落动画
-- [x] 实现按住卡片可拖拽、松手后回摆的交互
-- [x] 将掉落摆动层与拖拽层拆分，避免 transform 冲突
-- [x] 重新运行 `npm run lint` 与 `npm run build`
+- [x] Create a Git backup commit before the interaction refactor
+- [x] Resize and rebalance the hero widget so it fits the right column
+- [x] Add a first-load drop-in animation from outside the viewport
+- [x] Add drag-to-pull interaction with release swing-back behavior
+- [x] Split the entrance motion layer from the interactive motion layer to avoid transform conflicts
+- [x] Re-run `npm run lint` and `npm run build`
+
+## 2026-06-24 Long Rope Lanyard Update
+
+- [x] Create another Git backup commit before the long-rope motion rewrite
+- [x] Replace the dual-strap look with a longer single hanging rope presentation
+- [x] Make the anchor start above the viewport so the widget appears to drop from an unseen point
+- [x] Rework the interaction model so rope bend, stretch, and card swing move together
+- [x] Move the signature panel below the Hero into its own section to avoid overlap with the hanging card
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update workspace documentation
