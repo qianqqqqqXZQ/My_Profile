@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊子谦 - Resume</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, Serif, "SimSun", "宋体";
+            line-height: 1.35;
+            color: #000000;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .header .contact-info {
+            font-size: 14px;
+            margin: 0;
+        }
+        .header a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom: 1.5px solid #000000;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 3px;
+        }
+
+        /* Entry Styles */
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-weight: bold;
+            margin-bottom: 4px;
+            margin-top: 8px;
+        }
+        .entry-title {
+            text-align: left;
+            flex: 1;
+            padding-right: 10px;
+        }
+        .entry-title i {
+            font-weight: normal;
+        }
+        .entry-date {
+            text-align: right;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+        .entry-sub {
+            font-size: 14px;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+        .entry-sub a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .entry-sub a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bullet Points */
+        ul {
+            margin: 0 0 12px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+        
+        /* Utility classes */
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>熊子谦</h1>
+        <p class="contact-info">
+            <a href="mailto:scyzx7@nottingham.edu.cn">scyzx7@nottingham.edu.cn</a> | <a href="tel:+8617815975258">+86 17815975258</a>
+        </p>
+    </div>
+
+    <div class="section-title">教育经历</div>
+    
+    <div class="entry-header">
+        <div class="entry-title">宁波诺丁汉大学</div>
+        <div class="entry-date">2024年9月 – 至今</div>
+    </div>
+    <ul>
+        <li>计算机科学理学学士 &nbsp;&nbsp;<span class="bold">GPA: 3.75/4.0</span> &nbsp;&nbsp;(<span class="bold">个人导师:</span> <a href="https://research.nottingham.edu.cn/en/persons/heng-yu/" target="_blank">于恒</a>)</li>
+        <li><span class="bold">核心课程：</span>
+            <ul>
+                <li><span class="bold">计算机核心：</span>计算机基础、数据库与接口（高分85）、人工智能基础、编程与算法、系统与体系结构、软件工程、机器学习</li>
+                <li><span class="bold">数学与工具：</span>离散数学、线性代数、微积分基础、Matlab、Geogebra、LaTeX、物理科学与工程基础代数</li>
+                <li><span class="bold">语言能力：</span>英语口语表达技巧 A/B、英语学术阅读与写作、英语论文写作</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="section-title">科研经历</div>
+
+    <div class="entry-header">
+        <div class="entry-title">用于语音关键词检测的脉冲神经网络</div>
+        <div class="entry-date">2026年6月 – 至今</div>
+    </div>
+    <div class="entry-sub">指导老师: <a href="https://research.nottingham.edu.cn/en/persons/heng-yu/" target="_blank">于恒</a></div>
+    <ul>
+        <li>系统梳理相关前沿文献，设计并优化面向说话人识别与关键词检测任务的轻量级脉冲神经网络（SNN）框架。</li>
+        <li>围绕模型架构与计算复杂度开展优化，以满足嵌入式设备低功耗部署与实时检测的实际需求。</li>
+    </ul>
+
+    <div class="entry-header">
+        <div class="entry-title">面向小息肉分割的边缘增强双流 Transformer</div>
+        <div class="entry-date">2025年7月 – 至今</div>
+    </div>
+    <div class="entry-sub">指导老师: <a href="https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/" target="_blank">Fiseha Berhanu Tesema</a></div>
+    <ul>
+        <li>基于 MMSegmentation 设计并实现边缘增强双流分割框架，采用 Swin Transformer 作为主干网络，以提升小息肉分割任务中的细粒度表征能力。</li>
+        <li>从浅层特征中引入基于拉普拉斯算子的边缘提取分支，并通过交叉注意力机制融合边缘与语义特征，增强模型的边界感知学习能力。</li>
+        <li>在标准息肉分割数据集上开展系统实验与消融研究，比较多种边缘流输入组合与注意力配置，并使用 mDice、mAcc 和 aAcc 指标验证方法有效性。</li>
+        <li>相关论文以第二作者身份投稿至 <i>Computer Vision and Image Understanding (CVIU)</i>，目前在投。</li>
+    </ul>
+
+    <div class="section-title">工作经历</div>
+
+    <div class="entry-header">
+        <div class="entry-title">宁波诺丁汉大学学生事务发展中心 | <i>行政实习生</i></div>
+        <div class="entry-date">2025年2月 – 2026年6月</div>
+    </div>
+    <ul>
+        <li><span class="bold">数据处理：</span>运用 Python 脚本配合 AI 大模型优化数据处理流程，结合 Excel/Word 实现学生档案的高效批量化管理与归档。</li>
+        <li><span class="bold">需求响应：</span>负责接待并梳理学生及家长的来电与邮件诉求，准确解答档案管理相关问题，有效提升部门服务效率。</li>
+    </ul>
+
+    <div class="section-title">项目经历</div>
+
+    <div class="entry-header">
+        <div class="entry-title">FPGA 数字电路实验设计</div>
+        <div class="entry-date">2026年5月 – 至今</div>
+    </div>
+    <div class="entry-sub">指导老师: <a href="https://research.nottingham.edu.cn/en/persons/heng-yu/" target="_blank">于恒</a></div>
+    <ul>
+        <li>基于 FPGA 平台完成多项数字硬件逻辑设计，包括 LED 逻辑控制（流水灯、呼吸灯）以及数据缓存与存储模块（FIFO、RAM）的开发与验证。</li>
+    </ul>
+
+    <div class="entry-header">
+        <div class="entry-title">计算机科学专业核心 Coursework</div>
+        <div class="entry-date">2024年9月 – 至今</div>
+    </div>
+    <ul>
+        <li><span class="bold">Web 开发：</span>采用 HTML/CSS 结合 Flask 框架及 MySQL 数据库，独立搭建并维护音乐专辑与播放列表管理平台。</li>
+        <li><span class="bold">底层与算法开发：</span>使用 C 语言独立开发简易图书管理系统及推箱子游戏；利用 Java 实现基于策略模式的自动排序算法选择器。</li>
+        <li><span class="bold">人工智能建模：</span>使用 Python 建立人工智能校内智能体派送/物流路径搜索模型，优化搜索算法效率。</li>
+        <li><span class="bold">软件工程开发项目经理：</span>作为软件开发团队项目经理管理一个6人团队指导Git的使用以及一个简易购物软件的代码修改任务并生成report。</li>
+    </ul>
+
+    <div class="section-title">课外活动</div>
+
+    <div class="entry-header">
+        <div class="entry-title">宁波诺丁汉大学沙发酷街舞队 | <i>副队长</i></div>
+        <div class="entry-date">2024年5月 – 至今</div>
+    </div>
+    <ul>
+        <li>统筹并举办多场街舞队专场演出，主导学校重大活动（如 Xshow、Shownight 等）的舞蹈编排与团队排练。</li>
+        <li>多次策划并举办校外大学生街舞赛事；个人作为参赛选手取得优异成绩，并多次受邀担任区域大型街舞活动的特邀嘉宾与裁判。</li>
+    </ul>
+
+    <div class="section-title">荣誉奖项</div>
+    
+    <div class="entry-header">
+        <div class="entry-title" style="font-weight: normal;">江西省街舞锦标赛小组赛 冠军</div>
+        <div class="entry-date">2024年</div>
+    </div>
+
+    <div class="section-title">技能</div>
+    <ul>
+        <li><span class="bold">编程技能：</span>Python (PyTorch, scikit-learn, TensorFlow, pandas), Verilog, C/C++, Java, HTML, CSS, JavaScript, Haskell, SQL</li>
+        <li><span class="bold">技术与工具：</span>Anaconda, Vivado, Flask, Django, Git, Linux, MySQL, MatLab, GeoGebra, LaTeX</li>
+        <li><span class="bold">语言能力：</span>英语（熟练运用，适应全英教学与学术写作），普通话（母语）</li>
+    </ul>
+
+</body>
+</html>
