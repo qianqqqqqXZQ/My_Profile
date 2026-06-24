@@ -131,3 +131,13 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Record the new performance notes in `workspace-meta/agents.md`
+
+## 2026-06-24 Home and Contact Background Swap
+
+- [x] Create a Git backup snapshot before the background swap
+- [x] Move the `Waves` background effect from `#contact` to `#home`
+- [x] Remove the `Ferrofluid` hero background from the homepage
+- [x] Leave the contact section as a clean content-only layout
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new background placement

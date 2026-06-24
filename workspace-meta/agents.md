@@ -39,6 +39,7 @@ This repository is used to build a personal resume website. The active site live
   - `@react-three/rapier`
   - `meshline`
 - The hero background now depends on:
+  - `Waves` has been moved into the hero section
   - `ogl`
 - The current lanyard behavior now includes:
   - the official React Bits `card.glb` and `lanyard.png` assets stored locally under `generated-site/src/assets/lanyard/`
@@ -70,7 +71,7 @@ This repository is used to build a personal resume website. The active site live
   - `mouseStrength=1`
   - `mouseRadius=0.35`
 - The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
-- The contact `Waves` background uses a monochrome line treatment, keeps `pointer-events: none`, and disables cursor displacement on touch devices by passing `maxCursorMove={0}`
+- The contact section is now content-only; the `Waves` background was moved to the hero and removed from `#contact`
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 - Performance relief notes:
   - `Ferrofluid`, `ProfileLanyard`, and `Waves` now pause their animation loops when their sections are offscreen
