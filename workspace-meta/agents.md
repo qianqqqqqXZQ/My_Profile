@@ -12,6 +12,8 @@ This repository is used to build a personal resume website. The active site live
 - `generated-site/src/components/ProfileLanyard.css`: styling and motion system for the hanging card widget
 - `generated-site/src/components/Ferrofluid.jsx`: OGL-based hero background renderer
 - `generated-site/src/components/Ferrofluid.css`: absolute-positioned hero background container
+- `generated-site/src/components/Waves.jsx`: canvas-based line-wave renderer used in the contact section
+- `generated-site/src/components/Waves.css`: absolute-positioned background styles for the `Waves` component
 - `img/`: user-provided image assets, currently including `Ziqian.jpg`
 - `workspace-meta/`: working documents such as `plans.md` and `agents.md`
 - `CV.html`: standalone static resume file in the repo root, separate from the React site
@@ -29,6 +31,7 @@ This repository is used to build a personal resume website. The active site live
 
 - The site includes Hero, About, Projects, Strengths, and Contact sections
 - The hero uses a fixed frosted-glass navbar, a right-side hanging profile widget, and a local OGL-powered `Ferrofluid` background
+- The contact section now uses a local React Bits-style `Waves` canvas background layered under a dark scrim so the CTA remains readable and clickable
 - The `ProfileLanyard` component now uses a React 18-compatible 3D physics stack:
   - `three`
   - `@react-three/fiber`
@@ -67,6 +70,7 @@ This repository is used to build a personal resume website. The active site live
   - `mouseStrength=1`
   - `mouseRadius=0.35`
 - The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
+- The contact `Waves` background uses a monochrome line treatment, keeps `pointer-events: none`, and disables cursor displacement on touch devices by passing `maxCursorMove={0}`
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 
 ## Notes About The React Bits Lanyard Reference

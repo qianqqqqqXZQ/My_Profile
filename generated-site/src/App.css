@@ -622,12 +622,23 @@
   align-items: center;
   border-top: 1px solid var(--border-strong);
   overflow: hidden;
+  isolation: isolate;
+  background: #050505;
 }
 
-.contact-section::before {
-  content: '';
+.contact-waves,
+.contact-scrim {
   position: absolute;
   inset: 0;
+}
+
+.contact-waves {
+  z-index: 0;
+}
+
+.contact-scrim {
+  z-index: 1;
+  pointer-events: none;
   background:
     radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.08), transparent 24%),
     linear-gradient(180deg, rgba(10, 10, 10, 0.55), rgba(5, 5, 5, 0.95));
@@ -635,7 +646,7 @@
 
 .contact-shell {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   max-width: 980px;
   padding: 96px 0;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Ferrofluid from './components/Ferrofluid'
 import ProfileLanyard from './components/ProfileLanyard'
+import Waves from './components/Waves'
 import './App.css'
 
 const navigation = [
@@ -387,6 +388,21 @@ function App() {
       </main>
 
       <section className="contact-section" id="contact">
+        <Waves
+          className="contact-waves"
+          lineColor="rgba(245, 245, 243, 0.28)"
+          backgroundColor="transparent"
+          waveSpeedX={0.02}
+          waveSpeedY={0.01}
+          waveAmpX={28}
+          waveAmpY={14}
+          friction={0.92}
+          tension={0.01}
+          maxCursorMove={isTouchDevice ? 0 : 100}
+          xGap={14}
+          yGap={34}
+        />
+        <div className="contact-scrim" />
         <div className="section-shell contact-shell">
           <p className="eyebrow">Final Contact</p>
           <h2>Close on a full-screen contact page with one clear action.</h2>

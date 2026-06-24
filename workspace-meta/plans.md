@@ -111,3 +111,13 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-24 Contact Waves Integration
+
+- [x] Create a Git backup commit before the contact background integration
+- [x] Add a local `Waves` component under `generated-site/src/components/`
+- [x] Layer the `Waves` background into the existing `#contact` section
+- [x] Tune the contact scrim and preserve CTA readability/clickability
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
