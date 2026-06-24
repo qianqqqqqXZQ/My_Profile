@@ -121,3 +121,13 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-24 Performance Relief Pass
+
+- [x] Identify the main sources of UI slowness in the site shell and heavy visual widgets
+- [x] Pause the hero and contact animation loops when their sections are offscreen
+- [x] Reduce the default render pressure of the 3D hero and lanyard widget
+- [x] Split the heavy visual widgets into lazy-loaded chunks with lightweight fallbacks
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Record the new performance notes in `workspace-meta/agents.md`

@@ -72,6 +72,11 @@ This repository is used to build a personal resume website. The active site live
 - The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
 - The contact `Waves` background uses a monochrome line treatment, keeps `pointer-events: none`, and disables cursor displacement on touch devices by passing `maxCursorMove={0}`
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
+- Performance relief notes:
+  - `Ferrofluid`, `ProfileLanyard`, and `Waves` now pause their animation loops when their sections are offscreen
+  - The heavy hero widgets are loaded with `React.lazy` and `Suspense` so the main shell stays lighter on first load
+  - The hero lanyard canvas now uses a lower default DPR, and the physics step is slightly softened to reduce per-frame pressure
+  - The main bundle is much smaller than before, but `ProfileLanyard` still owns the largest deferred chunk because it includes `three`, `rapier`, and the GLB asset
 
 ## Notes About The React Bits Lanyard Reference
 

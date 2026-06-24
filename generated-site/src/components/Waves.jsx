@@ -104,6 +104,7 @@ function Waves({
   friction = 0.925,
   tension = 0.005,
   maxCursorMove = 100,
+  paused = false,
   style = {},
   className = '',
 }) {
@@ -343,7 +344,9 @@ function Waves({
 
     setSize()
     setLines()
-    frameIdRef.current = window.requestAnimationFrame(tick)
+    if (!paused) {
+      frameIdRef.current = window.requestAnimationFrame(tick)
+    }
 
     const resizeObserver = new ResizeObserver(onResize)
     resizeObserver.observe(container)
@@ -361,7 +364,7 @@ function Waves({
         window.cancelAnimationFrame(frameIdRef.current)
       }
     }
-  }, [])
+  }, [paused])
 
   return (
     <div

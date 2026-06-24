@@ -38,6 +38,7 @@ export default function ProfileLanyard({
   gravity = [0, -40, 0],
   fov = 20,
   transparent = true,
+  paused = false,
 }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768)
 
@@ -51,20 +52,21 @@ export default function ProfileLanyard({
     <div className="lanyard-wrapper" aria-label="Profile lanyard widget">
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1.5 : 2]}
+        dpr={[1, isMobile ? 1.25 : 1.5]}
+        frameloop={paused ? 'never' : 'always'}
         gl={{ alpha: transparent }}
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band isMobile={isMobile} />
+        <Physics gravity={gravity} timeStep={isMobile ? 1 / 24 : 1 / 45}>
+          <Band isMobile={isMobile} paused={paused} />
         </Physics>
-        <Environment preset="city" />
+        {!paused ? <Environment preset="city" /> : null}
       </Canvas>
     </div>
   )
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, paused = false }) {
   const band = useRef()
   const fixed = useRef()
   const j1 = useRef()
@@ -184,6 +186,10 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   }, [dragged])
 
   useFrame((state, delta) => {
+    if (paused) {
+      return
+    }
+
     if (dragged && card.current) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
       dir.copy(vec).sub(state.camera.position).normalize()

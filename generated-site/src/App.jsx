@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
-import Ferrofluid from './components/Ferrofluid'
-import ProfileLanyard from './components/ProfileLanyard'
-import Waves from './components/Waves'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import './App.css'
+
+const Ferrofluid = lazy(() => import('./components/Ferrofluid'))
+const ProfileLanyard = lazy(() => import('./components/ProfileLanyard'))
+const Waves = lazy(() => import('./components/Waves'))
 
 const navigation = [
   { label: 'Home', href: '#home' },
@@ -129,6 +130,10 @@ const strengths = [
 
 function App() {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [isContactVisible, setIsContactVisible] = useState(false)
+  const heroRef = useRef(null)
+  const contactRef = useRef(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -150,28 +155,68 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroRef.current) {
+            setIsHeroVisible(entry.isIntersecting)
+          }
+
+          if (entry.target === contactRef.current) {
+            setIsContactVisible(entry.isIntersecting)
+          }
+        })
+      },
+      {
+        root: null,
+        threshold: 0.05,
+        rootMargin: '240px 0px',
+      },
+    )
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current)
+    }
+
+    if (contactRef.current) {
+      observer.observe(contactRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
     <div className="site-shell">
-      <header className="hero-section" id="home">
-        <Ferrofluid
-          className="hero-ferrofluid"
-          colors={['#ffffff', '#ffffff', '#ffffff']}
-          backgroundColor="#120f17"
-          speed={0.5}
-          scale={1.9}
-          turbulence={1}
-          fluidity={0.1}
-          rimWidth={0.27}
-          sharpness={2.5}
-          shimmer={1.5}
-          glow={3.6}
-          flowDirection="down"
-          opacity={1}
-          mouseInteraction={!isTouchDevice}
-          mouseStrength={1}
-          mouseRadius={0.35}
-          dpr={isTouchDevice ? 1 : 1.75}
-        />
+      <header className="hero-section" id="home" ref={heroRef}>
+        <Suspense fallback={<div className="hero-ferrofluid hero-ferrofluid-fallback" />}>
+          <Ferrofluid
+            className="hero-ferrofluid"
+            colors={['#ffffff', '#ffffff', '#ffffff']}
+            backgroundColor="#120f17"
+            speed={0.5}
+            scale={1.9}
+            turbulence={1}
+            fluidity={0.1}
+            rimWidth={0.27}
+            sharpness={2.5}
+            shimmer={1.5}
+            glow={3.6}
+            flowDirection="down"
+            opacity={1}
+            mouseInteraction={!isTouchDevice}
+            mouseStrength={1}
+            mouseRadius={0.35}
+            paused={!isHeroVisible}
+            dpr={isTouchDevice ? 1 : 1.35}
+          />
+        </Suspense>
         <div className="hero-scrim" />
         <div className="hero-noise" />
 
@@ -222,7 +267,11 @@ function App() {
           </div>
 
           <aside className="hero-visual-column">
-            <ProfileLanyard />
+            <Suspense
+              fallback={<div className="hero-visual-fallback" aria-hidden="true" />}
+            >
+              <ProfileLanyard paused={!isHeroVisible} />
+            </Suspense>
           </aside>
         </div>
       </header>
@@ -387,21 +436,26 @@ function App() {
         </section>
       </main>
 
-      <section className="contact-section" id="contact">
-        <Waves
-          className="contact-waves"
-          lineColor="rgba(245, 245, 243, 0.28)"
-          backgroundColor="transparent"
-          waveSpeedX={0.02}
-          waveSpeedY={0.01}
-          waveAmpX={28}
-          waveAmpY={14}
-          friction={0.92}
-          tension={0.01}
-          maxCursorMove={isTouchDevice ? 0 : 100}
-          xGap={14}
-          yGap={34}
-        />
+      <section className="contact-section" id="contact" ref={contactRef}>
+        {isContactVisible ? (
+          <Suspense fallback={null}>
+            <Waves
+              className="contact-waves"
+              lineColor="rgba(245, 245, 243, 0.28)"
+              backgroundColor="transparent"
+              waveSpeedX={0.02}
+              waveSpeedY={0.01}
+              waveAmpX={28}
+              waveAmpY={14}
+              friction={0.92}
+              tension={0.01}
+              paused={!isContactVisible}
+              maxCursorMove={isTouchDevice ? 0 : 100}
+              xGap={14}
+              yGap={34}
+            />
+          </Suspense>
+        ) : null}
         <div className="contact-scrim" />
         <div className="section-shell contact-shell">
           <p className="eyebrow">Final Contact</p>

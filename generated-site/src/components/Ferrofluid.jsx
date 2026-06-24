@@ -315,7 +315,25 @@ function Ferrofluid({
       }
     }
 
-    rafRef.current = window.requestAnimationFrame(loop)
+    if (!paused) {
+      rafRef.current = window.requestAnimationFrame(loop)
+    }
+
+    const handleVisibility = () => {
+      if (paused) {
+        if (rafRef.current) {
+          window.cancelAnimationFrame(rafRef.current)
+          rafRef.current = null
+        }
+        return
+      }
+
+      if (!rafRef.current) {
+        rafRef.current = window.requestAnimationFrame(loop)
+      }
+    }
+
+    handleVisibility()
 
     return () => {
       if (rafRef.current) {
