@@ -90,3 +90,24 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and refresh `workspace-meta/agents.md`
+
+## 2026-06-24 Hero Ferrofluid Background
+
+- [x] Create a Git backup commit before replacing the hero video background
+- [x] Install `ogl` and add the local `Ferrofluid` component
+- [x] Replace the hero video with the black-and-white `Ferrofluid` background
+- [x] Tune hero layering so the navbar, copy, CTA, and lanyard stay readable
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-24 Desktop Lanyard Stabilization and Layering Fix
+
+- [ ] Create a Git backup commit before the stabilization pass
+- [ ] Rebuild the rope path from the full joint chain through the card attachment
+- [ ] Smooth all dynamic rope joints and clamp drag translation impulses
+- [ ] Replace the current angular correction with bounded spin control
+- [ ] Adjust desktop hero overflow and stacking so the lanyard is not clipped or buried
+- [ ] Run `npm run lint`
+- [ ] Run `npm run build`
+- [ ] Perform a final self-review and update `workspace-meta/agents.md`

@@ -10,6 +10,8 @@ This repository is used to build a personal resume website. The active site live
 - `generated-site/src/`: application components, page structure, and CSS
 - `generated-site/src/components/ProfileLanyard.jsx`: custom hanging card widget used in the hero
 - `generated-site/src/components/ProfileLanyard.css`: styling and motion system for the hanging card widget
+- `generated-site/src/components/Ferrofluid.jsx`: OGL-based hero background renderer
+- `generated-site/src/components/Ferrofluid.css`: absolute-positioned hero background container
 - `img/`: user-provided image assets, currently including `Ziqian.jpg`
 - `workspace-meta/`: working documents such as `plans.md` and `agents.md`
 - `CV.html`: standalone static resume file in the repo root, separate from the React site
@@ -26,13 +28,15 @@ This repository is used to build a personal resume website. The active site live
 ## Current Implementation State
 
 - The site includes Hero, About, Projects, Strengths, and Contact sections
-- The hero uses a fixed frosted-glass navbar and a right-side hanging profile widget
+- The hero uses a fixed frosted-glass navbar, a right-side hanging profile widget, and a local OGL-powered `Ferrofluid` background
 - The `ProfileLanyard` component now uses a React 18-compatible 3D physics stack:
   - `three`
   - `@react-three/fiber`
   - `@react-three/drei`
   - `@react-three/rapier`
   - `meshline`
+- The hero background now depends on:
+  - `ogl`
 - The current lanyard behavior now includes:
   - the official React Bits `card.glb` and `lanyard.png` assets stored locally under `generated-site/src/assets/lanyard/`
   - a real rope simulation with connected rigid bodies
@@ -43,6 +47,21 @@ This repository is used to build a personal resume website. The active site live
   - portrait-specific brightness compensation applied during card texture compositing
   - a reduced card scale relative to the enlarged rope so the portrait does not overpower the hero
   - the rope path rendered from the card's top attachment point so the strap visually connects to the card correctly
+- The `Ferrofluid` hero treatment is fixed to a black background with white fluid highlights using the user-supplied reference values:
+  - `colors=['#ffffff', '#ffffff', '#ffffff']`
+  - `backgroundColor='#120f17'`
+  - `flowDirection='down'`
+  - `speed=0.5`
+  - `scale=1.9`
+  - `turbulence=1`
+  - `fluidity=0.1`
+  - `rimWidth=0.27`
+  - `sharpness=2.5`
+  - `shimmer=1.5`
+  - `glow=3.6`
+  - `mouseStrength=1`
+  - `mouseRadius=0.35`
+- The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 
 ## Notes About The React Bits Lanyard Reference

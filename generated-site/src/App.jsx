@@ -1,8 +1,7 @@
+import { useEffect, useState } from 'react'
+import Ferrofluid from './components/Ferrofluid'
 import ProfileLanyard from './components/ProfileLanyard'
 import './App.css'
-
-const heroVideo =
-  'https://cdn.coverr.co/videos/coverr-ink-in-water-1562845709483?download=1080p'
 
 const navigation = [
   { label: 'Home', href: '#home' },
@@ -128,20 +127,50 @@ const strengths = [
 ]
 
 function App() {
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const mediaQuery = window.matchMedia('(pointer: coarse)')
+    const updateTouchState = () => {
+      setIsTouchDevice(mediaQuery.matches || window.innerWidth < 720)
+    }
+
+    updateTouchState()
+    mediaQuery.addEventListener('change', updateTouchState)
+    window.addEventListener('resize', updateTouchState)
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateTouchState)
+      window.removeEventListener('resize', updateTouchState)
+    }
+  }, [])
+
   return (
     <div className="site-shell">
       <header className="hero-section" id="home">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+        <Ferrofluid
+          className="hero-ferrofluid"
+          colors={['#ffffff', '#ffffff', '#ffffff']}
+          backgroundColor="#120f17"
+          speed={0.5}
+          scale={1.9}
+          turbulence={1}
+          fluidity={0.1}
+          rimWidth={0.27}
+          sharpness={2.5}
+          shimmer={1.5}
+          glow={3.6}
+          flowDirection="down"
+          opacity={1}
+          mouseInteraction={!isTouchDevice}
+          mouseStrength={1}
+          mouseRadius={0.35}
+          dpr={isTouchDevice ? 1 : 1.75}
+        />
         <div className="hero-scrim" />
         <div className="hero-noise" />
 

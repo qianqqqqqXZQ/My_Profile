@@ -16,42 +16,43 @@
   min-height: 100svh;
   overflow: clip;
   border-bottom: 1px solid var(--border-strong);
+  background: #120f17;
 }
 
-.hero-video,
+.hero-ferrofluid,
 .hero-scrim,
 .hero-noise {
   position: absolute;
   inset: 0;
 }
 
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0) brightness(0.26) contrast(1.15);
+.hero-ferrofluid {
+  z-index: 0;
 }
 
 .hero-scrim {
+  z-index: 1;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.1), transparent 28%),
-    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.06), transparent 24%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.35), rgba(5, 5, 5, 0.9) 76%, #050505 100%);
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.07), transparent 28%),
+    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.04), transparent 24%),
+    linear-gradient(180deg, rgba(9, 7, 12, 0.18), rgba(7, 5, 9, 0.74) 74%, #050505 100%);
 }
 
 .hero-noise {
+  z-index: 2;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 140px 140px;
-  opacity: 0.22;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 88%);
+  opacity: 0.14;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent 88%);
+  pointer-events: none;
 }
 
 .topbar,
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 4;
 }
 
 .topbar {
