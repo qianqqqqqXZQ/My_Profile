@@ -226,9 +226,9 @@
   z-index: 7;
   justify-items: end;
   width: 100%;
-  margin-top: calc(-1 * clamp(88px, 12svh, 148px));
-  margin-right: -56px;
-  min-height: calc(100svh + clamp(148px, 18svh, 228px));
+  margin-top: calc(-1 * clamp(72px, 10svh, 132px));
+  margin-right: -40px;
+  min-height: calc(100svh + clamp(132px, 16svh, 208px));
 }
 
 .eyebrow,
@@ -287,6 +287,16 @@
 .hero-widget-panel {
   margin-top: 0;
   max-width: 460px;
+}
+
+.hero-visual-fallback {
+  width: min(100%, 680px);
+  aspect-ratio: 0.76;
+  border-radius: 36px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    linear-gradient(180deg, #131313, #050505);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .hero-signature-section {
@@ -699,8 +709,8 @@
   .hero-visual-column {
     justify-items: center;
     margin-right: 0;
-    margin-top: calc(-1 * clamp(52px, 8svh, 88px));
-    min-height: calc(100svh + clamp(52px, 8svh, 88px));
+    margin-top: calc(-1 * clamp(36px, 6svh, 72px));
+    min-height: calc(100svh + clamp(36px, 6svh, 72px));
     z-index: 4;
   }
 
@@ -757,8 +767,8 @@
   .hero-visual-column {
     justify-items: center;
     margin-right: 0;
-    margin-top: calc(-1 * clamp(28px, 6svh, 56px));
-    min-height: calc(94svh + clamp(28px, 6svh, 56px));
+    margin-top: calc(-1 * clamp(24px, 5svh, 48px));
+    min-height: calc(94svh + clamp(24px, 5svh, 48px));
   }
 
   .hero-signature-section {

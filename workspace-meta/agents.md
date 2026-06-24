@@ -94,6 +94,15 @@ The user-provided reference describes the React Bits `Lanyard` component, which 
 
 The original `card.glb` and `lanyard.png` assets are now present locally and wired into the component so the implementation matches the React Bits structure more closely while remaining self-contained inside this repo.
 
+## Notes About The Photo Lens Replacement
+
+- `generated-site/src/components/ProfileLanyard.jsx` remains preserved as the original source widget file and was not overwritten
+- `generated-site/src/components/PhotoLens.jsx` is the new hero implementation used on the homepage
+- `generated-site/src/components/PhotoLens.css` handles the black-backed reveal surface, smooth delayed cursor follow, and echo trail treatment
+- The source portrait assets remain `img/img1.jpg` and `img/img2.jpg`
+- The page also uses `img/img1-cutout.png` and `img/img2-cutout.png` as derived workspace assets for the black-background lens composition
+- The hero now uses the photo lens interaction instead of the hanging lanyard widget, while the rest of the site structure remains unchanged
+
 ## Run And Test
 
 ```powershell

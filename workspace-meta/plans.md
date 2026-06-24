@@ -151,3 +151,14 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new scroll rule
+
+## 2026-06-25 Homepage Photo Lens Replacement
+
+- [x] Create a Git backup snapshot before the hero visual replacement
+- [x] Keep `generated-site/src/components/ProfileLanyard.jsx` untouched as the preserved source widget
+- [x] Add a new layered hero photo lens component for `img/img1.jpg` and `img/img2.jpg`
+- [x] Generate transparent cutout variants for the two portrait assets
+- [x] Update the homepage hero copy and right-side visual layout to match the new interaction
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new photo-lens notes

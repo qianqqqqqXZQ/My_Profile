@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import './App.css'
 
-const ProfileLanyard = lazy(() => import('./components/ProfileLanyard'))
+const PhotoLens = lazy(() => import('./components/PhotoLens'))
 const Waves = lazy(() => import('./components/Waves'))
 
 const navigation = [
@@ -99,8 +99,8 @@ const featuredProjects = [
 
 const heroHighlights = [
   { label: 'Identity', value: 'Ziqian Xiong / UNNC CS' },
-  { label: 'Direction', value: 'Research + Portfolio Presence' },
-  { label: 'Visual', value: 'Lanyard Signature Widget' },
+  { label: 'Direction', value: 'Layered Photo Lens' },
+  { label: 'Visual', value: 'Portrait Reveal Interaction' },
   { label: 'Status', value: 'Ready To Personalize Further' },
 ]
 
@@ -291,9 +291,9 @@ function App() {
               Building a Focused Digital Presence
             </h1>
             <p className="hero-summary">
-              The lanyard now hangs naturally beside the home hero again. It
-              stays visible on the right, carries your portrait and name, and
-              avoids being buried under the surrounding layout.
+              The homepage now uses a layered portrait lens instead of the old
+              hanging widget. The front image stays anchored on the right while
+              the circular cursor reveals a second portrait beneath it.
             </p>
 
             <div className="hero-actions">
@@ -310,7 +310,7 @@ function App() {
             <Suspense
               fallback={<div className="hero-visual-fallback" aria-hidden="true" />}
             >
-              <ProfileLanyard paused={!isHeroVisible} />
+              <PhotoLens paused={!isHeroVisible} />
             </Suspense>
           </aside>
         </div>
@@ -320,7 +320,7 @@ function App() {
         <section className="content-section hero-signature-section">
           <div className="section-shell hero-signature-shell">
             <div className="hero-panel hero-widget-panel">
-              <p className="panel-label">Profile Signature / Hero Widget</p>
+              <p className="panel-label">Profile Signature / Hero Lens</p>
               <div className="panel-grid">
                 {heroHighlights.map((item) => (
                   <article key={item.label}>
@@ -330,8 +330,8 @@ function App() {
                 ))}
               </div>
               <p className="panel-note">
-                The panel stays subordinate so the hanging lanyard can read as
-                the primary identity element on the page.
+                The panel stays subordinate so the layered portrait lens can
+                remain the primary identity element on the page.
               </p>
             </div>
           </div>
