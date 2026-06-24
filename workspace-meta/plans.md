@@ -141,3 +141,13 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new background placement
+
+## 2026-06-25 Top Scroll Lock for Home
+
+- [x] Create a Git backup snapshot before the scroll behavior change
+- [x] Keep the current home hero visual layout intact
+- [x] Prevent upward top-edge bounce / blank-space reveal on the page
+- [x] Add global overscroll constraints for the viewport
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new scroll rule

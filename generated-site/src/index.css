@@ -32,6 +32,7 @@ html {
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 20%),
     linear-gradient(180deg, #0d0d0d 0%, #050505 38%);
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -39,6 +40,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: transparent;
+  overscroll-behavior-y: none;
 }
 
 a {
@@ -58,6 +60,7 @@ a {
 
 #root {
   min-height: 100vh;
+  overscroll-behavior-y: none;
 }
 
 h1,

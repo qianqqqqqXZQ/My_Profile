@@ -131,6 +131,62 @@ function App() {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const heroRef = useRef(null)
+  const touchStartYRef = useRef(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const getScrollTop = () =>
+      window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    const isAtTop = () => getScrollTop() <= 0
+    const preventTopBounce = (event) => {
+      if (isAtTop() && event.deltaY < 0) {
+        event.preventDefault()
+      }
+    }
+    const handleTouchStart = (event) => {
+      touchStartYRef.current = event.touches[0]?.clientY ?? null
+    }
+    const preventTouchBounce = (event) => {
+      if (isAtTop() && touchStartYRef.current !== null) {
+        const touch = event.touches[0]
+        if (touch && touch.clientY > touchStartYRef.current) {
+          event.preventDefault()
+        }
+      }
+    }
+    const preventKeyboardBounce = (event) => {
+      if (!isAtTop()) {
+        return
+      }
+
+      const blockedKeys = new Set([
+        'ArrowUp',
+        'PageUp',
+        'Home',
+        'Space',
+        ' ',
+      ])
+
+      if (blockedKeys.has(event.key)) {
+        event.preventDefault()
+      }
+    }
+
+    window.addEventListener('wheel', preventTopBounce, { passive: false })
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', preventTouchBounce, { passive: false })
+    window.addEventListener('keydown', preventKeyboardBounce, { passive: false })
+
+    return () => {
+      window.removeEventListener('wheel', preventTopBounce)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', preventTouchBounce)
+      window.removeEventListener('keydown', preventKeyboardBounce)
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') {

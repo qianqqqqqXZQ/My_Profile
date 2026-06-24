@@ -73,6 +73,7 @@ This repository is used to build a personal resume website. The active site live
 - The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
 - The contact section is now content-only; the `Waves` background was moved to the hero and removed from `#contact`
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
+- The homepage now includes a top-edge scroll guard so upward wheel, touch, and keyboard scroll cannot reveal blank space above the first screen
 - Performance relief notes:
   - `Ferrofluid`, `ProfileLanyard`, and `Waves` now pause their animation loops when their sections are offscreen
   - The heavy hero widgets are loaded with `React.lazy` and `Suspense` so the main shell stays lighter on first load
