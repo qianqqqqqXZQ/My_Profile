@@ -1,18 +1,36 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import img1Cutout from '../../../img/img1-cutout.png'
 import img2Cutout from '../../../img/img2-cutout.png'
 import './PhotoLens.css'
 
-const FOLLOW_LERP = 0.12
-const PARALLAX_LERP = 0.08
+const FOLLOW_HALF_LIFE = 0.06
+const PARALLAX_HALF_LIFE = 0.09
 const RADIUS_BASE = 112
 const RADIUS_MAX = 138
 const ECHO_MAX = 9
+const ECHO_TTL = 0.055
+const PARALLAX_STRENGTH = 28
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 
+const expSmooth = (current, target, delta, halfLife) => {
+  if (halfLife <= 0) {
+    return target
+  }
+
+  const factor = 1 - Math.pow(0.5, delta / halfLife)
+  return current + (target - current) * clamp(factor, 0, 1)
+}
+
 export default function PhotoLens({ paused = false }) {
   const frameRef = useRef(null)
+  const cardRef = useRef(null)
+  const revealRef = useRef(null)
+  const ringRef = useRef(null)
+  const coreRef = useRef(null)
+  const glowRef = useRef(null)
+  const shadeRef = useRef(null)
+  const echoLayerRef = useRef(null)
   const pointerRef = useRef({ x: 0.68, y: 0.48 })
   const smoothRef = useRef({ x: 0.68, y: 0.48 })
   const parallaxRef = useRef({ x: 0, y: 0 })
@@ -23,25 +41,7 @@ export default function PhotoLens({ paused = false }) {
     time: typeof performance !== 'undefined' ? performance.now() : Date.now(),
   })
   const echoesRef = useRef([])
-  const [echoes, setEchoes] = useState([])
-  const [lensState, setLensState] = useState({
-    x: 0.68,
-    y: 0.48,
-    radius: RADIUS_BASE,
-    opacity: 1,
-  })
-
-  const lensStyle = useMemo(
-    () => ({
-      '--lens-x': `${lensState.x * 100}%`,
-      '--lens-y': `${lensState.y * 100}%`,
-      '--lens-size': `${lensState.radius}px`,
-      '--lens-opacity': lensState.opacity,
-      '--parallax-x': `${parallaxRef.current.x}px`,
-      '--parallax-y': `${parallaxRef.current.y}px`,
-    }),
-    [lensState],
-  )
+  const frameHandleRef = useRef(0)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -109,102 +109,177 @@ export default function PhotoLens({ paused = false }) {
       return undefined
     }
 
-    let raf = 0
-    const tick = () => {
+    let lastTime = 0
+    let mounted = true
+
+    const applyStyle = (element, property, value) => {
+      if (element) {
+        element.style.setProperty(property, value)
+      }
+    }
+
+    const tick = (time) => {
+      if (!mounted) {
+        return
+      }
+
       const target = pointerRef.current
       const smooth = smoothRef.current
+      const delta = lastTime ? Math.min(0.05, (time - lastTime) / 1000) : 0.016
+      lastTime = time
 
-      smooth.x += (target.x - smooth.x) * FOLLOW_LERP
-      smooth.y += (target.y - smooth.y) * FOLLOW_LERP
+      smooth.x = expSmooth(smooth.x, target.x, delta, FOLLOW_HALF_LIFE)
+      smooth.y = expSmooth(smooth.y, target.y, delta, FOLLOW_HALF_LIFE)
 
       const velocityBoost = clamp(velocityRef.current * 1000, 0, 1)
       const radius = RADIUS_BASE + velocityBoost * (RADIUS_MAX - RADIUS_BASE)
-      const parallaxStrength = 28
-      parallaxRef.current.x += (((0.5 - smooth.x) * parallaxStrength) - parallaxRef.current.x) * PARALLAX_LERP
-      parallaxRef.current.y += (((0.5 - smooth.y) * (parallaxStrength * 0.72)) - parallaxRef.current.y) * PARALLAX_LERP
+
+      parallaxRef.current.x = expSmooth(
+        parallaxRef.current.x,
+        (0.5 - smooth.x) * PARALLAX_STRENGTH,
+        delta,
+        PARALLAX_HALF_LIFE,
+      )
+      parallaxRef.current.y = expSmooth(
+        parallaxRef.current.y,
+        (0.5 - smooth.y) * (PARALLAX_STRENGTH * 0.72),
+        delta,
+        PARALLAX_HALF_LIFE,
+      )
+
+      applyStyle(cardRef.current, '--parallax-x', `${parallaxRef.current.x}px`)
+      applyStyle(cardRef.current, '--parallax-y', `${parallaxRef.current.y}px`)
+      applyStyle(cardRef.current, '--lens-x', `${smooth.x * 100}%`)
+      applyStyle(cardRef.current, '--lens-y', `${smooth.y * 100}%`)
+      applyStyle(cardRef.current, '--lens-size', `${radius}px`)
+      applyStyle(cardRef.current, '--lens-opacity', paused ? '0.55' : '1')
+
+      const lensSize = radius * 2
+      const glowSize = radius * 2.36
+      const coreSize = radius * 0.62
+
+      applyStyle(ringRef.current, 'width', `${lensSize}px`)
+      applyStyle(ringRef.current, 'height', `${lensSize}px`)
+      applyStyle(coreRef.current, 'width', `${coreSize}px`)
+      applyStyle(coreRef.current, 'height', `${coreSize}px`)
+      applyStyle(glowRef.current, 'opacity', `${paused ? 0.45 : 0.75}`)
+      applyStyle(shadeRef.current, 'opacity', `${paused ? 0.55 : 0.8}`)
+      applyStyle(revealRef.current, 'clip-path', `circle(${radius}px at ${smooth.x * 100}% ${smooth.y * 100}%)`)
+      applyStyle(
+        revealRef.current,
+        '-webkit-clip-path',
+        `circle(${radius}px at ${smooth.x * 100}% ${smooth.y * 100}%)`,
+      )
+      applyStyle(
+        glowRef.current,
+        'clip-path',
+        `circle(${glowSize}px at ${smooth.x * 100}% ${smooth.y * 100}%)`,
+      )
+      applyStyle(
+        glowRef.current,
+        '-webkit-clip-path',
+        `circle(${glowSize}px at ${smooth.x * 100}% ${smooth.y * 100}%)`,
+      )
+      applyStyle(ringRef.current, 'left', `${smooth.x * 100}%`)
+      applyStyle(ringRef.current, 'top', `${smooth.y * 100}%`)
+      applyStyle(coreRef.current, 'left', `${smooth.x * 100}%`)
+      applyStyle(coreRef.current, 'top', `${smooth.y * 100}%`)
+      applyStyle(shadeRef.current, '--lens-x', `${smooth.x * 100}%`)
+      applyStyle(shadeRef.current, '--lens-y', `${smooth.y * 100}%`)
+      applyStyle(glowRef.current, '--lens-x', `${smooth.x * 100}%`)
+      applyStyle(glowRef.current, '--lens-y', `${smooth.y * 100}%`)
 
       echoesRef.current = echoesRef.current
         .map((echo) => ({
           ...echo,
-          ttl: echo.ttl - 0.055,
+          ttl: echo.ttl - ECHO_TTL,
         }))
         .filter((echo) => echo.ttl > 0)
 
-      setEchoes([...echoesRef.current])
-      setLensState({
-        x: smooth.x,
-        y: smooth.y,
-        radius,
-        opacity: paused ? 0.55 : 1,
-      })
-      raf = window.requestAnimationFrame(tick)
+      if (echoLayerRef.current) {
+        echoLayerRef.current.querySelectorAll('.photo-lens-echo').forEach((node) => {
+          const echo = echoesRef.current.find((item) => item.id === node.getAttribute('data-echo-id'))
+          if (!echo) {
+            node.remove()
+            return
+          }
+
+          node.style.left = `${echo.x * 100}%`
+          node.style.top = `${echo.y * 100}%`
+          node.style.width = `${echo.radius * 2.2}px`
+          node.style.height = `${echo.radius * 2.2}px`
+          node.style.opacity = `${echo.ttl * 0.7 * echo.intensity}`
+        })
+
+        echoesRef.current
+          .filter((echo) => !echoLayerRef.current.querySelector(`[data-echo-id="${echo.id}"]`))
+          .forEach((echo) => {
+            const node = document.createElement('span')
+            node.className = 'photo-lens-echo'
+            node.setAttribute('data-echo-id', echo.id)
+            node.setAttribute('aria-hidden', 'true')
+            node.style.left = `${echo.x * 100}%`
+            node.style.top = `${echo.y * 100}%`
+            node.style.width = `${echo.radius * 2.2}px`
+            node.style.height = `${echo.radius * 2.2}px`
+            node.style.opacity = `${echo.ttl * 0.7 * echo.intensity}`
+            echoLayerRef.current.appendChild(node)
+          })
+      }
+
+      frameHandleRef.current = window.requestAnimationFrame(tick)
     }
 
-    raf = window.requestAnimationFrame(tick)
-    return () => window.cancelAnimationFrame(raf)
+    frameHandleRef.current = window.requestAnimationFrame(tick)
+
+    return () => {
+      mounted = false
+      if (frameHandleRef.current) {
+        window.cancelAnimationFrame(frameHandleRef.current)
+      }
+    }
+  }, [paused])
+
+  useEffect(() => {
+    if (!frameRef.current) {
+      return undefined
+    }
+
+    const frame = frameRef.current
+    const cleanup = () => {
+      frame.querySelectorAll('.photo-lens-echo').forEach((node) => node.remove())
+      echoesRef.current = []
+    }
+
+    cleanup()
+    return cleanup
   }, [paused])
 
   return (
     <div className="photo-lens-frame" ref={frameRef}>
-      <div className="photo-lens-card" style={lensStyle}>
+      <div className="photo-lens-card" ref={cardRef}>
         <div className="photo-lens-backdrop" aria-hidden="true" />
         <div className="photo-lens-layer photo-lens-layer-back" aria-hidden="true">
-          <img
-            className="photo-lens-image photo-lens-image-back"
-            src={img2Cutout}
-            alt=""
-          />
+          <img className="photo-lens-image photo-lens-image-back" src={img2Cutout} alt="" />
         </div>
         <div className="photo-lens-layer photo-lens-layer-front" aria-hidden="true">
-          <img
-            className="photo-lens-image photo-lens-image-front"
-            src={img1Cutout}
-            alt=""
-          />
+          <img className="photo-lens-image photo-lens-image-front" src={img1Cutout} alt="" />
         </div>
 
-        <div className="photo-lens-shade" aria-hidden="true" />
+        <div className="photo-lens-shade" ref={shadeRef} aria-hidden="true" />
         <div
           className="photo-lens-reveal"
+          ref={revealRef}
           aria-hidden="true"
-          style={{
-            clipPath: `circle(var(--lens-size) at var(--lens-x) var(--lens-y))`,
-            WebkitClipPath: `circle(var(--lens-size) at var(--lens-x) var(--lens-y))`,
-          }}
         >
-          <img
-            className="photo-lens-image photo-lens-image-reveal"
-            src={img2Cutout}
-            alt=""
-          />
+          <img className="photo-lens-image photo-lens-image-reveal" src={img2Cutout} alt="" />
         </div>
 
-        <div
-          className="photo-lens-glow"
-          aria-hidden="true"
-          style={{
-            clipPath: `circle(calc(var(--lens-size) * 1.18) at var(--lens-x) var(--lens-y))`,
-            WebkitClipPath: `circle(calc(var(--lens-size) * 1.18) at var(--lens-x) var(--lens-y))`,
-          }}
-        />
+        <div className="photo-lens-glow" ref={glowRef} aria-hidden="true" />
 
-        {echoes.map((echo) => (
-          <span
-            key={echo.id}
-            className="photo-lens-echo"
-            aria-hidden="true"
-            style={{
-              left: `${echo.x * 100}%`,
-              top: `${echo.y * 100}%`,
-              width: `${echo.radius * 2.2}px`,
-              height: `${echo.radius * 2.2}px`,
-              opacity: echo.ttl * 0.7 * echo.intensity,
-            }}
-          />
-        ))}
-
-        <div className="photo-lens-ring" aria-hidden="true" />
-        <div className="photo-lens-core" aria-hidden="true" />
+        <div className="photo-lens-echo-layer" ref={echoLayerRef} aria-hidden="true" />
+        <div className="photo-lens-ring" ref={ringRef} aria-hidden="true" />
+        <div className="photo-lens-core" ref={coreRef} aria-hidden="true" />
       </div>
     </div>
   )

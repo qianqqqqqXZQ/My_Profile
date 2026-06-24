@@ -162,3 +162,13 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new photo-lens notes
+
+## 2026-06-25 Right-Side Interaction Smoothing
+
+- [x] Create a Git backup snapshot before the motion smoothing pass
+- [x] Move the cursor-follow path in `PhotoLens` to a ref-driven RAF loop with direct style updates
+- [x] Remove cursor-critical 300ms easing from the reveal and ring layers
+- [x] Keep the echo effect independent so it does not block the main cursor-follow path
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new motion behavior notes

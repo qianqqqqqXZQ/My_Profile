@@ -22,7 +22,7 @@
     0 26px 100px rgba(0, 0, 0, 0.58),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: translate3d(var(--parallax-x), var(--parallax-y), 0);
-  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .photo-lens-backdrop,
@@ -78,7 +78,15 @@
   display: grid;
   place-items: center;
   filter: saturate(1.06) brightness(1.06);
-  transition: clip-path 300ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path, -webkit-clip-path;
+}
+
+.photo-lens-echo-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  will-change: opacity;
 }
 
 .photo-lens-shade {
@@ -88,6 +96,7 @@
   mix-blend-mode: screen;
   opacity: 0.8;
   pointer-events: none;
+  will-change: opacity, background;
 }
 
 .photo-lens-glow {
@@ -96,6 +105,7 @@
   filter: blur(18px);
   opacity: calc(var(--lens-opacity) * 0.75);
   pointer-events: none;
+  will-change: clip-path, -webkit-clip-path, opacity;
 }
 
 .photo-lens-ring {
@@ -114,7 +124,7 @@
   mix-blend-mode: screen;
   pointer-events: none;
   opacity: var(--lens-opacity);
-  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1), height 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease;
+  will-change: width, height, left, top, opacity;
 }
 
 .photo-lens-core {
@@ -133,7 +143,7 @@
   filter: blur(1px);
   pointer-events: none;
   opacity: calc(var(--lens-opacity) * 0.72);
-  transition: opacity 300ms ease;
+  will-change: width, height, left, top, opacity;
 }
 
 .photo-lens-echo {
@@ -147,7 +157,7 @@
   pointer-events: none;
   mix-blend-mode: screen;
   filter: blur(0.5px);
-  transition: opacity 120ms linear;
+  will-change: transform, opacity, width, height, left, top;
 }
 
 @media (max-width: 1100px) {

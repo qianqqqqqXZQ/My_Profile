@@ -103,6 +103,14 @@ The original `card.glb` and `lanyard.png` assets are now present locally and wir
 - The page also uses `img/img1-cutout.png` and `img/img2-cutout.png` as derived workspace assets for the black-background lens composition
 - The hero now uses the photo lens interaction instead of the hanging lanyard widget, while the rest of the site structure remains unchanged
 
+## Notes About The Photo Lens Smoothing Pass
+
+- The cursor-follow path in `generated-site/src/components/PhotoLens.jsx` now runs through a ref-driven RAF loop with direct style updates instead of frame-by-frame React state updates
+- The reveal mask, ring, core, and glow are written directly from the animation loop so the cursor tracking stays responsive under fast pointer movement
+- The echo trail remains separate from the main cursor position update so it can animate independently without slowing the reveal layer
+- The cursor-critical CSS transitions were removed from `generated-site/src/components/PhotoLens.css`; motion now relies on the JS smoothing curve and the browser's native paint pipeline
+- The smoothing goal is immediate-but-fluid motion, not a long trailing delay
+
 ## Run And Test
 
 ```powershell
