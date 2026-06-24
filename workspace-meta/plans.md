@@ -172,3 +172,23 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new motion behavior notes
+
+## 2026-06-25 Multi-Page Site Split
+
+- [x] Create a Git backup snapshot before the routing refactor
+- [x] Split the single-page site into routed pages for Home, Profile, Experience, Dance, and Contact
+- [x] Add a shared site layout with active navigation state and top-level page scrolling reset
+- [x] Reuse the existing visual system and move the old single-page sections into page-specific layouts
+- [x] Install and wire `react-router-dom`
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new route map and verification notes
+
+## 2026-06-25 English Content Pass
+
+- [x] Translate all visitor-facing text to English
+- [x] Update the document language marker to `en`
+- [x] Align the shared header and navigation labels with the English-only content
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the English content note

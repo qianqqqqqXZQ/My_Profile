@@ -29,6 +29,16 @@ This repository is used to build a personal resume website. The active site live
 
 ## Current Implementation State
 
+- The site has been split into routed pages with a shared layout:
+  - `/` Home
+  - `/profile` Personal introduction
+  - `/experience` Development experience
+  - `/dance` Dance video page
+  - `/contact` Contact page
+- The visitor-facing site copy is fully English, with short portfolio-style content and no internal instruction text
+- The document language marker is `en`
+- The top navigation now uses `react-router-dom` links with active-state styling instead of in-page anchors
+- A shared `SiteLayout` component now owns the fixed frosted header, while `ScrollToTop` resets the viewport on route changes
 - The site includes Hero, About, Projects, Strengths, and Contact sections
 - The hero uses a fixed frosted-glass navbar, a right-side hanging profile widget, and a local OGL-powered `Ferrofluid` background
 - The contact section now uses a local React Bits-style `Waves` canvas background layered under a dark scrim so the CTA remains readable and clickable
@@ -136,3 +146,4 @@ $env:windir='C:\Windows'
 - Run at least `npm run lint` or `npm run build` after code changes
 - Update `workspace-meta/plans.md` after verification
 - Perform a quick self-review before handing off work
+- Keep route-based page content in `generated-site/src/pages/` and shared data in `generated-site/src/content/`
