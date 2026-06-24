@@ -79,3 +79,14 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the restored component notes
+
+## 2026-06-24 Lanyard Hero Revision
+
+- [x] Create a Git backup commit before the size and anchor revision
+- [x] Enlarge the full lanyard composition while preserving physics behavior
+- [x] Move the visible hanging point above the page top so the card reads as dropping in
+- [x] Brighten the portrait render without changing the rest of the lanyard appearance
+- [x] Rebalance the hero layout and lanyard wrapper sizing for the larger composition
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and refresh `workspace-meta/agents.md`

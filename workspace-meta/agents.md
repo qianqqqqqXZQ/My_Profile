@@ -39,6 +39,10 @@ This repository is used to build a personal resume website. The active site live
   - drag-to-pull interaction and release swing-back motion
   - a page-right hanging composition that reads as a natural hero feature
   - the user's portrait rendered on the card face and the user's name shown in the composition area
+  - a larger hero presentation with the anchor hidden above the visible top edge
+  - portrait-specific brightness compensation applied during card texture compositing
+  - a reduced card scale relative to the enlarged rope so the portrait does not overpower the hero
+  - the rope path rendered from the card's top attachment point so the strap visually connects to the card correctly
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 
 ## Notes About The React Bits Lanyard Reference

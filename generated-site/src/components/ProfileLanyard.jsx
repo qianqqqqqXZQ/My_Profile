@@ -23,6 +23,12 @@ extend({ MeshLineGeometry, MeshLineMaterial })
 
 const BLANK_PIXEL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
+const COMPOSITION_SCALE = 2
+const CARD_VISUAL_SCALE = COMPOSITION_SCALE * 0.7
+const CARD_ATTACHMENT_Y = 1.5 * CARD_VISUAL_SCALE
+const ANCHOR_Y_OFFSET = 6.35
+const PORTRAIT_BRIGHTNESS = 1.18
+
 export default function ProfileLanyard({
   position = [0, 0, 28],
   gravity = [0, -40, 0],
@@ -65,6 +71,8 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   const ang = useMemo(() => new THREE.Vector3(), [])
   const rot = useMemo(() => new THREE.Vector3(), [])
   const dir = useMemo(() => new THREE.Vector3(), [])
+  const cardAnchor = useMemo(() => new THREE.Vector3(), [])
+  const cardQuat = useMemo(() => new THREE.Quaternion(), [])
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
@@ -98,7 +106,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
 
     ctx.drawImage(baseImg, 0, 0)
 
-    const drawFitted = (img, rect) => {
+    const drawFitted = (img, rect, filter = 'none') => {
       const rx = rect.x * canvas.width
       const ry = rect.y * canvas.height
       const rw = rect.w * canvas.width
@@ -112,11 +120,16 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
       ctx.beginPath()
       ctx.rect(rx, ry, rw, rh)
       ctx.clip()
+      ctx.filter = filter
       ctx.drawImage(img, dx, dy, dw, dh)
       ctx.restore()
     }
 
-    drawFitted(frontTex.image, { x: 0, y: 0, w: 0.5, h: 0.755 })
+    drawFitted(
+      frontTex.image,
+      { x: 0, y: 0, w: 0.5, h: 0.755 },
+      `brightness(${PORTRAIT_BRIGHTNESS}) contrast(1.04) saturate(1.02)`
+    )
     drawFitted(backTex.image, { x: 0.5, y: 0, w: 0.5, h: 0.757 })
 
     const composite = new THREE.CanvasTexture(canvas)
@@ -127,12 +140,12 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
     return composite
   }, [backTex.image, frontTex.image, materials.base.map])
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1])
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1])
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1])
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1 * COMPOSITION_SCALE])
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1 * COMPOSITION_SCALE])
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1 * COMPOSITION_SCALE])
   useSphericalJoint(j3, card, [
     [0, 0, 0],
-    [0, 1.5, 0],
+    [0, CARD_ATTACHMENT_Y, 0],
   ])
 
   useEffect(() => {
@@ -158,7 +171,11 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
         ref.current.lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)))
       })
 
-      curve.points[0].copy(j3.current.translation())
+      const cardRotation = card.current.rotation()
+      cardQuat.set(cardRotation.x, cardRotation.y, cardRotation.z, cardRotation.w)
+      cardAnchor.set(0, CARD_ATTACHMENT_Y, 0).applyQuaternion(cardQuat).add(card.current.translation())
+
+      curve.points[0].copy(cardAnchor)
       curve.points[1].copy(j2.current.lerped)
       curve.points[2].copy(j1.current.lerped)
       curve.points[3].copy(fixed.current.translation())
@@ -175,22 +192,27 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, ANCHOR_Y_OFFSET, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[0.5 * COMPOSITION_SCALE, 0, 0]} ref={j1} {...segmentProps}>
+          <BallCollider args={[0.1 * COMPOSITION_SCALE]} />
         </RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[1 * COMPOSITION_SCALE, 0, 0]} ref={j2} {...segmentProps}>
+          <BallCollider args={[0.1 * COMPOSITION_SCALE]} />
         </RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[1.5 * COMPOSITION_SCALE, 0, 0]} ref={j3} {...segmentProps}>
+          <BallCollider args={[0.1 * COMPOSITION_SCALE]} />
         </RigidBody>
-        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
-          <CuboidCollider args={[0.8, 1.125, 0.01]} />
+        <RigidBody
+          position={[2 * COMPOSITION_SCALE, 0.35 * COMPOSITION_SCALE, 0]}
+          ref={card}
+          {...segmentProps}
+          type={dragged ? 'kinematicPosition' : 'dynamic'}
+        >
+          <CuboidCollider args={[0.8 * CARD_VISUAL_SCALE, 1.125 * CARD_VISUAL_SCALE, 0.01 * CARD_VISUAL_SCALE]} />
           <group
-            scale={2.25}
-            position={[0, -1.2, -0.05]}
+            scale={2.25 * CARD_VISUAL_SCALE}
+            position={[0, -1.2 * CARD_VISUAL_SCALE, -0.05 * CARD_VISUAL_SCALE]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
@@ -223,7 +245,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
           useMap
           map={texture}
           repeat={[-4, 1]}
-          lineWidth={1}
+          lineWidth={COMPOSITION_SCALE}
         />
       </mesh>
     </>

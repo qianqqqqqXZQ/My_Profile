@@ -202,7 +202,7 @@
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 620px);
+  grid-template-columns: minmax(0, 1fr) minmax(520px, 760px);
   align-items: center;
   gap: 28px;
   min-height: calc(100svh - 96px);
@@ -216,13 +216,14 @@
 
 .hero-visual-column {
   display: grid;
-  align-self: center;
+  align-self: start;
   position: relative;
   z-index: 4;
   justify-items: end;
   width: 100%;
-  margin-right: -18px;
-  min-height: 92svh;
+  margin-top: calc(-1 * clamp(88px, 12svh, 148px));
+  margin-right: -56px;
+  min-height: calc(100svh + clamp(88px, 12svh, 148px));
 }
 
 .eyebrow,
@@ -697,6 +698,8 @@
   .hero-visual-column {
     justify-items: center;
     margin-right: 0;
+    margin-top: calc(-1 * clamp(52px, 8svh, 88px));
+    min-height: calc(100svh + clamp(52px, 8svh, 88px));
   }
 
   .featured-visual,
@@ -752,6 +755,8 @@
   .hero-visual-column {
     justify-items: center;
     margin-right: 0;
+    margin-top: calc(-1 * clamp(28px, 6svh, 56px));
+    min-height: calc(94svh + clamp(28px, 6svh, 56px));
   }
 
   .hero-signature-section {
