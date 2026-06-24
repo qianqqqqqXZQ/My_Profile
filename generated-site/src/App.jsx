@@ -176,9 +176,9 @@ function App() {
               Building a Focused Digital Presence
             </h1>
             <p className="hero-summary">
-              A compact lanyard-style signature widget now anchors the hero.
-              The hanging card uses your own portrait and name, with a tighter
-              physical interaction than the previous oversized version.
+              The lanyard now hangs naturally beside the home hero again. It
+              stays visible on the right, carries your portrait and name, and
+              avoids being buried under the surrounding layout.
             </p>
 
             <div className="hero-actions">
@@ -200,24 +200,23 @@ function App() {
       <main>
         <section className="content-section hero-signature-section">
           <div className="section-shell hero-signature-shell">
-              <div className="hero-panel hero-widget-panel">
-                <p className="panel-label">Profile Signature / Hero Widget</p>
-                <div className="panel-grid">
-                  {heroHighlights.map((item) => (
-                    <article key={item.label}>
-                      <span>{item.label}</span>
-                      <strong>{item.value}</strong>
-                    </article>
-                  ))}
-                </div>
-                <p className="panel-note">
-                The widget is intentionally smaller and closer to the React Bits
-                reference style, while still staying inside the current portfolio
-                layout.
-                </p>
+            <div className="hero-panel hero-widget-panel">
+              <p className="panel-label">Profile Signature / Hero Widget</p>
+              <div className="panel-grid">
+                {heroHighlights.map((item) => (
+                  <article key={item.label}>
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </article>
+                ))}
               </div>
+              <p className="panel-note">
+                The panel stays subordinate so the hanging lanyard can read as
+                the primary identity element on the page.
+              </p>
             </div>
-          </section>
+          </div>
+        </section>
 
         <section className="content-section about-section" id="about">
           <div className="section-shell">

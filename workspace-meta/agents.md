@@ -34,11 +34,12 @@ This repository is used to build a personal resume website. The active site live
   - `@react-three/rapier`
   - `meshline`
 - The current lanyard behavior now includes:
+  - the official React Bits `card.glb` and `lanyard.png` assets stored locally under `generated-site/src/assets/lanyard/`
   - a real rope simulation with connected rigid bodies
   - drag-to-pull interaction and release swing-back motion
-  - a smaller card footprint to keep the hero column balanced
-  - the user's portrait and name rendered directly in the hanging card
-- The previous hero signature panel remains below the hero in its own section and matches the tightened widget scale
+  - a page-right hanging composition that reads as a natural hero feature
+  - the user's portrait rendered on the card face and the user's name shown in the composition area
+- The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 
 ## Notes About The React Bits Lanyard Reference
 
@@ -52,7 +53,7 @@ The user-provided reference describes the React Bits `Lanyard` component, which 
 - `card.glb`
 - `lanyard.png`
 
-The current repository still does not include the original `card.glb` and `lanyard.png` assets. The implemented solution recreates the interaction and visual balance with a programmatic 3D card so the widget stays self-contained and does not depend on missing model files.
+The original `card.glb` and `lanyard.png` assets are now present locally and wired into the component so the implementation matches the React Bits structure more closely while remaining self-contained inside this repo.
 
 ## Run And Test
 

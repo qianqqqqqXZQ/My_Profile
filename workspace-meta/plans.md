@@ -57,3 +57,25 @@
 - [x] Validate with `npm run lint`
 - [x] Validate with `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new implementation notes
+
+## 2026-06-24 Full-Height Hanging Lanyard Revision
+
+- [x] Create a Git backup commit before the full-height refactor
+- [x] Remove the boxed shell treatment around the widget
+- [x] Move the identity text onto the hanging composition itself
+- [x] Expand the lanyard to occupy the hero as a natural full-height element
+- [x] Keep the portrait and name visible on the hanging card
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Refresh `workspace-meta/agents.md` with the final layout notes
+
+## 2026-06-24 React Bits Original-Style Restore
+
+- [x] Create a Git backup commit before restoring the original-style component
+- [x] Download the official `card.glb` and `lanyard.png` assets into the project
+- [x] Reconnect the component to the local original-style assets
+- [x] Keep the lanyard naturally visible on the right side of the home hero
+- [x] Raise the hero layering so the widget is not hidden by surrounding content
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the restored component notes

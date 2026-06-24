@@ -202,9 +202,9 @@
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(280px, 350px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 620px);
   align-items: center;
-  gap: 56px;
+  gap: 28px;
   min-height: calc(100svh - 96px);
   padding-top: 156px;
   padding-bottom: 72px;
@@ -216,12 +216,13 @@
 
 .hero-visual-column {
   display: grid;
-  gap: 20px;
   align-self: center;
   position: relative;
-  z-index: 1;
+  z-index: 4;
   justify-items: end;
   width: 100%;
+  margin-right: -18px;
+  min-height: 92svh;
 }
 
 .eyebrow,
@@ -277,11 +278,6 @@
   backdrop-filter: blur(24px);
 }
 
-.hero-panel {
-  padding: 28px;
-  border-radius: 28px;
-}
-
 .hero-widget-panel {
   margin-top: 0;
   max-width: 460px;
@@ -294,6 +290,8 @@
 .hero-signature-shell {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-signature-shell .hero-widget-panel {
@@ -687,7 +685,6 @@
     padding-top: 184px;
   }
 
-  .hero-panel,
   .hero-widget-panel {
     max-width: 520px;
     margin-top: 0;
@@ -697,12 +694,9 @@
     padding: 0 0 20px;
   }
 
-  .hero-signature-shell {
-    justify-content: center;
-  }
-
   .hero-visual-column {
     justify-items: center;
+    margin-right: 0;
   }
 
   .featured-visual,
@@ -757,6 +751,7 @@
 
   .hero-visual-column {
     justify-items: center;
+    margin-right: 0;
   }
 
   .hero-signature-section {
