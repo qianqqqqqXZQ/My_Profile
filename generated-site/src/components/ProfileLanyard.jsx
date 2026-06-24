@@ -28,6 +28,10 @@ const CARD_VISUAL_SCALE = COMPOSITION_SCALE * 0.7
 const CARD_ATTACHMENT_Y = 1.5 * CARD_VISUAL_SCALE
 const ANCHOR_Y_OFFSET = 6.35
 const PORTRAIT_BRIGHTNESS = 1.18
+const DESKTOP_DRAG_MAX_STEP = 0.85
+const MOBILE_DRAG_MAX_STEP = 1.15
+const DESKTOP_MAX_SPIN = 10
+const MOBILE_MAX_SPIN = 14
 
 export default function ProfileLanyard({
   position = [0, 0, 28],
@@ -69,13 +73,28 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   const card = useRef()
   const vec = useMemo(() => new THREE.Vector3(), [])
   const ang = useMemo(() => new THREE.Vector3(), [])
-  const rot = useMemo(() => new THREE.Vector3(), [])
   const dir = useMemo(() => new THREE.Vector3(), [])
+  const dragTarget = useMemo(() => new THREE.Vector3(), [])
+  const dragDelta = useMemo(() => new THREE.Vector3(), [])
   const cardAnchor = useMemo(() => new THREE.Vector3(), [])
   const cardQuat = useMemo(() => new THREE.Quaternion(), [])
+  const jointRefs = useMemo(() => [j1, j2, j3], [])
+  const smoothedJointPositions = useRef([
+    new THREE.Vector3(),
+    new THREE.Vector3(),
+    new THREE.Vector3(),
+  ])
+  const smoothedJointReady = useRef([false, false, false])
+  const lastDragTarget = useRef(null)
   const [curve] = useState(
     () =>
-      new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+        new THREE.Vector3(),
+      ])
   )
   const [dragged, drag] = useState(false)
   const [hovered, hover] = useState(false)
@@ -85,13 +104,16 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   const frontTex = useTexture(profileImage || BLANK_PIXEL)
   const backTex = useTexture(BLANK_PIXEL)
 
-  const segmentProps = {
-    type: 'dynamic',
-    canSleep: true,
-    colliders: false,
-    angularDamping: 4,
-    linearDamping: 4,
-  }
+  const segmentProps = useMemo(
+    () => ({
+      type: 'dynamic',
+      canSleep: isMobile,
+      colliders: false,
+      angularDamping: isMobile ? 4 : 5.75,
+      linearDamping: isMobile ? 4 : 5.25,
+    }),
+    [isMobile]
+  )
 
   const cardMap = useMemo(() => {
     const baseMap = materials.base.map
@@ -155,40 +177,90 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
     }
   }, [hovered, dragged])
 
+  useEffect(() => {
+    if (!dragged) {
+      lastDragTarget.current = null
+    }
+  }, [dragged])
+
   useFrame((state, delta) => {
-    if (dragged) {
+    if (dragged && card.current) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
       dir.copy(vec).sub(state.camera.position).normalize()
       vec.add(dir.multiplyScalar(state.camera.position.length()))
-      ;[card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp())
-      card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z })
+
+      dragTarget.copy(vec).sub(dragged)
+      if (!lastDragTarget.current) {
+        const translation = card.current.translation()
+        lastDragTarget.current = new THREE.Vector3(translation.x, translation.y, translation.z)
+      }
+
+      dragDelta.copy(dragTarget).sub(lastDragTarget.current)
+      if (dragDelta.lengthSq() > 0) {
+        dragDelta.setLength(Math.min(dragDelta.length(), isMobile ? MOBILE_DRAG_MAX_STEP : DESKTOP_DRAG_MAX_STEP))
+      }
+      lastDragTarget.current.add(dragDelta)
+
+      ;[card, ...jointRefs, fixed].forEach((ref) => ref.current?.wakeUp())
+      card.current.setNextKinematicTranslation({
+        x: lastDragTarget.current.x,
+        y: lastDragTarget.current.y,
+        z: lastDragTarget.current.z,
+      })
     }
 
-    if (fixed.current) {
-      ;[j1, j2].forEach((ref) => {
-        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation())
-        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())))
-        ref.current.lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)))
+    if (fixed.current && card.current && band.current?.geometry) {
+      jointRefs.forEach((ref, index) => {
+        const body = ref.current
+        if (!body) return
+
+        const target = body.translation()
+        const smoothed = smoothedJointPositions.current[index]
+        if (!smoothedJointReady.current[index]) {
+          smoothed.copy(target)
+          smoothedJointReady.current[index] = true
+          return
+        }
+
+        const clampedDistance = Math.max(0.12, Math.min(1, smoothed.distanceTo(target)))
+        const lerpAlpha = Math.min(1, delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)))
+        smoothed.lerp(target, lerpAlpha)
       })
 
       const cardRotation = card.current.rotation()
       cardQuat.set(cardRotation.x, cardRotation.y, cardRotation.z, cardRotation.w)
       cardAnchor.set(0, CARD_ATTACHMENT_Y, 0).applyQuaternion(cardQuat).add(card.current.translation())
 
-      curve.points[0].copy(cardAnchor)
-      curve.points[1].copy(j2.current.lerped)
-      curve.points[2].copy(j1.current.lerped)
-      curve.points[3].copy(fixed.current.translation())
-      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32))
+      curve.points[0].copy(fixed.current.translation())
+      curve.points[1].copy(smoothedJointPositions.current[0])
+      curve.points[2].copy(smoothedJointPositions.current[1])
+      curve.points[3].copy(smoothedJointPositions.current[2])
+      curve.points[4].copy(cardAnchor)
+      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 40))
 
       ang.copy(card.current.angvel())
-      rot.copy(card.current.rotation())
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z })
+      if (ang.length() > (isMobile ? MOBILE_MAX_SPIN : DESKTOP_MAX_SPIN)) {
+        ang.setLength(isMobile ? MOBILE_MAX_SPIN : DESKTOP_MAX_SPIN)
+        card.current.setAngvel({ x: ang.x, y: ang.y, z: ang.z })
+      }
     }
   })
 
-  curve.curveType = 'chordal'
+  curve.curveType = isMobile ? 'chordal' : 'centripetal'
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+
+  const handlePointerDown = (e) => {
+    e.target.setPointerCapture(e.pointerId)
+    const translation = card.current.translation()
+    lastDragTarget.current = new THREE.Vector3(translation.x, translation.y, translation.z)
+    drag(new THREE.Vector3().copy(e.point).sub(vec.copy(translation)))
+  }
+
+  const handlePointerUp = (e) => {
+    e.target.releasePointerCapture(e.pointerId)
+    lastDragTarget.current = null
+    drag(false)
+  }
 
   return (
     <>
@@ -215,11 +287,8 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
             position={[0, -1.2 * CARD_VISUAL_SCALE, -0.05 * CARD_VISUAL_SCALE]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
-            onPointerDown={(e) => (
-              e.target.setPointerCapture(e.pointerId),
-              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
-            )}
+            onPointerUp={handlePointerUp}
+            onPointerDown={handlePointerDown}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial

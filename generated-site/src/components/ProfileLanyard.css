@@ -1,13 +1,14 @@
 .lanyard-wrapper {
   position: relative;
-  z-index: 2;
+  z-index: 8;
   width: 100%;
-  height: min(122svh, 1380px);
+  height: min(128svh, 1480px);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   transform-origin: center top;
   pointer-events: auto;
+  isolation: isolate;
 }
 
 .lanyard-wrapper canvas {

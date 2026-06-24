@@ -47,6 +47,11 @@ This repository is used to build a personal resume website. The active site live
   - portrait-specific brightness compensation applied during card texture compositing
   - a reduced card scale relative to the enlarged rope so the portrait does not overpower the hero
   - the rope path rendered from the card's top attachment point so the strap visually connects to the card correctly
+  - desktop-first stabilization that renders the visible rope through the full chain `fixed -> j1 -> j2 -> j3 -> card attachment`
+  - persistent smoothing on all dynamic rope joints so the rendered strap does not twitch when the physics bodies settle
+  - clamped drag target movement so fast pointer jumps do not inject extreme impulses into the rope
+  - bounded angular-velocity control instead of quaternion-component correction, preserving strong swing while reducing spin artifacts
+  - desktop hero overflow and stacking isolation so the lanyard can hang below the hero boundary without being clipped or buried by the next section
 - The `Ferrofluid` hero treatment is fixed to a black background with white fluid highlights using the user-supplied reference values:
   - `colors=['#ffffff', '#ffffff', '#ffffff']`
   - `backgroundColor='#120f17'`

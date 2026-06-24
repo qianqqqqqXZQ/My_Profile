@@ -103,11 +103,11 @@
 
 ## 2026-06-24 Desktop Lanyard Stabilization and Layering Fix
 
-- [ ] Create a Git backup commit before the stabilization pass
-- [ ] Rebuild the rope path from the full joint chain through the card attachment
-- [ ] Smooth all dynamic rope joints and clamp drag translation impulses
-- [ ] Replace the current angular correction with bounded spin control
-- [ ] Adjust desktop hero overflow and stacking so the lanyard is not clipped or buried
-- [ ] Run `npm run lint`
-- [ ] Run `npm run build`
-- [ ] Perform a final self-review and update `workspace-meta/agents.md`
+- [x] Create a Git backup commit before the stabilization pass
+- [x] Rebuild the rope path from the full joint chain through the card attachment
+- [x] Smooth all dynamic rope joints and clamp drag translation impulses
+- [x] Replace the current angular correction with bounded spin control
+- [x] Adjust desktop hero overflow and stacking so the lanyard is not clipped or buried
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

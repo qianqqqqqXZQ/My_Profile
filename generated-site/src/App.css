@@ -1,5 +1,6 @@
 .site-shell {
   position: relative;
+  overflow-x: clip;
 }
 
 .site-shell :is(header, section)[id] {
@@ -14,9 +15,12 @@
 .hero-section {
   position: relative;
   min-height: 100svh;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
   border-bottom: 1px solid var(--border-strong);
   background: #120f17;
+  isolation: isolate;
+  z-index: 3;
 }
 
 .hero-ferrofluid,
@@ -208,7 +212,7 @@
   gap: 28px;
   min-height: calc(100svh - 96px);
   padding-top: 156px;
-  padding-bottom: 72px;
+  padding-bottom: 116px;
 }
 
 .hero-copy {
@@ -219,12 +223,12 @@
   display: grid;
   align-self: start;
   position: relative;
-  z-index: 4;
+  z-index: 7;
   justify-items: end;
   width: 100%;
   margin-top: calc(-1 * clamp(88px, 12svh, 148px));
   margin-right: -56px;
-  min-height: calc(100svh + clamp(88px, 12svh, 148px));
+  min-height: calc(100svh + clamp(148px, 18svh, 228px));
 }
 
 .eyebrow,
@@ -287,6 +291,8 @@
 
 .hero-signature-section {
   padding: 0 0 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-signature-shell {
@@ -685,6 +691,7 @@
   .hero-content {
     min-height: auto;
     padding-top: 184px;
+    padding-bottom: 72px;
   }
 
   .hero-widget-panel {
@@ -701,6 +708,7 @@
     margin-right: 0;
     margin-top: calc(-1 * clamp(52px, 8svh, 88px));
     min-height: calc(100svh + clamp(52px, 8svh, 88px));
+    z-index: 4;
   }
 
   .featured-visual,
