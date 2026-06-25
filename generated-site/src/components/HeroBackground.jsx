@@ -19,7 +19,7 @@ function HeroBackground({ variant = 'waves', paused = false, className, children
               friction={0.92}
               tension={0.01}
               paused={paused}
-              maxCursorMove={0}
+              maxCursorMove={68}
               xGap={14}
               yGap={34}
             />

@@ -3,7 +3,6 @@ export const navigationLinks = [
   { label: 'Profile', to: '/profile' },
   { label: 'Experience', to: '/experience' },
   { label: 'Dance Videos', to: '/dance' },
-  { label: 'Contact', to: '/contact' },
 ]
 
 export const heroHighlights = [

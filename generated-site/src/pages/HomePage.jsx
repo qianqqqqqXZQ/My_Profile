@@ -4,7 +4,7 @@ import { heroHighlights, homeRouteCards } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
-const Ferrofluid = lazy(() => import('../components/Ferrofluid'))
+const LiquidEther = lazy(() => import('../components/LiquidEther'))
 
 function HomePage() {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
@@ -114,25 +114,23 @@ function HomePage() {
     <div className="page-home">
       <header className="hero-section" id="home" ref={heroRef}>
         <Suspense fallback={null}>
-          <Ferrofluid
-            className="hero-ferrofluid"
-            colors={['#f7f0f0', '#ffffff', '#d8d8d1']}
-            backgroundColor="#120f17"
-            speed={0.58}
-            scale={1.55}
-            turbulence={0.92}
-            fluidity={0.15}
-            rimWidth={0.26}
-            sharpness={2.7}
-            shimmer={0.85}
-            glow={2.5}
-            flowDirection="down"
-            opacity={0.98}
-            mouseInteraction={!isTouchDevice}
-            mouseStrength={0.82}
-            mouseRadius={0.18}
-            mouseDampening={0.18}
-            paused={!isHeroVisible}
+          <LiquidEther
+            className="hero-liquid-ether"
+            colors={['#ffffff', '#efefeb', '#d7d7cf']}
+            mouseForce={isTouchDevice ? 0 : 18}
+            cursorSize={88}
+            isViscous={false}
+            viscous={28}
+            iterationsViscous={24}
+            iterationsPoisson={28}
+            resolution={0.45}
+            isBounce={false}
+            autoDemo
+            autoSpeed={0.38}
+            autoIntensity={1.7}
+            takeoverDuration={0.3}
+            autoResumeDelay={2400}
+            autoRampDuration={0.8}
           />
         </Suspense>
         <div className="hero-scrim" />
@@ -142,9 +140,15 @@ function HomePage() {
           <div className="hero-copy">
             <p className="eyebrow">University of Nottingham Ningbo China</p>
             <h1>
-              Computer Science Student
+              Hello!
               <br />
-              Building a Focused Digital Presence
+              Welcome to
+              <br />
+              My Space...
+              <br />
+              I&apos;m
+              <br />
+              Ziqian Xiong :)
             </h1>
             <p className="hero-summary">
               A dark, high-contrast portfolio home with separate pages for profile, experience, dance

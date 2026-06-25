@@ -272,3 +272,15 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review
 
+## 2026-06-25 Home LiquidEther Background + Profile Waves Interaction + Nav Cleanup
+
+- [x] Create a Git backup commit before the homepage background and nav update
+- [x] Add the supplied `LiquidEther` component under `generated-site/src/components/`
+- [x] Replace the homepage `Ferrofluid` background with `LiquidEther`
+- [x] Restore cursor-reactive `Waves` motion on the Profile background only
+- [x] Remove the duplicate `Contact` item from the main nav while keeping the standalone contact button
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+

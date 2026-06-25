@@ -40,7 +40,7 @@ This repository is used to build a personal resume website. The active site live
 - The top navigation now uses `react-router-dom` links with active-state styling instead of in-page anchors
 - A shared `SiteLayout` component now owns the fixed frosted header, while `ScrollToTop` resets the viewport on route changes
 - The site includes Hero, About, Projects, Strengths, and Contact sections
-- The hero uses a fixed frosted-glass navbar, a right-side hanging profile widget, and a local OGL-powered `Ferrofluid` background
+- The hero uses a fixed frosted-glass navbar, a right-side hanging profile widget, and a local `LiquidEther` fluid background
 - The contact section now uses a local React Bits-style `Waves` canvas background layered under a dark scrim so the CTA remains readable and clickable
 - The `ProfileLanyard` component now uses a React 18-compatible 3D physics stack:
   - `three`
@@ -49,8 +49,8 @@ This repository is used to build a personal resume website. The active site live
   - `@react-three/rapier`
   - `meshline`
 - The hero background now depends on:
-  - `Waves` has been moved into the hero section
-  - `ogl`
+  - `Waves` for the Profile atmospheric layer
+  - `three` for the local `LiquidEther` homepage effect
 - The current lanyard behavior now includes:
   - the official React Bits `card.glb` and `lanyard.png` assets stored locally under `generated-site/src/assets/lanyard/`
   - a real rope simulation with connected rigid bodies
@@ -66,31 +66,20 @@ This repository is used to build a personal resume website. The active site live
   - clamped drag target movement so fast pointer jumps do not inject extreme impulses into the rope
   - bounded angular-velocity control instead of quaternion-component correction, preserving strong swing while reducing spin artifacts
   - desktop hero overflow and stacking isolation so the lanyard can hang below the hero boundary without being clipped or buried by the next section
-- The `Ferrofluid` hero treatment is fixed to a black background with white fluid highlights using the user-supplied reference values:
-  - `colors=['#ffffff', '#ffffff', '#ffffff']`
-  - `backgroundColor='#120f17'`
-  - `flowDirection='down'`
-  - `speed=0.5`
-  - `scale=1.9`
-  - `turbulence=1`
-  - `fluidity=0.1`
-  - `rimWidth=0.27`
-  - `sharpness=2.5`
-  - `shimmer=1.5`
-  - `glow=3.6`
-  - `mouseStrength=1`
-  - `mouseRadius=0.35`
-- The hero background disables pointer capture and lowers DPR on touch devices so it does not interfere with the lanyard interaction
+- The homepage now uses a local React Bits-style `LiquidEther` background with a restrained light monochrome palette, moderate auto motion, and touch-safe reduced pointer force
+- The homepage hero background layer remains non-interactive at the DOM level so CTA buttons and the right-side visual stay clickable
 - The contact section is now content-only; the `Waves` background was moved to the hero and removed from `#contact`
 - The previous hero signature panel remains below the hero in its own section as supporting context, while the main lanyard stays visually unblocked on the hero right side
 - The homepage now includes a top-edge scroll guard so upward wheel, touch, and keyboard scroll cannot reveal blank space above the first screen
 - Performance relief notes:
-  - `Ferrofluid`, `ProfileLanyard`, and `Waves` now pause their animation loops when their sections are offscreen
+  - `LiquidEther`, `ProfileLanyard`, and `Waves` now pause their animation loops when their sections are offscreen
   - The heavy hero widgets are loaded with `React.lazy` and `Suspense` so the main shell stays lighter on first load
   - The hero lanyard canvas now uses a lower default DPR, and the physics step is slightly softened to reduce per-frame pressure
   - The main bundle is much smaller than before, but `ProfileLanyard` still owns the largest deferred chunk because it includes `three`, `rapier`, and the GLB asset
-- The homepage now uses the supplied `Ferrofluid` component as its hero background, while the Profile page uses the older atmospheric `Waves` treatment behind a new left-lanyard / right-headline composition
+- The homepage now uses the supplied `LiquidEther` component as its hero background, while the Profile page uses the atmospheric `Waves` treatment behind a left-lanyard / right-headline composition
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
+- The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
+- The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button
 - The Profile hero desktop layout now uses a wider right column and controlled copy offset so the title block sits nearer the center of the right half, while the lanyard remains slightly left-weighted inside the left half
 - The Profile hero now overrides the global `h1` scale locally and tightens lead/action/highlight spacing so the right-side title block fits more cleanly within the first desktop viewport
 - The Profile hero visual column now sits above the right-side copy in page-level stacking order, while the fixed top navigation remains the highest layer

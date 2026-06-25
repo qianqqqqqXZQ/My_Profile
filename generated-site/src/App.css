@@ -295,14 +295,14 @@
   z-index: 3;
 }
 
-.hero-ferrofluid,
+.hero-liquid-ether,
 .hero-scrim,
 .hero-noise {
   position: absolute;
   inset: 0;
 }
 
-.hero-ferrofluid {
+.hero-liquid-ether {
   z-index: 0;
   pointer-events: none;
 }
