@@ -34,9 +34,9 @@ const DESKTOP_MAX_SPIN = 10
 const MOBILE_MAX_SPIN = 14
 
 export default function ProfileLanyard({
-  position = [0, 0, 28],
+  position = [0, 0, 36],
   gravity = [0, -40, 0],
-  fov = 20,
+  fov = 30,
   transparent = true,
   paused = false,
 }) {

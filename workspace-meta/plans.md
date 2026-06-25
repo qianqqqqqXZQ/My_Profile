@@ -221,3 +221,60 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-25 Profile Hero True Front-Layer Fix
+
+- [x] Create a Git backup commit before the front-layer restructure
+- [x] Separate the Profile hero lanyard from the normal left-column flow into a desktop foreground layer
+- [x] Keep the right-side copy readable while the lanyard remains above the copy and below the top navigation
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-25 Profile Widget Vertical Nudge
+
+- [x] Raise the Profile page lanyard/widget slightly on desktop without changing widget logic
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-25 Profile Hero Stronger Vertical Offset
+
+- [x] Increase the desktop Profile hero lanyard lift beyond the previous nudge without changing widget logic
+- [x] Push the desktop right-side Profile hero copy lower as a single content block
+- [x] Keep tablet and mobile breakpoints on the existing non-offset stacking behavior
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-25 Profile Hero Extreme Vertical Offset
+
+- [x] Double the existing desktop Profile hero lanyard lift again from the stronger-offset state
+- [x] Double the existing desktop right-side Profile hero copy drop again from the stronger-offset state
+- [x] Preserve the zeroed extra offset on smaller breakpoints
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-25 Profile Top Black Gap Removal
+
+- [x] Remove the blank black top gap above the Profile page hero background
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-25 Profile Hero Copy Extra Drop
+
+- [x] Increase only the desktop right-side Profile hero copy offset from the current extreme-offset state
+- [x] Leave the lanyard lift unchanged
+- [x] Keep smaller breakpoints on the zeroed extra offset behavior
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-25 Profile Lanyard Camera Widen
+
+- [x] Widen the default `ProfileLanyard` camera so the widget stays visible across a larger drag range
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review

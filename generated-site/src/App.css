@@ -200,6 +200,10 @@
   padding-top: 116px;
 }
 
+.page-profile {
+  padding-top: 0;
+}
+
 .page-hero {
   position: relative;
   padding: 42px 0 8px;
@@ -428,31 +432,41 @@
   padding-top: 24px;
 }
 
+.page-profile-hero-shell {
+  position: relative;
+  min-height: min(860px, calc(100svh - 140px));
+}
+
 .page-profile-hero-grid {
   display: grid;
-  grid-template-columns: minmax(360px, 0.78fr) minmax(560px, 1.22fr);
-  gap: clamp(44px, 5vw, 96px);
+  grid-template-columns: minmax(0, 1fr) minmax(560px, 760px);
+  gap: 0;
   align-items: center;
+  min-height: inherit;
 }
 
 .profile-hero-visual {
-  position: relative;
-  z-index: 6;
+  position: absolute;
+  inset: -192px auto 0 clamp(12px, 2vw, 36px);
+  z-index: 10;
+  width: min(44vw, 660px);
   min-height: 640px;
   display: grid;
   align-items: center;
   justify-items: start;
-  padding-left: clamp(0px, 2.2vw, 40px);
-  transform: translateX(clamp(-28px, -1.6vw, -12px));
+  pointer-events: none;
 }
 
 .profile-hero-copy {
   position: relative;
   z-index: 4;
+  grid-column: 2;
   max-width: 760px;
-  justify-self: center;
+  justify-self: end;
   width: min(100%, 760px);
-  padding-left: clamp(40px, 4.8vw, 104px);
+  margin-left: auto;
+  margin-top: 224px;
+  padding-left: clamp(24px, 2.6vw, 52px);
 }
 
 .profile-hero-copy h1 {
@@ -475,6 +489,11 @@
 .profile-hero-copy .profile-highlights {
   max-width: 660px;
   margin-top: 18px;
+}
+
+.profile-hero-visual .lanyard-wrapper {
+  width: min(100%, 640px);
+  pointer-events: auto;
 }
 
 .hero-signature-section {
@@ -901,6 +920,10 @@
     grid-template-columns: 1fr;
   }
 
+  .page-profile-hero-shell {
+    min-height: auto;
+  }
+
   .site-topbar {
     width: min(1700px, calc(100% - 40px));
     flex-direction: column;
@@ -925,16 +948,21 @@
   }
 
   .profile-hero-visual {
+    position: relative;
+    inset: auto;
+    z-index: 4;
+    width: 100%;
     min-height: 520px;
     justify-items: center;
-    padding-left: 0;
-    transform: none;
+    pointer-events: auto;
   }
 
   .profile-hero-copy {
     z-index: 4;
+    grid-column: auto;
     max-width: 860px;
     width: 100%;
+    margin-top: 0;
     padding-left: 0;
   }
 

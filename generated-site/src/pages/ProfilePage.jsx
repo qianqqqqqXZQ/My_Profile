@@ -9,36 +9,38 @@ function ProfilePage() {
     <div className="page-route page-profile">
       <HeroBackground variant="waves" className="profile-hero-shell" paused={false}>
         <section className="page-hero page-profile-hero">
-          <div className="section-shell page-profile-hero-grid">
-            <aside className="profile-hero-visual">
+          <div className="section-shell page-profile-hero-shell">
+            <aside className="profile-hero-visual" aria-hidden="true">
               <ProfileLanyard paused={false} />
             </aside>
 
-            <div className="profile-hero-copy">
-              <p className="eyebrow">Profile</p>
-              <h1>Personal profile, background, and contact</h1>
-              <p className="page-lead">
-                A cleaner profile layout with the lanyard widget on the left and a large
-                editorial title block on the right. The section is designed to feel more
-                natural and atmospheric than the home page.
-              </p>
+            <div className="page-profile-hero-grid">
+              <div className="profile-hero-copy">
+                <p className="eyebrow">Profile</p>
+                <h1>Personal profile, background, and contact</h1>
+                <p className="page-lead">
+                  A cleaner profile layout with the lanyard widget on the left and a large
+                  editorial title block on the right. The section is designed to feel more
+                  natural and atmospheric than the home page.
+                </p>
 
-              <div className="page-hero-actions">
-                <Link className="primary-button" to="/contact">
-                  Contact Me
-                </Link>
-                <Link className="secondary-button" to="/experience">
-                  View Experience
-                </Link>
-              </div>
+                <div className="page-hero-actions">
+                  <Link className="primary-button" to="/contact">
+                    Contact Me
+                  </Link>
+                  <Link className="secondary-button" to="/experience">
+                    View Experience
+                  </Link>
+                </div>
 
-              <div className="profile-highlights">
-                {profileHighlights.map((item) => (
-                  <article key={item.label}>
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                  </article>
-                ))}
+                <div className="profile-highlights">
+                  {profileHighlights.map((item) => (
+                    <article key={item.label}>
+                      <span>{item.label}</span>
+                      <strong>{item.value}</strong>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
