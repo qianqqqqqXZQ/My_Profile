@@ -436,6 +436,8 @@
 }
 
 .profile-hero-visual {
+  position: relative;
+  z-index: 6;
   min-height: 640px;
   display: grid;
   align-items: center;
@@ -445,26 +447,34 @@
 }
 
 .profile-hero-copy {
+  position: relative;
+  z-index: 4;
   max-width: 760px;
   justify-self: center;
   width: min(100%, 760px);
-  padding-left: clamp(56px, 6vw, 132px);
+  padding-left: clamp(40px, 4.8vw, 104px);
 }
 
 .profile-hero-copy h1 {
+  font-size: clamp(3.5rem, 5.2vw, 5.7rem);
+  line-height: 0.92;
   margin-top: 14px;
 }
 
 .profile-hero-copy .page-lead {
+  max-width: 680px;
+  margin-top: 16px;
+  font-size: 0.98rem;
   max-width: 760px;
 }
 
 .profile-hero-copy .page-hero-actions {
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .profile-hero-copy .profile-highlights {
   max-width: 660px;
+  margin-top: 18px;
 }
 
 .hero-signature-section {
@@ -922,6 +932,7 @@
   }
 
   .profile-hero-copy {
+    z-index: 4;
     max-width: 860px;
     width: 100%;
     padding-left: 0;

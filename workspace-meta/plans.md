@@ -212,3 +212,12 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-25 Profile Hero Readability And Layer Fix
+
+- [x] Create a Git backup commit before the readability and layer fix
+- [x] Reduce the Profile hero copy scale so the title and highlight cards fit inside the first screen
+- [x] Raise the lanyard layer above the right-side copy while keeping the top navigation highest
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

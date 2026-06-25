@@ -92,6 +92,8 @@ This repository is used to build a personal resume website. The active site live
 - The homepage now uses the supplied `Ferrofluid` component as its hero background, while the Profile page uses the older atmospheric `Waves` treatment behind a new left-lanyard / right-headline composition
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero desktop layout now uses a wider right column and controlled copy offset so the title block sits nearer the center of the right half, while the lanyard remains slightly left-weighted inside the left half
+- The Profile hero now overrides the global `h1` scale locally and tightens lead/action/highlight spacing so the right-side title block fits more cleanly within the first desktop viewport
+- The Profile hero visual column now sits above the right-side copy in page-level stacking order, while the fixed top navigation remains the highest layer
 
 ## Notes About The React Bits Lanyard Reference
 
