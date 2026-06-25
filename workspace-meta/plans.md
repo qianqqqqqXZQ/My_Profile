@@ -192,3 +192,14 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the English content note
+
+## 2026-06-25 Home / Profile Visual Swap
+
+- [x] Create a Git backup commit before the visual swap
+- [x] Replace the homepage background with the supplied `Ferrofluid` component
+- [x] Move the previous homepage atmospheric background style to the Profile page
+- [x] Rebuild the Profile hero as a left `ProfileLanyard` / right headline layout
+- [x] Keep contact and strengths content below the Profile hero
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Update `workspace-meta/agents.md` with the new page layout notes

@@ -205,17 +205,6 @@
   padding: 42px 0 8px;
 }
 
-.page-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
-  gap: 28px;
-  align-items: stretch;
-}
-
-.page-hero-copy h1 {
-  margin-top: 16px;
-}
-
 .page-lead,
 .page-hero-text {
   color: var(--text-muted);
@@ -230,18 +219,15 @@
   margin-top: 28px;
 }
 
-.page-hero-card {
-  padding: 28px;
-  border-radius: 28px;
-}
-
-.page-hero-list {
+.page-hero-list,
+.profile-highlights {
   display: grid;
   gap: 14px;
   margin-top: 24px;
 }
 
-.page-hero-list article {
+.page-hero-list article,
+.profile-highlights article {
   padding: 16px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.03);
@@ -249,6 +235,7 @@
 }
 
 .page-hero-list span,
+.profile-highlights span,
 .timeline-period,
 .contact-card span,
 .visual-content span,
@@ -262,6 +249,7 @@
 }
 
 .page-hero-list strong,
+.profile-highlights strong,
 .contact-card strong,
 .visual-content strong {
   color: var(--text-high);
@@ -303,15 +291,16 @@
   z-index: 3;
 }
 
-.hero-waves,
+.hero-ferrofluid,
 .hero-scrim,
 .hero-noise {
   position: absolute;
   inset: 0;
 }
 
-.hero-waves {
+.hero-ferrofluid {
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-scrim {
@@ -403,6 +392,69 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
     linear-gradient(180deg, #131313, #050505);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-stage {
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.hero-stage-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-stage-layer--content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-stage-background {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-stage-layer--base {
+  z-index: 0;
+}
+
+.hero-stage-layer--content {
+  z-index: 1;
+}
+
+.page-profile-hero {
+  padding-top: 24px;
+}
+
+.page-profile-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.profile-hero-visual {
+  min-height: 640px;
+  display: grid;
+  align-items: center;
+}
+
+.profile-hero-copy {
+  max-width: 860px;
+}
+
+.profile-hero-copy h1 {
+  margin-top: 14px;
+}
+
+.profile-hero-copy .page-lead {
+  max-width: 760px;
+}
+
+.profile-hero-copy .page-hero-actions {
+  margin-top: 28px;
 }
 
 .hero-signature-section {
@@ -822,6 +874,7 @@
   }
 
   .page-hero-grid,
+  .page-profile-hero-grid,
   .hero-content,
   .featured-card,
   .about-grid {
@@ -849,6 +902,10 @@
   .hero-widget-panel {
     max-width: 520px;
     margin-top: 0;
+  }
+
+  .profile-hero-visual {
+    min-height: 520px;
   }
 
   .hero-signature-section {
@@ -923,6 +980,14 @@
     margin-right: 0;
     margin-top: calc(-1 * clamp(24px, 5svh, 48px));
     min-height: calc(94svh + clamp(24px, 5svh, 48px));
+  }
+
+  .page-profile-hero {
+    padding-top: 8px;
+  }
+
+  .profile-hero-visual {
+    min-height: 420px;
   }
 
   .hero-signature-section {

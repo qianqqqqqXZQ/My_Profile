@@ -89,6 +89,8 @@ This repository is used to build a personal resume website. The active site live
   - The heavy hero widgets are loaded with `React.lazy` and `Suspense` so the main shell stays lighter on first load
   - The hero lanyard canvas now uses a lower default DPR, and the physics step is slightly softened to reduce per-frame pressure
   - The main bundle is much smaller than before, but `ProfileLanyard` still owns the largest deferred chunk because it includes `three`, `rapier`, and the GLB asset
+- The homepage now uses the supplied `Ferrofluid` component as its hero background, while the Profile page uses the older atmospheric `Waves` treatment behind a new left-lanyard / right-headline composition
+- The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 
 ## Notes About The React Bits Lanyard Reference
 

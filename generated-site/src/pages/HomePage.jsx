@@ -4,7 +4,7 @@ import { heroHighlights, homeRouteCards } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
-const Waves = lazy(() => import('../components/Waves'))
+const Ferrofluid = lazy(() => import('../components/Ferrofluid'))
 
 function HomePage() {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
@@ -114,20 +114,25 @@ function HomePage() {
     <div className="page-home">
       <header className="hero-section" id="home" ref={heroRef}>
         <Suspense fallback={null}>
-          <Waves
-            className="hero-waves"
-            lineColor="rgba(245, 245, 243, 0.28)"
-            backgroundColor="transparent"
-            waveSpeedX={0.02}
-            waveSpeedY={0.01}
-            waveAmpX={28}
-            waveAmpY={14}
-            friction={0.92}
-            tension={0.01}
+          <Ferrofluid
+            className="hero-ferrofluid"
+            colors={['#f7f0f0', '#ffffff', '#d8d8d1']}
+            backgroundColor="#120f17"
+            speed={0.58}
+            scale={1.55}
+            turbulence={0.92}
+            fluidity={0.15}
+            rimWidth={0.26}
+            sharpness={2.7}
+            shimmer={0.85}
+            glow={2.5}
+            flowDirection="down"
+            opacity={0.98}
+            mouseInteraction={!isTouchDevice}
+            mouseStrength={0.82}
+            mouseRadius={0.18}
+            mouseDampening={0.18}
             paused={!isHeroVisible}
-            maxCursorMove={isTouchDevice ? 0 : 100}
-            xGap={14}
-            yGap={34}
           />
         </Suspense>
         <div className="hero-scrim" />
