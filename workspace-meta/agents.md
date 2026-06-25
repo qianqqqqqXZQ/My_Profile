@@ -107,9 +107,20 @@ The original `card.glb` and `lanyard.png` assets are now present locally and wir
 - `generated-site/src/components/ProfileLanyard.jsx` remains preserved as the original source widget file and was not overwritten
 - `generated-site/src/components/PhotoLens.jsx` is the new hero implementation used on the homepage
 - `generated-site/src/components/PhotoLens.css` handles the black-backed reveal surface, smooth delayed cursor follow, and echo trail treatment
-- The source portrait assets remain `img/img1.jpg` and `img/img2.jpg`
-- The page also uses `img/img1-cutout.png` and `img/img2-cutout.png` as derived workspace assets for the black-background lens composition
 - The hero now uses the photo lens interaction instead of the hanging lanyard widget, while the rest of the site structure remains unchanged
+
+## Notes About The 2026-06-25 Home Hero Image Swap
+
+- The current homepage hero now uses user-supplied originals copied into `img/home-hero/`
+- The final wired assets are:
+  - `img/home-hero/person-source.jpg`
+  - `img/home-hero/armor-source.jpg`
+- The attempted transparent cutout outputs were kept as workspace artifacts only and are not part of the final homepage rendering because the dark armor subject did not separate cleanly from its black background
+- `generated-site/src/components/PhotoLens.jsx` now uses the original JPG portrait as the default front layer and the original JPG armor image as the reveal layer
+- `generated-site/src/components/PhotoLens.css` is tuned for full-frame image assets again, with adjusted `object-position` values so the face and helmet stay centered in the card
+- Validation for this pass should use:
+  - `npm run build`
+  - `npm run lint` if ESLint's temporary config-file issue is not present; otherwise record the failure mode and keep `build` as the successful hard check
 
 ## Notes About The Photo Lens Smoothing Pass
 

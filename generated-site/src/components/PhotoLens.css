@@ -71,7 +71,23 @@
 
 .photo-lens-image-back {
   mix-blend-mode: screen;
-  opacity: 0.92;
+  opacity: 0.9;
+}
+
+.photo-lens-image-front,
+.photo-lens-image-reveal {
+  object-position: center 16%;
+}
+
+.photo-lens-image-back {
+  object-position: center 0%;
+  opacity: 0.82;
+  transform: translateY(-1.15%);
+}
+
+.photo-lens-image-reveal {
+  object-position: center 0%;
+  transform: translateY(-1.15%);
 }
 
 .photo-lens-reveal {
@@ -79,6 +95,14 @@
   place-items: center;
   filter: saturate(1.06) brightness(1.06);
   will-change: clip-path, -webkit-clip-path;
+}
+
+.photo-lens-image-reveal {
+  mix-blend-mode: screen;
+  filter:
+    brightness(0.98)
+    contrast(1.08)
+    saturate(0.95);
 }
 
 .photo-lens-echo-layer {

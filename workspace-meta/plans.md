@@ -283,4 +283,16 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-25 Home Right-Side Image Replacement
+
+- [x] Create a Git backup commit before replacing the homepage right-side visuals
+- [x] Copy the user-supplied portrait and armor source JPGs into `img/home-hero/`
+- [x] Attempt transparent cutout generation and verify the result against the dark armor source
+- [x] Drop the cutout approach after the armor subject proved unsuitable for clean background separation
+- [x] Rewire `PhotoLens` to the final original JPG assets while preserving the current reveal interaction
+- [x] Retune `PhotoLens.css` for full-frame image assets and stable face / helmet framing
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 

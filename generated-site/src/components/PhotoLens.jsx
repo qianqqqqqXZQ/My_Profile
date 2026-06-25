@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import img1Cutout from '../../../img/img1-cutout.png'
-import img2Cutout from '../../../img/img2-cutout.png'
+import personImage from '../../../img/home-hero/person-source.jpg'
+import armorImage from '../../../img/home-hero/armor-source.jpg'
 import './PhotoLens.css'
 
 const FOLLOW_HALF_LIFE = 0.06
@@ -260,10 +260,10 @@ export default function PhotoLens({ paused = false }) {
       <div className="photo-lens-card" ref={cardRef}>
         <div className="photo-lens-backdrop" aria-hidden="true" />
         <div className="photo-lens-layer photo-lens-layer-back" aria-hidden="true">
-          <img className="photo-lens-image photo-lens-image-back" src={img2Cutout} alt="" />
+          <img className="photo-lens-image photo-lens-image-back" src={armorImage} alt="" />
         </div>
         <div className="photo-lens-layer photo-lens-layer-front" aria-hidden="true">
-          <img className="photo-lens-image photo-lens-image-front" src={img1Cutout} alt="" />
+          <img className="photo-lens-image photo-lens-image-front" src={personImage} alt="" />
         </div>
 
         <div className="photo-lens-shade" ref={shadeRef} aria-hidden="true" />
@@ -272,7 +272,7 @@ export default function PhotoLens({ paused = false }) {
           ref={revealRef}
           aria-hidden="true"
         >
-          <img className="photo-lens-image photo-lens-image-reveal" src={img2Cutout} alt="" />
+          <img className="photo-lens-image photo-lens-image-reveal" src={armorImage} alt="" />
         </div>
 
         <div className="photo-lens-glow" ref={glowRef} aria-hidden="true" />
