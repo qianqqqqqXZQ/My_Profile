@@ -98,7 +98,6 @@ This repository is used to build a personal resume website. The active site live
 - The desktop Profile hero now uses a stronger vertical split: the foreground lanyard is lifted further upward while the full right-side copy block is pushed lower, and smaller breakpoints still reset that extra offset
 - The current desktop Profile hero offset is intentionally extreme for visual separation: the lanyard sits much higher than the original desktop placement and the entire right-side text block sits much lower, while tablet and mobile continue to collapse back to the standard stacked alignment
 - The current desktop Profile hero copy block has been pushed even lower again after the extreme-offset pass, while the raised lanyard position was kept unchanged for asymmetric separation
-- The `ProfileLanyard` default camera is now pulled back and widened (`z=36`, `fov=30`) so the Profile-page widget stays inside frame more reliably when dragged left or right
 
 ## Notes About The React Bits Lanyard Reference
 

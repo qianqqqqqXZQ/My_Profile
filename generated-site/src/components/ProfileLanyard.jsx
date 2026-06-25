@@ -34,9 +34,9 @@ const DESKTOP_MAX_SPIN = 10
 const MOBILE_MAX_SPIN = 14
 
 export default function ProfileLanyard({
-  position = [0, 0, 36],
+  position = [0, 0, 28],
   gravity = [0, -40, 0],
-  fov = 30,
+  fov = 20,
   transparent = true,
   paused = false,
 }) {
@@ -196,6 +196,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, paused = false })
       vec.add(dir.multiplyScalar(state.camera.position.length()))
 
       dragTarget.copy(vec).sub(dragged)
+
       if (!lastDragTarget.current) {
         const translation = card.current.translation()
         lastDragTarget.current = new THREE.Vector3(translation.x, translation.y, translation.z)

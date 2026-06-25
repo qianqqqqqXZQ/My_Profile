@@ -272,9 +272,12 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review
 
-## 2026-06-25 Profile Lanyard Camera Widen
+## 2026-06-25 Homepage LineWaves Background Swap
 
-- [x] Widen the default `ProfileLanyard` camera so the widget stays visible across a larger drag range
-- [x] Run `npm run lint`
-- [x] Run `npm run build`
-- [x] Perform a final self-review
+- [ ] Create a Git backup commit before the homepage background change
+- [ ] Add the supplied `LineWaves` OGL component under `generated-site/src/components/`
+- [ ] Replace the homepage `Ferrofluid` background with `LineWaves`
+- [ ] Tune the hero overlay so copy and the right-side visual remain readable
+- [ ] Run `npm run lint`
+- [ ] Run `npm run build`
+- [ ] Perform a final self-review and update `workspace-meta/agents.md`
