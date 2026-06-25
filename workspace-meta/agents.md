@@ -91,6 +91,7 @@ This repository is used to build a personal resume website. The active site live
   - The main bundle is much smaller than before, but `ProfileLanyard` still owns the largest deferred chunk because it includes `three`, `rapier`, and the GLB asset
 - The homepage now uses the supplied `Ferrofluid` component as its hero background, while the Profile page uses the older atmospheric `Waves` treatment behind a new left-lanyard / right-headline composition
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
+- The Profile hero desktop layout now uses a wider right column and controlled copy offset so the title block sits nearer the center of the right half, while the lanyard remains slightly left-weighted inside the left half
 
 ## Notes About The React Bits Lanyard Reference
 

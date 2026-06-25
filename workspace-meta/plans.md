@@ -203,3 +203,12 @@
 - [x] Re-run `npm run lint`
 - [x] Re-run `npm run build`
 - [x] Update `workspace-meta/agents.md` with the new page layout notes
+
+## 2026-06-25 Profile Hero Desktop Rebalance
+
+- [x] Create a Git backup commit before the desktop layout adjustment
+- [x] Rebalance the Profile hero desktop grid so the copy sits deeper into the right half
+- [x] Shift the lanyard presentation slightly left within the left half without touching widget logic
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
