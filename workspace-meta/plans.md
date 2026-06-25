@@ -305,4 +305,14 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-25 Home Hero Background Swap to Particles
+
+- [x] Create a Git backup snapshot before the background swap
+- [x] Add the supplied `Particles` component under `generated-site/src/components/`
+- [x] Replace the homepage hero background with `Particles`
+- [x] Keep the hero interaction stack clickable above the canvas
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 

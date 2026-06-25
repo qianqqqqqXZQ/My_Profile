@@ -296,23 +296,25 @@
 }
 
 .hero-liquid-ether,
+.hero-particles,
 .hero-scrim,
 .hero-noise {
   position: absolute;
   inset: 0;
 }
 
-.hero-liquid-ether {
+.hero-liquid-ether,
+.hero-particles {
   z-index: 0;
-  pointer-events: none;
 }
 
 .hero-scrim {
   z-index: 1;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.06), transparent 28%),
-    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.03), transparent 24%),
-    linear-gradient(180deg, rgba(9, 7, 12, 0.1), rgba(7, 5, 9, 0.62) 74%, #050505 100%);
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.045), transparent 28%),
+    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.025), transparent 24%),
+    linear-gradient(180deg, rgba(9, 7, 12, 0.08), rgba(7, 5, 9, 0.56) 74%, #050505 100%);
+  pointer-events: none;
 }
 
 .hero-noise {
@@ -321,7 +323,7 @@
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 140px 140px;
-  opacity: 0.09;
+  opacity: 0.06;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent 88%);
   pointer-events: none;
 }

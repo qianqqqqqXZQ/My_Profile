@@ -4,7 +4,7 @@ import { heroHighlights, homeRouteCards } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
-const LiquidEther = lazy(() => import('../components/LiquidEther'))
+const Particles = lazy(() => import('../components/Particles'))
 
 function HomePage() {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -93,23 +93,20 @@ function HomePage() {
     <div className="page-home">
       <header className="hero-section" id="home" ref={heroRef}>
         <Suspense fallback={null}>
-          <LiquidEther
-            className="hero-liquid-ether"
-            colors={['#5227FF', '#FF9FFC', '#B497CF']}
-            mouseForce={20}
-            cursorSize={100}
-            isViscous={false}
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={false}
-            autoDemo
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
+          <Particles
+            className="hero-particles"
+            particleColors={['#d6d1d1']}
+            particleCount={1200}
+            particleSpread={18}
+            speed={0.1}
+            particleBaseSize={140}
+            moveParticlesOnHover
+            particleHoverFactor={0.2}
+            alphaParticles={false}
+            disableRotation={false}
+            sizeRandomness={0.8}
+            cameraDistance={34}
+            pixelRatio={1.2}
           />
         </Suspense>
         <div className="hero-scrim" />

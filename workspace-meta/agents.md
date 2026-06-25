@@ -78,6 +78,7 @@ This repository is used to build a personal resume website. The active site live
   - The main bundle is much smaller than before, but `ProfileLanyard` still owns the largest deferred chunk because it includes `three`, `rapier`, and the GLB asset
 - The homepage now uses the supplied `LiquidEther` component as its hero background, while the Profile page uses the atmospheric `Waves` treatment behind a left-lanyard / right-headline composition
 - The homepage hero background has been retuned to the reference React Bits `LiquidEther` palette and motion settings, while the foreground interaction stack stays unchanged
+- The homepage hero background is now driven by the React Bits `Particles` component with a light monochrome palette and hover motion, while the foreground interaction stack stays unchanged
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
 - The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button
