@@ -7,7 +7,6 @@ const PhotoLens = lazy(() => import('../components/PhotoLens'))
 const LiquidEther = lazy(() => import('../components/LiquidEther'))
 
 function HomePage() {
-  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const heroRef = useRef(null)
   const touchStartYRef = useRef(null)
@@ -66,26 +65,6 @@ function HomePage() {
       return undefined
     }
 
-    const mediaQuery = window.matchMedia('(pointer: coarse)')
-    const updateTouchState = () => {
-      setIsTouchDevice(mediaQuery.matches || window.innerWidth < 720)
-    }
-
-    updateTouchState()
-    mediaQuery.addEventListener('change', updateTouchState)
-    window.addEventListener('resize', updateTouchState)
-
-    return () => {
-      mediaQuery.removeEventListener('change', updateTouchState)
-      window.removeEventListener('resize', updateTouchState)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return undefined
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -116,21 +95,21 @@ function HomePage() {
         <Suspense fallback={null}>
           <LiquidEther
             className="hero-liquid-ether"
-            colors={['#ffffff', '#efefeb', '#d7d7cf']}
-            mouseForce={isTouchDevice ? 0 : 18}
-            cursorSize={88}
+            colors={['#5227FF', '#FF9FFC', '#B497CF']}
+            mouseForce={20}
+            cursorSize={100}
             isViscous={false}
-            viscous={28}
-            iterationsViscous={24}
-            iterationsPoisson={28}
-            resolution={0.45}
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5}
             isBounce={false}
             autoDemo
-            autoSpeed={0.38}
-            autoIntensity={1.7}
-            takeoverDuration={0.3}
-            autoResumeDelay={2400}
-            autoRampDuration={0.8}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
           />
         </Suspense>
         <div className="hero-scrim" />

@@ -295,4 +295,14 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-25 Home Hero Background Swap to LiquidEther
+
+- [x] Create a Git backup snapshot before the background swap
+- [x] Switch the homepage hero background to the reference `LiquidEther` palette and motion settings
+- [x] Preserve the existing hero interaction stack above the canvas
+- [x] Slightly relax the scrim/noise overlay so the fluid background stays visible
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 
