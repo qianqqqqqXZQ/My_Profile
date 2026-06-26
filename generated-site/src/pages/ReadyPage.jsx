@@ -49,11 +49,11 @@ function ReadyPage() {
             rotation={[0.98, 0.18]}
             density={1.18}
             glowIntensity={0.62}
-            saturation={0.46}
-            hueShift={214}
+            saturation={0.06}
+            hueShift={140}
             twinkleIntensity={0.54}
             rotationSpeed={0.095}
-            repulsionStrength={2.2}
+            repulsionStrength={2.8}
             speed={1.08}
             starSpeed={0.56}
             maxDpr={1.1}

@@ -512,3 +512,11 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Ready Page Galaxy White-Star And Pointer Fix
+- [x] Remove the unintended blue tint from the `/ready` galaxy treatment
+- [x] Restore near-white star rendering while keeping the background brighter than the earlier dark version
+- [x] Rework the `/ready` background pointer-event setup so the galaxy layer itself can receive mouse interaction again
+- [ ] Run `npm run lint`
+- [ ] Run `npm run build`
+- [ ] Perform a final self-review and update `workspace-meta/agents.md`
