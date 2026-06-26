@@ -115,6 +115,7 @@ This repository is used to build a personal resume website. The active site live
 - The desktop Profile hero now uses a stronger vertical split: the foreground lanyard is lifted further upward while the full right-side copy block is pushed lower, and smaller breakpoints still reset that extra offset
 - The current desktop Profile hero offset is intentionally extreme for visual separation: the lanyard sits much higher than the original desktop placement and the entire right-side text block sits much lower, while tablet and mobile continue to collapse back to the standard stacked alignment
 - The current desktop Profile hero copy block has been pushed even lower again after the extreme-offset pass, while the raised lanyard position was kept unchanged for asymmetric separation
+- The shared top navigation no longer shows the old `UNNC / CS` brand badge on inner routes; it now uses two placeholder language buttons, `EN` and `ZH`, with `EN` visually active and no switching logic wired yet
 
 ## Notes About The React Bits Lanyard Reference
 
@@ -204,6 +205,7 @@ $env:windir='C:\Windows'
 - The Contact globe does not vendor the original demo's `tweakpane`, `stats`, `OrbitControls`, airplane routes, or full postprocessing chain
 - The Contact page has been simplified so the hero now renders only the globe background, a single large heading, and one supporting description line
 - The Contact page no longer renders hero CTA buttons, hero detail cards, or the lower contact CTA copy/buttons, but it still keeps the lower four-card contact grid
+- The lower Contact card deck now sits inside a dedicated radar panel that uses a local React Bits-style `Radar` OGL background behind semi-transparent glass cards
 - Contact globe assets are stored locally under `generated-site/public/contact-globe/` and currently include:
   - `globe.json`
   - `day.jpg`

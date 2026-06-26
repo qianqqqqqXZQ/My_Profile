@@ -9,13 +9,14 @@ function SiteLayout() {
     <div className="site-shell">
       {showTopbar ? (
         <header className="site-topbar topbar">
-          <Link className="brand" to="/">
-            <span className="brand-mark">N</span>
-            <span className="brand-copy">
-              <strong>UNNC / CS</strong>
-              <span>Personal Portfolio Site</span>
-            </span>
-          </Link>
+          <div className="language-switcher" aria-label="Language switcher">
+            <button type="button" className="language-button is-active" aria-pressed="true">
+              EN
+            </button>
+            <button type="button" className="language-button" aria-pressed="false">
+              ZH
+            </button>
+          </div>
 
           <nav className="nav-links" aria-label="Primary">
             {navigationLinks.map((item) => (

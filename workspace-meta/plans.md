@@ -218,6 +218,11 @@
 - [x] Create a Git backup commit before the readability and layer fix
 - [x] Reduce the Profile hero copy scale so the title and highlight cards fit inside the first screen
 - [x] Raise the lanyard layer above the right-side copy while keeping the top navigation highest
+
+## 2026-06-26 Experience Hero Copy Cleanup
+
+- [x] Remove the `I love coding...` line from the Experience page hero typing text
+- [x] Keep the `aria-label` aligned with the visible hero copy
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
@@ -513,10 +518,28 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Contact Radar Card-Deck Background
+- [x] Create a Git backup commit before the Contact radar background integration
+- [x] Add a local React Bits-style `Radar` component under `generated-site/src/components/`
+- [x] Replace the lower Contact card-deck base with a shared Radar backdrop
+- [x] Retune the Contact cards to a lighter glass treatment above the animated base
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Ready Page Galaxy White-Star And Pointer Fix
 - [x] Remove the unintended blue tint from the `/ready` galaxy treatment
 - [x] Restore near-white star rendering while keeping the background brighter than the earlier dark version
 - [x] Rework the `/ready` background pointer-event setup so the galaxy layer itself can receive mouse interaction again
-- [ ] Run `npm run lint`
-- [ ] Run `npm run build`
-- [ ] Perform a final self-review and update `workspace-meta/agents.md`
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Topbar Language Button Placeholder
+- [x] Create a Git backup commit before the navigation UI change
+- [x] Replace the topbar brand block with `EN` and `ZH` buttons
+- [x] Keep the change presentation-only without adding language switching logic
+- [x] Preserve the existing frosted-glass navigation style and responsive layout
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

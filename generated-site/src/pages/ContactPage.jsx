@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ContactGlobe from '../components/ContactGlobe'
+import Radar from '../components/Radar'
 import { contactHero, contactLinks } from '../content/siteContent'
 
 function ContactPage() {
@@ -53,15 +54,39 @@ function ContactPage() {
       </section>
 
       <section className="contact-section page-contact-section">
+        <div className="page-contact-radar" aria-hidden="true">
+          <Radar
+            speed={0.28}
+            scale={0.45}
+            ringCount={12}
+            spokeCount={14}
+            ringThickness={0.055}
+            spokeThickness={0.01}
+            sweepSpeed={1.15}
+            sweepWidth={4.4}
+            sweepLobes={1}
+            color="#f4edf8"
+            backgroundColor="#000000"
+            falloff={2.8}
+            brightness={1.1}
+            enableMouseInteraction={true}
+            mouseInfluence={0.05}
+          />
+        </div>
+        <div className="page-contact-radar-scrim" aria-hidden="true" />
+        <div className="page-contact-radar-noise" aria-hidden="true" />
+
         <div className="section-shell contact-shell">
-          <h2 className="contact-section-title">My Contact Information</h2>
-          <div className="contact-grid contact-grid--page">
-            {contactLinks.map((item) => (
-              <a key={item.label} className="contact-card" href={item.href}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </a>
-            ))}
+          <div className="contact-radar-content">
+            <h2 className="contact-section-title">My Contact Information</h2>
+            <div className="contact-grid contact-grid--page">
+              {contactLinks.map((item) => (
+                <a key={item.label} className="contact-card" href={item.href}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

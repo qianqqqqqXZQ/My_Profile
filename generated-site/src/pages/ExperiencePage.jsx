@@ -55,13 +55,13 @@ function ExperiencePage() {
               <p className="eyebrow">Experience</p>
               <h1
                 className="experience-hero-title"
-                aria-label="Hello World! I love coding... Here is my Research, Project and Working experience..."
+                aria-label="Hello World! Here is my Research, Project and Working experience..."
               >
                 <TextType
                   as="span"
                   className="experience-title-type"
                   text={[
-                    'Hello World!\nI love coding...',
+                    'Hello World!',
                     'Here is my\nResearch, Project and Working\nexperience...',
                   ]}
                   typingSpeed={56}
