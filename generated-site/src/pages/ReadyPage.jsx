@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import Galaxy from '../components/Galaxy'
-import { readyPageUnlockKey } from '../content/siteContent'
+import { homeRouteCards, readyPageUnlockKey } from '../content/siteContent'
 
 function ReadyPage() {
   const hasUnlocked = typeof window !== 'undefined' && window.sessionStorage.getItem(readyPageUnlockKey) === 'true'
@@ -65,7 +65,20 @@ function ReadyPage() {
       <section className="ready-hero" aria-label="Ready hero">
         <div className="section-shell ready-hero-shell">
           <div className="ready-hero-copy">
-            <p className="eyebrow">READY</p>
+            <h1 className="ready-hero-title">Where Do You Want to Go ?</h1>
+          </div>
+
+          <div className="ready-hero-cards">
+            <div className="home-route-grid">
+              {homeRouteCards.map((card) => (
+                <Link key={card.label} className="home-route-card card-surface" to={card.to} aria-label={card.label}>
+                  <p className="micro-label">{card.label}</p>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                  <span className="inline-link">Open Page</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

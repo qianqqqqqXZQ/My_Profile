@@ -62,7 +62,7 @@ function ExperiencePage() {
                   className="experience-title-type"
                   text={[
                     'Hello World!',
-                    'Here is my\nResearch, Project and Working\nexperience...',
+                    'Here is my\nResearch, Project and Working\nExperience...',
                   ]}
                   typingSpeed={56}
                   deletingSpeed={26}

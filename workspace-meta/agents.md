@@ -116,6 +116,7 @@ This repository is used to build a personal resume website. The active site live
 - The current desktop Profile hero offset is intentionally extreme for visual separation: the lanyard sits much higher than the original desktop placement and the entire right-side text block sits much lower, while tablet and mobile continue to collapse back to the standard stacked alignment
 - The current desktop Profile hero copy block has been pushed even lower again after the extreme-offset pass, while the raised lanyard position was kept unchanged for asymmetric separation
 - The shared top navigation no longer shows the old `UNNC / CS` brand badge on inner routes; it now uses two placeholder language buttons, `EN` and `ZH`, with `EN` visually active and no switching logic wired yet
+- The shared inner-route top navigation was upgraded from a plain frosted bar to a more premium metallic treatment: the header now uses layered chrome-like gradients, soft colored edge bloom, and a controlled reflective sheen overlay while keeping the existing route structure, language placeholders, and standalone `Contact` action unchanged
 
 ## Notes About The React Bits Lanyard Reference
 
@@ -206,6 +207,8 @@ $env:windir='C:\Windows'
 - The Contact page has been simplified so the hero now renders only the globe background, a single large heading, and one supporting description line
 - The Contact page no longer renders hero CTA buttons, hero detail cards, or the lower contact CTA copy/buttons, but it still keeps the lower four-card contact grid
 - The lower Contact card deck now sits inside a dedicated radar panel that uses a local React Bits-style `Radar` OGL background behind semi-transparent glass cards
+- The four Contact cards now use a local React Bits-style `BorderGlow` wrapper so each card keeps a dark glass fill with directional hover border light
+- The Contact cards were later reshaped toward the supplied reference: each card now uses a small spark glyph, oversized title, softer description copy, and the actual contact value as a lower meta line
 - Contact globe assets are stored locally under `generated-site/public/contact-globe/` and currently include:
   - `globe.json`
   - `day.jpg`
@@ -231,5 +234,5 @@ $env:windir='C:\Windows'
 - The `/ready` galaxy was retuned to a lighter look and lower render cost by reducing density, glow, twinkle, repulsion, and DPR while keeping clear pointer-reactive motion
 - The `/ready` page was later brightened again without leaving the dark visual family: `ReadyPage.jsx` now uses a denser, brighter `Galaxy` configuration with near-white stars and a stronger mouse repulsion response, while `App.css` softens the route scrim and keeps the supporting glow treatment neutral instead of blue-shifted
 - The `/ready` background wrapper now keeps `pointer-events: auto`, while the scrim and noise overlays remain non-interactive; this makes the `Galaxy` layer directly targetable again instead of relying on background-wrapper pass-through behavior
-- The `/ready` page foreground has now been simplified again: it keeps the full-screen galaxy hero and route guard, but removes the banner, overview card, and lower navigation cards so only a small top-left `READY` label remains above the background
+- The `/ready` page foreground has now been simplified again: it keeps the full-screen galaxy hero and route guard, removes the old banner and overview card, keeps a small top-left `READY` label, and restores the original four route cards centered in the hero area
 - The global mute toggle now renders image assets from `generated-site/src/assets/audio-icons/` and switches between `music.png` and `mute.png` instead of text glyphs

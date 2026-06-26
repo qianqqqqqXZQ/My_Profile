@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import BorderGlow from '../components/BorderGlow'
 import ContactGlobe from '../components/ContactGlobe'
 import Radar from '../components/Radar'
 import { contactHero, contactLinks } from '../content/siteContent'
@@ -81,10 +82,30 @@ function ContactPage() {
             <h2 className="contact-section-title">My Contact Information</h2>
             <div className="contact-grid contact-grid--page">
               {contactLinks.map((item) => (
-                <a key={item.label} className="contact-card" href={item.href}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                </a>
+                <BorderGlow
+                  key={item.label}
+                  className="contact-card-glow"
+                  edgeSensitivity={10}
+                  glowColor="0 0 100"
+                  backgroundColor="rgba(8, 8, 10, 0.38)"
+                  borderRadius={26}
+                  glowRadius={30}
+                  glowIntensity={0.9}
+                  coneSpread={24}
+                  animated={false}
+                  colors={['#f5f5f5', '#d7d7d7', '#ffffff']}
+                  fillOpacity={0.18}
+                >
+                  <a className="contact-card" href={item.href}>
+                    <div className="contact-card-icon" aria-hidden="true">
+                      <span className="contact-card-spark contact-card-spark--primary" />
+                      <span className="contact-card-spark contact-card-spark--secondary" />
+                    </div>
+                    <strong>{item.label}</strong>
+                    <p>{item.description}</p>
+                    <span>{item.value}</span>
+                  </a>
+                </BorderGlow>
               ))}
             </div>
           </div>

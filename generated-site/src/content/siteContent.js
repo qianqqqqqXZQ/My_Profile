@@ -55,23 +55,27 @@ export const contactHero = {
 
 export const contactLinks = [
   {
-    label: 'Email',
+    label: 'Reach by Email',
     value: 'your.email@example.com',
+    description: 'Send a direct message for project discussion, collaboration, or portfolio follow-up.',
     href: 'mailto:your.email@example.com',
   },
   {
-    label: 'GitHub',
+    label: 'Browse GitHub',
     value: 'github.com/your-handle',
+    description: 'Review code samples, experiments, and repository activity in one place.',
     href: 'https://github.com/',
   },
   {
-    label: 'LinkedIn',
+    label: 'Open LinkedIn',
     value: 'linkedin.com/in/your-profile',
+    description: 'Connect professionally and follow experience updates or profile details.',
     href: 'https://www.linkedin.com/',
   },
   {
-    label: 'Location',
+    label: 'Current Location',
     value: 'Ningbo / China',
+    description: 'Based in Ningbo, China and available online for remote contact and coordination.',
     href: '/contact',
   },
 ]

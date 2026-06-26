@@ -527,6 +527,15 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Contact BorderGlow Cards
+- [x] Create a Git backup commit before the Contact card-type replacement
+- [x] Add a local React Bits-style `BorderGlow` component under `generated-site/src/components/`
+- [x] Replace the four Contact cards with `BorderGlow` wrappers while keeping the existing link data structure
+- [x] Reshape the Contact card content to match the reference visual hierarchy more closely
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Ready Page Galaxy White-Star And Pointer Fix
 - [x] Remove the unintended blue tint from the `/ready` galaxy treatment
 - [x] Restore near-white star rendering while keeping the background brighter than the earlier dark version
@@ -549,6 +558,29 @@
 - [x] Remove the `/ready` page banner, overview panel, and navigation card sections
 - [x] Keep the galaxy background, unlock guard, and visibility-aware pause behavior
 - [x] Replace the foreground content with only a top-left `READY` label while preserving a full-screen hero feel
+- [x] Restore the original four route cards and center them within the `/ready` hero
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Ready Page Header And Label Removal
+- [x] Remove the standalone `READY` text from the `/ready` page hero
+- [x] Hide the shared top navigation/header on the `/ready` route
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-26 Ready Page Destination Title And Whole-Card Links
+- [x] Add the large `Where Do You Want to Go ?` title to the `/ready` page
+- [x] Make each route card clickable as a full-card link to its destination
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Perform a final self-review
+
+## 2026-06-26 Premium Metallic Navigation Refresh
+- [x] Upgrade the shared top navigation to a more premium metallic visual treatment
+- [x] Add controlled reflective highlights without changing routing behavior
+- [x] Preserve responsive behavior and existing language/contact controls
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md` if needed

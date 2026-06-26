@@ -3,12 +3,17 @@ import { navigationLinks } from '../content/siteContent'
 
 function SiteLayout() {
   const location = useLocation()
-  const showTopbar = location.pathname !== '/'
+  const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
 
   return (
     <div className="site-shell">
       {showTopbar ? (
         <header className="site-topbar topbar">
+          <span className="site-topbar-metal" aria-hidden="true" />
+          <span className="site-topbar-sheen" aria-hidden="true" />
+          <span className="site-topbar-edge site-topbar-edge--left" aria-hidden="true" />
+          <span className="site-topbar-edge site-topbar-edge--right" aria-hidden="true" />
+
           <div className="language-switcher" aria-label="Language switcher">
             <button type="button" className="language-button is-active" aria-pressed="true">
               EN
