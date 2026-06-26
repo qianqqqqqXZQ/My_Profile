@@ -392,6 +392,18 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Grouped Route BGM
+
+- [x] Create a Git backup snapshot before the grouped BGM integration
+- [x] Copy `bgm/bgm1.mp3` and `bgm/bgm2.mp3` into `generated-site/public/`
+- [x] Add a root-level background audio manager that survives route changes
+- [x] Route `/` and `/ready` to `bgm1`, and all other pages to `bgm2`
+- [x] Keep playback continuous inside the same route group and restart only on cross-group switches
+- [x] Add autoplay recovery after first user interaction when the browser blocks initial playback
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Experience LetterGlitch Background
 
 - [x] Create a Git backup commit before the Experience background update

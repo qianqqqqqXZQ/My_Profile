@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
+import BackgroundAudioManager from './components/BackgroundAudioManager'
 import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
 import ContactPage from './pages/ContactPage'
@@ -12,6 +13,7 @@ import ReadyPage from './pages/ReadyPage'
 function App() {
   return (
     <>
+      <BackgroundAudioManager />
       <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>

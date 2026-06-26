@@ -93,6 +93,12 @@ This repository is used to build a personal resume website. The active site live
 - The homepage now exposes a single white boxed CTA, `Sure, I'm ready !`, which writes a session flag and unlocks the `/ready` route
 - The `/ready` route redirects back to `/` if opened without the session unlock flag, so the new continuation page is only reachable through the homepage CTA
 - The homepage now hides the entire top header only on `/`, while the shared navigation remains intact on every other route and `Home` still links back to `/`
+- The site now includes a root-level `BackgroundAudioManager` mounted outside the route tree so background music survives route transitions
+- Route-level BGM is split into two groups:
+  - `/` and `/ready` use `generated-site/public/bgm/bgm1.mp3`
+  - `/profile`, `/experience`, `/dance`, and `/contact` use `generated-site/public/bgm/bgm2.mp3`
+- Same-group route changes keep the current track and playback position uninterrupted; only cross-group navigation switches tracks and restarts from the beginning
+- If the browser blocks autoplay on first load, the audio manager retries playback after the first pointer, touch, or keyboard interaction
 - The Experience page headline now uses a local React Bits-style `TextType` typing animation with the exact two requested sentences, looping cleanly through both lines
 - The Experience route now uses a standalone first-screen composition: a centered intro typing hero, reserved height to prevent layout shift while text types, and lower sections intentionally pushed farther down the page
 - The current Experience hero copy loops between `Hello World! / I love coding...` and `Here is my / Research, Project and Working / experience...`, preserving explicit line breaks in both states
@@ -157,6 +163,16 @@ npm install
 npm run dev
 npm run lint
 npm run build
+```
+
+Grouped BGM verification:
+
+```text
+/ -> /ready keeps bgm1 continuous
+/ready -> / keeps bgm1 continuous
+/ or /ready -> any other route switches to bgm2 from the start
+any non-home route -> another non-home route keeps bgm2 continuous
+any non-home route -> / or /ready switches back to bgm1 from the start
 ```
 
 If PowerShell has trouble spawning `npm`, set:
