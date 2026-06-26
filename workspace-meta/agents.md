@@ -227,4 +227,6 @@ $env:windir='C:\Windows'
 - `generated-site/src/components/LetterGlitch.jsx` now supports `paused` and `maxDpr`, and only runs at full cadence while the Experience hero is visible
 - `generated-site/src/pages/HomePage.jsx`, `generated-site/src/pages/ProfilePage.jsx`, `generated-site/src/pages/ExperiencePage.jsx`, and `generated-site/src/pages/ReadyPage.jsx` now each drive their heavy background widgets from hero/route visibility observers
 - The `/ready` galaxy was retuned to a lighter look and lower render cost by reducing density, glow, twinkle, repulsion, and DPR while keeping clear pointer-reactive motion
+- The `/ready` page was later brightened again without leaving the dark visual family: `ReadyPage.jsx` now uses a denser, brighter, more saturated `Galaxy` configuration with a stronger mouse repulsion response, while `App.css` softens the route scrim, adds cooler highlight glows, and lowers the grid-noise opacity
+- The `/ready` background wrapper is now explicitly `pointer-events: none`, while `.page-ready-galaxy` remains `pointer-events: auto`; this preserves interactive galaxy motion without blocking foreground navigation and cards
 - The global mute toggle now renders image assets from `generated-site/src/assets/audio-icons/` and switches between `music.png` and `mute.png` instead of text glyphs

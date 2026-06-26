@@ -45,15 +45,17 @@ function ReadyPage() {
             mouseInteraction
             mouseRepulsion
             paused={!isRouteVisible}
-            density={0.92}
-            glowIntensity={0.38}
-            saturation={0.2}
-            hueShift={220}
-            twinkleIntensity={0.32}
-            rotationSpeed={0.05}
-            repulsionStrength={1.45}
-            speed={0.8}
-            starSpeed={0.38}
+            focal={[0.52, 0.44]}
+            rotation={[0.98, 0.18]}
+            density={1.18}
+            glowIntensity={0.62}
+            saturation={0.46}
+            hueShift={214}
+            twinkleIntensity={0.54}
+            rotationSpeed={0.095}
+            repulsionStrength={2.2}
+            speed={1.08}
+            starSpeed={0.56}
             maxDpr={1.1}
           />
         </div>

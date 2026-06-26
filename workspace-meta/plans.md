@@ -502,3 +502,13 @@
 - [x] Copy the icon assets into `generated-site/src/assets/audio-icons/`
 - [x] Re-run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Ready Page Galaxy Brightening And Interaction Boost
+- [x] Create a Git backup snapshot before the Ready-page visual retune
+- [x] Brighten the `/ready` galaxy background while preserving the dark site-wide visual system
+- [x] Increase the visible star glow, density, twinkle, and pointer-response on the `Galaxy` layer
+- [x] Rebalance the `/ready` scrim and noise overlays so the galaxy stays visible without hurting readability
+- [x] Confirm the background pointer-event layering keeps foreground links clickable while the galaxy remains interactive
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
