@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
 import ProfileLanyard from '../components/ProfileLanyard'
@@ -5,10 +6,37 @@ import { contactLinks, profileHighlights, strengths } from '../content/siteConte
 import './HomePage.css'
 
 function ProfilePage() {
+  const heroRef = useRef(null)
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry?.isIntersecting ?? true)
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '220px 0px',
+      },
+    )
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
     <div className="page-route page-profile">
-      <HeroBackground variant="waves" className="profile-hero-shell" paused={false}>
-        <section className="page-hero page-profile-hero">
+      <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
+        <section ref={heroRef} className="page-hero page-profile-hero">
           <div className="section-shell page-profile-hero-shell">
             <aside className="profile-hero-visual" aria-hidden="true">
               <ProfileLanyard paused={false} />

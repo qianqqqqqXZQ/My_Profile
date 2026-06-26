@@ -1,25 +1,55 @@
+import { useEffect, useRef, useState } from 'react'
 import LetterGlitch from '../components/LetterGlitch'
 import TextType from '../components/TextType'
 import { featuredProjects, projectExperience, researchExperience } from '../content/siteContent'
 
 function ExperiencePage() {
+  const heroRef = useRef(null)
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry?.isIntersecting ?? true)
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '220px 0px',
+      },
+    )
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
     <div className="page-route page-experience">
       <div className="page-experience-background" aria-hidden="true">
         <LetterGlitch
           className="page-experience-glitch"
           glitchColors={['#dfe8df', '#738172', '#0b0f0d']}
-          glitchSpeed={65}
+          glitchSpeed={78}
           centerVignette
           outerVignette
           smooth
+          paused={!isHeroVisible}
+          maxDpr={1.1}
         />
         <div className="page-experience-scrim" />
         <div className="page-experience-noise" />
       </div>
 
       <div className="page-experience-content">
-        <section className="experience-hero">
+        <section ref={heroRef} className="experience-hero">
           <div className="section-shell experience-hero-shell">
             <div className="experience-hero-copy">
               <p className="eyebrow">Experience</p>

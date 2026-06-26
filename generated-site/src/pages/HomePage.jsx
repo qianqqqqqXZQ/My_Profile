@@ -105,17 +105,19 @@ function HomePage() {
           <Particles
             className="page-home-particles"
             particleColors={['#d6d1d1']}
-            particleCount={1200}
-            particleSpread={18}
+            particleCount={760}
+            particleSpread={16}
             speed={0.1}
-            particleBaseSize={140}
+            particleBaseSize={118}
             moveParticlesOnHover
-            particleHoverFactor={0.2}
+            particleHoverFactor={0.16}
             alphaParticles={false}
             disableRotation={false}
-            sizeRandomness={0.8}
+            sizeRandomness={0.65}
             cameraDistance={34}
-            pixelRatio={1.2}
+            pixelRatio={1}
+            paused={!isHeroVisible}
+            maxIdleFps={18}
           />
         </Suspense>
         <div className="page-home-scrim" />

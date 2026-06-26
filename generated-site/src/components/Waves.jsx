@@ -105,6 +105,7 @@ function Waves({
   tension = 0.005,
   maxCursorMove = 100,
   paused = false,
+  interactive = true,
   style = {},
   className = '',
 }) {
@@ -139,6 +140,9 @@ function Waves({
     xGap,
     yGap,
   })
+  const isVisibleRef = useRef(true)
+  const isDocumentVisibleRef = useRef(true)
+  const lastRenderTimeRef = useRef(0)
 
   useEffect(() => {
     configRef.current = {
@@ -308,6 +312,21 @@ function Waves({
     }
 
     const tick = (time) => {
+      if (paused || !isDocumentVisibleRef.current || !isVisibleRef.current) {
+        lastRenderTimeRef.current = time
+        frameIdRef.current = window.requestAnimationFrame(tick)
+        return
+      }
+
+      const pointerActive = interactive && mouseRef.current.set && mouseRef.current.vs > 0.2
+      const minFrameGap = pointerActive ? 16 : 34
+
+      if (time - lastRenderTimeRef.current < minFrameGap) {
+        frameIdRef.current = window.requestAnimationFrame(tick)
+        return
+      }
+
+      lastRenderTimeRef.current = time
       const mouse = mouseRef.current
       mouse.sx += (mouse.x - mouse.sx) * 0.1
       mouse.sy += (mouse.y - mouse.sy) * 0.1
@@ -332,14 +351,24 @@ function Waves({
     }
 
     const onMouseMove = (event) => {
+      if (!interactive) {
+        return
+      }
       updateMouse(event.clientX, event.clientY)
     }
 
     const onTouchMove = (event) => {
+      if (!interactive) {
+        return
+      }
       const touch = event.touches[0]
       if (touch) {
         updateMouse(touch.clientX, touch.clientY)
       }
+    }
+
+    const updateVisibility = () => {
+      isDocumentVisibleRef.current = !document.hidden
     }
 
     setSize()
@@ -349,22 +378,40 @@ function Waves({
     }
 
     const resizeObserver = new ResizeObserver(onResize)
+    const intersectionObserver =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(
+            ([entry]) => {
+              isVisibleRef.current = entry?.isIntersecting ?? true
+            },
+            {
+              threshold: 0.02,
+              rootMargin: '160px 0px',
+            },
+          )
+        : null
+
     resizeObserver.observe(container)
+    intersectionObserver?.observe(container)
     window.addEventListener('resize', onResize)
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('touchmove', onTouchMove, { passive: true })
+    document.addEventListener('visibilitychange', updateVisibility)
+    updateVisibility()
 
     return () => {
       resizeObserver.disconnect()
+      intersectionObserver?.disconnect()
       window.removeEventListener('resize', onResize)
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('touchmove', onTouchMove)
+      document.removeEventListener('visibilitychange', updateVisibility)
 
       if (frameIdRef.current) {
         window.cancelAnimationFrame(frameIdRef.current)
       }
     }
-  }, [paused])
+  }, [interactive, paused])
 
   return (
     <div

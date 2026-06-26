@@ -34,6 +34,8 @@ function LetterGlitch({
   centerVignette = false,
   outerVignette = true,
   smooth = true,
+  paused = false,
+  maxDpr = 1.25,
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789',
 }) {
   const canvasRef = useRef(null)
@@ -42,6 +44,9 @@ function LetterGlitch({
   const gridRef = useRef({ columns: 0, rows: 0 })
   const contextRef = useRef(null)
   const lastGlitchTimeRef = useRef(Date.now())
+  const isVisibleRef = useRef(true)
+  const isDocumentVisibleRef = useRef(true)
+  const lastFrameTimeRef = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -113,12 +118,13 @@ function LetterGlitch({
       const dpr = window.devicePixelRatio || 1
       const rect = parent.getBoundingClientRect()
 
-      canvas.width = rect.width * dpr
-      canvas.height = rect.height * dpr
+      const effectiveDpr = Math.min(dpr, maxDpr)
+      canvas.width = rect.width * effectiveDpr
+      canvas.height = rect.height * effectiveDpr
       canvas.style.width = `${rect.width}px`
       canvas.style.height = `${rect.height}px`
 
-      context.setTransform(dpr, 0, 0, dpr, 0, 0)
+      context.setTransform(effectiveDpr, 0, 0, effectiveDpr, 0, 0)
 
       const { columns, rows } = calculateGrid(rect.width, rect.height)
       initializeLetters(columns, rows)
@@ -184,7 +190,22 @@ function LetterGlitch({
     }
 
     const animate = () => {
+      const frameTime = performance.now()
       const now = Date.now()
+
+      if (paused || !isDocumentVisibleRef.current || !isVisibleRef.current) {
+        lastFrameTimeRef.current = frameTime
+        animationRef.current = window.requestAnimationFrame(animate)
+        return
+      }
+
+      const minFrameGap = smooth ? 34 : 48
+      if (frameTime - lastFrameTimeRef.current < minFrameGap) {
+        animationRef.current = window.requestAnimationFrame(animate)
+        return
+      }
+
+      lastFrameTimeRef.current = frameTime
 
       if (now - lastGlitchTimeRef.current >= glitchSpeed) {
         updateLetters()
@@ -202,21 +223,42 @@ function LetterGlitch({
     resizeCanvas()
     animate()
 
+    const updateVisibility = () => {
+      isDocumentVisibleRef.current = !document.hidden
+    }
+
     const resizeObserver = new ResizeObserver(() => {
       window.cancelAnimationFrame(animationRef.current)
       resizeCanvas()
       animate()
     })
+    const intersectionObserver =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(
+            ([entry]) => {
+              isVisibleRef.current = entry?.isIntersecting ?? true
+            },
+            {
+              threshold: 0.02,
+              rootMargin: '160px 0px',
+            },
+          )
+        : null
 
     if (canvas.parentElement) {
       resizeObserver.observe(canvas.parentElement)
+      intersectionObserver?.observe(canvas.parentElement)
     }
+    document.addEventListener('visibilitychange', updateVisibility)
+    updateVisibility()
 
     return () => {
       window.cancelAnimationFrame(animationRef.current)
       resizeObserver.disconnect()
+      intersectionObserver?.disconnect()
+      document.removeEventListener('visibilitychange', updateVisibility)
     }
-  }, [characters, glitchColors, glitchSpeed, smooth])
+  }, [characters, glitchColors, glitchSpeed, maxDpr, paused, smooth])
 
   return (
     <div

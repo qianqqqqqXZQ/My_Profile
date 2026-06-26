@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import Galaxy from '../components/Galaxy'
 import PageBanner from '../components/PageBanner'
@@ -5,25 +6,55 @@ import { heroHighlights, homeRouteCards, readyPageUnlockKey } from '../content/s
 
 function ReadyPage() {
   const hasUnlocked = typeof window !== 'undefined' && window.sessionStorage.getItem(readyPageUnlockKey) === 'true'
+  const routeRef = useRef(null)
+  const [isRouteVisible, setIsRouteVisible] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !hasUnlocked) {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsRouteVisible(entry?.isIntersecting ?? true)
+      },
+      {
+        threshold: 0.02,
+        rootMargin: '240px 0px',
+      },
+    )
+
+    if (routeRef.current) {
+      observer.observe(routeRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [hasUnlocked])
 
   if (!hasUnlocked) {
     return <Navigate to="/" replace />
   }
 
   return (
-    <div className="page-route page-ready">
+    <div ref={routeRef} className="page-route page-ready">
       <div className="page-ready-background" aria-hidden="true">
         <div className="page-ready-galaxy">
           <Galaxy
             mouseInteraction
             mouseRepulsion
-            density={1.2}
-            glowIntensity={0.55}
-            saturation={0.25}
+            paused={!isRouteVisible}
+            density={0.92}
+            glowIntensity={0.38}
+            saturation={0.2}
             hueShift={220}
-            twinkleIntensity={0.6}
-            rotationSpeed={0.08}
-            repulsionStrength={2.4}
+            twinkleIntensity={0.32}
+            rotationSpeed={0.05}
+            repulsionStrength={1.45}
+            speed={0.8}
+            starSpeed={0.38}
+            maxDpr={1.1}
           />
         </div>
         <div className="page-ready-scrim" />

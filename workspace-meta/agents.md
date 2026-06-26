@@ -202,6 +202,8 @@ $env:windir='C:\Windows'
 - The Contact hero uses a local `ContactGlobe` wrapper and a custom Three.js runtime in `generated-site/src/components/contactGlobeScene.js`
 - The Contact globe intentionally keeps only the visual core inspired by `ASouthernCat/amazing-globe`: earth surface, country outlines, glowing points, animated arcs, atmosphere, and stars
 - The Contact globe does not vendor the original demo's `tweakpane`, `stats`, `OrbitControls`, airplane routes, or full postprocessing chain
+- The Contact page has been simplified so the hero now renders only the globe background, a single large heading, and one supporting description line
+- The Contact page no longer renders hero CTA buttons, hero detail cards, or the lower contact CTA copy/buttons, but it still keeps the lower four-card contact grid
 - Contact globe assets are stored locally under `generated-site/public/contact-globe/` and currently include:
   - `globe.json`
   - `day.jpg`
@@ -214,3 +216,15 @@ $env:windir='C:\Windows'
 - Recent verified pass:
   - `npm run lint`
   - `npm run build`
+
+## Background Interaction And Performance Notes
+
+- The `/ready` route now treats the `Galaxy` canvas as the interactive layer itself instead of disabling pointer events on the whole background wrapper
+- `generated-site/src/App.css` keeps the `/ready` scrim and noise overlays non-interactive so cards and links remain clickable above the background
+- `generated-site/src/components/Galaxy.jsx` now supports `paused` and `maxDpr`, throttles idle frames, and stops rendering when the tab or route is not visible
+- `generated-site/src/components/Particles.jsx` now supports `paused` and `maxIdleFps`, and idles at a lower frame rate when the homepage pointer interaction is inactive
+- `generated-site/src/components/Waves.jsx` now pauses when hidden and throttles idle frames while preserving cursor-reactive motion when the profile hero is visible
+- `generated-site/src/components/LetterGlitch.jsx` now supports `paused` and `maxDpr`, and only runs at full cadence while the Experience hero is visible
+- `generated-site/src/pages/HomePage.jsx`, `generated-site/src/pages/ProfilePage.jsx`, `generated-site/src/pages/ExperiencePage.jsx`, and `generated-site/src/pages/ReadyPage.jsx` now each drive their heavy background widgets from hero/route visibility observers
+- The `/ready` galaxy was retuned to a lighter look and lower render cost by reducing density, glow, twinkle, repulsion, and DPR while keeping clear pointer-reactive motion
+- The global mute toggle now renders image assets from `generated-site/src/assets/audio-icons/` and switches between `music.png` and `mute.png` instead of text glyphs

@@ -46,45 +46,15 @@ function ContactPage() {
 
         <div className="section-shell contact-hero-shell">
           <div className="contact-hero-copy">
-            <p className="eyebrow">{contactHero.eyebrow}</p>
             <h1>{contactHero.title}</h1>
             <p className="page-lead">{contactHero.summary}</p>
-
-            <div className="page-hero-actions contact-hero-actions">
-              <a className="primary-button" href={contactHero.primaryAction.href}>
-                {contactHero.primaryAction.label}
-              </a>
-              <a className="secondary-button" href={contactHero.secondaryAction.href}>
-                {contactHero.secondaryAction.label}
-              </a>
-            </div>
-
-            <div className="contact-hero-details">
-              {contactHero.details.map((item) => (
-                <article key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                </article>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
       <section className="contact-section page-contact-section">
         <div className="section-shell contact-shell">
-          <p className="eyebrow">Final Contact</p>
-          <h2>Close with one clear action.</h2>
-          <p className="contact-summary">A direct route to email and social links.</p>
-          <div className="contact-actions">
-            <a className="primary-button" href="mailto:your.email@example.com">
-              your.email@example.com
-            </a>
-            <a className="secondary-button" href="https://github.com/">
-              GitHub
-            </a>
-          </div>
-
+          <h2 className="contact-section-title">My Contact Information</h2>
           <div className="contact-grid contact-grid--page">
             {contactLinks.map((item) => (
               <a key={item.label} className="contact-card" href={item.href}>
@@ -93,8 +63,6 @@ function ContactPage() {
               </a>
             ))}
           </div>
-
-          <p className="footer-note">React and Vite portfolio site.</p>
         </div>
       </section>
     </div>

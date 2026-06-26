@@ -98,10 +98,15 @@ export default function Particles({
   cameraDistance = 20,
   disableRotation = false,
   pixelRatio = 1,
+  paused = false,
+  maxIdleFps = 20,
   className = '',
 }) {
   const containerRef = useRef(null)
   const mouseRef = useRef({ x: 0, y: 0 })
+  const isVisibleRef = useRef(true)
+  const isDocumentVisibleRef = useRef(true)
+  const lastRenderTimeRef = useRef(0)
 
   useEffect(() => {
     const container = containerRef.current
@@ -175,6 +180,27 @@ export default function Particles({
       window.addEventListener('touchmove', handleTouchMove, { passive: true })
     }
 
+    const updateVisibility = () => {
+      isDocumentVisibleRef.current = !document.hidden
+    }
+
+    const intersectionObserver =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(
+            ([entry]) => {
+              isVisibleRef.current = entry?.isIntersecting ?? true
+            },
+            {
+              threshold: 0.02,
+              rootMargin: '160px 0px',
+            },
+          )
+        : null
+
+    intersectionObserver?.observe(container)
+    document.addEventListener('visibilitychange', updateVisibility)
+    updateVisibility()
+
     const count = particleCount
     const positions = new Float32Array(count * 3)
     const randoms = new Float32Array(count * 4)
@@ -229,6 +255,20 @@ export default function Particles({
 
     const update = (time) => {
       animationFrameId = requestAnimationFrame(update)
+
+      if (paused || !isDocumentVisibleRef.current || !isVisibleRef.current) {
+        lastRenderTimeRef.current = time
+        return
+      }
+
+      const pointerActive = moveParticlesOnHover && (Math.abs(mouseRef.current.x) > 0.01 || Math.abs(mouseRef.current.y) > 0.01)
+      const minFrameGap = pointerActive ? 16 : 1000 / Math.max(1, maxIdleFps)
+
+      if (time - lastRenderTimeRef.current < minFrameGap) {
+        return
+      }
+
+      lastRenderTimeRef.current = time
       const delta = time - lastTime
       lastTime = time
       elapsed += delta * speed
@@ -259,6 +299,8 @@ export default function Particles({
       if (resizeObserver) {
         resizeObserver.disconnect()
       }
+      intersectionObserver?.disconnect()
+      document.removeEventListener('visibilitychange', updateVisibility)
       if (moveParticlesOnHover) {
         window.removeEventListener('mousemove', handleMouseMove)
         window.removeEventListener('touchmove', handleTouchMove)
@@ -281,6 +323,8 @@ export default function Particles({
     cameraDistance,
     disableRotation,
     pixelRatio,
+    paused,
+    maxIdleFps,
   ])
 
   return <div ref={containerRef} className={`particles-container ${className}`.trim()} />

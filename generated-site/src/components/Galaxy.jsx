@@ -179,6 +179,8 @@ export default function Galaxy({
   rotationSpeed = 0.1,
   autoCenterRepulsion = 0,
   transparent = true,
+  paused = false,
+  maxDpr = 1.25,
   ...rest
 }) {
   const containerRef = useRef(null)
@@ -186,6 +188,9 @@ export default function Galaxy({
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 })
   const targetMouseActive = useRef(0.0)
   const smoothMouseActive = useRef(0.0)
+  const isVisibleRef = useRef(true)
+  const isDocumentVisibleRef = useRef(true)
+  const lastRenderTimeRef = useRef(0)
 
   useEffect(() => {
     const ctn = containerRef.current
@@ -197,7 +202,7 @@ export default function Galaxy({
     const renderer = new Renderer({
       alpha: transparent,
       premultipliedAlpha: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 1.6),
+      dpr: Math.min(window.devicePixelRatio || 1, maxDpr),
     })
     const gl = renderer.gl
 
@@ -260,15 +265,50 @@ export default function Galaxy({
     const mesh = new Mesh(gl, { geometry, program })
     let frameId
 
+    const updateVisibility = () => {
+      isDocumentVisibleRef.current = !document.hidden
+    }
+
+    const intersectionObserver =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(
+            ([entry]) => {
+              isVisibleRef.current = entry?.isIntersecting ?? true
+            },
+            {
+              threshold: 0.02,
+              rootMargin: '160px 0px',
+            },
+          )
+        : null
+
+    intersectionObserver?.observe(ctn)
+    document.addEventListener('visibilitychange', updateVisibility)
+    updateVisibility()
+
     const update = (time) => {
       frameId = requestAnimationFrame(update)
+
+      if (paused || !isDocumentVisibleRef.current || !isVisibleRef.current) {
+        lastRenderTimeRef.current = time
+        return
+      }
+
+      const pointerActive = smoothMouseActive.current > 0.02 || targetMouseActive.current > 0.02
+      const minFrameGap = pointerActive ? 16 : 34
+
+      if (time - lastRenderTimeRef.current < minFrameGap) {
+        return
+      }
+
+      lastRenderTimeRef.current = time
 
       if (!disableAnimation) {
         program.uniforms.uTime.value = time * 0.001
         program.uniforms.uStarSpeed.value = (time * 0.001 * starSpeed) / 10.0
       }
 
-      const lerpFactor = 0.05
+      const lerpFactor = pointerActive ? 0.1 : 0.045
       smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor
       smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor
       smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor
@@ -295,19 +335,37 @@ export default function Galaxy({
       targetMouseActive.current = 0.0
     }
 
+    const handleTouchMove = (event) => {
+      const touch = event.touches[0]
+
+      if (!touch) {
+        return
+      }
+
+      const rect = ctn.getBoundingClientRect()
+      const x = (touch.clientX - rect.left) / rect.width
+      const y = 1.0 - (touch.clientY - rect.top) / rect.height
+      targetMousePos.current = { x, y }
+      targetMouseActive.current = 1.0
+    }
+
     if (mouseInteraction) {
       ctn.addEventListener('mousemove', handleMouseMove)
       ctn.addEventListener('mouseleave', handleMouseLeave)
+      ctn.addEventListener('touchmove', handleTouchMove, { passive: true })
     }
 
     return () => {
       cancelAnimationFrame(frameId)
       window.removeEventListener('resize', resize)
       ro?.disconnect()
+      intersectionObserver?.disconnect()
+      document.removeEventListener('visibilitychange', updateVisibility)
 
       if (mouseInteraction) {
         ctn.removeEventListener('mousemove', handleMouseMove)
         ctn.removeEventListener('mouseleave', handleMouseLeave)
+        ctn.removeEventListener('touchmove', handleTouchMove)
       }
 
       if (gl.canvas.parentNode === ctn) {
@@ -333,6 +391,8 @@ export default function Galaxy({
     starSpeed,
     transparent,
     twinkleIntensity,
+    paused,
+    maxDpr,
   ])
 
   return <div ref={containerRef} className="galaxy-container" {...rest} />

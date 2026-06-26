@@ -44,10 +44,12 @@
 }
 
 .global-mute-icon {
-  font-size: 18px;
-  line-height: 1;
-  transform: translateY(-1px);
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
   user-select: none;
+  pointer-events: none;
 }
 
 .site-shell :is(header, section)[id] {
@@ -276,35 +278,43 @@
 }
 
 .contact-hero-copy h1 {
-  max-width: 12ch;
+  max-width: 16ch;
 }
 
 .contact-hero-copy .page-lead {
-  max-width: 680px;
+  max-width: 640px;
 }
 
-.contact-hero-actions {
+.contact-section {
+  position: relative;
+  min-height: 100svh;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  border-top: 1px solid var(--border-strong);
+  overflow: hidden;
+  isolation: isolate;
+  background: #050505;
 }
 
-.contact-hero-details {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 28px;
-  width: min(100%, 720px);
+.page-contact-section {
+  min-height: auto;
+  padding: 120px 0 132px;
+  border-top: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.72), rgba(5, 5, 5, 0.98)),
+    radial-gradient(circle at 50% 0%, rgba(125, 249, 255, 0.06), transparent 18%);
 }
 
-.contact-hero-details article {
-  padding: 18px 20px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.038);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.contact-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  padding: 96px 0;
+}
+
+.contact-section-title {
+  margin: 0 0 22px;
+  text-align: center;
 }
 
 .home-main {
@@ -900,7 +910,6 @@
   position: fixed;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
   overflow: hidden;
 }
 
@@ -913,14 +922,16 @@
 
 .page-ready-galaxy {
   z-index: 0;
+  pointer-events: auto;
 }
 
 .page-ready-scrim {
   z-index: 1;
   background:
-    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.08), transparent 22%),
-    radial-gradient(circle at 76% 28%, rgba(156, 182, 255, 0.1), transparent 24%),
-    linear-gradient(180deg, rgba(6, 7, 14, 0.36), rgba(5, 5, 9, 0.74) 60%, rgba(4, 4, 6, 0.96) 100%);
+    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.12), transparent 24%),
+    radial-gradient(circle at 76% 28%, rgba(156, 182, 255, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(6, 7, 14, 0.14), rgba(5, 6, 10, 0.44) 58%, rgba(4, 4, 6, 0.72) 100%);
+  pointer-events: none;
 }
 
 .page-ready-noise {
@@ -929,8 +940,9 @@
     linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
   background-size: 132px 132px;
-  opacity: 0.1;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 96%);
+  opacity: 0.055;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 96%);
+  pointer-events: none;
 }
 
 .page-route.page-ready {
@@ -1058,7 +1070,8 @@
 }
 
 .contact-grid--page {
-  margin-top: 28px;
+  margin-top: 0;
+  gap: 22px;
 }
 
 .contact-card {
@@ -1068,6 +1081,20 @@
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.03);
+}
+
+.page-contact-section .contact-card {
+  padding: 24px 28px;
+  border-radius: 26px;
+}
+
+.page-contact-section .contact-card span {
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.page-contact-section .contact-card strong {
+  font-size: 17px;
 }
 
 .card-header {
@@ -1228,43 +1255,6 @@
 
 .strength-index {
   margin-bottom: auto;
-}
-
-.contact-section {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  border-top: 1px solid var(--border-strong);
-  overflow: hidden;
-  isolation: isolate;
-  background: #050505;
-}
-
-.page-contact-section {
-  min-height: auto;
-  padding: 120px 0 132px;
-  border-top: 0;
-  background:
-    linear-gradient(180deg, rgba(5, 5, 5, 0.72), rgba(5, 5, 5, 0.98)),
-    radial-gradient(circle at 50% 0%, rgba(125, 249, 255, 0.06), transparent 18%);
-}
-
-.contact-shell {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 980px;
-  padding: 96px 0;
-}
-
-.contact-summary {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.contact-actions {
-  justify-content: center;
 }
 
 .footer-note {
@@ -1585,10 +1575,6 @@
 
   .contact-hero-copy h1 {
     max-width: 100%;
-  }
-
-  .contact-hero-details {
-    grid-template-columns: 1fr;
   }
 
   .contact-hero-scrim {

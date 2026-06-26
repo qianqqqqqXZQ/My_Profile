@@ -49,24 +49,8 @@ export const profileHighlights = [
 ]
 
 export const contactHero = {
-  eyebrow: 'Contact',
-  title: 'Reach across screens, time zones, and projects.',
-  summary:
-    'A contact page built like a final landing moment: one clear route to email, direct profile links, and a live globe framing where conversations can start.',
-  primaryAction: {
-    label: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
-  },
-  secondaryAction: {
-    label: 'GitHub',
-    href: 'https://github.com/',
-  },
-  details: [
-    { label: 'Primary route', value: 'Email first, profiles second' },
-    { label: 'Signal', value: 'Global, direct, minimal' },
-    { label: 'Region', value: 'Ningbo / China' },
-    { label: 'Status', value: 'Open for projects and research' },
-  ],
+  title: 'If You Want to Contact Me...',
+  summary: 'This page describes the contact information of the webpage owner.',
 }
 
 export const contactLinks = [

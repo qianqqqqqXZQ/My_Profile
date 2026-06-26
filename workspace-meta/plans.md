@@ -476,3 +476,29 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Ready / Background Performance And Interaction Retune
+- [x] Create a Git backup snapshot before the background performance retune
+- [x] Make the `/ready` galaxy layer pointer-reactive without blocking foreground content
+- [x] Reduce `/ready` galaxy render pressure and brighten the route scrim/noise treatment
+- [x] Add visibility-aware pause and idle throttling to the heavy animated background components
+- [x] Reduce startup pressure on Home `Particles`, Profile `Waves`, and Experience `LetterGlitch`
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Contact Hero Simplification
+- [x] Replace the Contact hero title with `If You Want to Contact Me...`
+- [x] Replace the Contact hero summary with `This page describes the contact information of the webpage owner.`
+- [x] Remove the Contact hero action buttons and detail cards
+- [x] Remove the extra lower Contact CTA copy and buttons while keeping the four-card contact grid
+- [x] Clean up Contact-only unused styles after the render-tree removal
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Global Mute Icon Asset Swap
+- [x] Replace the text-based mute button glyphs with `music.png` and `mute.png`
+- [x] Copy the icon assets into `generated-site/src/assets/audio-icons/`
+- [x] Re-run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
