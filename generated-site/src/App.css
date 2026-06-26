@@ -888,13 +888,54 @@
 }
 
 .page-ready {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
   background:
     radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.045), transparent 28%),
     linear-gradient(180deg, #0f0d12 0%, #09080c 66%, #050505 100%);
 }
 
-.page-ready .page-route {
-  padding-top: 116px;
+.page-ready-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-ready-galaxy,
+.page-ready-scrim,
+.page-ready-noise {
+  position: absolute;
+  inset: 0;
+}
+
+.page-ready-galaxy {
+  z-index: 0;
+}
+
+.page-ready-scrim {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.08), transparent 22%),
+    radial-gradient(circle at 76% 28%, rgba(156, 182, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(6, 7, 14, 0.36), rgba(5, 5, 9, 0.74) 60%, rgba(4, 4, 6, 0.96) 100%);
+}
+
+.page-ready-noise {
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 132px 132px;
+  opacity: 0.1;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 96%);
+}
+
+.page-route.page-ready {
+  position: relative;
+  z-index: 1;
 }
 
 .page-ready .content-section:first-of-type {
@@ -903,6 +944,12 @@
 
 .ready-route-footer {
   padding-bottom: 140px;
+}
+
+.page-ready .page-banner,
+.page-ready .ready-route-footer {
+  position: relative;
+  z-index: 1;
 }
 
 .content-section::before {
@@ -1305,6 +1352,10 @@
   }
 
   .page-home-background {
+    position: absolute;
+  }
+
+  .page-ready-background {
     position: absolute;
   }
 

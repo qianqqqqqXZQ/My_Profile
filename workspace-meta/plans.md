@@ -404,6 +404,16 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Ready Page Galaxy Background
+
+- [x] Create a Git backup snapshot before the ready-page background change
+- [x] Add a local React Bits `Galaxy` component under `generated-site/src/components/`
+- [x] Mount the galaxy as a fixed route-level background on `/ready`
+- [x] Add scrim and noise layers so the banner and cards remain readable
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Global Mute Button
 
 - [x] Fix the BGM control flow so manual mute is not undone by route changes

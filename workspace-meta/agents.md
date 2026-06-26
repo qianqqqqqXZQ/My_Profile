@@ -92,6 +92,7 @@ This repository is used to build a personal resume website. The active site live
 - The homepage now stops at the hero only; the lower overview/timeline/card content was moved onto a separate `/ready` page
 - The homepage now exposes a single white boxed CTA, `Sure, I'm ready !`, which writes a session flag and unlocks the `/ready` route
 - The `/ready` route redirects back to `/` if opened without the session unlock flag, so the new continuation page is only reachable through the homepage CTA
+- The `/ready` page now uses a local React Bits-style `Galaxy` canvas background with a fixed route-level layer, a dark scrim, and a fine noise overlay so the continuation content stays legible
 - The homepage now hides the entire top header only on `/`, while the shared navigation remains intact on every other route and `Home` still links back to `/`
 - The site now includes a root-level `BackgroundAudioManager` mounted outside the route tree so background music survives route transitions
 - Route-level BGM is split into two groups:

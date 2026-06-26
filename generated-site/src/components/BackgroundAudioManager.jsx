@@ -87,7 +87,9 @@ export function BackgroundAudioProvider({ children }) {
           if (audio) {
             audio.muted = nextMuted
 
-            if (!nextMuted && audio.src && audio.paused) {
+            if (nextMuted) {
+              audio.pause()
+            } else if (audio.src && audio.paused) {
               void playCurrentTrack(audio).then((didPlay) => {
                 setHasAutoplayBlock(!didPlay)
               })

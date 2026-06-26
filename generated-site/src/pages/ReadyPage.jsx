@@ -1,4 +1,5 @@
 import { Navigate, Link } from 'react-router-dom'
+import Galaxy from '../components/Galaxy'
 import PageBanner from '../components/PageBanner'
 import { heroHighlights, homeRouteCards, readyPageUnlockKey } from '../content/siteContent'
 
@@ -11,6 +12,24 @@ function ReadyPage() {
 
   return (
     <div className="page-route page-ready">
+      <div className="page-ready-background" aria-hidden="true">
+        <div className="page-ready-galaxy">
+          <Galaxy
+            mouseInteraction
+            mouseRepulsion
+            density={1.2}
+            glowIntensity={0.55}
+            saturation={0.25}
+            hueShift={220}
+            twinkleIntensity={0.6}
+            rotationSpeed={0.08}
+            repulsionStrength={2.4}
+          />
+        </div>
+        <div className="page-ready-scrim" />
+        <div className="page-ready-noise" />
+      </div>
+
       <PageBanner
         eyebrow="Ready"
         title="The next page"
