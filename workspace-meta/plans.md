@@ -392,4 +392,32 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Experience LetterGlitch Background
 
+- [x] Create a Git backup commit before the Experience background update
+- [x] Add a local `LetterGlitch` component under `generated-site/src/components/`
+- [x] Replace the Experience page background with the supplied `LetterGlitch` effect
+- [x] Add a dark scrim and light grid-noise overlay so the cards stay readable
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Experience TextType + Home Header Removal
+
+- [x] Add a local `TextType` component under `generated-site/src/components/`
+- [x] Replace the Experience banner headline with the requested two-line typing sequence
+- [x] Hide the homepage top header only while keeping other route headers unchanged
+- [x] Rebalance the homepage top spacing after removing the home header
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Experience 首页感重排
+
+- [x] Replace the banner-style Experience intro with a centered first-screen hero
+- [x] Update the first typing block to the requested three-line text
+- [x] Reserve fixed intro height so typing does not push lower sections downward
+- [x] Move the timeline and project sections farther below the intro hero
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

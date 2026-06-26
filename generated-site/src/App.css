@@ -64,6 +64,95 @@
   z-index: 1;
 }
 
+.page-home .hero-content {
+  padding-top: 104px;
+}
+
+.page-experience {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.page-experience-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-experience-glitch,
+.page-experience-scrim,
+.page-experience-noise {
+  position: absolute;
+  inset: 0;
+}
+
+.page-experience-glitch {
+  z-index: 0;
+}
+
+.page-experience-scrim {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.06), transparent 26%),
+    radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.04), transparent 24%),
+    linear-gradient(180deg, rgba(6, 8, 6, 0.42), rgba(5, 5, 5, 0.76) 58%, rgba(4, 4, 4, 0.94) 100%);
+}
+
+.page-experience-noise {
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 128px 128px;
+  opacity: 0.12;
+}
+
+.page-experience-content {
+  position: relative;
+  z-index: 1;
+}
+
+.experience-hero {
+  position: relative;
+  min-height: calc(100svh - 116px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0 96px;
+}
+
+.experience-hero-shell {
+  display: grid;
+  place-items: center;
+  min-height: inherit;
+}
+
+.experience-hero-copy {
+  width: min(100%, 980px);
+  min-height: clamp(280px, 34vw, 430px);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.experience-hero-copy .eyebrow {
+  margin-bottom: 26px;
+}
+
+.experience-hero-title {
+  width: min(100%, 920px);
+  margin-top: 0;
+  display: grid;
+  place-items: center;
+}
+
+.page-experience .content-section:first-of-type {
+  padding-top: 180px;
+}
+
 .home-main {
   position: relative;
 }
@@ -402,6 +491,20 @@
   min-height: calc(100svh - 48px);
   padding-top: 156px;
   padding-bottom: 140px;
+}
+
+.experience-title-type {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: clamp(250px, 31vw, 380px);
+  width: min(100%, 920px);
+  max-width: 100%;
+  text-align: center;
+  white-space: pre-wrap;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 .hero-copy {
@@ -1074,6 +1177,10 @@
     padding-bottom: 92px;
   }
 
+  .page-home .hero-content {
+    padding-top: 128px;
+  }
+
   .hero-widget-panel {
     max-width: 520px;
     margin-top: 0;
@@ -1115,6 +1222,19 @@
   .strength-card,
   .dance-preview {
     min-height: 280px;
+  }
+
+  .experience-hero {
+    min-height: calc(100svh - 132px);
+    padding: 24px 0 72px;
+  }
+
+  .experience-hero-copy {
+    min-height: clamp(240px, 44vw, 360px);
+  }
+
+  .page-experience .content-section:first-of-type {
+    padding-top: 132px;
   }
 }
 
@@ -1172,6 +1292,10 @@
     padding-bottom: 104px;
   }
 
+  .page-home .hero-content {
+    padding-top: 150px;
+  }
+
   .page-home .content-section {
     padding: 92px 0;
   }
@@ -1193,5 +1317,27 @@
 
   .hero-signature-section {
     padding: 0 0 8px;
+  }
+
+  .experience-hero {
+    min-height: calc(100svh - 152px);
+    padding: 18px 0 56px;
+  }
+
+  .experience-hero-copy {
+    min-height: 220px;
+  }
+
+  .experience-hero-copy .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .experience-title-type {
+    min-height: 220px;
+    width: min(100%, 92vw);
+  }
+
+  .page-experience .content-section:first-of-type {
+    padding-top: 108px;
   }
 }

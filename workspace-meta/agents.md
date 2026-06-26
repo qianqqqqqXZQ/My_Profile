@@ -14,6 +14,7 @@ This repository is used to build a personal resume website. The active site live
 - `generated-site/src/components/Ferrofluid.css`: absolute-positioned hero background container
 - `generated-site/src/components/Waves.jsx`: canvas-based line-wave renderer used in the contact section
 - `generated-site/src/components/Waves.css`: absolute-positioned background styles for the `Waves` component
+- `generated-site/src/components/LetterGlitch.jsx`: canvas-based scrambling letter background used on the Experience page
 - `img/`: user-provided image assets, currently including `Ziqian.jpg`
 - `workspace-meta/`: working documents such as `plans.md` and `agents.md`
 - `CV.html`: standalone static resume file in the repo root, separate from the React site
@@ -87,9 +88,14 @@ This repository is used to build a personal resume website. The active site live
 - The homepage hero title now uses a local `SplitText` component backed by `gsap` and `@gsap/react` so the large greeting animates by character on entry
 - The homepage hero title was later split into separate animated lines so it keeps the original visual scale and avoids bottom clipping while preserving the same greeting text
 - The homepage title can be nudged vertically via `split-home-title` without affecting the right-side photo lens column
+- The Experience page now uses a local React Bits-style `LetterGlitch` canvas background mounted as a fixed route-level layer, with a dark scrim and subtle grid-noise overlay to preserve timeline and card readability
 - The homepage now stops at the hero only; the lower overview/timeline/card content was moved onto a separate `/ready` page
 - The homepage now exposes a single white boxed CTA, `Sure, I'm ready !`, which writes a session flag and unlocks the `/ready` route
 - The `/ready` route redirects back to `/` if opened without the session unlock flag, so the new continuation page is only reachable through the homepage CTA
+- The homepage now hides the entire top header only on `/`, while the shared navigation remains intact on every other route and `Home` still links back to `/`
+- The Experience page headline now uses a local React Bits-style `TextType` typing animation with the exact two requested sentences, looping cleanly through both lines
+- The Experience route now uses a standalone first-screen composition: a centered intro typing hero, reserved height to prevent layout shift while text types, and lower sections intentionally pushed farther down the page
+- The current Experience hero copy loops between `Hello World! / I love coding...` and `Here is my / Research, Project and Working / experience...`, preserving explicit line breaks in both states
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
 - The main nav remains `Home`, `Profile`, `Experience`, `Dance Videos`, plus the standalone `Contact` button; the homepage split only changed the homepage lower content entry
