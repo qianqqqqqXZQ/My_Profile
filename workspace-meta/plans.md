@@ -543,3 +543,12 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Ready Hero Simplification
+- [x] Create a Git backup commit before simplifying the `/ready` hero
+- [x] Remove the `/ready` page banner, overview panel, and navigation card sections
+- [x] Keep the galaxy background, unlock guard, and visibility-aware pause behavior
+- [x] Replace the foreground content with only a top-left `READY` label while preserving a full-screen hero feel
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

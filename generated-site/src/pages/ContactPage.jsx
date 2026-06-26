@@ -57,7 +57,7 @@ function ContactPage() {
         <div className="page-contact-radar" aria-hidden="true">
           <Radar
             speed={0.28}
-            scale={0.45}
+            scale={0.55}
             ringCount={12}
             spokeCount={14}
             ringThickness={0.055}
