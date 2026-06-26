@@ -584,3 +584,11 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md` if needed
+
+## 2026-06-26 Contact Globe Relight Retune
+- [x] Create a Git backup snapshot before reworking the Contact globe visuals
+- [x] Retune the Contact globe lighting, atmosphere, and night-emissive balance toward the premium lit version
+- [x] Soften the Contact hero scrim so the globe remains visibly luminous
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`

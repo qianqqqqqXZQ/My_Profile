@@ -233,23 +233,27 @@
 
 .contact-globe-canvas {
   z-index: 1;
+  transform: scale(1.03);
+  filter: saturate(1.1) contrast(1.04);
 }
 
 .contact-hero-orbit {
   z-index: 0;
   background:
-    radial-gradient(circle at 70% 48%, rgba(125, 249, 255, 0.12), transparent 18%),
-    radial-gradient(circle at 28% 20%, rgba(233, 255, 117, 0.08), transparent 20%),
-    radial-gradient(circle at 60% 78%, rgba(124, 247, 201, 0.08), transparent 18%);
-  filter: blur(24px);
+    radial-gradient(circle at 68% 46%, rgba(125, 249, 255, 0.22), transparent 18%),
+    radial-gradient(circle at 74% 58%, rgba(97, 122, 255, 0.16), transparent 20%),
+    radial-gradient(circle at 28% 20%, rgba(233, 255, 117, 0.1), transparent 20%),
+    radial-gradient(circle at 60% 78%, rgba(124, 247, 201, 0.1), transparent 18%);
+  filter: blur(32px);
 }
 
 .contact-hero-scrim {
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(4, 6, 10, 0.94) 0%, rgba(5, 8, 12, 0.86) 34%, rgba(7, 10, 15, 0.24) 62%, rgba(7, 10, 15, 0.62) 100%),
-    radial-gradient(circle at 72% 48%, rgba(125, 249, 255, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(6, 8, 12, 0.18), rgba(3, 5, 8, 0.78) 82%, rgba(5, 5, 5, 0.96) 100%);
+    linear-gradient(90deg, rgba(4, 6, 10, 0.94) 0%, rgba(5, 8, 12, 0.8) 32%, rgba(7, 10, 15, 0.12) 62%, rgba(7, 10, 15, 0.5) 100%),
+    radial-gradient(circle at 70% 46%, rgba(125, 249, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 76% 56%, rgba(93, 111, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(6, 8, 12, 0.12), rgba(3, 5, 8, 0.72) 82%, rgba(5, 5, 5, 0.96) 100%);
   pointer-events: none;
 }
 
@@ -1876,12 +1880,14 @@
 
   .contact-hero-scrim {
     background:
-      linear-gradient(180deg, rgba(5, 8, 12, 0.86), rgba(6, 9, 14, 0.72) 46%, rgba(5, 5, 5, 0.96) 100%),
-      radial-gradient(circle at 50% 26%, rgba(125, 249, 255, 0.08), transparent 28%);
+      linear-gradient(180deg, rgba(5, 8, 12, 0.82), rgba(6, 9, 14, 0.62) 46%, rgba(5, 5, 5, 0.96) 100%),
+      radial-gradient(circle at 50% 26%, rgba(125, 249, 255, 0.1), transparent 28%),
+      radial-gradient(circle at 58% 34%, rgba(93, 111, 255, 0.1), transparent 22%);
   }
 
   .contact-globe-canvas {
-    opacity: 0.9;
+    opacity: 0.96;
+    transform: scale(1.06);
   }
 
   .page-contact-section {

@@ -218,6 +218,7 @@ $env:windir='C:\Windows'
   - `dot.png`
 - The Contact hero animation is paused when its hero leaves the viewport and the Three.js scene is explicitly destroyed on component unmount
 - The Contact globe Earth material now uses a lit shader setup with day texture, night lights texture, and specular/cloud texture instead of the earlier single-texture `MeshPhongMaterial`
+- The Contact globe was later re-retuned after nearby page-style changes visually flattened it: the current scene now pushes stronger night-light emission, brighter rim atmosphere, an extra cool fill light, and a lighter hero scrim so the Earth keeps the more premium illuminated look
 - Recent verified pass:
   - `npm run lint`
   - `npm run build`

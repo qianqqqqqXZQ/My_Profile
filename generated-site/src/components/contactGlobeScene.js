@@ -57,6 +57,9 @@ const earthFragmentShader = /* glsl */ `
   uniform vec3 uSunDirection;
   uniform vec3 uAtmosphereDayColor;
   uniform vec3 uAtmosphereTwilightColor;
+  uniform float uNightBoost;
+  uniform float uAtmosphereStrength;
+  uniform float uSpecularStrength;
 
   varying vec2 vUv;
   varying vec3 vertexNormal;
@@ -66,27 +69,30 @@ const earthFragmentShader = /* glsl */ `
     vec3 viewDirection = normalize(vPosition - cameraPosition);
     vec3 normal = normalize(vertexNormal);
     float sunOrientation = dot(uSunDirection, normal);
-    float dayMix = smoothstep(-0.25, 0.5, sunOrientation);
+    float dayMix = smoothstep(-0.18, 0.42, sunOrientation);
     vec3 dayColor = texture2D(uDayTexture, vUv).rgb;
     vec3 nightColor = texture2D(uNightTexture, vUv).rgb;
+    nightColor *= uNightBoost;
     vec3 color = mix(nightColor, dayColor, dayMix);
 
     vec2 specularCloudsColor = texture2D(uSpecularCloudsTexture, vUv).rg;
-    float cloudsMix = smoothstep(0.5, 1.0, specularCloudsColor.g) * dayMix;
-    color = mix(color, vec3(1.0), cloudsMix);
+    float cloudsMix = smoothstep(0.42, 0.98, specularCloudsColor.g) * dayMix;
+    color = mix(color, vec3(1.0), cloudsMix * 0.82);
 
     float fresnel = dot(viewDirection, normal) + 1.0;
     fresnel = pow(fresnel, 2.0);
+    float rimGlow = pow(fresnel, 2.6);
 
     float atmosphereDayMix = smoothstep(-0.5, 1.0, sunOrientation);
     vec3 atmosphereColor = mix(uAtmosphereTwilightColor, uAtmosphereDayColor, atmosphereDayMix);
-    color = mix(color, atmosphereColor, fresnel * atmosphereDayMix);
+    color = mix(color, atmosphereColor, fresnel * atmosphereDayMix * uAtmosphereStrength);
+    color += atmosphereColor * rimGlow * 0.18 * uAtmosphereStrength;
 
     vec3 reflectionDirection = reflect(-uSunDirection, normal);
     float specular = -dot(reflectionDirection, viewDirection);
     specular = max(specular, 0.0);
     specular = pow(specular, 32.0);
-    specular *= specularCloudsColor.r;
+    specular *= specularCloudsColor.r * uSpecularStrength;
 
     vec3 specularColor = mix(vec3(1.0), atmosphereColor, fresnel);
     color += specular * specularColor;
@@ -292,10 +298,10 @@ const updateArcTrail = (arcObject, elapsedMs) => {
 export function createContactGlobeScene({ container, paused = false }) {
   const scene = new THREE.Scene()
   scene.background = null
-  scene.fog = new THREE.FogExp2('#030507', 0.0018)
+  scene.fog = new THREE.FogExp2('#02040a', 0.00125)
 
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 2000)
-  camera.position.set(0, 70, 290)
+  camera.position.set(0, 62, 278)
 
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
@@ -310,12 +316,14 @@ export function createContactGlobeScene({ container, paused = false }) {
   renderer.domElement.style.display = 'block'
   container.appendChild(renderer.domElement)
 
-  const ambientLight = new THREE.AmbientLight('#dce3ff', 1.4)
-  const keyLight = new THREE.DirectionalLight('#89d7ff', 3.8)
-  keyLight.position.set(-180, 120, 140)
-  const rimLight = new THREE.DirectionalLight('#b4fff1', 1.2)
-  rimLight.position.set(160, -80, -100)
-  scene.add(ambientLight, keyLight, rimLight)
+  const ambientLight = new THREE.AmbientLight('#d6ddff', 1.7)
+  const keyLight = new THREE.DirectionalLight('#7fd7ff', 4.6)
+  keyLight.position.set(-210, 145, 180)
+  const rimLight = new THREE.DirectionalLight('#9fffe6', 1.8)
+  rimLight.position.set(190, -40, -135)
+  const fillLight = new THREE.PointLight('#4e6dff', 1.4, 900, 2)
+  fillLight.position.set(0, 120, 230)
+  scene.add(ambientLight, keyLight, rimLight, fillLight)
 
   const globeRoot = new THREE.Group()
   globeRoot.rotation.x = THREE.MathUtils.degToRad(13)
@@ -334,7 +342,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   earthSpecularTexture.wrapT = THREE.ClampToEdgeWrapping
   earthSpecularTexture.needsUpdate = true
 
-  const sunDirection = new THREE.Vector3(-1, 0.55, 0.78).normalize()
+  const sunDirection = new THREE.Vector3(-1.1, 0.42, 0.95).normalize()
 
   const earth = new THREE.Mesh(
     new THREE.SphereGeometry(GLOBE_RADIUS, 96, 96),
@@ -344,8 +352,11 @@ export function createContactGlobeScene({ container, paused = false }) {
         uNightTexture: { value: earthNightTexture },
         uSpecularCloudsTexture: { value: earthSpecularTexture },
         uSunDirection: { value: sunDirection },
-        uAtmosphereDayColor: { value: new THREE.Color('#7bddff') },
-        uAtmosphereTwilightColor: { value: new THREE.Color('#3b4d8f') },
+        uAtmosphereDayColor: { value: new THREE.Color('#8be7ff') },
+        uAtmosphereTwilightColor: { value: new THREE.Color('#4b59c7') },
+        uNightBoost: { value: 1.48 },
+        uAtmosphereStrength: { value: 1.2 },
+        uSpecularStrength: { value: 1.18 },
       },
       vertexShader: earthVertexShader,
       fragmentShader: earthFragmentShader,
@@ -362,8 +373,8 @@ export function createContactGlobeScene({ container, paused = false }) {
       fragmentShader: atmosphereFragmentShader,
       uniforms: {
         uSunDirection: { value: sunDirection },
-        uAtmosphereDayColor: { value: new THREE.Color('#80dfff') },
-        uAtmosphereTwilightColor: { value: new THREE.Color('#5360d3') },
+        uAtmosphereDayColor: { value: new THREE.Color('#7ee5ff') },
+        uAtmosphereTwilightColor: { value: new THREE.Color('#6873ff') },
       },
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide,
@@ -386,7 +397,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   globeRoot.add(arcsGroup)
 
   const starGeometry = new THREE.BufferGeometry()
-  const starCount = 240
+  const starCount = 320
   const starPositions = new Float32Array(starCount * 3)
   for (let index = 0; index < starCount; index += 1) {
     const radius = 360 + Math.random() * 200
@@ -401,9 +412,9 @@ export function createContactGlobeScene({ container, paused = false }) {
     starGeometry,
     new THREE.PointsMaterial({
       color: '#d4e8ff',
-      size: 1.4,
+      size: 1.7,
       transparent: true,
-      opacity: 0.38,
+      opacity: 0.52,
       depthWrite: false,
     }),
   )
@@ -463,9 +474,9 @@ export function createContactGlobeScene({ container, paused = false }) {
     const delta = clock.getDelta()
     const elapsedMs = clock.elapsedTime * 1000
 
-    globeRoot.rotation.y += delta * 0.12
-    countriesGroup.rotation.y += delta * 0.02
-    stars.rotation.y -= delta * 0.01
+    globeRoot.rotation.y += delta * 0.135
+    countriesGroup.rotation.y += delta * 0.024
+    stars.rotation.y -= delta * 0.012
 
     for (const child of pointGroup.children) {
       if (child.isMesh && child.userData.originScale) {
