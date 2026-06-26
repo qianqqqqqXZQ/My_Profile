@@ -83,6 +83,9 @@ This repository is used to build a personal resume website. The active site live
 - The homepage hero scrim and noise overlays were softened so the lower part of the first screen does not collapse into a hard black block behind the text area
 - The homepage particle background is now mounted as a homepage-level fixed layer so the hero and the sections below it share one continuous visual field instead of a hard black lower block
 - The homepage hero eyebrow now reads `This is a personal webpage.` and the supporting hero summary now reads `You're ready to go?` with a slightly lower placement
+- The homepage hero title now uses a local `SplitText` component backed by `gsap` and `@gsap/react` so the large greeting animates by character on entry
+- The homepage hero title was later split into separate animated lines so it keeps the original visual scale and avoids bottom clipping while preserving the same greeting text
+- The homepage title can be nudged vertically via `split-home-title` without affecting the right-side photo lens column
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
 - The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button

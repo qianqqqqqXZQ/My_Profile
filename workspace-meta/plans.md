@@ -277,6 +277,42 @@
 - [x] Run `npm run lint`
 - [x] Perform a quick self-review
 
+## 2026-06-26 Home Hero SplitText Animation
+
+- [x] Install `gsap` and `@gsap/react`
+- [x] Add a local `SplitText` component under `generated-site/src/components/`
+- [x] Replace the homepage `h1` with the new animated SplitText heading
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a quick self-review
+
+## 2026-06-26 Home Hero SplitText Layout Fix
+
+- [x] Restore the homepage title to the original visual scale
+- [x] Remove the bottom clipping on the animated headline
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a quick self-review
+
+## 2026-06-26 Home Hero Title Enlargement
+
+- [x] Increase the homepage animated title size substantially
+- [x] Add a mobile-specific size cap so the headline still fits
+- [x] Run `npm run lint`
+- [x] Perform a quick self-review
+
+## 2026-06-26 Home Hero Title Vertical Nudge
+
+- [x] Move the homepage animated title slightly upward
+- [x] Run `npm run lint`
+- [x] Perform a quick self-review
+
+## 2026-06-26 Home Hero Title Fine Nudge
+
+- [x] Move only the homepage title a little higher without shifting the hero visual column
+- [x] Run `npm run lint`
+- [x] Perform a quick self-review
+
 - [x] Remove the blank black top gap above the Profile page hero background
 - [x] Run `npm run lint`
 - [x] Run `npm run build`

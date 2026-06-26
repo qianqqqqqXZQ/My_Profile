@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { heroHighlights, homeRouteCards } from '../content/siteContent'
+import SplitText from '../components/SplitText'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
@@ -118,16 +119,77 @@ function HomePage() {
           <div className="hero-content section-shell">
             <div className="hero-copy">
               <p className="eyebrow">This is a personal webpage.</p>
-              <h1>
-                Hello!
-                <br />
-                Welcome to
-                <br />
-                My Space...
-                <br />
-                I&apos;m
-                <br />
-                Ziqian Xiong :)
+              <h1 className="split-home-title" aria-label="Hello! Welcome to My Space... I'm Ziqian Xiong :)">
+                <SplitText
+                  tag="span"
+                  text="Hello!"
+                  className="split-home-line"
+                  delay={50}
+                  duration={0.7}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 42 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
+                <SplitText
+                  tag="span"
+                  text="Welcome to"
+                  className="split-home-line"
+                  delay={110}
+                  duration={0.7}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 42 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
+                <SplitText
+                  tag="span"
+                  text="My Space..."
+                  className="split-home-line"
+                  delay={170}
+                  duration={0.7}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 42 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
+                <SplitText
+                  tag="span"
+                  text="I'm"
+                  className="split-home-line"
+                  delay={230}
+                  duration={0.7}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 42 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
+                <SplitText
+                  tag="span"
+                  text="Ziqian Xiong :)"
+                  className="split-home-line"
+                  delay={290}
+                  duration={0.7}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 42 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
               </h1>
               <p className="hero-summary hero-summary-home">You&apos;re ready to go?</p>
 
