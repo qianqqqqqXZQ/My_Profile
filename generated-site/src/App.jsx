@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import BackgroundAudioManager from './components/BackgroundAudioManager'
+import { BackgroundAudioProvider } from './components/BackgroundAudioManager'
+import MuteToggleButton from './components/MuteToggleButton'
 import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
 import ContactPage from './pages/ContactPage'
@@ -12,8 +13,8 @@ import ReadyPage from './pages/ReadyPage'
 
 function App() {
   return (
-    <>
-      <BackgroundAudioManager />
+    <BackgroundAudioProvider>
+      <MuteToggleButton />
       <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>
@@ -26,7 +27,7 @@ function App() {
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </BackgroundAudioProvider>
   )
 }
 

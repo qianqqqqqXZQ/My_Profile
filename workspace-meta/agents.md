@@ -99,6 +99,8 @@ This repository is used to build a personal resume website. The active site live
   - `/profile`, `/experience`, `/dance`, and `/contact` use `generated-site/public/bgm/bgm2.mp3`
 - Same-group route changes keep the current track and playback position uninterrupted; only cross-group navigation switches tracks and restarts from the beginning
 - If the browser blocks autoplay on first load, the audio manager retries playback after the first pointer, touch, or keyboard interaction
+- A small global mute toggle now sits in the top-left corner on every route and uses the shared root audio state
+- Manual mute is represented with `audio.muted`, not by destroying the player, so the current track position is preserved when unmuted
 - The Experience page headline now uses a local React Bits-style `TextType` typing animation with the exact two requested sentences, looping cleanly through both lines
 - The Experience route now uses a standalone first-screen composition: a centered intro typing hero, reserved height to prevent layout shift while text types, and lower sections intentionally pushed farther down the page
 - The current Experience hero copy loops between `Hello World! / I love coding...` and `Here is my / Research, Project and Working / experience...`, preserving explicit line breaks in both states
@@ -173,6 +175,7 @@ Grouped BGM verification:
 / or /ready -> any other route switches to bgm2 from the start
 any non-home route -> another non-home route keeps bgm2 continuous
 any non-home route -> / or /ready switches back to bgm1 from the start
+mute button toggles global audio muting without losing the current track position
 ```
 
 If PowerShell has trouble spawning `npm`, set:

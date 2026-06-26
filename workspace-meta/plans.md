@@ -404,6 +404,16 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Global Mute Button
+
+- [x] Fix the BGM control flow so manual mute is not undone by route changes
+- [x] Add a small global mute toggle in the top-left corner on every route
+- [x] Keep the audio state shared across the root provider and the button UI
+- [x] Keep the button visually minimal and accessible
+- [x] Re-run `npm run lint`
+- [x] Re-run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Experience LetterGlitch Background
 
 - [x] Create a Git backup commit before the Experience background update

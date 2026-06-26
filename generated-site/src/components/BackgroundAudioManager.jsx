@@ -1,118 +1,27 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import {
+  BackgroundAudioContext,
+  audioSources,
+  decrementAudioMount,
+  ensureAudio,
+  getActiveGroup,
+  getRouteGroup,
+  incrementAudioMount,
+  playCurrentTrack,
+  setActiveGroup,
+} from './backgroundAudioStore'
 
-const audioSources = {
-  groupA: '/bgm/bgm1.mp3',
-  groupB: '/bgm/bgm2.mp3',
-}
-
-const interactionEvents = ['pointerdown', 'keydown', 'touchstart']
-
-let sharedAudio = null
-let activeGroup = null
-let interactionCleanup = null
-let mountCount = 0
-let destroyTimer = null
-
-function getRouteGroup(pathname) {
-  return pathname === '/' || pathname === '/ready' ? 'groupA' : 'groupB'
-}
-
-function ensureAudio() {
-  if (typeof window === 'undefined') {
-    return null
-  }
-
-  if (!sharedAudio) {
-    sharedAudio = new Audio()
-    sharedAudio.loop = true
-    sharedAudio.preload = 'auto'
-  }
-
-  return sharedAudio
-}
-
-function clearInteractionRecovery() {
-  if (interactionCleanup) {
-    interactionCleanup()
-    interactionCleanup = null
-  }
-}
-
-function destroyAudio() {
-  clearInteractionRecovery()
-
-  if (sharedAudio) {
-    sharedAudio.pause()
-    sharedAudio.removeAttribute('src')
-    sharedAudio.load()
-  }
-
-  sharedAudio = null
-  activeGroup = null
-}
-
-function registerInteractionRecovery(audio) {
-  if (typeof window === 'undefined') {
-    return
-  }
-
-  clearInteractionRecovery()
-
-  const resumePlayback = () => {
-    audio
-      .play()
-      .then(() => {
-        clearInteractionRecovery()
-      })
-      .catch(() => {})
-  }
-
-  interactionEvents.forEach((eventName) => {
-    window.addEventListener(eventName, resumePlayback, { passive: true })
-  })
-
-  interactionCleanup = () => {
-    interactionEvents.forEach((eventName) => {
-      window.removeEventListener(eventName, resumePlayback)
-    })
-  }
-}
-
-function playCurrentTrack(audio) {
-  audio
-    .play()
-    .then(() => {
-      clearInteractionRecovery()
-    })
-    .catch(() => {
-      registerInteractionRecovery(audio)
-    })
-}
-
-function BackgroundAudioManager() {
+export function BackgroundAudioProvider({ children }) {
   const location = useLocation()
+  const [isMuted, setIsMuted] = useState(false)
+  const [hasAutoplayBlock, setHasAutoplayBlock] = useState(false)
 
   useEffect(() => {
-    mountCount += 1
-
-    if (destroyTimer) {
-      window.clearTimeout(destroyTimer)
-      destroyTimer = null
-    }
+    incrementAudioMount()
 
     return () => {
-      mountCount = Math.max(0, mountCount - 1)
-      clearInteractionRecovery()
-
-      if (mountCount === 0 && typeof window !== 'undefined') {
-        destroyTimer = window.setTimeout(() => {
-          if (mountCount === 0) {
-            destroyAudio()
-          }
-          destroyTimer = null
-        }, 0)
-      }
+      decrementAudioMount()
     }
   }, [])
 
@@ -123,33 +32,76 @@ function BackgroundAudioManager() {
       return undefined
     }
 
+    audio.muted = isMuted
+
     const nextGroup = getRouteGroup(location.pathname)
     const nextSource = audioSources[nextGroup]
+    const currentGroup = getActiveGroup()
 
     if (!audio.src) {
       audio.src = nextSource
-      activeGroup = nextGroup
-      playCurrentTrack(audio)
+      setActiveGroup(nextGroup)
+
+      if (!isMuted) {
+        void playCurrentTrack(audio).then((didPlay) => {
+          setHasAutoplayBlock(!didPlay)
+        })
+      }
+
       return undefined
     }
 
-    if (activeGroup !== nextGroup) {
+    if (currentGroup !== nextGroup) {
       audio.pause()
       audio.src = nextSource
       audio.currentTime = 0
-      activeGroup = nextGroup
-      playCurrentTrack(audio)
+      setActiveGroup(nextGroup)
+
+      if (!isMuted) {
+        void playCurrentTrack(audio).then((didPlay) => {
+          setHasAutoplayBlock(!didPlay)
+        })
+      }
+
       return undefined
     }
 
-    if (audio.paused) {
-      playCurrentTrack(audio)
+    if (!isMuted && hasAutoplayBlock && audio.paused) {
+      void playCurrentTrack(audio).then((didPlay) => {
+        setHasAutoplayBlock(!didPlay)
+      })
     }
 
     return undefined
-  }, [location.pathname])
+  }, [hasAutoplayBlock, isMuted, location.pathname])
 
-  return null
+  const value = useMemo(
+    () => ({
+      isMuted,
+      toggleMute: () => {
+        const audio = ensureAudio()
+
+        setIsMuted((current) => {
+          const nextMuted = !current
+
+          if (audio) {
+            audio.muted = nextMuted
+
+            if (!nextMuted && audio.src && audio.paused) {
+              void playCurrentTrack(audio).then((didPlay) => {
+                setHasAutoplayBlock(!didPlay)
+              })
+            }
+          }
+
+          return nextMuted
+        })
+      },
+    }),
+    [isMuted],
+  )
+
+  return <BackgroundAudioContext.Provider value={value}>{children}</BackgroundAudioContext.Provider>
 }
 
-export default BackgroundAudioManager
+export default BackgroundAudioProvider
