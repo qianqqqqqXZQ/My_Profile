@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { heroHighlights, homeRouteCards } from '../content/siteContent'
 import SplitText from '../components/SplitText'
+import { readyPageUnlockKey } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
@@ -90,6 +90,14 @@ function HomePage() {
     }
   }, [])
 
+  const handleReady = () => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.sessionStorage.setItem(readyPageUnlockKey, 'true')
+  }
+
   return (
     <div className="page-home">
       <div className="page-home-background" aria-hidden="true">
@@ -119,7 +127,10 @@ function HomePage() {
           <div className="hero-content section-shell">
             <div className="hero-copy">
               <p className="eyebrow">This is a personal webpage.</p>
-              <h1 className="split-home-title" aria-label="Hello! Welcome to My Space... I'm Ziqian Xiong :)">
+              <h1
+                className="split-home-title"
+                aria-label="Hello! Welcome to My Space... I'm Ziqian Xiong :)"
+              >
                 <SplitText
                   tag="span"
                   text="Hello!"
@@ -194,70 +205,19 @@ function HomePage() {
               <p className="hero-summary hero-summary-home">You&apos;re ready to go?</p>
 
               <div className="hero-actions">
-                <Link className="primary-button" to="/profile">
-                  Open Profile
-                </Link>
-                <Link className="secondary-button" to="/experience">
-                  View Experience
+                <Link className="ready-button" to="/ready" onClick={handleReady}>
+                  Sure, I&apos;m ready !
                 </Link>
               </div>
             </div>
 
             <aside className="hero-visual-column">
-              <Suspense
-                fallback={<div className="hero-visual-fallback" aria-hidden="true" />}
-              >
+              <Suspense fallback={<div className="hero-visual-fallback" aria-hidden="true" />}>
                 <PhotoLens paused={!isHeroVisible} />
               </Suspense>
             </aside>
           </div>
         </header>
-
-        <main className="home-main">
-          <section className="content-section hero-signature-section">
-            <div className="section-shell hero-signature-shell">
-              <div className="hero-panel hero-widget-panel">
-                <p className="panel-label">Home Navigation / Quick Overview</p>
-                <div className="panel-grid">
-                  {heroHighlights.map((item) => (
-                    <article key={item.label}>
-                      <span>{item.label}</span>
-                      <strong>{item.value}</strong>
-                    </article>
-                  ))}
-                </div>
-                <p className="panel-note">
-                  Overview of the main sections.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="content-section home-route-section">
-            <div className="section-shell">
-              <div className="section-header">
-                <p className="eyebrow">Pages</p>
-                <h2>Four main sections</h2>
-                <p className="section-intro">
-                  The site keeps one visual system while each page focuses on a different subject.
-                </p>
-              </div>
-
-              <div className="home-route-grid">
-                {homeRouteCards.map((card) => (
-                  <article key={card.label} className="home-route-card card-surface">
-                    <p className="micro-label">{card.label}</p>
-                    <h3>{card.title}</h3>
-                    <p>{card.description}</p>
-                    <Link className="inline-link" to={card.to}>
-                      Open Page
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        </main>
       </div>
     </div>
   )

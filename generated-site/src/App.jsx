@@ -7,6 +7,7 @@ import DancePage from './pages/DancePage'
 import ExperiencePage from './pages/ExperiencePage'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
+import ReadyPage from './pages/ReadyPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="experience" element={<ExperiencePage />} />
+          <Route path="ready" element={<ReadyPage />} />
           <Route path="dance" element={<DancePage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>

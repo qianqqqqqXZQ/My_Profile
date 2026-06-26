@@ -39,6 +39,8 @@ export const homeRouteCards = [
   },
 ]
 
+export const readyPageUnlockKey = 'home-ready-unlocked'
+
 export const profileHighlights = [
   { label: 'School', value: 'University of Nottingham Ningbo China' },
   { label: 'Major', value: 'Computer Science' },

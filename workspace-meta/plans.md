@@ -380,4 +380,16 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Home Split And Single-Entry Ready Page
+
+- [x] Create a Git backup commit before the homepage route split
+- [x] Reduce the homepage to the hero section and interaction only
+- [x] Replace the two homepage buttons with one white boxed `Sure, I'm ready !` entry action
+- [x] Move the former lower-homepage content to a new routed page
+- [x] Gate the new page behind the homepage button so direct entry redirects back home
+- [x] Remove other direct entry points that would bypass the homepage button
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 

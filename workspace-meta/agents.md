@@ -33,6 +33,7 @@ This repository is used to build a personal resume website. The active site live
   - `/` Home
   - `/profile` Personal introduction
   - `/experience` Development experience
+  - `/ready` gated continuation page unlocked from the homepage button
   - `/dance` Dance video page
   - `/contact` Contact page
 - The visitor-facing site copy is fully English, with short portfolio-style content and no internal instruction text
@@ -86,9 +87,12 @@ This repository is used to build a personal resume website. The active site live
 - The homepage hero title now uses a local `SplitText` component backed by `gsap` and `@gsap/react` so the large greeting animates by character on entry
 - The homepage hero title was later split into separate animated lines so it keeps the original visual scale and avoids bottom clipping while preserving the same greeting text
 - The homepage title can be nudged vertically via `split-home-title` without affecting the right-side photo lens column
+- The homepage now stops at the hero only; the lower overview/timeline/card content was moved onto a separate `/ready` page
+- The homepage now exposes a single white boxed CTA, `Sure, I'm ready !`, which writes a session flag and unlocks the `/ready` route
+- The `/ready` route redirects back to `/` if opened without the session unlock flag, so the new continuation page is only reachable through the homepage CTA
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
-- The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button
+- The main nav remains `Home`, `Profile`, `Experience`, `Dance Videos`, plus the standalone `Contact` button; the homepage split only changed the homepage lower content entry
 - The Profile hero desktop layout now uses a wider right column and controlled copy offset so the title block sits nearer the center of the right half, while the lanyard remains slightly left-weighted inside the left half
 - The Profile hero now overrides the global `h1` scale locally and tightens lead/action/highlight spacing so the right-side title block fits more cleanly within the first desktop viewport
 - The Profile hero visual column now sits above the right-side copy in page-level stacking order, while the fixed top navigation remains the highest layer

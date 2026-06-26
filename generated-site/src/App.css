@@ -195,7 +195,8 @@
 
 .contact-button,
 .primary-button,
-.secondary-button {
+.secondary-button,
+.ready-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -217,6 +218,7 @@
 .contact-button:hover,
 .primary-button:hover,
 .secondary-button:hover,
+.ready-button:hover,
 .contact-card:hover,
 .home-route-card:hover,
 .clip-card:hover {
@@ -233,6 +235,22 @@
   color: var(--text-high);
   border: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.025);
+}
+
+.ready-button {
+  min-width: 300px;
+  min-height: 60px;
+  padding: 0 28px;
+  color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.94);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(238, 238, 236, 0.96));
+  box-shadow:
+    0 16px 42px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  border-radius: 18px;
 }
 
 .hero-panel,
@@ -608,6 +626,24 @@
   background:
     linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.2)),
     transparent;
+}
+
+.page-ready {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.045), transparent 28%),
+    linear-gradient(180deg, #0f0d12 0%, #09080c 66%, #050505 100%);
+}
+
+.page-ready .page-route {
+  padding-top: 116px;
+}
+
+.page-ready .content-section:first-of-type {
+  padding-top: 84px;
+}
+
+.ready-route-footer {
+  padding-bottom: 140px;
 }
 
 .content-section::before {
