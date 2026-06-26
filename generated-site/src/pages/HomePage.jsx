@@ -91,10 +91,10 @@ function HomePage() {
 
   return (
     <div className="page-home">
-      <header className="hero-section" id="home" ref={heroRef}>
+      <div className="page-home-background" aria-hidden="true">
         <Suspense fallback={null}>
           <Particles
-            className="hero-particles"
+            className="page-home-particles"
             particleColors={['#d6d1d1']}
             particleCount={1200}
             particleSpread={18}
@@ -109,93 +109,94 @@ function HomePage() {
             pixelRatio={1.2}
           />
         </Suspense>
-        <div className="hero-scrim" />
-        <div className="hero-noise" />
+        <div className="page-home-scrim" />
+        <div className="page-home-noise" />
+      </div>
 
-        <div className="hero-content section-shell">
-          <div className="hero-copy">
-            <p className="eyebrow">University of Nottingham Ningbo China</p>
-            <h1>
-              Hello!
-              <br />
-              Welcome to
-              <br />
-              My Space...
-              <br />
-              I&apos;m
-              <br />
-              Ziqian Xiong :)
-            </h1>
-            <p className="hero-summary">
-              A dark, high-contrast portfolio home with separate pages for profile, experience, dance
-              videos, and contact.
-            </p>
+      <div className="page-home-content">
+        <header className="hero-section" id="home" ref={heroRef}>
+          <div className="hero-content section-shell">
+            <div className="hero-copy">
+              <p className="eyebrow">This is a personal webpage.</p>
+              <h1>
+                Hello!
+                <br />
+                Welcome to
+                <br />
+                My Space...
+                <br />
+                I&apos;m
+                <br />
+                Ziqian Xiong :)
+              </h1>
+              <p className="hero-summary hero-summary-home">You&apos;re ready to go?</p>
 
-            <div className="hero-actions">
-              <Link className="primary-button" to="/profile">
-                Open Profile
-              </Link>
-              <Link className="secondary-button" to="/experience">
-                View Experience
-              </Link>
+              <div className="hero-actions">
+                <Link className="primary-button" to="/profile">
+                  Open Profile
+                </Link>
+                <Link className="secondary-button" to="/experience">
+                  View Experience
+                </Link>
+              </div>
             </div>
+
+            <aside className="hero-visual-column">
+              <Suspense
+                fallback={<div className="hero-visual-fallback" aria-hidden="true" />}
+              >
+                <PhotoLens paused={!isHeroVisible} />
+              </Suspense>
+            </aside>
           </div>
+        </header>
 
-          <aside className="hero-visual-column">
-            <Suspense
-              fallback={<div className="hero-visual-fallback" aria-hidden="true" />}
-            >
-              <PhotoLens paused={!isHeroVisible} />
-            </Suspense>
-          </aside>
-        </div>
-      </header>
+        <main className="home-main">
+          <section className="content-section hero-signature-section">
+            <div className="section-shell hero-signature-shell">
+              <div className="hero-panel hero-widget-panel">
+                <p className="panel-label">Home Navigation / Quick Overview</p>
+                <div className="panel-grid">
+                  {heroHighlights.map((item) => (
+                    <article key={item.label}>
+                      <span>{item.label}</span>
+                      <strong>{item.value}</strong>
+                    </article>
+                  ))}
+                </div>
+                <p className="panel-note">
+                  Overview of the main sections.
+                </p>
+              </div>
+            </div>
+          </section>
 
-      <main>
-        <section className="content-section hero-signature-section">
-          <div className="section-shell hero-signature-shell">
-            <div className="hero-panel hero-widget-panel">
-              <p className="panel-label">Home Navigation / Quick Overview</p>
-              <div className="panel-grid">
-                {heroHighlights.map((item) => (
-                  <article key={item.label}>
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
+          <section className="content-section home-route-section">
+            <div className="section-shell">
+              <div className="section-header">
+                <p className="eyebrow">Pages</p>
+                <h2>Four main sections</h2>
+                <p className="section-intro">
+                  The site keeps one visual system while each page focuses on a different subject.
+                </p>
+              </div>
+
+              <div className="home-route-grid">
+                {homeRouteCards.map((card) => (
+                  <article key={card.label} className="home-route-card card-surface">
+                    <p className="micro-label">{card.label}</p>
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                    <Link className="inline-link" to={card.to}>
+                      Open Page
+                    </Link>
                   </article>
                 ))}
               </div>
-              <p className="panel-note">
-                Overview of the main sections.
-              </p>
             </div>
-          </div>
-        </section>
-
-        <section className="content-section home-route-section">
-          <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Pages</p>
-              <h2>Four main sections</h2>
-              <p className="section-intro">
-                The site keeps one visual system while each page focuses on a different subject.
-              </p>
-            </div>
-
-            <div className="home-route-grid">
-              {homeRouteCards.map((card) => (
-                <article key={card.label} className="home-route-card card-surface">
-                  <p className="micro-label">{card.label}</p>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                  <Link className="inline-link" to={card.to}>
-                    Open Page
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     </div>
   )
 }

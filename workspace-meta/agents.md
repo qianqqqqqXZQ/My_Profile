@@ -81,6 +81,8 @@ This repository is used to build a personal resume website. The active site live
 - The homepage hero background is now driven by the React Bits `Particles` component with a light monochrome palette and hover motion, while the foreground interaction stack stays unchanged
 - The homepage particle background now reflows with a `ResizeObserver` on the hero container so the canvas stays full-height behind both the avatar and the copy, instead of only following window resize
 - The homepage hero scrim and noise overlays were softened so the lower part of the first screen does not collapse into a hard black block behind the text area
+- The homepage particle background is now mounted as a homepage-level fixed layer so the hero and the sections below it share one continuous visual field instead of a hard black lower block
+- The homepage hero eyebrow now reads `This is a personal webpage.` and the supporting hero summary now reads `You're ready to go?` with a slightly lower placement
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
 - The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button

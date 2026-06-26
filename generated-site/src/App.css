@@ -12,6 +12,62 @@
   margin: 0 auto;
 }
 
+.page-home {
+  position: relative;
+  min-height: 100svh;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.045), transparent 28%),
+    linear-gradient(180deg, #0f0d12 0%, #09080c 66%, #050505 100%);
+}
+
+.page-home-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-home-particles,
+.page-home-scrim,
+.page-home-noise {
+  position: absolute;
+  inset: 0;
+}
+
+.page-home-particles {
+  z-index: 0;
+}
+
+.page-home-scrim {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.045), transparent 28%),
+    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.025), transparent 24%),
+    linear-gradient(180deg, rgba(9, 7, 12, 0.06), rgba(7, 5, 9, 0.34) 62%, rgba(5, 5, 5, 0.78) 100%);
+}
+
+.page-home-noise {
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0.08;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 96%);
+  pointer-events: none;
+}
+
+.page-home-content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-main {
+  position: relative;
+}
+
 .site-topbar,
 .hero-content {
   position: relative;
@@ -290,9 +346,7 @@
   overflow-x: clip;
   overflow-y: visible;
   border-bottom: 1px solid var(--border-strong);
-  background:
-    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.045), transparent 28%),
-    linear-gradient(180deg, #0f0d12 0%, #09080c 66%, #050505 100%);
+  background: transparent;
   isolation: isolate;
   z-index: 3;
 }
@@ -312,21 +366,13 @@
 
 .hero-scrim {
   z-index: 1;
-  background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.045), transparent 28%),
-    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.025), transparent 24%),
-    linear-gradient(180deg, rgba(9, 7, 12, 0.06), rgba(7, 5, 9, 0.34) 62%, rgba(5, 5, 5, 0.78) 100%);
+  background: transparent;
   pointer-events: none;
 }
 
 .hero-noise {
   z-index: 2;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 140px 140px;
-  opacity: 0.08;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 96%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -377,6 +423,10 @@
 .footer-note,
 .page-hero-text {
   color: var(--text-muted);
+}
+
+.hero-summary-home {
+  margin-top: 34px;
 }
 
 .hero-actions,
@@ -520,6 +570,12 @@
 .content-section {
   position: relative;
   padding: 120px 0;
+}
+
+.page-home .content-section {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.2)),
+    transparent;
 }
 
 .content-section::before {
@@ -916,6 +972,10 @@
     width: min(1700px, calc(100% - 40px));
   }
 
+  .page-home-background {
+    position: absolute;
+  }
+
   .page-hero-grid,
   .page-profile-hero-grid,
   .hero-content,
@@ -995,6 +1055,12 @@
     scroll-margin-top: 152px;
   }
 
+  .page-home {
+    background:
+      radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.04), transparent 28%),
+      linear-gradient(180deg, #0f0d12 0%, #08070b 62%, #050505 100%);
+  }
+
   .site-topbar {
     top: 12px;
     border-radius: 24px;
@@ -1036,6 +1102,10 @@
   .hero-content {
     padding-top: 214px;
     padding-bottom: 104px;
+  }
+
+  .page-home .content-section {
+    padding: 92px 0;
   }
 
   .hero-visual-column {

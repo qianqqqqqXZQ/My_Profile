@@ -258,6 +258,25 @@
 
 ## 2026-06-25 Profile Top Black Gap Removal
 
+## 2026-06-26 Home Hero Background Continuity
+
+- [x] Create a Git backup snapshot before the homepage continuity refactor
+- [x] Lift the particle background to a homepage-level layer
+- [x] Keep the welcome hero as the first visible content block on open
+- [x] Remove the hard black transition between the hero and the sections below it
+- [x] Preserve the lower homepage sections as a continuation instead of a separate black block
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Home Hero Copy Update
+
+- [x] Replace the homepage eyebrow copy with `This is a personal webpage.`
+- [x] Change the hero summary line to `You're ready to go?`
+- [x] Move the summary line slightly lower on the homepage hero
+- [x] Run `npm run lint`
+- [x] Perform a quick self-review
+
 - [x] Remove the blank black top gap above the Profile page hero background
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
