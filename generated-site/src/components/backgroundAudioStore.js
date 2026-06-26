@@ -9,6 +9,8 @@ export const interactionEvents = ['pointerdown', 'keydown', 'touchstart']
 
 export const BackgroundAudioContext = createContext(null)
 
+// Keep one shared audio element across route changes so grouped background music
+// can continue seamlessly instead of restarting on every page mount.
 let sharedAudio = null
 let activeGroup = null
 let mountCount = 0
@@ -60,6 +62,7 @@ export function registerInteractionRecovery(audio) {
 
   clearInteractionRecovery()
 
+  // Retry playback after the first trusted user interaction when autoplay is blocked.
   const resumePlayback = () => {
     if (audio.muted) {
       clearInteractionRecovery()
@@ -132,4 +135,3 @@ export function getActiveGroup() {
 export function setActiveGroup(group) {
   activeGroup = group
 }
-

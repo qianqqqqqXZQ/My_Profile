@@ -592,3 +592,13 @@
 - [x] Run `npm run lint`
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-27 Public Repository Cleanup Review
+- [x] Create a Git backup commit before repository cleanup
+- [x] Review the project structure for public-repo hygiene issues
+- [x] Remove safely unused files and dead code without changing behavior
+- [x] Add concise English comments to complex modules only
+- [x] Replace the default template README with a project-specific overview
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update workspace documentation

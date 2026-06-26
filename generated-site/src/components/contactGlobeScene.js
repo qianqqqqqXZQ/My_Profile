@@ -123,6 +123,7 @@ const latLngToVector3 = (lat, lng, radius) => {
   )
 }
 
+// Lift the midpoint away from the globe so each route reads as a glowing travel arc.
 const createCurve = (start, end, arcAltitude = 0.25) => {
   const mid = start.clone().add(end).multiplyScalar(0.5)
   const elevation = mid.normalize().multiplyScalar(start.length() * (1 + arcAltitude))
@@ -474,6 +475,8 @@ export function createContactGlobeScene({ container, paused = false }) {
     const delta = clock.getDelta()
     const elapsedMs = clock.elapsedTime * 1000
 
+    // Rotate the major layers at slightly different speeds so the scene feels alive
+    // without introducing camera motion that could hurt readability.
     globeRoot.rotation.y += delta * 0.135
     countriesGroup.rotation.y += delta * 0.024
     stars.rotation.y -= delta * 0.012

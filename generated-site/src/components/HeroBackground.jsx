@@ -6,6 +6,7 @@ function HeroBackground({ variant = 'waves', paused = false, className, children
   return (
     <div className={`hero-stage ${className ?? ''}`}>
       <div className="hero-stage-layer hero-stage-layer--base">
+        {/* Lazy-load the animated background so routes that do not use it avoid the cost. */}
         {variant === 'waves' ? (
           <Suspense fallback={null}>
             <Waves

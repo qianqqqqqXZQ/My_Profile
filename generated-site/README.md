@@ -1,16 +1,33 @@
-# React + Vite
+# Personal CV Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This repository contains a personal portfolio / CV website built with React and Vite.
+The main application lives in `generated-site/`, while workflow notes are stored in
+`workspace-meta/` so they do not clutter the app source tree.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `src/pages/`: route-level pages
+- `src/components/`: shared UI, animation, and interaction components
+- `src/content/siteContent.js`: route content and structured display data
+- `public/`: static assets served directly by Vite
+- `src/assets/`: imported app assets bundled with the site
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+## Validation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm run lint
+npm run build
+```
+
+## Notes
+
+- The site uses route-based background audio with two music groups.
+- Several pages use custom animated backgrounds, including a Three.js contact globe.
+- Local workflow documents such as `plans.md` and `agents.md` are intentionally kept in `workspace-meta/`.

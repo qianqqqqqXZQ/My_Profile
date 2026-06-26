@@ -39,6 +39,7 @@ export function BackgroundAudioProvider({ children }) {
     const currentGroup = getActiveGroup()
 
     if (!audio.src) {
+      // Initial mount: attach the route-mapped track once and keep the element alive globally.
       audio.src = nextSource
       setActiveGroup(nextGroup)
 
@@ -52,6 +53,7 @@ export function BackgroundAudioProvider({ children }) {
     }
 
     if (currentGroup !== nextGroup) {
+      // Only restart playback when navigation crosses between the two route groups.
       audio.pause()
       audio.src = nextSource
       audio.currentTime = 0

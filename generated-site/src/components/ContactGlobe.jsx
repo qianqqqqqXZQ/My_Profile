@@ -13,6 +13,7 @@ function ContactGlobe({ paused = false }) {
       return undefined
     }
 
+    // Build the Three.js scene once; later pause changes are pushed through the scene handle.
     const scene = createContactGlobeScene({ container, paused: initialPausedRef.current })
     sceneRef.current = scene
 

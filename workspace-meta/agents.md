@@ -19,6 +19,13 @@ This repository is used to build a personal resume website. The active site live
 - `workspace-meta/`: working documents such as `plans.md` and `agents.md`
 - `CV.html`: standalone static resume file in the repo root, separate from the React site
 
+## Public Repository Hygiene
+
+- Keep generated output such as `generated-site/dist/` and installed dependencies such as `generated-site/node_modules/` out of Git; the nested `.gitignore` already covers them
+- Prefer project-specific documentation over the default Vite template README before publishing
+- Remove template leftovers or superseded assets when they are no longer imported by the app
+- Keep workflow documents under `workspace-meta/` so the published app structure stays focused
+
 ## Current Design Constraints
 
 - Prioritize a polished desktop presentation while keeping the layout responsive
