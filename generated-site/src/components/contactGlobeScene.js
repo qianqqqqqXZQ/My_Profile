@@ -280,6 +280,8 @@ const updateArcTrail = (arcObject, elapsedMs) => {
     colorBuffer[bufferIndex + 2] = color.b
   }
 
+  // Rebuild only the currently visible trail slice so each arc keeps a moving head
+  // without storing full-length geometry for every frame.
   trail.geometry.setAttribute(
     'position',
     new THREE.BufferAttribute(positionBuffer.slice(0, visibleCount * 3), 3),
@@ -345,6 +347,8 @@ export function createContactGlobeScene({ container, paused = false }) {
 
   const sunDirection = new THREE.Vector3(-1.1, 0.42, 0.95).normalize()
 
+  // The earth uses a custom shader so day color, night emission, cloud highlights,
+  // and atmospheric rim light can be tuned independently from the rest of the scene.
   const earth = new THREE.Mesh(
     new THREE.SphereGeometry(GLOBE_RADIUS, 96, 96),
     new THREE.ShaderMaterial({
@@ -512,6 +516,8 @@ export function createContactGlobeScene({ container, paused = false }) {
       resizeObserver?.disconnect()
       window.removeEventListener('resize', resize)
 
+      // Dispose all scene-owned GPU resources explicitly because this globe mounts
+      // outside React Three Fiber and does not get automatic cleanup.
       scene.traverse((child) => {
         if (child.geometry) {
           child.geometry.dispose()

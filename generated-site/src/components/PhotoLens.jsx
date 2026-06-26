@@ -128,6 +128,8 @@ export default function PhotoLens({ paused = false }) {
       const delta = lastTime ? Math.min(0.05, (time - lastTime) / 1000) : 0.016
       lastTime = time
 
+      // Keep the visible lens motion in a RAF loop so pointer-heavy updates do not
+      // force React re-renders on every frame.
       smooth.x = expSmooth(smooth.x, target.x, delta, FOLLOW_HALF_LIFE)
       smooth.y = expSmooth(smooth.y, target.y, delta, FOLLOW_HALF_LIFE)
 
@@ -189,6 +191,8 @@ export default function PhotoLens({ paused = false }) {
       applyStyle(glowRef.current, '--lens-x', `${smooth.x * 100}%`)
       applyStyle(glowRef.current, '--lens-y', `${smooth.y * 100}%`)
 
+      // Echo nodes are managed imperatively so the short-lived trail can stay cheap
+      // even while the main lens is updating every animation frame.
       echoesRef.current = echoesRef.current
         .map((echo) => ({
           ...echo,
@@ -247,6 +251,7 @@ export default function PhotoLens({ paused = false }) {
 
     const frame = frameRef.current
     const cleanup = () => {
+      // Remove any imperatively created echo nodes when pausing or unmounting.
       frame.querySelectorAll('.photo-lens-echo').forEach((node) => node.remove())
       echoesRef.current = []
     }

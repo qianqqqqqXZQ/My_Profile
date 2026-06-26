@@ -69,6 +69,8 @@ export function BackgroundAudioProvider({ children }) {
     }
 
     if (!isMuted && hasAutoplayBlock && audio.paused) {
+      // A previous play attempt was blocked, so retry when the route effect runs again
+      // after the recovery listeners have had a chance to capture user interaction.
       void playCurrentTrack(audio).then((didPlay) => {
         setHasAutoplayBlock(!didPlay)
       })
