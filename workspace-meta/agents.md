@@ -79,6 +79,8 @@ This repository is used to build a personal resume website. The active site live
 - The homepage now uses the supplied `LiquidEther` component as its hero background, while the Profile page uses the atmospheric `Waves` treatment behind a left-lanyard / right-headline composition
 - The homepage hero background has been retuned to the reference React Bits `LiquidEther` palette and motion settings, while the foreground interaction stack stays unchanged
 - The homepage hero background is now driven by the React Bits `Particles` component with a light monochrome palette and hover motion, while the foreground interaction stack stays unchanged
+- The homepage particle background now reflows with a `ResizeObserver` on the hero container so the canvas stays full-height behind both the avatar and the copy, instead of only following window resize
+- The homepage hero scrim and noise overlays were softened so the lower part of the first screen does not collapse into a hard black block behind the text area
 - The Profile page now keeps contact cards and strengths below the hero so the top section reads as a cleaner, more editorial layout
 - The Profile hero `Waves` layer is cursor-reactive again, while the lanyard/widget interaction model was intentionally left unchanged in that pass
 - The main nav no longer duplicates `Contact`; the route is exposed only through the standalone right-side contact button

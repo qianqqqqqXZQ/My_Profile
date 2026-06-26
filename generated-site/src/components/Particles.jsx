@@ -125,12 +125,23 @@ export default function Particles({
     const resize = () => {
       const width = container.clientWidth
       const height = container.clientHeight
+      if (!width || !height) {
+        return
+      }
       renderer.setSize(width, height)
-      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height })
+      camera.perspective({ aspect: width / height })
     }
 
     window.addEventListener('resize', resize, false)
     resize()
+
+    let resizeObserver
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        resize()
+      })
+      resizeObserver.observe(container)
+    }
 
     const updatePointer = (clientX, clientY) => {
       const rect = container.getBoundingClientRect()
@@ -245,6 +256,9 @@ export default function Particles({
 
     return () => {
       window.removeEventListener('resize', resize)
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
       if (moveParticlesOnHover) {
         window.removeEventListener('mousemove', handleMouseMove)
         window.removeEventListener('touchmove', handleTouchMove)

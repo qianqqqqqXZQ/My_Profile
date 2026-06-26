@@ -315,4 +315,14 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Home Hero Background Coverage Fix
+
+- [x] Create a Git backup snapshot before the hero background coverage fix
+- [x] Extend the homepage particle background so it tracks the full hero container
+- [x] Relax the hero scrim and noise fade so the lower hero no longer drops to a hard black block
+- [x] Preserve the clickable foreground stack for the avatar and CTA area
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 

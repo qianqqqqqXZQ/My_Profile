@@ -290,7 +290,9 @@
   overflow-x: clip;
   overflow-y: visible;
   border-bottom: 1px solid var(--border-strong);
-  background: #120f17;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.045), transparent 28%),
+    linear-gradient(180deg, #0f0d12 0%, #09080c 66%, #050505 100%);
   isolation: isolate;
   z-index: 3;
 }
@@ -313,7 +315,7 @@
   background:
     radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.045), transparent 28%),
     radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.025), transparent 24%),
-    linear-gradient(180deg, rgba(9, 7, 12, 0.08), rgba(7, 5, 9, 0.56) 74%, #050505 100%);
+    linear-gradient(180deg, rgba(9, 7, 12, 0.06), rgba(7, 5, 9, 0.34) 62%, rgba(5, 5, 5, 0.78) 100%);
   pointer-events: none;
 }
 
@@ -323,8 +325,8 @@
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 140px 140px;
-  opacity: 0.06;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent 88%);
+  opacity: 0.08;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 96%);
   pointer-events: none;
 }
 
@@ -333,9 +335,9 @@
   grid-template-columns: minmax(0, 1fr) minmax(520px, 760px);
   align-items: center;
   gap: 28px;
-  min-height: calc(100svh - 96px);
+  min-height: calc(100svh - 48px);
   padding-top: 156px;
-  padding-bottom: 116px;
+  padding-bottom: 140px;
 }
 
 .hero-copy {
@@ -941,7 +943,7 @@
   .hero-content {
     min-height: auto;
     padding-top: 184px;
-    padding-bottom: 72px;
+    padding-bottom: 92px;
   }
 
   .hero-widget-panel {
@@ -1033,6 +1035,7 @@
 
   .hero-content {
     padding-top: 214px;
+    padding-bottom: 104px;
   }
 
   .hero-visual-column {
