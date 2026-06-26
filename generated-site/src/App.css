@@ -74,6 +74,14 @@
   isolation: isolate;
 }
 
+.page-contact {
+  padding-top: 0;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(120, 206, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, #06080d 0%, #050505 42%, #050505 100%);
+}
+
 .page-experience-background {
   position: fixed;
   inset: 0;
@@ -151,6 +159,105 @@
 
 .page-experience .content-section:first-of-type {
   padding-top: 180px;
+}
+
+.contact-hero {
+  position: relative;
+  min-height: 100svh;
+  border-bottom: 1px solid var(--border-strong);
+  overflow: clip;
+  isolation: isolate;
+}
+
+.contact-hero-stage,
+.contact-hero-scrim,
+.contact-hero-noise,
+.contact-globe-canvas,
+.contact-hero-orbit {
+  position: absolute;
+  inset: 0;
+}
+
+.contact-hero-stage {
+  z-index: 0;
+}
+
+.contact-globe-canvas {
+  z-index: 1;
+}
+
+.contact-hero-orbit {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 70% 48%, rgba(125, 249, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 28% 20%, rgba(233, 255, 117, 0.08), transparent 20%),
+    radial-gradient(circle at 60% 78%, rgba(124, 247, 201, 0.08), transparent 18%);
+  filter: blur(24px);
+}
+
+.contact-hero-scrim {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(4, 6, 10, 0.94) 0%, rgba(5, 8, 12, 0.86) 34%, rgba(7, 10, 15, 0.24) 62%, rgba(7, 10, 15, 0.62) 100%),
+    radial-gradient(circle at 72% 48%, rgba(125, 249, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(6, 8, 12, 0.18), rgba(3, 5, 8, 0.78) 82%, rgba(5, 5, 5, 0.96) 100%);
+  pointer-events: none;
+}
+
+.contact-hero-noise {
+  z-index: 3;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 130px 130px;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.contact-hero-shell {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
+  padding-top: 154px;
+  padding-bottom: 112px;
+}
+
+.contact-hero-copy {
+  width: min(100%, 760px);
+}
+
+.contact-hero-copy h1 {
+  max-width: 12ch;
+}
+
+.contact-hero-copy .page-lead {
+  max-width: 680px;
+}
+
+.contact-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contact-hero-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+  width: min(100%, 720px);
+}
+
+.contact-hero-details article {
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.038);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .home-main {
@@ -403,6 +510,7 @@
 
 .page-hero-list span,
 .profile-highlights span,
+.contact-hero-details span,
 .timeline-period,
 .contact-card span,
 .visual-content span,
@@ -417,6 +525,7 @@
 
 .page-hero-list strong,
 .profile-highlights strong,
+.contact-hero-details strong,
 .contact-card strong,
 .visual-content strong {
   color: var(--text-high);
@@ -1039,7 +1148,12 @@
 }
 
 .page-contact-section {
-  min-height: calc(100svh - 116px);
+  min-height: auto;
+  padding: 120px 0 132px;
+  border-top: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.72), rgba(5, 5, 5, 0.98)),
+    radial-gradient(circle at 50% 0%, rgba(125, 249, 255, 0.06), transparent 18%);
 }
 
 .contact-shell {
@@ -1236,6 +1350,14 @@
   .page-experience .content-section:first-of-type {
     padding-top: 132px;
   }
+
+  .contact-hero-shell {
+    padding-top: 148px;
+  }
+
+  .contact-hero-copy {
+    width: min(100%, 680px);
+  }
 }
 
 @media (max-width: 720px) {
@@ -1339,5 +1461,37 @@
 
   .page-experience .content-section:first-of-type {
     padding-top: 108px;
+  }
+
+  .contact-hero {
+    min-height: auto;
+  }
+
+  .contact-hero-shell {
+    min-height: auto;
+    padding-top: 166px;
+    padding-bottom: 84px;
+  }
+
+  .contact-hero-copy h1 {
+    max-width: 100%;
+  }
+
+  .contact-hero-details {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero-scrim {
+    background:
+      linear-gradient(180deg, rgba(5, 8, 12, 0.86), rgba(6, 9, 14, 0.72) 46%, rgba(5, 5, 5, 0.96) 100%),
+      radial-gradient(circle at 50% 26%, rgba(125, 249, 255, 0.08), transparent 28%);
+  }
+
+  .contact-globe-canvas {
+    opacity: 0.9;
+  }
+
+  .page-contact-section {
+    padding: 92px 0 108px;
   }
 }

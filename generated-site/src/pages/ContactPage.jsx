@@ -1,23 +1,75 @@
-import PageBanner from '../components/PageBanner'
-import { contactLinks } from '../content/siteContent'
+import { useEffect, useRef, useState } from 'react'
+import ContactGlobe from '../components/ContactGlobe'
+import { contactHero, contactLinks } from '../content/siteContent'
 
 function ContactPage() {
+  const heroRef = useRef(null)
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === heroRef.current) {
+            setIsHeroVisible(entry.isIntersecting)
+          }
+        }
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '200px 0px',
+      },
+    )
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
-    <div className="page-route">
-      <PageBanner
-        eyebrow="Contact"
-        title="Contact"
-        summary="Email, social links, and location in one place."
-        metaLabel="Final Contact"
-        metaTitle="Direct reach"
-        metaText="A clear contact page with simple links."
-        items={[
-          { label: 'Primary action', value: 'Email button and direct links' },
-          { label: 'Tone', value: 'Clear, minimal, focused' },
-          { label: 'Layout', value: 'Centered contact page' },
-          { label: 'Status', value: 'Ready for your final details' },
-        ]}
-      />
+    <div className="page-route page-contact">
+      <section ref={heroRef} className="contact-hero">
+        <div className="contact-hero-stage" aria-hidden="true">
+          <div className="contact-hero-orbit" />
+          <div className="contact-hero-scrim" />
+          <div className="contact-hero-noise" />
+          <ContactGlobe paused={!isHeroVisible} />
+        </div>
+
+        <div className="section-shell contact-hero-shell">
+          <div className="contact-hero-copy">
+            <p className="eyebrow">{contactHero.eyebrow}</p>
+            <h1>{contactHero.title}</h1>
+            <p className="page-lead">{contactHero.summary}</p>
+
+            <div className="page-hero-actions contact-hero-actions">
+              <a className="primary-button" href={contactHero.primaryAction.href}>
+                {contactHero.primaryAction.label}
+              </a>
+              <a className="secondary-button" href={contactHero.secondaryAction.href}>
+                {contactHero.secondaryAction.label}
+              </a>
+            </div>
+
+            <div className="contact-hero-details">
+              {contactHero.details.map((item) => (
+                <article key={item.label}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="contact-section page-contact-section">
         <div className="section-shell contact-shell">

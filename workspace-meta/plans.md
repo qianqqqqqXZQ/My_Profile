@@ -402,6 +402,29 @@
 - [x] Run `npm run build`
 - [x] Perform a final self-review and update `workspace-meta/agents.md`
 
+## 2026-06-26 Contact Amazing Globe Hero
+
+- [x] Create a Git backup commit before the Contact hero integration
+- [x] Replace the Contact page banner-first layout with a route-level hero
+- [x] Add a local `ContactGlobe` component with a Contact-specific Three.js runtime
+- [x] Vendor only the minimum Contact globe data and local public assets needed for the effect
+- [x] Keep the existing contact CTA and card section below the new hero
+- [x] Keep the visual treatment isolated to Contact-specific classes without global style takeover
+- [x] Pause the globe animation when the Contact hero leaves the viewport and clean up on unmount
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
+## 2026-06-26 Contact Globe Lit Earth Upgrade
+
+- [x] Inspect the reference globe's higher-end Earth implementations
+- [x] Upgrade the Contact globe from the flat single-texture material to a lit day/night/specular Earth shader
+- [x] Add the required local day, night, and specular cloud textures under `generated-site/public/contact-globe/`
+- [x] Keep the existing Contact globe arcs, points, and page structure unchanged
+- [x] Run `npm run lint`
+- [x] Run `npm run build`
+- [x] Perform a final self-review and update `workspace-meta/agents.md`
+
 ## 2026-06-26 Experience TextType + Home Header Removal
 
 - [x] Add a local `TextType` component under `generated-site/src/components/`

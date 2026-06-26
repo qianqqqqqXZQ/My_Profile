@@ -175,3 +175,22 @@ $env:windir='C:\Windows'
 - Update `workspace-meta/plans.md` after verification
 - Perform a quick self-review before handing off work
 - Keep route-based page content in `generated-site/src/pages/` and shared data in `generated-site/src/content/`
+
+## Contact Globe Notes
+
+- The Contact page now starts with a dedicated route-level globe hero instead of the previous `PageBanner`-first layout
+- The Contact hero uses a local `ContactGlobe` wrapper and a custom Three.js runtime in `generated-site/src/components/contactGlobeScene.js`
+- The Contact globe intentionally keeps only the visual core inspired by `ASouthernCat/amazing-globe`: earth surface, country outlines, glowing points, animated arcs, atmosphere, and stars
+- The Contact globe does not vendor the original demo's `tweakpane`, `stats`, `OrbitControls`, airplane routes, or full postprocessing chain
+- Contact globe assets are stored locally under `generated-site/public/contact-globe/` and currently include:
+  - `globe.json`
+  - `day.jpg`
+  - `night.jpg`
+  - `specularClouds.jpg`
+  - `earth.jpg`
+  - `dot.png`
+- The Contact hero animation is paused when its hero leaves the viewport and the Three.js scene is explicitly destroyed on component unmount
+- The Contact globe Earth material now uses a lit shader setup with day texture, night lights texture, and specular/cloud texture instead of the earlier single-texture `MeshPhongMaterial`
+- Recent verified pass:
+  - `npm run lint`
+  - `npm run build`
