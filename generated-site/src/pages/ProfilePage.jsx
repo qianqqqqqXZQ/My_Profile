@@ -45,19 +45,20 @@ function ProfilePage() {
             <div className="page-profile-hero-grid">
               <div className="profile-hero-copy">
                 <p className="eyebrow">Profile</p>
-                <h1>Personal profile, background, and contact</h1>
+                <h1>Personal Background</h1>
                 <p className="page-lead">
-                  A cleaner profile layout with the lanyard widget on the left and a large
-                  editorial title block on the right. The section is designed to feel more
-                  natural and atmospheric than the home page.
+                  This page contains my personal information, but it only includes some
+                  general details such as educational background and hobbies. If you are
+                  interested in my specific development experiences and dance experiences,
+                  please click on the two buttons below.
                 </p>
 
                 <div className="page-hero-actions">
-                  <Link className="primary-button" to="/contact">
-                    Contact Me
-                  </Link>
-                  <Link className="secondary-button" to="/experience">
+                  <Link className="primary-button" to="/experience">
                     View Experience
+                  </Link>
+                  <Link className="secondary-button profile-dance-button" to="/dance">
+                    Dance Video
                   </Link>
                 </div>
 

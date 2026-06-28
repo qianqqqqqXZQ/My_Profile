@@ -975,6 +975,7 @@
   font-size: clamp(3.5rem, 5.2vw, 5.7rem);
   line-height: 0.92;
   margin-top: 14px;
+  margin-bottom: 26px;
 }
 
 .split-home-title {
@@ -1011,13 +1012,22 @@
 
 .profile-hero-copy .page-lead {
   max-width: 680px;
-  margin-top: 16px;
+  margin-top: 0;
   font-size: 0.98rem;
   max-width: 760px;
 }
 
 .profile-hero-copy .page-hero-actions {
   margin-top: 22px;
+  align-items: stretch;
+}
+
+.profile-hero-copy .page-hero-actions > a {
+  flex: 1 1 0;
+}
+
+.profile-hero-copy .profile-dance-button {
+  background: rgba(0, 0, 0, 0.78);
 }
 
 .profile-hero-copy .profile-highlights {

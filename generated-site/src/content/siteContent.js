@@ -42,10 +42,10 @@ export const homeRouteCards = [
 export const readyPageUnlockKey = 'home-ready-unlocked'
 
 export const profileHighlights = [
-  { label: 'School', value: 'University of Nottingham Ningbo China' },
-  { label: 'Major', value: 'Computer Science' },
-  { label: 'Style', value: 'Dark, restrained, premium' },
-  { label: 'Focus', value: 'Clean structure and strong visual contrast' },
+  { label: 'NAME', value: 'Ziqian Xiong' },
+  { label: 'BIRTH', value: '2006/3/7' },
+  { label: 'SCHOOL', value: 'University of Nottingham Ningbo China' },
+  { label: 'HOBBY', value: 'Dancing and Music' },
 ]
 
 export const contactHero = {
