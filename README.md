@@ -31,4 +31,3 @@ npm run build
 
 - The site uses route-based background audio with shared playback state.
 - Several routes use custom animated visuals, including a Three.js contact globe.
-- Internal workflow notes are kept out of the public repository surface.
