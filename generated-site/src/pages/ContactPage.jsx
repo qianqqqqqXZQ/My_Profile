@@ -2,11 +2,47 @@ import { useEffect, useRef, useState } from 'react'
 import BorderGlow from '../components/BorderGlow'
 import ContactGlobe from '../components/ContactGlobe'
 import Radar from '../components/Radar'
-import { contactHero, contactLinks } from '../content/siteContent'
+import { contactHero } from '../content/siteContent'
+import wechatQrImage from '../assets/contact/wechat-qr.jpg'
+
+const contactCards = [
+  {
+    title: 'Gmail',
+    value: 'ziqianxiong3@gmail.com',
+    description:
+      'This is my long-term personal email address. You can directly send me emails.',
+    href: 'mailto:ziqianxiong3@gmail.com',
+    type: 'link',
+  },
+  {
+    title: 'Outlook',
+    value: 'scyzx7@nottingham.edu.cn',
+    description:
+      'This is the official email address of my current institution. You can try sending me an email through this.',
+    href: 'mailto:scyzx7@nottingham.edu.cn',
+    type: 'link',
+  },
+  {
+    title: 'Github',
+    value: 'qianqqqqqXZQ',
+    description:
+      'This is my GitHub page. If you are interested in my code and repositories, please click on it.',
+    href: 'https://github.com/qianqqqqqXZQ',
+    type: 'external',
+  },
+  {
+    title: 'WeChat',
+    value: 'XZQqqqqqian',
+    description:
+      'This is my social media app in China. If you want to become friends with me, just click on it.',
+    type: 'modal',
+  },
+]
 
 function ContactPage() {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [isWechatModalOpen, setIsWechatModalOpen] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -35,6 +71,69 @@ function ContactPage() {
       observer.disconnect()
     }
   }, [])
+
+  useEffect(() => {
+    if (!isWechatModalOpen || typeof window === 'undefined') {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsWechatModalOpen(false)
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isWechatModalOpen])
+
+  const closeWechatModal = () => {
+    setIsWechatModalOpen(false)
+  }
+
+  const renderContactCard = (item) => {
+    const cardContent = (
+      <>
+        <div className="contact-card-icon" aria-hidden="true">
+          <span className="contact-card-spark contact-card-spark--primary" />
+          <span className="contact-card-spark contact-card-spark--secondary" />
+        </div>
+        <strong>{item.title}</strong>
+        <p>{item.description}</p>
+        <span>{item.value}</span>
+      </>
+    )
+
+    if (item.type === 'modal') {
+      return (
+        <button
+          type="button"
+          className="contact-card contact-card-button"
+          onClick={() => setIsWechatModalOpen(true)}
+        >
+          {cardContent}
+        </button>
+      )
+    }
+
+    return (
+      <a
+        className="contact-card"
+        href={item.href}
+        target={item.type === 'external' ? '_blank' : undefined}
+        rel={item.type === 'external' ? 'noreferrer' : undefined}
+      >
+        {cardContent}
+      </a>
+    )
+  }
 
   return (
     <div className="page-route page-contact">
@@ -81,9 +180,9 @@ function ContactPage() {
           <div className="contact-radar-content">
             <h2 className="contact-section-title">My Contact Information</h2>
             <div className="contact-grid contact-grid--page">
-              {contactLinks.map((item) => (
+              {contactCards.map((item) => (
                 <BorderGlow
-                  key={item.label}
+                  key={item.title}
                   className="contact-card-glow"
                   edgeSensitivity={10}
                   glowColor="0 0 100"
@@ -96,21 +195,42 @@ function ContactPage() {
                   colors={['#f5f5f5', '#d7d7d7', '#ffffff']}
                   fillOpacity={0.18}
                 >
-                  <a className="contact-card" href={item.href}>
-                    <div className="contact-card-icon" aria-hidden="true">
-                      <span className="contact-card-spark contact-card-spark--primary" />
-                      <span className="contact-card-spark contact-card-spark--secondary" />
-                    </div>
-                    <strong>{item.label}</strong>
-                    <p>{item.description}</p>
-                    <span>{item.value}</span>
-                  </a>
+                  {renderContactCard(item)}
                 </BorderGlow>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {isWechatModalOpen ? (
+        <div
+          className="wechat-modal-backdrop"
+          role="presentation"
+          onClick={closeWechatModal}
+        >
+          <div
+            className="wechat-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="wechat-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="wechat-modal-close"
+              aria-label="Close WeChat QR code"
+              onClick={closeWechatModal}
+            >
+              x
+            </button>
+            <h3 id="wechat-modal-title">WeChat</h3>
+            <p>Scan the QR code to add me on WeChat.</p>
+            <img src={wechatQrImage} alt="WeChat QR code for XZQqqqqqian" />
+            <span>XZQqqqqqian</span>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
