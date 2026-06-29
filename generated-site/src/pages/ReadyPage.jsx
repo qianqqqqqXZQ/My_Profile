@@ -79,6 +79,7 @@ function ReadyPage() {
                 </Link>
               ))}
             </div>
+            <p className="ready-hero-note">More modules are being continuously updated...</p>
           </div>
         </div>
       </section>

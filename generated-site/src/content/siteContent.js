@@ -16,26 +16,26 @@ export const homeRouteCards = [
   {
     label: 'Profile',
     to: '/profile',
-    title: 'Personal details and contact',
-    description: 'A short introduction with background notes and direct contact links.',
+    title: 'Basic Background',
+    description: 'This page contains some general personal information of mine, such as my hobbies.',
   },
   {
     label: 'Experience',
     to: '/experience',
-    title: 'Projects and research',
-    description: 'Selected development work, technical practice, and research highlights.',
+    title: 'Develop Experience',
+    description: 'Develop relevant research experience, work experience and project management experience',
   },
   {
     label: 'Dance Videos',
     to: '/dance',
-    title: 'Video highlights',
-    description: 'Performance clips, edits, and platform links in one place.',
+    title: 'Dance Videos',
+    description: 'Dance-related performance videos or competition videos',
   },
   {
     label: 'Contact',
     to: '/contact',
     title: 'Direct contact',
-    description: 'Email, social links, and location for quick follow-up.',
+    description: 'Email, Wechat and GitHub for quick follow-up',
   },
 ]
 
