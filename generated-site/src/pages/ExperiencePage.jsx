@@ -7,6 +7,7 @@ import { featuredProjects, projectExperience, researchExperience } from '../cont
 function ExperiencePage() {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const experienceHeroText = 'Here is my\nResearch, Project and Working\nExperience...'
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -58,12 +59,15 @@ function ExperiencePage() {
                 className="experience-hero-title"
                 aria-label="Hello World! Here is my Research, Project and Working experience..."
               >
+                <span className="experience-title-placeholder" aria-hidden="true">
+                  {experienceHeroText}
+                </span>
                 <TextType
                   as="span"
                   className="experience-title-type"
                   text={[
                     'Hello World!',
-                    'Here is my\nResearch, Project and Working\nExperience...',
+                    experienceHeroText,
                   ]}
                   typingSpeed={56}
                   deletingSpeed={26}

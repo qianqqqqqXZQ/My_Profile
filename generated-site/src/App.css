@@ -174,11 +174,11 @@
 
 .experience-hero {
   position: relative;
-  min-height: calc(100svh - 116px);
+  min-height: calc(100svh - 52px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 0 96px;
+  padding: 56px 0 180px;
 }
 
 .experience-hero-shell {
@@ -202,12 +202,24 @@
 .experience-hero-title {
   width: min(100%, 920px);
   margin-top: 0;
+  position: relative;
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: start;
+  overflow: hidden;
+}
+
+.experience-title-placeholder {
+  display: block;
+  width: min(100%, 920px);
+  white-space: pre-wrap;
+  text-align: center;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .page-experience .content-section:first-of-type {
-  padding-top: 180px;
+  padding-top: 220px;
 }
 
 .contact-hero {
@@ -821,14 +833,17 @@
 }
 
 .experience-title-type {
+  position: absolute;
+  inset: 0;
   display: inline-flex;
   align-items: flex-start;
   justify-content: center;
-  min-height: clamp(250px, 31vw, 380px);
+  height: 100%;
   width: min(100%, 920px);
   max-width: 100%;
   text-align: center;
   white-space: pre-wrap;
+  overflow: hidden;
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
