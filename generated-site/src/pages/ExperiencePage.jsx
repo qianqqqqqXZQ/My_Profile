@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import LetterGlitch from '../components/LetterGlitch'
 import TextType from '../components/TextType'
+import researchArchitecture from '../assets/experience/research-architecture.png'
 import { featuredProjects, projectExperience, researchExperience } from '../content/siteContent'
 
 function ExperiencePage() {
@@ -77,6 +78,32 @@ function ExperiencePage() {
         </section>
 
         <section className="content-section">
+          <div className="section-shell">
+            <article className="research-focus-card card-surface">
+              <div className="research-focus-copy">
+                <p className="eyebrow">Research Focus</p>
+                <h2 className="research-focus-title">Current Research Interests</h2>
+                <p className="research-focus-text">
+                  My current research interests lie in deep learning, dynamic neural network
+                  scheduling, and computer vision. My present work focuses primarily on
+                  dual-branch and multi-branch neural networks, including keyword and speaker
+                  recognition models as well as polyp segmentation models.
+                </p>
+              </div>
+              <div className="research-focus-accent">
+                <div className="research-focus-image-frame">
+                  <img
+                    className="research-focus-image"
+                    src={researchArchitecture}
+                    alt="Edge-enhanced dual-stream transformer architecture diagram"
+                  />
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="content-section experience-timeline-section">
           <div className="section-shell">
             <div className="section-header">
               <p className="eyebrow">Timeline</p>
