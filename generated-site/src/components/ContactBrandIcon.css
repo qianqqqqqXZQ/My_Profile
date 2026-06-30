@@ -1,0 +1,32 @@
+.contact-brand-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.28));
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.contact-brand-icon__fill {
+  fill: var(--contact-brand-gradient);
+}
+
+.contact-brand-icon__fill--deep {
+  fill: var(--contact-brand-gradient-deep);
+}
+
+.contact-brand-icon__stroke {
+  stroke: rgba(217, 222, 228, 0.92);
+}
+
+.contact-brand-icon__stroke--soft {
+  stroke: rgba(255, 255, 255, 0.06);
+}
+
+.contact-brand-icon__highlight {
+  stroke: rgba(255, 255, 255, 0.28);
+}
+
+.contact-brand-icon__dot {
+  fill: rgba(222, 226, 232, 0.9);
+}

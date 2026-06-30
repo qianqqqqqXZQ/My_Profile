@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import BorderGlow from '../components/BorderGlow'
+import ContactBrandIcon from '../components/ContactBrandIcon'
 import ContactGlobe from '../components/ContactGlobe'
 import Radar from '../components/Radar'
 import { contactHero } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
+import '../components/ContactBrandIcon.css'
 
 const contactCards = [
   {
+    icon: 'gmail',
     title: 'Gmail',
     value: 'ziqianxiong3@gmail.com',
     description:
@@ -15,6 +18,7 @@ const contactCards = [
     type: 'link',
   },
   {
+    icon: 'outlook',
     title: 'Outlook',
     value: 'scyzx7@nottingham.edu.cn',
     description:
@@ -23,6 +27,7 @@ const contactCards = [
     type: 'link',
   },
   {
+    icon: 'github',
     title: 'Github',
     value: 'qianqqqqqXZQ',
     description:
@@ -31,6 +36,7 @@ const contactCards = [
     type: 'external',
   },
   {
+    icon: 'wechat',
     title: 'WeChat',
     value: 'XZQqqqqqian',
     description:
@@ -102,8 +108,8 @@ function ContactPage() {
     const cardContent = (
       <>
         <div className="contact-card-icon" aria-hidden="true">
-          <span className="contact-card-spark contact-card-spark--primary" />
-          <span className="contact-card-spark contact-card-spark--secondary" />
+          <span className="contact-card-icon-sheen" />
+          <ContactBrandIcon name={item.icon} />
         </div>
         <strong>{item.title}</strong>
         <p>{item.description}</p>
