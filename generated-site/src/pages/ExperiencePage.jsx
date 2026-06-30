@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import LetterGlitch from '../components/LetterGlitch'
 import TextType from '../components/TextType'
 import researchArchitecture from '../assets/experience/research-architecture.png'
-import { featuredProjects, projectExperience, researchExperience } from '../content/siteContent'
+import { projectExperience, researchExperience, workingExperience } from '../content/siteContent'
 
 function ExperiencePage() {
   const heroRef = useRef(null)
@@ -113,7 +113,7 @@ function ExperiencePage() {
               <p className="eyebrow">Timeline</p>
               <h2>Project and research timeline</h2>
               <p className="section-intro">
-                A timeline layout for course projects, engineering work, research, or competition results.
+                A quick chronological view of academic exploration, engineering practice, and project delivery.
               </p>
             </div>
 
@@ -153,40 +153,89 @@ function ExperiencePage() {
           </div>
         </section>
 
-        <section className="content-section projects-section">
+        <section className="content-section">
           <div className="section-shell">
             <div className="section-header">
-              <p className="eyebrow">Featured Work</p>
-              <h2>Selected project cards</h2>
+              <p className="eyebrow">Research Experience</p>
+              <h2>Academic direction and experiment themes</h2>
               <p className="section-intro">
-                Large cards for projects, research, and supporting visuals.
+                A research-focused module with a structured timeline presentation and compact thematic tags.
               </p>
             </div>
 
-            <div className="project-stack">
-              {featuredProjects.map((project) => (
-                <article
-                  key={project.id}
-                  id={project.id}
-                  className={`featured-card ${project.className}`}
-                >
-                  <div className="featured-visual">
-                    <div className="visual-glow" />
-                    <div className="visual-grid" />
-                    <div className="visual-content">
-                      <span>{project.eyebrow}</span>
-                      <strong>{project.meta}</strong>
-                    </div>
-                  </div>
-                  <div className="featured-copy">
-                    <p className="micro-label">{project.eyebrow}</p>
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    <span className="inline-link">{project.cta}</span>
-                  </div>
-                </article>
-              ))}
+            <article className="experience-module experience-module--research card-surface">
+              <div className="card-header">
+                <p className="micro-label">Research Experience</p>
+                <span className="pill">Research</span>
+              </div>
+              <div className="timeline">
+                {researchExperience.map((item) => (
+                  <article key={item.title} className="timeline-item">
+                    <span className="timeline-period">{item.period}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <span className="experience-inline-tag">{item.focus}</span>
+                  </article>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <div className="section-shell">
+            <div className="section-header">
+              <p className="eyebrow">Working Experience</p>
+              <h2>Execution, delivery, and collaboration rhythm</h2>
+              <p className="section-intro">
+                A horizontal card composition that emphasizes role identity, working style, and delivery quality without using a vertical lane.
+              </p>
             </div>
+
+            <article className="experience-module experience-module--working card-surface">
+              <div className="working-strip">
+                {workingExperience.map((item) => (
+                  <article key={`${item.company}-${item.role}`} className="working-strip-card">
+                    <div className="working-item-topline">
+                      <span className="working-period">{item.period}</span>
+                      <span className="experience-inline-tag">{item.highlight}</span>
+                    </div>
+                    <h3>{item.role}</h3>
+                    <strong>{item.company}</strong>
+                    <p>{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <div className="section-shell">
+            <div className="section-header">
+              <p className="eyebrow">Project Experience</p>
+              <h2>Selected builds and technical outcomes</h2>
+              <p className="section-intro">
+                A modular project grid that reads more like a curated capability board than a repeated timeline.
+              </p>
+            </div>
+
+            <article className="experience-module experience-module--project card-surface">
+              <div className="card-header">
+                <p className="micro-label">Project Experience</p>
+                <span className="pill">Projects</span>
+              </div>
+              <div className="project-experience-grid">
+                {projectExperience.map((item) => (
+                  <article key={item.title} className="project-experience-tile">
+                    <span className="timeline-period">{item.period}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <span className="experience-inline-tag">{item.stack}</span>
+                  </article>
+                ))}
+              </div>
+            </article>
           </div>
         </section>
       </div>

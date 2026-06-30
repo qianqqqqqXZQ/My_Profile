@@ -82,57 +82,67 @@ export const contactLinks = [
 
 export const projectExperience = [
   {
-    title: 'Project 01',
-    period: '2025',
-    description: 'Full-stack product, data tool, or course project with a measurable outcome.',
+    title: 'Intelligent Resume Website',
+    period: '2026',
+    description: 'Designed and implemented a multi-page portfolio with interactive visuals, route-aware media behavior, and a refined editorial interface system.',
+    stack: 'React / Vite / Motion',
   },
   {
-    title: 'Project 02',
-    period: '2024',
-    description: 'Engineering tool, prototype, or technical coursework with a clear result.',
+    title: 'Coursework Engineering Prototype',
+    period: '2025',
+    description: 'Built a prototype-oriented software workflow for experimentation, iteration, and front-end delivery across academic development tasks.',
+    stack: 'Frontend / Prototyping / UI Systems',
+  },
+  {
+    title: 'Technical Exploration Archive',
+    period: 'Selected',
+    description: 'Collected small but focused implementation studies to validate interaction design, modular structure, and polished presentation quality.',
+    stack: 'Interface Craft / Iteration / Delivery',
   },
 ]
 
 export const researchExperience = [
   {
-    title: 'Research 01',
-    period: 'Research',
-    description: 'Research topic, advisor context, experiment direction, or implementation work.',
+    title: 'Multi-Branch Neural Network Study',
+    period: 'Ongoing',
+    description: 'Exploring dual-branch and multi-branch neural architectures with emphasis on model structure, feature fusion, and deployment-aware scheduling.',
+    focus: 'Architecture / Scheduling',
   },
   {
-    title: 'Research 02',
-    period: 'Prototype',
-    description: 'Paper poster, competition work, or a research prototype with a concise summary.',
+    title: 'Keyword and Speaker Recognition Direction',
+    period: 'Experiment',
+    description: 'Investigating speech-related recognition tasks through structured experiments, implementation tuning, and comparative model analysis.',
+    focus: 'Speech / Recognition',
+  },
+  {
+    title: 'Polyp Segmentation Research',
+    period: 'Vision',
+    description: 'Studying medical-image segmentation pipelines with attention to edge preservation, feature interaction, and robust computer vision performance.',
+    focus: 'Segmentation / CV',
   },
 ]
 
-export const featuredProjects = [
+export const workingExperience = [
   {
-    id: 'dance',
-    eyebrow: 'Curated Motion',
-    title: 'Street Dance Video Collection',
-    description: 'Dance reels, stage cuts, and edit highlights.',
-    meta: 'Video archive / performance edits / choreography reels',
-    className: 'signal',
-    cta: 'Video details',
+    company: 'Academic and Personal Development',
+    role: 'Independent Builder',
+    period: '2025 - Present',
+    description: 'Carrying work from idea to shipped result through planning, interface implementation, iteration, and technical cleanup.',
+    highlight: 'End-to-end execution',
   },
   {
-    id: 'product',
-    eyebrow: 'Product Case Study',
-    title: 'Selected CS Projects',
-    description: 'A small set of projects that show technical range and execution.',
-    meta: 'React / full-stack / system thinking',
-    className: 'aurora',
-    cta: 'Project details',
+    company: 'Research Collaboration Context',
+    role: 'Research Assistant Mindset',
+    period: '2025 - 2026',
+    description: 'Supporting research implementation with experiment-oriented coding, structured observation, and a bias toward reproducible progress.',
+    highlight: 'Research implementation',
   },
   {
-    id: 'research-visual',
-    eyebrow: 'Research Snapshot',
-    title: 'Research and Experiment Archive',
-    description: 'Research visuals, experiment outputs, posters, and publication material.',
-    meta: 'Experiments / papers / data stories',
-    className: 'matrix',
-    cta: 'Research details',
+    company: 'Project Delivery Workflow',
+    role: 'Coordinator and Implementer',
+    period: 'Selected Work',
+    description: 'Managing scope, translating abstract ideas into task lists, and maintaining visual and technical quality through delivery cycles.',
+    highlight: 'Planning and delivery',
   },
 ]
 
