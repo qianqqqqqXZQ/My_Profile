@@ -103,22 +103,27 @@ export const projectExperience = [
 
 export const researchExperience = [
   {
-    title: 'Multi-Branch Neural Network Study',
-    period: 'Ongoing',
-    description: 'Exploring dual-branch and multi-branch neural architectures with emphasis on model structure, feature fusion, and deployment-aware scheduling.',
-    focus: 'Architecture / Scheduling',
-  },
-  {
-    title: 'Keyword and Speaker Recognition Direction',
-    period: 'Experiment',
-    description: 'Investigating speech-related recognition tasks through structured experiments, implementation tuning, and comparative model analysis.',
-    focus: 'Speech / Recognition',
-  },
-  {
-    title: 'Polyp Segmentation Research',
-    period: 'Vision',
-    description: 'Studying medical-image segmentation pipelines with attention to edge preservation, feature interaction, and robust computer vision performance.',
+    title: 'Edge-Enhanced Dual-Stream Transformer for Small Polyp Segmentation',
+    period: 'June 2026 - Present',
+    supervisor: 'Prof. Fiseha Berhanu Tesema',
+    supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
+    description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
     focus: 'Segmentation / CV',
+    details: [
+      {
+        label: 'Model Development and Implementation',
+        text: 'Built a small polyp segmentation model on the OpenMMLab framework, integrating a dual-stream CNN-Transformer architecture with a Laplacian pyramid module and boundary-aware loss. Implemented and debugged key sub-modules including the CNN stream, Transformer stream, edge separation, attention fusion, and loss function.',
+      },
+      {
+        label: 'Dataset Preparation',
+        text: 'Curated and preprocessed the Kvasir-SEG and ETIS-LaribPolypDB datasets, including normalization, annotation screening, and small-polyp subset partitioning.',
+      },
+      {
+        label: 'Performance Evaluation',
+        text: 'Conducted comparative experiments and validated model performance using Dice, IoU, and inference speed metrics.',
+      },
+    ],
+    publicationStatus: 'A related manuscript is under review at Computer Vision and Image Understanding (CVIU), with me listed as the second author.',
   },
 ]
 

@@ -7,6 +7,7 @@ import { projectExperience, researchExperience, workingExperience } from '../con
 function ExperiencePage() {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [selectedResearchExperience, setSelectedResearchExperience] = useState(null)
   const experienceHeroText = 'Here is my\nResearch, Project and Working\nExperience...'
 
   useEffect(() => {
@@ -32,6 +33,24 @@ function ExperiencePage() {
       observer.disconnect()
     }
   }, [])
+
+  useEffect(() => {
+    if (!selectedResearchExperience || typeof window === 'undefined') {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedResearchExperience(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [selectedResearchExperience])
 
   return (
     <div className="page-route page-experience">
@@ -139,16 +158,19 @@ function ExperiencePage() {
                   <p className="micro-label">Research Experience</p>
                   <span className="pill">Research</span>
                 </div>
-                <div className="timeline">
-                  {researchExperience.map((item) => (
-                    <article key={item.title} className="timeline-item">
-                      <span className="timeline-period">{item.period}</span>
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                    </article>
-                  ))}
-                </div>
+              <div className="timeline">
+                {researchExperience.map((item) => (
+                  <article key={item.title} className="timeline-item">
+                    <span className="timeline-period">{item.period}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    {item.supervisor ? (
+                      <p className="timeline-supervisor">Supervisor: {item.supervisor}</p>
+                    ) : null}
+                  </article>
+                ))}
               </div>
+            </div>
             </div>
           </div>
         </section>
@@ -170,11 +192,36 @@ function ExperiencePage() {
               </div>
               <div className="timeline">
                 {researchExperience.map((item) => (
-                  <article key={item.title} className="timeline-item">
-                    <span className="timeline-period">{item.period}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                  <article
+                    key={item.title}
+                    className="research-experience-card timeline-item"
+                  >
+                    <button
+                      type="button"
+                      className="research-card-trigger"
+                      onClick={() => setSelectedResearchExperience(item)}
+                    >
+                      <span className="timeline-period">{item.period}</span>
+                      <h3>{item.title}</h3>
+                    </button>
+                    {item.supervisor ? (
+                      <a
+                        className="research-supervisor-link"
+                        href={item.supervisorUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Supervisor: {item.supervisor}
+                      </a>
+                    ) : null}
                     <span className="experience-inline-tag">{item.focus}</span>
+                    <button
+                      type="button"
+                      className="research-card-action"
+                      onClick={() => setSelectedResearchExperience(item)}
+                    >
+                      View details
+                    </button>
                   </article>
                 ))}
               </div>
@@ -239,6 +286,58 @@ function ExperiencePage() {
           </div>
         </section>
       </div>
+
+      {selectedResearchExperience ? (
+        <div
+          className="research-modal-backdrop"
+          role="presentation"
+          onClick={() => setSelectedResearchExperience(null)}
+        >
+          <article
+            className="research-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="research-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="research-modal-close"
+              aria-label="Close research details"
+              onClick={() => setSelectedResearchExperience(null)}
+            >
+              x
+            </button>
+            <div className="research-modal-header">
+              <p className="eyebrow">Research Details</p>
+              <h2 id="research-modal-title">{selectedResearchExperience.title}</h2>
+              <div className="research-modal-meta">
+                <span>{selectedResearchExperience.period}</span>
+                <a
+                  href={selectedResearchExperience.supervisorUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Supervisor: {selectedResearchExperience.supervisor}
+                </a>
+              </div>
+            </div>
+
+            <div className="research-modal-body">
+              {selectedResearchExperience.details.map((detail) => (
+                <section key={detail.label} className="research-modal-detail">
+                  <h3>{detail.label}</h3>
+                  <p>{detail.text}</p>
+                </section>
+              ))}
+              <section className="research-modal-detail research-modal-publication">
+                <h3>Publication Status</h3>
+                <p>{selectedResearchExperience.publicationStatus}</p>
+              </section>
+            </div>
+          </article>
+        </div>
+      ) : null}
     </div>
   )
 }
