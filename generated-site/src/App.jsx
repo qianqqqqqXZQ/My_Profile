@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { BackgroundAudioProvider } from './components/BackgroundAudioManager'
+import HomeLanguageSelector from './components/HomeLanguageSelector'
 import MuteToggleButton from './components/MuteToggleButton'
 import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
@@ -15,6 +16,7 @@ function App() {
   return (
     <BackgroundAudioProvider>
       <MuteToggleButton />
+      <HomeLanguageSelector />
       <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>

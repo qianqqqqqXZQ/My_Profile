@@ -52,6 +52,162 @@
   pointer-events: none;
 }
 
+.home-language-selector {
+  position: fixed;
+  top: 22px;
+  left: 74px;
+  z-index: 30;
+}
+
+.home-language-toggle,
+.home-language-option {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    rgba(12, 12, 12, 0.56);
+  color: var(--text-high);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
+
+.home-language-toggle {
+  min-width: 96px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.home-language-toggle:hover,
+.home-language-toggle:focus-visible,
+.home-language-option:hover,
+.home-language-option:focus-visible {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
+    rgba(12, 12, 12, 0.66);
+}
+
+.home-language-toggle:focus-visible,
+.home-language-option:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+.home-language-flag,
+.home-language-option-flag {
+  width: 28px;
+  height: 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.home-language-flag svg,
+.home-language-option-flag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.home-language-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home-language-caret {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.72);
+  transition: transform 180ms ease;
+}
+
+.home-language-caret svg {
+  width: 100%;
+  height: 100%;
+}
+
+.home-language-selector.is-open .home-language-caret {
+  transform: rotate(180deg);
+}
+
+.home-language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 160px;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    rgba(10, 10, 10, 0.72);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+  pointer-events: none;
+}
+
+.home-language-selector.is-open .home-language-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.home-language-option {
+  width: 100%;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.home-language-option-copy {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-language-option.is-selected {
+  border-color: rgba(255, 255, 255, 0.24);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(194, 198, 206, 0.14)),
+    rgba(16, 16, 16, 0.62);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.12);
+}
+
 .site-shell :is(header, section)[id] {
   scroll-margin-top: 136px;
 }
@@ -2576,6 +2732,36 @@
 
   .global-mute-icon {
     font-size: 16px;
+  }
+
+  .home-language-selector {
+    top: 14px;
+    left: 60px;
+  }
+
+  .home-language-toggle {
+    min-width: 88px;
+    height: 38px;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 12px;
+  }
+
+  .home-language-flag,
+  .home-language-option-flag {
+    width: 24px;
+    height: 16px;
+  }
+
+  .home-language-label,
+  .home-language-option-copy {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .home-language-menu {
+    min-width: 148px;
+    border-radius: 16px;
   }
 
   .site-shell :is(header, section)[id] {
