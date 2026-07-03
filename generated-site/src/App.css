@@ -1171,13 +1171,6 @@
   background: rgba(0, 0, 0, 0.78);
 }
 
-.profile-hero-copy .profile-activities-button {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04)),
-    rgba(8, 8, 8, 0.72);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
 .profile-hero-copy .profile-highlights {
   max-width: 660px;
   margin-top: 18px;

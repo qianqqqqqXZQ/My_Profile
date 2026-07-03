@@ -32,10 +32,6 @@ const DESKTOP_DRAG_MAX_STEP = 0.85
 const MOBILE_DRAG_MAX_STEP = 1.15
 const DESKTOP_MAX_SPIN = 10
 const MOBILE_MAX_SPIN = 14
-const DESKTOP_DRAG_SAFE_HALF_WIDTH = 2.5
-const MOBILE_DRAG_SAFE_HALF_WIDTH = 2.8
-const DESKTOP_DRAG_SAFE_HALF_HEIGHT = 2.85
-const MOBILE_DRAG_SAFE_HALF_HEIGHT = 3.15
 
 export default function ProfileLanyard({
   position = [0, 0, 28],
@@ -68,22 +64,6 @@ export default function ProfileLanyard({
       </Canvas>
     </div>
   )
-}
-
-function clampDraggedPosition(target, camera, isMobile) {
-  const localTarget = camera.worldToLocal(target.clone())
-  const depth = Math.max(Math.abs(localTarget.z), 0.001)
-  const halfHeight = Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5)) * depth
-  const halfWidth = halfHeight * camera.aspect
-  const safeHalfWidth = isMobile ? MOBILE_DRAG_SAFE_HALF_WIDTH : DESKTOP_DRAG_SAFE_HALF_WIDTH
-  const safeHalfHeight = isMobile ? MOBILE_DRAG_SAFE_HALF_HEIGHT : DESKTOP_DRAG_SAFE_HALF_HEIGHT
-  const maxDragX = Math.max(0, halfWidth - safeHalfWidth)
-  const maxDragY = Math.max(0, halfHeight - safeHalfHeight)
-
-  localTarget.x = THREE.MathUtils.clamp(localTarget.x, -maxDragX, maxDragX)
-  localTarget.y = THREE.MathUtils.clamp(localTarget.y, -maxDragY, maxDragY)
-
-  return camera.localToWorld(localTarget)
 }
 
 function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, paused = false }) {
@@ -227,7 +207,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, paused = false })
         dragDelta.setLength(Math.min(dragDelta.length(), isMobile ? MOBILE_DRAG_MAX_STEP : DESKTOP_DRAG_MAX_STEP))
       }
       lastDragTarget.current.add(dragDelta)
-      lastDragTarget.current.copy(clampDraggedPosition(lastDragTarget.current, state.camera, isMobile))
 
       ;[card, ...jointRefs, fixed].forEach((ref) => ref.current?.wakeUp())
       card.current.setNextKinematicTranslation({

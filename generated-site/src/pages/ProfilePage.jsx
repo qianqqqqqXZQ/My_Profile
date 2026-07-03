@@ -60,9 +60,6 @@ function ProfilePage() {
                   <Link className="secondary-button profile-dance-button" to="/dance">
                     Dance Video
                   </Link>
-                  <a className="secondary-button profile-activities-button" href="#campus-activities">
-                    Campus Activities
-                  </a>
                 </div>
 
                 <div className="profile-highlights">
