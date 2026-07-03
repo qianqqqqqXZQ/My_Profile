@@ -1029,6 +1029,13 @@
   background: rgba(0, 0, 0, 0.78);
 }
 
+.profile-hero-copy .profile-activities-button {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04)),
+    rgba(8, 8, 8, 0.72);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 .profile-hero-copy .profile-highlights {
   max-width: 660px;
   margin-top: 18px;
@@ -1679,8 +1686,129 @@
 }
 
 .projects-section .section-header,
+.course-activities-section .section-header,
 .strengths-section .section-header {
   margin-bottom: 36px;
+}
+
+.course-activities-section {
+  isolation: isolate;
+}
+
+.course-activity-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 22px;
+}
+
+.course-activity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 28px 28px 26px;
+  border-radius: 30px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(9, 9, 9, 0.9);
+}
+
+.course-activity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 78%);
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.course-activity-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 28px 0 28px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.26), transparent 78%);
+  opacity: 0.8;
+}
+
+.course-activity-card:nth-child(4n + 1) {
+  grid-row: span 2;
+  min-height: 100%;
+  justify-content: space-between;
+}
+
+.course-activity-card:nth-child(4n + 4) {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.12), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(12, 12, 12, 0.92);
+}
+
+.course-activity-topline,
+.course-activity-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.course-activity-accent,
+.course-activity-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(244, 243, 239, 0.78);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.course-activity-card h3,
+.course-activity-summary,
+.course-activity-outcome {
+  position: relative;
+  z-index: 1;
+}
+
+.course-activity-card h3 {
+  margin: 18px 0 12px;
+  max-width: 14ch;
+  font-size: clamp(1.5rem, 2vw, 2.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.course-activity-summary {
+  max-width: 56ch;
+  margin: 0 0 18px;
+  color: rgba(244, 243, 239, 0.82);
+}
+
+.course-activity-outcome {
+  margin: auto 0 0;
+  padding-top: 18px;
+  color: rgba(244, 243, 239, 0.68);
+  line-height: 1.7;
+}
+
+.course-activity-card:nth-child(4n + 1) .course-activity-outcome {
+  font-size: 1rem;
+  color: rgba(244, 243, 239, 0.74);
 }
 
 .project-stack,
@@ -2436,12 +2564,18 @@
   }
 
   .working-strip,
-  .project-experience-grid {
+  .project-experience-grid,
+  .course-activity-grid {
     grid-template-columns: 1fr;
   }
 
   .research-modal-body {
     grid-template-columns: 1fr;
+  }
+
+  .course-activity-card:nth-child(4n + 1) {
+    grid-row: auto;
+    min-height: 300px;
   }
 }
 
@@ -2648,9 +2782,21 @@
   }
 
   .working-strip-card,
-  .project-experience-tile {
+  .project-experience-tile,
+  .course-activity-card {
     min-height: auto;
     padding: 18px;
+  }
+
+  .course-activity-topline,
+  .course-activity-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-activity-card h3 {
+    max-width: none;
+    font-size: clamp(1.4rem, 7vw, 2rem);
   }
 
   .research-modal-backdrop {

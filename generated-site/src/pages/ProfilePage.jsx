@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
 import ProfileLanyard from '../components/ProfileLanyard'
-import { contactLinks, profileHighlights, strengths } from '../content/siteContent'
+import { campusActivities, profileHighlights, strengths } from '../content/siteContent'
 import './HomePage.css'
 
 function ProfilePage() {
@@ -60,6 +60,9 @@ function ProfilePage() {
                   <Link className="secondary-button profile-dance-button" to="/dance">
                     Dance Video
                   </Link>
+                  <a className="secondary-button profile-activities-button" href="#campus-activities">
+                    Campus Activities
+                  </a>
                 </div>
 
                 <div className="profile-highlights">
@@ -77,22 +80,30 @@ function ProfilePage() {
       </HeroBackground>
 
       <main>
-        <section className="content-section">
+        <section id="campus-activities" className="content-section course-activities-section">
           <div className="section-shell">
             <div className="section-header">
-              <p className="eyebrow">Contact</p>
-              <h2>Direct links</h2>
+              <p className="eyebrow">Campus Activities</p>
+              <h2>Leadership, outreach, and community presence</h2>
               <p className="section-intro">
-                Keep the contact cards lower on the page so the hero stays visually dominant.
+                A refined snapshot of extracurricular roles on campus, from street dance leadership to student-organization coordination and public-facing collaboration.
               </p>
             </div>
 
-            <div className="contact-grid contact-grid--page">
-              {contactLinks.map((item) => (
-                <a key={item.label} className="contact-card" href={item.href}>
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                </a>
+            <div className="course-activity-grid">
+              {campusActivities.map((item) => (
+                <article key={item.title} className="course-activity-card card-surface">
+                  <div className="course-activity-topline">
+                    <p className="micro-label">{item.label}</p>
+                    <span className="course-activity-accent">{item.accent}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="course-activity-summary">{item.summary}</p>
+                  <div className="course-activity-meta">
+                    <span>{item.category}</span>
+                  </div>
+                  <p className="course-activity-outcome">{item.outcome}</p>
+                </article>
               ))}
             </div>
           </div>

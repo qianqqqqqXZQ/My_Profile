@@ -48,6 +48,41 @@ export const profileHighlights = [
   { label: 'HOBBY', value: 'Dancing and Music' },
 ]
 
+export const campusActivities = [
+  {
+    label: 'Street Dance Club',
+    title: 'Vice Captain of the Street Dance Club',
+    summary: 'Supported rehearsals, team coordination, and routine preparation while helping maintain performance quality and daily communication inside the club.',
+    outcome: 'Built stronger leadership through organizing people, balancing atmosphere with discipline, and keeping group execution consistent before showcases and campus events.',
+    category: 'Student Leadership',
+    accent: 'Crew direction',
+  },
+  {
+    label: 'Student Union',
+    title: 'External Relations Department Member',
+    summary: 'Participated in outreach-related work, including external communication, resource coordination, and practical support for student-facing activities.',
+    outcome: 'Improved professional communication, negotiation awareness, and the ability to represent a student organization in a clear and reliable way.',
+    category: 'External Affairs',
+    accent: 'Partnership rhythm',
+  },
+  {
+    label: 'Event Support',
+    title: 'Campus Activity Planning and Coordination',
+    summary: 'Contributed to the preparation and on-site execution of school activities, working across planning tasks, schedule alignment, and team coordination.',
+    outcome: 'Learned how to keep operations stable under real-time pressure while preserving a polished experience for participants and organizers.',
+    category: 'Execution',
+    accent: 'Operational calm',
+  },
+  {
+    label: 'Community Presence',
+    title: 'Performance, Representation, and Team Identity',
+    summary: 'Used extracurricular roles not only to participate, but also to contribute to team culture, visibility, and a stronger sense of shared identity on campus.',
+    outcome: 'Turned activity participation into a broader practice of responsibility, presence, and representing a group with confidence in public settings.',
+    category: 'Campus Engagement',
+    accent: 'Visible energy',
+  },
+]
+
 export const contactHero = {
   title: 'If You Want to Contact Me...',
   summary: 'This page describes the contact information of the webpage owner.',
