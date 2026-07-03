@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import BorderGlow from '../components/BorderGlow'
 import ContactBrandIcon from '../components/ContactBrandIcon'
 import ContactGlobe from '../components/ContactGlobe'
-import Radar from '../components/Radar'
 import { contactHero } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
@@ -143,14 +142,14 @@ function ContactPage() {
 
   return (
     <div className="page-route page-contact">
-      <section ref={heroRef} className="contact-hero">
-        <div className="contact-hero-stage" aria-hidden="true">
-          <div className="contact-hero-orbit" />
-          <div className="contact-hero-scrim" />
-          <div className="contact-hero-noise" />
-          <ContactGlobe paused={!isHeroVisible} />
-        </div>
+      <div className="page-contact-background" aria-hidden="true">
+        <div className="contact-hero-orbit" />
+        <ContactGlobe paused={!isHeroVisible} />
+        <div className="contact-hero-scrim" />
+        <div className="contact-hero-noise" />
+      </div>
 
+      <section ref={heroRef} className="contact-hero">
         <div className="section-shell contact-hero-shell">
           <div className="contact-hero-copy">
             <h1>{contactHero.title}</h1>
@@ -160,27 +159,7 @@ function ContactPage() {
       </section>
 
       <section className="contact-section page-contact-section">
-        <div className="page-contact-radar" aria-hidden="true">
-          <Radar
-            speed={0.28}
-            scale={0.55}
-            ringCount={12}
-            spokeCount={14}
-            ringThickness={0.055}
-            spokeThickness={0.01}
-            sweepSpeed={1.15}
-            sweepWidth={4.4}
-            sweepLobes={1}
-            color="#f4edf8"
-            backgroundColor="#000000"
-            falloff={2.8}
-            brightness={1.1}
-            enableMouseInteraction={true}
-            mouseInfluence={0.05}
-          />
-        </div>
-        <div className="page-contact-radar-scrim" aria-hidden="true" />
-        <div className="page-contact-radar-noise" aria-hidden="true" />
+        <div className="page-contact-section-scrim" aria-hidden="true" />
 
         <div className="section-shell contact-shell">
           <div className="contact-radar-content">

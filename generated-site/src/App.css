@@ -225,12 +225,10 @@
 .contact-hero {
   position: relative;
   min-height: 100svh;
-  border-bottom: 1px solid var(--border-strong);
   overflow: clip;
-  isolation: isolate;
 }
 
-.contact-hero-stage,
+.page-contact-background,
 .contact-hero-scrim,
 .contact-hero-noise,
 .contact-globe-canvas,
@@ -239,8 +237,10 @@
   inset: 0;
 }
 
-.contact-hero-stage {
+.page-contact-background {
   z-index: 0;
+  pointer-events: none;
+  overflow: clip;
 }
 
 .contact-globe-canvas {
@@ -265,7 +265,7 @@
     linear-gradient(90deg, rgba(4, 6, 10, 0.94) 0%, rgba(5, 8, 12, 0.8) 32%, rgba(7, 10, 15, 0.12) 62%, rgba(7, 10, 15, 0.5) 100%),
     radial-gradient(circle at 70% 46%, rgba(125, 249, 255, 0.12), transparent 30%),
     radial-gradient(circle at 76% 56%, rgba(93, 111, 255, 0.14), transparent 24%),
-    linear-gradient(180deg, rgba(6, 8, 12, 0.12), rgba(3, 5, 8, 0.72) 82%, rgba(5, 5, 5, 0.96) 100%);
+    linear-gradient(180deg, rgba(6, 8, 12, 0.14) 0%, rgba(3, 5, 8, 0.58) 54%, rgba(4, 5, 7, 0.82) 78%, rgba(5, 5, 5, 0.96) 100%);
   pointer-events: none;
 }
 
@@ -281,7 +281,7 @@
 
 .contact-hero-shell {
   position: relative;
-  z-index: 4;
+  z-index: 1;
   display: grid;
   align-items: center;
   min-height: 100svh;
@@ -306,51 +306,35 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  border-top: 1px solid var(--border-strong);
   overflow: hidden;
   isolation: isolate;
-  background: #050505;
+  background: transparent;
 }
 
 .page-contact-section {
   min-height: auto;
   padding: 120px 0 132px;
   border-top: 0;
-  background: #050505;
+  background: transparent;
 }
 
-.page-contact-radar,
-.page-contact-radar-scrim,
-.page-contact-radar-noise {
+.page-contact-section-scrim {
   position: absolute;
   inset: 0;
 }
 
-.page-contact-radar {
+.page-contact-section-scrim {
   z-index: 0;
-}
-
-.page-contact-radar-scrim {
-  z-index: 1;
   background:
-    radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.12), transparent 22%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.44) 42%, rgba(0, 0, 0, 0.76) 100%);
-  pointer-events: none;
-}
-
-.page-contact-radar-noise {
-  z-index: 2;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-  background-size: 118px 118px;
-  opacity: 0.05;
+    linear-gradient(180deg, rgba(4, 6, 10, 0.12) 0%, rgba(5, 7, 11, 0.44) 18%, rgba(4, 6, 10, 0.7) 48%, rgba(4, 4, 5, 0.9) 100%),
+    radial-gradient(circle at 50% 8%, rgba(126, 243, 255, 0.08), transparent 22%),
+    radial-gradient(circle at 80% 22%, rgba(90, 111, 255, 0.1), transparent 24%);
   pointer-events: none;
 }
 
 .contact-shell {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   max-width: 980px;
   padding: 96px 0;
 }

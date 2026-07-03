@@ -34,7 +34,7 @@ export const homeRouteCards = [
   {
     label: 'Contact',
     to: '/contact',
-    title: 'Direct contact',
+    title: 'Direct Contact',
     description: 'Email, Wechat and GitHub for quick follow-up',
   },
 ]
