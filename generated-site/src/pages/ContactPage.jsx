@@ -159,8 +159,6 @@ function ContactPage() {
       </section>
 
       <section className="contact-section page-contact-section">
-        <div className="page-contact-section-scrim" aria-hidden="true" />
-
         <div className="section-shell contact-shell">
           <div className="contact-radar-content">
             <h2 className="contact-section-title">My Contact Information</h2>

@@ -318,20 +318,6 @@
   background: transparent;
 }
 
-.page-contact-section-scrim {
-  position: absolute;
-  inset: 0;
-}
-
-.page-contact-section-scrim {
-  z-index: 0;
-  background:
-    linear-gradient(180deg, rgba(4, 6, 10, 0.12) 0%, rgba(5, 7, 11, 0.44) 18%, rgba(4, 6, 10, 0.7) 48%, rgba(4, 4, 5, 0.9) 100%),
-    radial-gradient(circle at 50% 8%, rgba(126, 243, 255, 0.08), transparent 22%),
-    radial-gradient(circle at 80% 22%, rgba(90, 111, 255, 0.1), transparent 24%);
-  pointer-events: none;
-}
-
 .contact-shell {
   position: relative;
   z-index: 1;
