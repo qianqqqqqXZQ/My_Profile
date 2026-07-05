@@ -2,52 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import BorderGlow from '../components/BorderGlow'
 import ContactBrandIcon from '../components/ContactBrandIcon'
 import ContactGlobe from '../components/ContactGlobe'
-import { contactHero } from '../content/siteContent'
+import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
 
-const contactCards = [
-  {
-    icon: 'gmail',
-    title: 'Gmail',
-    value: 'ziqianxiong3@gmail.com',
-    description:
-      'This is my long-term personal email address. You can directly send me emails.',
-    href: 'mailto:ziqianxiong3@gmail.com',
-    type: 'link',
-  },
-  {
-    icon: 'outlook',
-    title: 'Outlook',
-    value: 'scyzx7@nottingham.edu.cn',
-    description:
-      'This is the official email address of my current institution. You can try sending me an email through this.',
-    href: 'mailto:scyzx7@nottingham.edu.cn',
-    type: 'link',
-  },
-  {
-    icon: 'github',
-    title: 'Github',
-    value: 'qianqqqqqXZQ',
-    description:
-      'This is my GitHub page. If you are interested in my code and repositories, please click on it.',
-    href: 'https://github.com/qianqqqqqXZQ',
-    type: 'external',
-  },
-  {
-    icon: 'wechat',
-    title: 'WeChat',
-    value: 'XZQqqqqqian',
-    description:
-      'This is my social media app in China. If you want to become friends with me, just click on it.',
-    type: 'modal',
-  },
-]
-
-function ContactPage() {
+function ContactPage({ language }) {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [isWechatModalOpen, setIsWechatModalOpen] = useState(false)
+  const copy = contactPageContent[language] ?? contactPageContent.en
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -152,8 +115,8 @@ function ContactPage() {
       <section ref={heroRef} className="contact-hero">
         <div className="section-shell contact-hero-shell">
           <div className="contact-hero-copy">
-            <h1>{contactHero.title}</h1>
-            <p className="page-lead">{contactHero.summary}</p>
+            <h1>{copy.hero.title}</h1>
+            <p className="page-lead">{copy.hero.summary}</p>
           </div>
         </div>
       </section>
@@ -161,9 +124,9 @@ function ContactPage() {
       <section className="contact-section page-contact-section">
         <div className="section-shell contact-shell">
           <div className="contact-radar-content">
-            <h2 className="contact-section-title">My Contact Information</h2>
+            <h2 className="contact-section-title">{copy.sectionTitle}</h2>
             <div className="contact-grid contact-grid--page">
-              {contactCards.map((item) => (
+              {copy.cards.map((item) => (
                 <BorderGlow
                   key={item.title}
                   className="contact-card-glow"
@@ -202,14 +165,14 @@ function ContactPage() {
             <button
               type="button"
               className="wechat-modal-close"
-              aria-label="Close WeChat QR code"
+              aria-label={copy.wechatModal.closeLabel}
               onClick={closeWechatModal}
             >
               x
             </button>
-            <h3 id="wechat-modal-title">WeChat</h3>
-            <p>Scan the QR code to add me on WeChat.</p>
-            <img src={wechatQrImage} alt="WeChat QR code for XZQqqqqqian" />
+            <h3 id="wechat-modal-title">{copy.wechatModal.title}</h3>
+            <p>{copy.wechatModal.summary}</p>
+            <img src={wechatQrImage} alt={copy.wechatModal.imageAlt} />
             <span>XZQqqqqqian</span>
           </div>
         </div>

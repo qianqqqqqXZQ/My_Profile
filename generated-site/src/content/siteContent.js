@@ -105,6 +105,102 @@ export const homePageContent = {
   },
 }
 
+export const contactPageContent = {
+  en: {
+    hero: {
+      title: 'If You Want to Contact Me...',
+      summary: 'This page describes the contact information of the webpage owner.',
+    },
+    sectionTitle: 'My Contact Information',
+    cards: [
+      {
+        icon: 'gmail',
+        title: 'Gmail',
+        value: 'ziqianxiong3@gmail.com',
+        description: 'This is my long-term personal email address. You can directly send me emails.',
+        href: 'mailto:ziqianxiong3@gmail.com',
+        type: 'link',
+      },
+      {
+        icon: 'outlook',
+        title: 'Outlook',
+        value: 'scyzx7@nottingham.edu.cn',
+        description:
+          'This is the official email address of my current institution. You can try sending me an email through this.',
+        href: 'mailto:scyzx7@nottingham.edu.cn',
+        type: 'link',
+      },
+      {
+        icon: 'github',
+        title: 'GitHub',
+        value: 'qianqqqqqXZQ',
+        description: 'This is my GitHub page. If you are interested in my code and repositories, please click on it.',
+        href: 'https://github.com/qianqqqqqXZQ',
+        type: 'external',
+      },
+      {
+        icon: 'wechat',
+        title: 'WeChat',
+        value: 'XZQqqqqqian',
+        description: 'This is my social media app in China. If you want to become friends with me, just click on it.',
+        type: 'modal',
+      },
+    ],
+    wechatModal: {
+      closeLabel: 'Close WeChat QR code',
+      title: 'WeChat',
+      summary: 'Scan the QR code to add me on WeChat.',
+      imageAlt: 'WeChat QR code for XZQqqqqqian',
+    },
+  },
+  zh: {
+    hero: {
+      title: '\u5982\u679c\u4f60\u60f3\u8054\u7cfb\u6211...',
+      summary: '\u8fd9\u4e00\u9875\u5c55\u793a\u4e86\u8fd9\u4e2a\u4e2a\u4eba\u4e3b\u9875\u62e5\u6709\u8005\u7684\u8054\u7cfb\u65b9\u5f0f\u3002',
+    },
+    sectionTitle: '\u6211\u7684\u8054\u7cfb\u65b9\u5f0f',
+    cards: [
+      {
+        icon: 'gmail',
+        title: 'Gmail',
+        value: 'ziqianxiong3@gmail.com',
+        description: '\u8fd9\u662f\u6211\u957f\u671f\u4f7f\u7528\u7684\u4e2a\u4eba\u90ae\u7bb1\uff0c\u4f60\u53ef\u4ee5\u76f4\u63a5\u7ed9\u6211\u53d1\u90ae\u4ef6\u3002',
+        href: 'mailto:ziqianxiong3@gmail.com',
+        type: 'link',
+      },
+      {
+        icon: 'outlook',
+        title: 'Outlook',
+        value: 'scyzx7@nottingham.edu.cn',
+        description: '\u8fd9\u662f\u6211\u76ee\u524d\u5b66\u6821\u7684\u5b98\u65b9\u90ae\u7bb1\uff0c\u4f60\u4e5f\u53ef\u4ee5\u901a\u8fc7\u8fd9\u4e2a\u90ae\u7bb1\u8054\u7cfb\u6211\u3002',
+        href: 'mailto:scyzx7@nottingham.edu.cn',
+        type: 'link',
+      },
+      {
+        icon: 'github',
+        title: 'GitHub',
+        value: 'qianqqqqqXZQ',
+        description: '\u8fd9\u662f\u6211\u7684 GitHub \u4e3b\u9875\uff0c\u5982\u679c\u4f60\u5bf9\u6211\u7684\u4ee3\u7801\u6216\u4ed3\u5e93\u611f\u5174\u8da3\uff0c\u53ef\u4ee5\u70b9\u51fb\u67e5\u770b\u3002',
+        href: 'https://github.com/qianqqqqqXZQ',
+        type: 'external',
+      },
+      {
+        icon: 'wechat',
+        title: '\u5fae\u4fe1',
+        value: 'XZQqqqqqian',
+        description: '\u8fd9\u662f\u6211\u5728\u4e2d\u56fd\u5e38\u7528\u7684\u793e\u4ea4\u8f6f\u4ef6\uff0c\u5982\u679c\u4f60\u60f3\u548c\u6211\u52a0\u4e2a\u597d\u53cb\uff0c\u53ef\u4ee5\u76f4\u63a5\u70b9\u51fb\u3002',
+        type: 'modal',
+      },
+    ],
+    wechatModal: {
+      closeLabel: '\u5173\u95ed\u5fae\u4fe1\u4e8c\u7ef4\u7801',
+      title: '\u5fae\u4fe1',
+      summary: '\u626b\u63cf\u4e8c\u7ef4\u7801\u5373\u53ef\u5728\u5fae\u4fe1\u4e0a\u6dfb\u52a0\u6211\u3002',
+      imageAlt: '\u5fae\u4fe1\u7528\u6237 XZQqqqqqian \u7684\u4e8c\u7ef4\u7801',
+    },
+  },
+}
+
 export const profileHighlights = [
   { label: 'NAME', value: 'Ziqian Xiong' },
   { label: 'BIRTH', value: '2006/3/7' },
@@ -146,11 +242,6 @@ export const campusActivities = [
     accent: 'Visible energy',
   },
 ]
-
-export const contactHero = {
-  title: 'If You Want to Contact Me...',
-  summary: 'This page describes the contact information of the webpage owner.',
-}
 
 export const contactLinks = [
   {

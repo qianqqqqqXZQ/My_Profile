@@ -1,9 +1,10 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { navigationLinks } from '../content/siteContent'
 
-function SiteLayout() {
+function SiteLayout({ language, onLanguageChange }) {
   const location = useLocation()
   const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
+  const isContactRoute = location.pathname === '/contact'
 
   return (
     <div className="site-shell">
@@ -15,10 +16,30 @@ function SiteLayout() {
           <span className="site-topbar-edge site-topbar-edge--right" aria-hidden="true" />
 
           <div className="language-switcher" aria-label="Language switcher">
-            <button type="button" className="language-button is-active" aria-pressed="true">
+            <button
+              type="button"
+              className={`language-button${language === 'en' ? ' is-active' : ''}`}
+              aria-pressed={language === 'en'}
+              disabled={!isContactRoute}
+              onClick={() => {
+                if (isContactRoute) {
+                  onLanguageChange('en')
+                }
+              }}
+            >
               EN
             </button>
-            <button type="button" className="language-button" aria-pressed="false">
+            <button
+              type="button"
+              className={`language-button${language === 'zh' ? ' is-active' : ''}`}
+              aria-pressed={language === 'zh'}
+              disabled={!isContactRoute}
+              onClick={() => {
+                if (isContactRoute) {
+                  onLanguageChange('zh')
+                }
+              }}
+            >
               ZH
             </button>
           </div>
