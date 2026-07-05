@@ -12,32 +12,70 @@ export const heroHighlights = [
   { label: 'Status', value: 'Portfolio in progress' },
 ]
 
-export const homeRouteCards = [
-  {
-    label: 'Profile',
-    to: '/profile',
-    title: 'Basic Background',
-    description: 'This page contains some general personal information of mine, such as my hobbies.',
+export const readyPageContent = {
+  en: {
+    heroTitle: 'Where Do You Want to Go ?',
+    cardActionLabel: 'Open Page',
+    heroNote: 'More modules are being continuously updated...',
+    routeCards: [
+      {
+        label: 'Profile',
+        to: '/profile',
+        title: 'Basic Background',
+        description: 'This page contains some general personal information of mine, such as my hobbies.',
+      },
+      {
+        label: 'Experience',
+        to: '/experience',
+        title: 'Develop Experience',
+        description: 'Develop relevant research experience, work experience and project management experience',
+      },
+      {
+        label: 'Dance Videos',
+        to: '/dance',
+        title: 'Dance Videos',
+        description: 'Dance-related performance videos or competition videos',
+      },
+      {
+        label: 'Contact',
+        to: '/contact',
+        title: 'Direct Contact',
+        description: 'Email, Wechat and GitHub for quick follow-up',
+      },
+    ],
   },
-  {
-    label: 'Experience',
-    to: '/experience',
-    title: 'Develop Experience',
-    description: 'Develop relevant research experience, work experience and project management experience',
+  zh: {
+    heroTitle: '\u4f60\u60f3\u5148\u4e86\u89e3\u6211\u7684\u4ec0\u4e48',
+    cardActionLabel: '\u8fdb\u5165\u9875\u9762',
+    heroNote: '\u66f4\u591a\u6a21\u5757\u6b63\u5728\u6301\u7eed\u66f4\u65b0\u4e2d...',
+    routeCards: [
+      {
+        label: '\u4e2a\u4eba\u80cc\u666f',
+        to: '/profile',
+        title: '\u57fa\u672c\u80cc\u666f',
+        description: '\u8fd9\u4e00\u9875\u5305\u542b\u6211\u7684\u4e00\u4e9b\u57fa\u672c\u4e2a\u4eba\u4fe1\u606f\uff0c\u4f8b\u5982\u7231\u597d\u7b49\u5185\u5bb9\u3002',
+      },
+      {
+        label: '\u5f00\u53d1\u7ecf\u5386',
+        to: '/experience',
+        title: '\u5f00\u53d1\u7ecf\u5386',
+        description: '\u67e5\u770b\u4e0e\u5f00\u53d1\u76f8\u5173\u7684\u79d1\u7814\u3001\u5de5\u4f5c\u4ee5\u53ca\u9879\u76ee\u7ec4\u7ec7\u7ecf\u5386\u3002',
+      },
+      {
+        label: '\u821e\u8e48\u89c6\u9891',
+        to: '/dance',
+        title: '\u821e\u8e48\u89c6\u9891',
+        description: '\u8857\u821e\u76f8\u5173\u7684\u6bd4\u8d5b\u89c6\u9891\u6216\u6f14\u51fa\u89c6\u9891\u3002',
+      },
+      {
+        label: '\u8054\u7cfb\u65b9\u5f0f',
+        to: '/contact',
+        title: '\u8054\u7cfb\u65b9\u5f0f',
+        description: '\u901a\u8fc7\u90ae\u7bb1\u3001\u5fae\u4fe1\u6216 GitHub \u5feb\u901f\u627e\u5230\u6211\u3002',
+      },
+    ],
   },
-  {
-    label: 'Dance Videos',
-    to: '/dance',
-    title: 'Dance Videos',
-    description: 'Dance-related performance videos or competition videos',
-  },
-  {
-    label: 'Contact',
-    to: '/contact',
-    title: 'Direct Contact',
-    description: 'Email, Wechat and GitHub for quick follow-up',
-  },
-]
+}
 
 export const readyPageUnlockKey = 'home-ready-unlocked'
 

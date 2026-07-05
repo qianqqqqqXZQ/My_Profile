@@ -47,7 +47,7 @@ function App() {
           <Route index element={<HomePage language={homeLanguage} />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="experience" element={<ExperiencePage />} />
-          <Route path="ready" element={<ReadyPage />} />
+          <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
           <Route path="dance" element={<DancePage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>

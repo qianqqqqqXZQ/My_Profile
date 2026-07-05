@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import Galaxy from '../components/Galaxy'
-import { homeRouteCards, readyPageUnlockKey } from '../content/siteContent'
+import { readyPageContent, readyPageUnlockKey } from '../content/siteContent'
 
-function ReadyPage() {
+function ReadyPage({ language }) {
   const hasUnlocked = typeof window !== 'undefined' && window.sessionStorage.getItem(readyPageUnlockKey) === 'true'
   const routeRef = useRef(null)
   const [isRouteVisible, setIsRouteVisible] = useState(true)
+  const copy = readyPageContent[language] ?? readyPageContent.en
 
   useEffect(() => {
     if (typeof window === 'undefined' || !hasUnlocked) {
@@ -65,21 +66,21 @@ function ReadyPage() {
       <section className="ready-hero" aria-label="Ready hero">
         <div className="section-shell ready-hero-shell">
           <div className="ready-hero-copy">
-            <h1 className="ready-hero-title">Where Do You Want to Go ?</h1>
+            <h1 className="ready-hero-title">{copy.heroTitle}</h1>
           </div>
 
           <div className="ready-hero-cards">
             <div className="home-route-grid">
-              {homeRouteCards.map((card) => (
-                <Link key={card.label} className="home-route-card card-surface" to={card.to} aria-label={card.label}>
+              {copy.routeCards.map((card) => (
+                <Link key={card.to} className="home-route-card card-surface" to={card.to} aria-label={card.label}>
                   <p className="micro-label">{card.label}</p>
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>
-                  <span className="inline-link">Open Page</span>
+                  <span className="inline-link">{copy.cardActionLabel}</span>
                 </Link>
               ))}
             </div>
-            <p className="ready-hero-note">More modules are being continuously updated...</p>
+            <p className="ready-hero-note">{copy.heroNote}</p>
           </div>
         </div>
       </section>
