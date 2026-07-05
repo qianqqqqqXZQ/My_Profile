@@ -1,16 +1,17 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SplitText from '../components/SplitText'
-import { readyPageUnlockKey } from '../content/siteContent'
+import { homePageContent, readyPageUnlockKey } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
 const Particles = lazy(() => import('../components/Particles'))
 
-function HomePage() {
+function HomePage({ language }) {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const heroRef = useRef(null)
   const touchStartYRef = useRef(null)
+  const copy = homePageContent[language] ?? homePageContent.en
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -128,87 +129,31 @@ function HomePage() {
         <header className="hero-section" id="home" ref={heroRef}>
           <div className="hero-content section-shell">
             <div className="hero-copy">
-              <p className="eyebrow">This is a personal webpage.</p>
-              <h1
-                className="split-home-title"
-                aria-label="Hello! Welcome to My Space... I'm Ziqian Xiong :)"
-              >
-                <SplitText
-                  tag="span"
-                  text="Hello!"
-                  className="split-home-line"
-                  delay={50}
-                  duration={0.7}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 42 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="left"
-                />
-                <SplitText
-                  tag="span"
-                  text="Welcome to"
-                  className="split-home-line"
-                  delay={110}
-                  duration={0.7}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 42 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="left"
-                />
-                <SplitText
-                  tag="span"
-                  text="My Space..."
-                  className="split-home-line"
-                  delay={170}
-                  duration={0.7}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 42 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="left"
-                />
-                <SplitText
-                  tag="span"
-                  text="I'm"
-                  className="split-home-line"
-                  delay={230}
-                  duration={0.7}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 42 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="left"
-                />
-                <SplitText
-                  tag="span"
-                  text="Ziqian Xiong :)"
-                  className="split-home-line"
-                  delay={290}
-                  duration={0.7}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 42 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="left"
-                />
+              <p className="eyebrow">{copy.eyebrow}</p>
+              <h1 className="split-home-title" aria-label={copy.titleAriaLabel}>
+                {copy.titleLines.map((line, index) => (
+                  <SplitText
+                    key={`${language}-${line}`}
+                    tag="span"
+                    text={line}
+                    className="split-home-line"
+                    delay={50 + index * 60}
+                    duration={0.7}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 42 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    rootMargin="-100px"
+                    textAlign="left"
+                  />
+                ))}
               </h1>
-              <p className="hero-summary hero-summary-home">You&apos;re ready to go?</p>
+              <p className="hero-summary hero-summary-home">{copy.summary}</p>
 
               <div className="hero-actions">
                 <Link className="ready-button" to="/ready" onClick={handleReady}>
-                  Sure, I&apos;m ready !
+                  {copy.ctaLabel}
                 </Link>
               </div>
             </div>

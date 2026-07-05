@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English', shortLabel: 'EN' },
-  { code: 'zh', label: 'Chinese', shortLabel: 'ZH' },
+  { code: 'zh', label: 'Chinese', shortLabel: 'CN' },
 ]
 
 function Star({ cx, cy, r, fill }) {
@@ -90,10 +90,9 @@ function FlagIcon({ code }) {
   return code === 'zh' ? <ChinaFlagIcon /> : <UsFlagIcon />
 }
 
-function HomeLanguageSelector() {
+function HomeLanguageSelector({ language, onLanguageChange }) {
   const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState('en')
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -134,7 +133,7 @@ function HomeLanguageSelector() {
     return null
   }
 
-  const currentLanguage = LANGUAGE_OPTIONS.find((option) => option.code === selectedLanguage) ?? LANGUAGE_OPTIONS[0]
+  const currentLanguage = LANGUAGE_OPTIONS.find((option) => option.code === language) ?? LANGUAGE_OPTIONS[0]
 
   return (
     <div ref={containerRef} className={`home-language-selector${isOpen ? ' is-open' : ''}`}>
@@ -167,7 +166,7 @@ function HomeLanguageSelector() {
 
       <div className="home-language-menu" role="menu" aria-label="Homepage language options">
         {LANGUAGE_OPTIONS.map((option) => {
-          const isSelected = option.code === selectedLanguage
+          const isSelected = option.code === language
 
           return (
             <button
@@ -177,7 +176,7 @@ function HomeLanguageSelector() {
               aria-checked={isSelected}
               className={`home-language-option${isSelected ? ' is-selected' : ''}`}
               onClick={() => {
-                setSelectedLanguage(option.code)
+                onLanguageChange(option.code)
                 setIsOpen(false)
               }}
             >

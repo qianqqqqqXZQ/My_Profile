@@ -41,6 +41,32 @@ export const homeRouteCards = [
 
 export const readyPageUnlockKey = 'home-ready-unlocked'
 
+export const homePageLanguageStorageKey = 'home-page-language'
+
+export const homePageContent = {
+  en: {
+    eyebrow: 'This is a personal webpage.',
+    titleLines: ['Hello!', 'Welcome to', 'My Space...', "I'm", 'Ziqian Xiong :)'],
+    titleAriaLabel: "Hello! Welcome to My Space... I'm Ziqian Xiong :)",
+    summary: "You're ready to go?",
+    ctaLabel: "Sure, I'm ready !",
+  },
+  zh: {
+    eyebrow: '\u8fd9\u662f\u6211\u7684\u4e2a\u4eba\u4e3b\u9875\u3002',
+    titleLines: [
+      '\u4f60\u597d\uff01',
+      '\u6b22\u8fce\u6765\u5230',
+      '\u6211\u7684\u7a7a\u95f4...',
+      '\u6211\u662f',
+      '\u718a\u5b50\u8c26 :)',
+    ],
+    titleAriaLabel:
+      '\u4f60\u597d\uff01\u6b22\u8fce\u6765\u5230\u6211\u7684\u7a7a\u95f4... \u6211\u662f\u718a\u5b50\u8c26 :)',
+    summary: '\u51c6\u5907\u597d\u7ee7\u7eed\u4e86\u5417\uff1f',
+    ctaLabel: '\u5f53\u7136\uff0c\u6211\u51c6\u5907\u597d\u4e86\uff01',
+  },
+}
+
 export const profileHighlights = [
   { label: 'NAME', value: 'Ziqian Xiong' },
   { label: 'BIRTH', value: '2006/3/7' },

@@ -1001,6 +1001,10 @@
   text-transform: uppercase;
 }
 
+.page-home .hero-copy .eyebrow {
+  transform: translateY(-6px);
+}
+
 .hero-summary,
 .section-intro,
 .lead-paragraph,

@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { BackgroundAudioProvider } from './components/BackgroundAudioManager'
 import HomeLanguageSelector from './components/HomeLanguageSelector'
 import MuteToggleButton from './components/MuteToggleButton'
 import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
+import { homePageLanguageStorageKey } from './content/siteContent'
 import ContactPage from './pages/ContactPage'
 import DancePage from './pages/DancePage'
 import ExperiencePage from './pages/ExperiencePage'
@@ -12,15 +14,37 @@ import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import ReadyPage from './pages/ReadyPage'
 
+const DEFAULT_HOME_LANGUAGE = 'en'
+
+function getInitialHomeLanguage() {
+  if (typeof window === 'undefined') {
+    return DEFAULT_HOME_LANGUAGE
+  }
+
+  const savedLanguage = window.localStorage.getItem(homePageLanguageStorageKey)
+
+  return savedLanguage === 'zh' ? 'zh' : DEFAULT_HOME_LANGUAGE
+}
+
 function App() {
+  const [homeLanguage, setHomeLanguage] = useState(getInitialHomeLanguage)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(homePageLanguageStorageKey, homeLanguage)
+  }, [homeLanguage])
+
   return (
     <BackgroundAudioProvider>
       <MuteToggleButton />
-      <HomeLanguageSelector />
+      <HomeLanguageSelector language={homeLanguage} onLanguageChange={setHomeLanguage} />
       <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<HomePage language={homeLanguage} />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="experience" element={<ExperiencePage />} />
           <Route path="ready" element={<ReadyPage />} />
