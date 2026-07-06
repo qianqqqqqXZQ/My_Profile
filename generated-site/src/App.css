@@ -2043,6 +2043,11 @@
   cursor: pointer;
 }
 
+.research-card-trigger h3 {
+  margin: 10px 0 0;
+  line-height: 1.3;
+}
+
 .research-card-trigger:focus-visible {
   outline: none;
 }
@@ -2061,6 +2066,16 @@
   transition:
     border-color 160ms ease,
     color 160ms ease;
+}
+
+.research-supervisor-text {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  margin: 12px 0 0;
+  color: rgba(245, 244, 240, 0.86);
+  font-size: 0.92rem;
+  line-height: 1.35;
 }
 
 .research-supervisor-link:hover,

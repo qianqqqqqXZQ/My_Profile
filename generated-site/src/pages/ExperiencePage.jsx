@@ -205,14 +205,18 @@ function ExperiencePage() {
                       <h3>{item.title}</h3>
                     </button>
                     {item.supervisor ? (
-                      <a
-                        className="research-supervisor-link"
-                        href={item.supervisorUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Supervisor: {item.supervisor}
-                      </a>
+                      item.supervisorUrl ? (
+                        <a
+                          className="research-supervisor-link"
+                          href={item.supervisorUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Supervisor: {item.supervisor}
+                        </a>
+                      ) : (
+                        <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
+                      )
                     ) : null}
                     <span className="experience-inline-tag">{item.focus}</span>
                     <button
@@ -313,13 +317,17 @@ function ExperiencePage() {
               <h2 id="research-modal-title">{selectedResearchExperience.title}</h2>
               <div className="research-modal-meta">
                 <span>{selectedResearchExperience.period}</span>
-                <a
-                  href={selectedResearchExperience.supervisorUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Supervisor: {selectedResearchExperience.supervisor}
-                </a>
+                {selectedResearchExperience.supervisorUrl ? (
+                  <a
+                    href={selectedResearchExperience.supervisorUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Supervisor: {selectedResearchExperience.supervisor}
+                  </a>
+                ) : (
+                  <span>Supervisor: {selectedResearchExperience.supervisor}</span>
+                )}
               </div>
             </div>
 

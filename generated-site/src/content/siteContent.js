@@ -294,7 +294,7 @@ export const projectExperience = [
 export const researchExperience = [
   {
     title: 'Edge-Enhanced Dual-Stream Transformer for Small Polyp Segmentation',
-    period: 'June 2026 - Present',
+    period: 'May. 2025-Present',
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
@@ -310,10 +310,24 @@ export const researchExperience = [
       },
       {
         label: 'Performance Evaluation',
-        text: 'Conducted comparative experiments and validated model performance using Dice, IoU, and inference speed metrics.',
+        text: 'Conducted comparative experiments, validating the model\'s performance using Dice, IoU, and inference speed metrics.',
       },
     ],
-    publicationStatus: 'A related manuscript is under review at Computer Vision and Image Understanding (CVIU), with me listed as the second author.',
+    publicationStatus: 'Still in progress',
+  },
+  {
+    title: 'Dynamic Dual-Branch Neural Network for Personalized Keyword Spotting',
+    period: 'June. 2026-Present',
+    supervisor: 'Prof. Heng Yu',
+    description: 'Personalized keyword spotting research centered on a dynamic dual-branch neural network design.',
+    focus: 'Keyword Spotting / Speech',
+    details: [
+      {
+        label: 'Current Status',
+        text: 'Still in progress.',
+      },
+    ],
+    publicationStatus: 'Still in progress',
   },
 ]
 
