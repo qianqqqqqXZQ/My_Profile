@@ -81,25 +81,44 @@ function ProfilePage() {
           <div className="section-shell">
             <div className="section-header">
               <p className="eyebrow">Campus Activities</p>
-              <h2>Leadership, outreach, and community presence</h2>
+              <h2>Leadership, operations, and performance direction</h2>
               <p className="section-intro">
-                A refined snapshot of extracurricular roles on campus, from street dance leadership to student-organization coordination and public-facing collaboration.
+                Two core extracurricular experiences that reflect how I work across
+                campus operations, team leadership, and public-facing performance.
               </p>
             </div>
 
-            <div className="course-activity-grid">
+            <div className="campus-activity-timeline">
               {campusActivities.map((item) => (
-                <article key={item.title} className="course-activity-card card-surface">
-                  <div className="course-activity-topline">
-                    <p className="micro-label">{item.label}</p>
-                    <span className="course-activity-accent">{item.accent}</span>
+                <article key={`${item.organization}-${item.period}`} className="campus-activity-entry card-surface">
+                  <div className="campus-activity-copy">
+                    <p className="campus-activity-period">{item.period}</p>
+                    <p className="campus-activity-organization">{item.organization}</p>
+                    <h3>{item.role}</h3>
+
+                    <ul className="campus-activity-bullets">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+
+                    {item.linkHref ? (
+                      <a
+                        className="inline-link campus-activity-link"
+                        href={item.linkHref}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {item.linkLabel}
+                      </a>
+                    ) : null}
                   </div>
-                  <h3>{item.title}</h3>
-                  <p className="course-activity-summary">{item.summary}</p>
-                  <div className="course-activity-meta">
-                    <span>{item.category}</span>
+
+                  <div className="campus-activity-photo" aria-label={item.photoAlt}>
+                    <div className="campus-activity-photo-frame">
+                      <span>{item.photoLabel}</span>
+                    </div>
                   </div>
-                  <p className="course-activity-outcome">{item.outcome}</p>
                 </article>
               ))}
             </div>

@@ -210,36 +210,30 @@ export const profileHighlights = [
 
 export const campusActivities = [
   {
-    label: 'Street Dance Club',
-    title: 'Vice Captain of the Street Dance Club',
-    summary: 'Supported rehearsals, team coordination, and routine preparation while helping maintain performance quality and daily communication inside the club.',
-    outcome: 'Built stronger leadership through organizing people, balancing atmosphere with discipline, and keeping group execution consistent before showcases and campus events.',
-    category: 'Student Leadership',
-    accent: 'Crew direction',
+    period: 'Oct 2024 - Sep 2025',
+    organization: 'Student Union',
+    role: 'PR and External Relations Department',
+    bullets: [
+      'Managed operations for the official University of Nottingham Ningbo China souvenir store under the Student Union, including on-site sales during major campus events such as Open Day and graduation ceremonies, with peak single-event revenue exceeding RMB 30,000.',
+      'Took primary responsibility for personnel coordination within the store, including staff scheduling, announcements, meeting minutes, and day-to-day team management.',
+    ],
+    photoAlt: 'Reserved photo area for Student Union PR and External Relations Department experience',
+    photoLabel: 'Photo Placeholder',
   },
   {
-    label: 'Student Union',
-    title: 'External Relations Department Member',
-    summary: 'Participated in outreach-related work, including external communication, resource coordination, and practical support for student-facing activities.',
-    outcome: 'Improved professional communication, negotiation awareness, and the ability to represent a student organization in a clear and reliable way.',
-    category: 'External Affairs',
-    accent: 'Partnership rhythm',
-  },
-  {
-    label: 'Event Support',
-    title: 'Campus Activity Planning and Coordination',
-    summary: 'Contributed to the preparation and on-site execution of school activities, working across planning tasks, schedule alignment, and team coordination.',
-    outcome: 'Learned how to keep operations stable under real-time pressure while preserving a polished experience for participants and organizers.',
-    category: 'Execution',
-    accent: 'Operational calm',
-  },
-  {
-    label: 'Community Presence',
-    title: 'Performance, Representation, and Team Identity',
-    summary: 'Used extracurricular roles not only to participate, but also to contribute to team culture, visibility, and a stronger sense of shared identity on campus.',
-    outcome: 'Turned activity participation into a broader practice of responsibility, presence, and representing a group with confidence in public settings.',
-    category: 'Campus Engagement',
-    accent: 'Visible energy',
+    period: 'Sep 2025 - Jul 2026',
+    organization: 'University of Nottingham Ningbo China Shuffle Crew',
+    role: 'Vice Captain',
+    bullets: [
+      'Led choreography structuring for major official campus events, including Show Night, X Show, and Open Day, covering movement design, formation arrangement, and music editing.',
+      'Organized and delivered the Shuffle Crew annual showcase while managing and performing in multiple programs throughout the production cycle.',
+      'A personal freestyle performance clip from a campus showcase reached over 5 million views and 70,000 likes on Douyin, providing strong public visibility for both the performance and the crew.',
+    ],
+    photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
+    photoLabel: 'Photo Placeholder',
+    linkLabel: 'View the Douyin performance highlight',
+    linkHref:
+      'https://www.douyin.com/jingxuan/search/%E8%B0%A6qqqqq?aid=84ece7e1-4646-4b1f-8398-491fa2125598&modal_id=7494149451603381539&type=general',
   },
 ]
 
