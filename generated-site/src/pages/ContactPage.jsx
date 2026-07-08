@@ -6,6 +6,29 @@ import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
 
+const CONTACT_CARD_THEMES = [
+  {
+    accent: '#ea4335',
+    glow: 'rgba(234, 67, 53, 0.34)',
+    gradient: 'linear-gradient(145deg, rgba(95, 26, 20, 0.68), rgba(18, 7, 7, 0.18) 58%, rgba(234, 67, 53, 0.14))',
+  },
+  {
+    accent: '#0a66d9',
+    glow: 'rgba(10, 102, 217, 0.34)',
+    gradient: 'linear-gradient(145deg, rgba(14, 47, 97, 0.68), rgba(6, 10, 18, 0.18) 58%, rgba(10, 102, 217, 0.14))',
+  },
+  {
+    accent: '#d4af37',
+    glow: 'rgba(212, 175, 55, 0.34)',
+    gradient: 'linear-gradient(145deg, rgba(91, 70, 14, 0.68), rgba(17, 12, 6, 0.18) 58%, rgba(212, 175, 55, 0.14))',
+  },
+  {
+    accent: '#2ccf62',
+    glow: 'rgba(44, 207, 98, 0.34)',
+    gradient: 'linear-gradient(145deg, rgba(17, 86, 40, 0.68), rgba(6, 13, 9, 0.18) 58%, rgba(44, 207, 98, 0.14))',
+  },
+]
+
 function ContactPage({ language }) {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -136,6 +159,7 @@ function ContactPage({ language }) {
               className="contact-grid contact-grid--page"
               cardClassName="contact-card"
               radius={220}
+              themes={CONTACT_CARD_THEMES}
               renderCard={renderContactCard}
             />
           </div>

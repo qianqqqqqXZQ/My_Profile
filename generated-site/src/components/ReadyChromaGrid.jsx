@@ -32,6 +32,7 @@ function ReadyChromaGrid({
   className = '',
   cardClassName = '',
   renderCard = null,
+  themes = CARD_COLOR_THEMES,
   radius = 260,
   damping = 0.45,
   fadeOut = 0.6,
@@ -131,8 +132,23 @@ function ReadyChromaGrid({
         return
       }
 
-      card.style.setProperty('--mouse-x', `${x - card.offsetLeft}px`)
-      card.style.setProperty('--mouse-y', `${y - card.offsetTop}px`)
+      const localX = x - card.offsetLeft
+      const localY = y - card.offsetTop
+
+      card.style.setProperty('--mouse-x', `${localX}px`)
+      card.style.setProperty('--mouse-y', `${localY}px`)
+
+      const logo = card.querySelector('.contact-brand-icon')
+
+      if (logo) {
+        const cardRect = card.getBoundingClientRect()
+        const logoRect = logo.getBoundingClientRect()
+
+        logo.style.setProperty('--brand-mouse-x', `${event.clientX - logoRect.left}px`)
+        logo.style.setProperty('--brand-mouse-y', `${event.clientY - logoRect.top}px`)
+        logo.style.setProperty('--brand-distance', `${Math.hypot(event.clientX - (logoRect.left + logoRect.width / 2), event.clientY - (logoRect.top + logoRect.height / 2))}px`)
+        card.style.setProperty('--card-width', `${cardRect.width}px`)
+      }
     })
   }
 
@@ -186,8 +202,21 @@ function ReadyChromaGrid({
               return
             }
 
-            card.style.setProperty('--mouse-x', `${x - card.offsetLeft}px`)
-            card.style.setProperty('--mouse-y', `${y - card.offsetTop}px`)
+            const localX = x - card.offsetLeft
+            const localY = y - card.offsetTop
+
+            card.style.setProperty('--mouse-x', `${localX}px`)
+            card.style.setProperty('--mouse-y', `${localY}px`)
+
+            const logo = card.querySelector('.contact-brand-icon')
+
+            if (logo) {
+              const logoRect = logo.getBoundingClientRect()
+
+              logo.style.setProperty('--brand-mouse-x', `${event.clientX - logoRect.left}px`)
+              logo.style.setProperty('--brand-mouse-y', `${event.clientY - logoRect.top}px`)
+              logo.style.setProperty('--brand-distance', `${Math.hypot(event.clientX - (logoRect.left + logoRect.width / 2), event.clientY - (logoRect.top + logoRect.height / 2))}px`)
+            }
           })
         }
         setIsActive(true)
@@ -197,7 +226,7 @@ function ReadyChromaGrid({
       onPointerLeave={handleLeave}
     >
       {items.map((card, index) => {
-        const theme = CARD_COLOR_THEMES[index % CARD_COLOR_THEMES.length]
+        const theme = themes[index % themes.length]
         const cardRef = (element) => {
           cardRefs.current[index] = element
         }

@@ -1824,6 +1824,17 @@
   z-index: 1;
 }
 
+.ready-chroma-card .contact-brand-icon {
+  --brand-mouse-x: 15px;
+  --brand-mouse-y: 15px;
+  --brand-distance: 999px;
+}
+
+.ready-chroma-card .contact-brand-icon__color-layer {
+  opacity: clamp(0, calc(1 - (var(--brand-distance) / 34px)), 1);
+  transform-origin: center;
+}
+
 .contact-card-icon-sheen {
   position: absolute;
   top: -38%;

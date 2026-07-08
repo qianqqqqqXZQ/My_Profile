@@ -18,3 +18,12 @@
 - [x] Swap the `contact` page cards to the colored `ReadyChromaGrid` treatment while preserving each card action type.
 - [x] Run verification and check for regressions.
 - [x] Update the working notes after validation.
+
+## Current Task: Recolor And Restore Contact Logos
+
+- [x] Create a Git backup commit before adjusting the contact logos.
+- [x] Remap the four contact brand colors to WeChat green, GitHub gold, Outlook blue, and Gmail red.
+- [x] Replace the simplified icon drawings with closer SVG logo reconstructions.
+- [x] Reveal each logo's brand colors only inside the active chroma sweep while keeping the idle state monochrome.
+- [x] Run verification and check for regressions.
+- [x] Bind the `contact` card-level chroma colors to Gmail red, Outlook blue, GitHub gold, and WeChat green without changing the `ready` page palette.

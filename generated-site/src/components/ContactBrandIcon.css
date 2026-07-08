@@ -7,26 +7,23 @@
   transition: transform 180ms ease, filter 180ms ease;
 }
 
-.contact-brand-icon__fill {
-  fill: var(--contact-brand-gradient);
+.contact-brand-icon__mono-fill {
+  fill: var(--contact-brand-mono);
 }
 
-.contact-brand-icon__fill--deep {
-  fill: var(--contact-brand-gradient-deep);
+.contact-brand-icon__mono-fill--deep {
+  fill: var(--contact-brand-mono-deep);
 }
 
-.contact-brand-icon__stroke {
+.contact-brand-icon__mono-stroke {
   stroke: rgba(217, 222, 228, 0.92);
 }
 
-.contact-brand-icon__stroke--soft {
-  stroke: rgba(255, 255, 255, 0.06);
-}
-
-.contact-brand-icon__highlight {
-  stroke: rgba(255, 255, 255, 0.28);
-}
-
-.contact-brand-icon__dot {
+.contact-brand-icon__mono-dot {
   fill: rgba(222, 226, 232, 0.9);
+}
+
+.contact-brand-icon__color-layer {
+  opacity: 0;
+  transition: opacity 180ms ease;
 }
