@@ -1,0 +1,152 @@
+.ready-chroma-grid {
+  position: relative;
+  isolation: isolate;
+  contain: layout paint;
+  --x: 50%;
+  --y: 50%;
+  --r: 260px;
+}
+
+.ready-chroma-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --card-accent: rgba(255, 255, 255, 0.22);
+  --card-glow: rgba(255, 255, 255, 0.2);
+  --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.ready-chroma-card::before,
+.ready-chroma-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.ready-chroma-card::before {
+  z-index: 0;
+  background:
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--card-glow), transparent 32%),
+    radial-gradient(circle at top, color-mix(in srgb, var(--card-accent) 22%, transparent), transparent 48%),
+    var(--card-gradient);
+  opacity: 0;
+}
+
+.ready-chroma-card::after {
+  z-index: 1;
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 22%),
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), color-mix(in srgb, var(--card-accent) 28%, white 8%), transparent 42%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.ready-chroma-card:hover::before,
+.ready-chroma-card:hover::after {
+  opacity: 1;
+}
+
+.ready-chroma-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ready-chroma-card h3,
+.ready-chroma-card p,
+.ready-chroma-card .inline-link,
+.ready-chroma-card .micro-label {
+  position: relative;
+  z-index: 2;
+}
+
+.ready-chroma-card:hover h3,
+.ready-chroma-card:hover .inline-link {
+  color: color-mix(in srgb, var(--card-accent) 58%, white 42%);
+}
+
+.ready-chroma-overlay,
+.ready-chroma-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  will-change: opacity, mask-image, -webkit-mask-image;
+  backdrop-filter: grayscale(1) brightness(0.76);
+  -webkit-backdrop-filter: grayscale(1) brightness(0.76);
+  background: rgba(0, 0, 0, 0.001);
+}
+
+.ready-chroma-overlay {
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 16%,
+    rgba(0, 0, 0, 0.14) 34%,
+    rgba(0, 0, 0, 0.32) 52%,
+    rgba(0, 0, 0, 0.56) 72%,
+    white 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 16%,
+    rgba(0, 0, 0, 0.14) 34%,
+    rgba(0, 0, 0, 0.32) 52%,
+    rgba(0, 0, 0, 0.56) 72%,
+    white 100%
+  );
+}
+
+.ready-chroma-fade {
+  z-index: 4;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    white 0%,
+    white 16%,
+    rgba(255, 255, 255, 0.88) 34%,
+    rgba(255, 255, 255, 0.6) 52%,
+    rgba(255, 255, 255, 0.28) 72%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    white 0%,
+    white 16%,
+    rgba(255, 255, 255, 0.88) 34%,
+    rgba(255, 255, 255, 0.6) 52%,
+    rgba(255, 255, 255, 0.28) 72%,
+    transparent 100%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ready-chroma-card:hover {
+    border-color: color-mix(in srgb, var(--card-accent) 54%, white 18%);
+    box-shadow:
+      0 24px 90px rgba(0, 0, 0, 0.34),
+      0 0 0 1px color-mix(in srgb, var(--card-accent) 18%, transparent),
+      0 0 32px color-mix(in srgb, var(--card-glow) 82%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 720px) {
+  .ready-chroma-card-content {
+    gap: 14px;
+  }
+}

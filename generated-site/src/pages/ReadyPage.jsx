@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import Galaxy from '../components/Galaxy'
+import ReadyChromaGrid from '../components/ReadyChromaGrid'
 import { readyPageContent, readyPageUnlockKey } from '../content/siteContent'
 
 function ReadyPage({ language }) {
@@ -47,16 +48,16 @@ function ReadyPage({ language }) {
             paused={!isRouteVisible}
             focal={[0.52, 0.44]}
             rotation={[0.98, 0.18]}
-            density={1.18}
-            glowIntensity={0.62}
+            density={1.08}
+            glowIntensity={0.58}
             saturation={0.06}
             hueShift={140}
-            twinkleIntensity={0.54}
+            twinkleIntensity={0.48}
             rotationSpeed={0.095}
-            repulsionStrength={2.8}
-            speed={1.08}
-            starSpeed={0.56}
-            maxDpr={1.1}
+            repulsionStrength={2.45}
+            speed={1}
+            starSpeed={0.5}
+            maxDpr={0.9}
           />
         </div>
         <div className="page-ready-scrim" />
@@ -70,16 +71,7 @@ function ReadyPage({ language }) {
           </div>
 
           <div className="ready-hero-cards">
-            <div className="home-route-grid">
-              {copy.routeCards.map((card) => (
-                <Link key={card.to} className="home-route-card card-surface" to={card.to} aria-label={card.label}>
-                  <p className="micro-label">{card.label}</p>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                  <span className="inline-link">{copy.cardActionLabel}</span>
-                </Link>
-              ))}
-            </div>
+            <ReadyChromaGrid items={copy.routeCards} actionLabel={copy.cardActionLabel} />
             <p className="ready-hero-note">{copy.heroNote}</p>
           </div>
         </div>
