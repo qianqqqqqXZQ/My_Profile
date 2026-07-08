@@ -1,0 +1,36 @@
+# Project Notes
+
+## Overview
+
+This repository contains a personal CV website. The active frontend lives in `generated-site/` and is built with Vite + React.
+
+## Structure
+
+- `generated-site/`: React application and build output.
+- `generated-site/public/`: static assets copied directly into the build.
+- `generated-site/src/`: app code and components.
+- `codex-work/`: Codex-maintained working notes such as plans and agent context.
+
+## Run And Test
+
+- Dev server: `npm run dev`
+- Production build: `npm run build`
+- Lint: `npm run lint`
+
+Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
+
+## Current Asset Rule
+
+- Keep Codex-generated planning files inside `codex-work/`.
+- Keep generated site assets for this task inside `generated-site/public/generated/`.
+- The favicon is currently referenced from `generated-site/index.html`.
+
+## Favicon Task Output
+
+- Active favicon assets from the uncropped dog photo:
+  - `generated-site/public/generated/favicon-dog-master.png`
+  - `generated-site/public/generated/favicon-dog-32.png`
+  - `generated-site/public/generated/favicon-dog-16.png`
+  - `generated-site/public/generated/favicon-dog.ico`
+- Previous person-based favicon drafts have been removed from `generated-site/public/generated/`.
+- Verification command run: `npm run build`
