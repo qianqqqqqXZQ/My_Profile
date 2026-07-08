@@ -210,6 +210,18 @@ export const profileHighlights = [
 
 export const campusActivities = [
   {
+    period: 'Sep 2022 - Jul 2023',
+    organization: 'Zhangshu Middle School',
+    role: 'President, Student Union',
+    bullets: [
+      'Led a multi-department student union, including teams such as Publicity and Discipline Inspection, chaired weekly meetings, and organized routine discipline and classroom hygiene inspections across grades.',
+      'Assisted the school in planning and delivering major events such as the sports meet and campus arts festival, serving in key coordination roles including overall event planning.',
+      'Received the Outstanding Student Union Cadre award multiple times at the school recognition ceremony in acknowledgment of leadership and service performance.',
+    ],
+    photoAlt: 'Reserved photo area for Zhangshu Middle School Student Union president experience',
+    photoLabel: 'Photo Placeholder',
+  },
+  {
     period: 'Oct 2024 - Sep 2025',
     organization: 'Student Union',
     role: 'PR and External Relations Department',
@@ -218,6 +230,17 @@ export const campusActivities = [
       'Took primary responsibility for personnel coordination within the store, including staff scheduling, announcements, meeting minutes, and day-to-day team management.',
     ],
     photoAlt: 'Reserved photo area for Student Union PR and External Relations Department experience',
+    photoLabel: 'Photo Placeholder',
+  },
+  {
+    period: 'Mar 2025 - Jun 2026',
+    organization: 'UNNC Department of Campus Life',
+    role: 'Administrative Intern',
+    bullets: [
+      'Supported current students, parents, and alumni through the campus hotline, coordinated inquiries with external partner organizations, and provided consultation on student records and archival procedures.',
+      'Managed student files through the archives system and liaised with on-campus departments by email to collect and organize required student documentation.',
+    ],
+    photoAlt: 'Reserved photo area for UNNC Department of Campus Life administrative internship',
     photoLabel: 'Photo Placeholder',
   },
   {
