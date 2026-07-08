@@ -705,7 +705,8 @@
   text-transform: uppercase;
   border: 1px solid transparent;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  isolation: isolate;
 }
 
 .nav-links a:hover,
@@ -718,6 +719,103 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -10px 18px rgba(0, 0, 0, 0.12);
+}
+
+.nav-link-label {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  color: #fff5df;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 0 rgba(255, 245, 223, 0.92));
+  transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+  transition:
+    top 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96),
+    left 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96),
+    transform 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96),
+    opacity 0.22s ease,
+    filter 0.8s ease;
+  z-index: 0;
+}
+
+.nav-sparkle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.nav-sparkle-1 {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-sparkle-2,
+.nav-sparkle-5 {
+  width: 12px;
+  height: 12px;
+}
+
+.nav-sparkle-3,
+.nav-sparkle-6 {
+  width: 8px;
+  height: 8px;
+}
+
+.nav-links a:hover .nav-sparkle,
+.nav-links a:focus-visible .nav-sparkle {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(255, 245, 223, 0.92));
+}
+
+.nav-links a:hover .nav-sparkle-1,
+.nav-links a:focus-visible .nav-sparkle-1 {
+  top: -72%;
+  left: -18%;
+  transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+}
+
+.nav-links a:hover .nav-sparkle-2,
+.nav-links a:focus-visible .nav-sparkle-2 {
+  top: -22%;
+  left: 16%;
+  transform: translate(-50%, -50%) scale(1) rotate(10deg);
+}
+
+.nav-links a:hover .nav-sparkle-3,
+.nav-links a:focus-visible .nav-sparkle-3 {
+  top: 76%;
+  left: 28%;
+  transform: translate(-50%, -50%) scale(1) rotate(-4deg);
+}
+
+.nav-links a:hover .nav-sparkle-4,
+.nav-links a:focus-visible .nav-sparkle-4 {
+  top: 22%;
+  left: 84%;
+  transform: translate(-50%, -50%) scale(1) rotate(8deg);
+}
+
+.nav-links a:hover .nav-sparkle-5,
+.nav-links a:focus-visible .nav-sparkle-5 {
+  top: 22%;
+  left: 116%;
+  transform: translate(-50%, -50%) scale(1) rotate(14deg);
+}
+
+.nav-links a:hover .nav-sparkle-6,
+.nav-links a:focus-visible .nav-sparkle-6 {
+  top: 2%;
+  left: 62%;
+  transform: translate(-50%, -50%) scale(1) rotate(-14deg);
 }
 
 .nav-links a::after {
