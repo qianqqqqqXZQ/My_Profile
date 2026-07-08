@@ -137,18 +137,6 @@ function ReadyChromaGrid({
 
       card.style.setProperty('--mouse-x', `${localX}px`)
       card.style.setProperty('--mouse-y', `${localY}px`)
-
-      const logo = card.querySelector('.contact-brand-icon')
-
-      if (logo) {
-        const cardRect = card.getBoundingClientRect()
-        const logoRect = logo.getBoundingClientRect()
-
-        logo.style.setProperty('--brand-mouse-x', `${event.clientX - logoRect.left}px`)
-        logo.style.setProperty('--brand-mouse-y', `${event.clientY - logoRect.top}px`)
-        logo.style.setProperty('--brand-distance', `${Math.hypot(event.clientX - (logoRect.left + logoRect.width / 2), event.clientY - (logoRect.top + logoRect.height / 2))}px`)
-        card.style.setProperty('--card-width', `${cardRect.width}px`)
-      }
     })
   }
 
@@ -207,16 +195,6 @@ function ReadyChromaGrid({
 
             card.style.setProperty('--mouse-x', `${localX}px`)
             card.style.setProperty('--mouse-y', `${localY}px`)
-
-            const logo = card.querySelector('.contact-brand-icon')
-
-            if (logo) {
-              const logoRect = logo.getBoundingClientRect()
-
-              logo.style.setProperty('--brand-mouse-x', `${event.clientX - logoRect.left}px`)
-              logo.style.setProperty('--brand-mouse-y', `${event.clientY - logoRect.top}px`)
-              logo.style.setProperty('--brand-distance', `${Math.hypot(event.clientX - (logoRect.left + logoRect.width / 2), event.clientY - (logoRect.top + logoRect.height / 2))}px`)
-            }
           })
         }
         setIsActive(true)

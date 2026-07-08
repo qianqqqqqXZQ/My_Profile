@@ -27,3 +27,4 @@
 - [x] Reveal each logo's brand colors only inside the active chroma sweep while keeping the idle state monochrome.
 - [x] Run verification and check for regressions.
 - [x] Bind the `contact` card-level chroma colors to Gmail red, Outlook blue, GitHub gold, and WeChat green without changing the `ready` page palette.
+- [x] Restore the contact logos to always display their own native appearance instead of tying logo coloring to the hover sweep.
