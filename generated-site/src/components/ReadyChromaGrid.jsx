@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { Link } from 'react-router-dom'
 import './ReadyChromaGrid.css'
@@ -37,12 +37,16 @@ function ReadyChromaGrid({
 }) {
   const rootRef = useRef(null)
   const fadeRef = useRef(null)
+  const cardRefs = useRef([])
+  const leaveTimerRef = useRef(null)
   const setX = useRef(null)
   const setY = useRef(null)
   const moveX = useRef(null)
   const moveY = useRef(null)
   const fadeOpacity = useRef(null)
+  const setFadeOpacity = useRef(null)
   const boundsRef = useRef({ left: 0, top: 0, width: 0, height: 0 })
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     const element = rootRef.current
@@ -64,6 +68,7 @@ function ReadyChromaGrid({
       ease,
       unit: 'px',
     })
+    setFadeOpacity.current = fadeElement ? gsap.quickSetter(fadeElement, 'opacity') : null
     fadeOpacity.current = gsap.quickTo(fadeElement, 'opacity', {
       duration: 0.25,
       ease: 'power2.out',
@@ -85,6 +90,9 @@ function ReadyChromaGrid({
     resizeObserver.observe(element)
 
     return () => {
+      if (leaveTimerRef.current) {
+        window.clearTimeout(leaveTimerRef.current)
+      }
       resizeObserver.disconnect()
       gsap.killTweensOf(element)
       if (fadeElement) {
@@ -100,9 +108,30 @@ function ReadyChromaGrid({
       return
     }
 
-    moveX.current?.(event.clientX - bounds.left)
-    moveY.current?.(event.clientY - bounds.top)
-    fadeOpacity.current?.(0)
+    if (leaveTimerRef.current) {
+      window.clearTimeout(leaveTimerRef.current)
+      leaveTimerRef.current = null
+    }
+
+    if (!isActive) {
+      setIsActive(true)
+    }
+
+    const x = event.clientX - bounds.left
+    const y = event.clientY - bounds.top
+
+    moveX.current?.(x)
+    moveY.current?.(y)
+    setFadeOpacity.current?.(0)
+
+    cardRefs.current.forEach((card) => {
+      if (!card) {
+        return
+      }
+
+      card.style.setProperty('--mouse-x', `${x - card.offsetLeft}px`)
+      card.style.setProperty('--mouse-y', `${y - card.offsetTop}px`)
+    })
   }
 
   const handleLeave = () => {
@@ -118,28 +147,49 @@ function ReadyChromaGrid({
       ease: 'power2.out',
       overwrite: true,
     })
-  }
 
-  const handleCardMove = (event) => {
-    const card = event.currentTarget
-    const rect = card.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+    if (leaveTimerRef.current) {
+      window.clearTimeout(leaveTimerRef.current)
+    }
 
-    card.style.setProperty('--mouse-x', `${x}px`)
-    card.style.setProperty('--mouse-y', `${y}px`)
+    leaveTimerRef.current = window.setTimeout(() => {
+      setIsActive(false)
+      leaveTimerRef.current = null
+    }, fadeOut * 1000)
   }
 
   return (
     <div
       ref={rootRef}
-      className={`home-route-grid ready-chroma-grid ${className}`.trim()}
+      className={`home-route-grid ready-chroma-grid ${isActive ? 'is-active' : ''} ${className}`.trim()}
       style={{ '--r': `${radius}px` }}
-      onPointerEnter={() => {
+      onPointerEnter={(event) => {
         const element = rootRef.current
-        if (element) {
-          boundsRef.current = element.getBoundingClientRect()
+        if (leaveTimerRef.current) {
+          window.clearTimeout(leaveTimerRef.current)
+          leaveTimerRef.current = null
         }
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          boundsRef.current = rect
+
+          const x = event.clientX - rect.left
+          const y = event.clientY - rect.top
+
+          setX.current?.(x)
+          setY.current?.(y)
+
+          cardRefs.current.forEach((card) => {
+            if (!card) {
+              return
+            }
+
+            card.style.setProperty('--mouse-x', `${x - card.offsetLeft}px`)
+            card.style.setProperty('--mouse-y', `${y - card.offsetTop}px`)
+          })
+        }
+        setIsActive(true)
+        setFadeOpacity.current?.(0)
       }}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
@@ -150,10 +200,12 @@ function ReadyChromaGrid({
         return (
           <Link
             key={card.to}
+            ref={(element) => {
+              cardRefs.current[index] = element
+            }}
             className="home-route-card card-surface ready-chroma-card"
             to={card.to}
             aria-label={card.label}
-            onMouseMove={handleCardMove}
             style={{
               '--card-accent': theme.accent,
               '--card-glow': theme.glow,

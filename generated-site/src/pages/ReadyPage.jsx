@@ -71,7 +71,7 @@ function ReadyPage({ language }) {
           </div>
 
           <div className="ready-hero-cards">
-            <ReadyChromaGrid items={copy.routeCards} actionLabel={copy.cardActionLabel} />
+            <ReadyChromaGrid items={copy.routeCards} actionLabel={copy.cardActionLabel} radius={300} />
             <p className="ready-hero-note">{copy.heroNote}</p>
           </div>
         </div>
