@@ -28,3 +28,13 @@
 - [x] Run verification and check for regressions.
 - [x] Bind the `contact` card-level chroma colors to Gmail red, Outlook blue, GitHub gold, and WeChat green without changing the `ready` page palette.
 - [x] Restore the contact logos to always display their own native appearance instead of tying logo coloring to the hover sweep.
+
+## Current Task: Bear Head Stardew Favicon
+
+- [ ] Inspect the current favicon wiring and existing generated asset paths.
+- [ ] Create a Git backup commit before replacing the favicon assets.
+- [ ] Generate a Stardew Valley-inspired pixel bear head icon from the provided reference photo.
+- [ ] Export favicon PNG and ICO files into the site public assets folder.
+- [ ] Update the Vite entry HTML to reference the new bear favicon files.
+- [ ] Run build verification and do a quick review for asset path regressions.
+- [ ] Update the working notes with final asset paths and commands.
