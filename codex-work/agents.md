@@ -25,6 +25,12 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 - Keep generated site assets for this task inside `generated-site/public/generated/`.
 - The favicon is currently referenced from `generated-site/index.html`.
 
+## UI Notes
+
+- `generated-site/src/pages/ReadyPage.jsx` now renders its four navigation cards with the reflective `BorderGlow` treatment.
+- `generated-site/src/pages/ContactPage.jsx` now reuses `generated-site/src/components/ReadyChromaGrid.jsx` so the four contact cards inherit the colored hover/follow-light effect while keeping their original link and modal behaviors.
+- Latest verification commands run for the card swap: `npm run build` and `npm run lint`.
+
 ## Favicon Task Output
 
 - Active favicon assets from the uncropped dog photo:

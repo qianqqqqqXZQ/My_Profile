@@ -30,6 +30,8 @@ function ReadyChromaGrid({
   items,
   actionLabel,
   className = '',
+  cardClassName = '',
+  renderCard = null,
   radius = 260,
   damping = 0.45,
   fadeOut = 0.6,
@@ -196,21 +198,35 @@ function ReadyChromaGrid({
     >
       {items.map((card, index) => {
         const theme = CARD_COLOR_THEMES[index % CARD_COLOR_THEMES.length]
+        const cardRef = (element) => {
+          cardRefs.current[index] = element
+        }
+        const mergedClassName = `home-route-card card-surface ready-chroma-card ${cardClassName}`.trim()
+        const cardStyle = {
+          '--card-accent': theme.accent,
+          '--card-glow': theme.glow,
+          '--card-gradient': theme.gradient,
+        }
+
+        if (renderCard) {
+          return renderCard({
+            item: card,
+            index,
+            theme,
+            cardRef,
+            cardClassName: mergedClassName,
+            cardStyle,
+          })
+        }
 
         return (
           <Link
             key={card.to}
-            ref={(element) => {
-              cardRefs.current[index] = element
-            }}
-            className="home-route-card card-surface ready-chroma-card"
+            ref={cardRef}
+            className={mergedClassName}
             to={card.to}
             aria-label={card.label}
-            style={{
-              '--card-accent': theme.accent,
-              '--card-glow': theme.glow,
-              '--card-gradient': theme.gradient,
-            }}
+            style={cardStyle}
           >
             <div className="ready-chroma-card-content">
               <p className="micro-label">{card.label}</p>

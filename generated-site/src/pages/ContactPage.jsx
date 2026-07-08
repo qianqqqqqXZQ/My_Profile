@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import BorderGlow from '../components/BorderGlow'
 import ContactBrandIcon from '../components/ContactBrandIcon'
 import ContactGlobe from '../components/ContactGlobe'
+import ReadyChromaGrid from '../components/ReadyChromaGrid'
 import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
@@ -66,7 +66,7 @@ function ContactPage({ language }) {
     setIsWechatModalOpen(false)
   }
 
-  const renderContactCard = (item) => {
+  const renderContactCard = ({ item, cardRef, cardClassName, cardStyle }) => {
     const cardContent = (
       <>
         <div className="contact-card-icon" aria-hidden="true">
@@ -82,8 +82,11 @@ function ContactPage({ language }) {
     if (item.type === 'modal') {
       return (
         <button
+          key={item.title}
+          ref={cardRef}
           type="button"
-          className="contact-card contact-card-button"
+          className={`${cardClassName} contact-card contact-card-button`}
+          style={cardStyle}
           onClick={() => setIsWechatModalOpen(true)}
         >
           {cardContent}
@@ -93,10 +96,13 @@ function ContactPage({ language }) {
 
     return (
       <a
-        className="contact-card"
+        key={item.title}
+        ref={cardRef}
+        className={`${cardClassName} contact-card`}
         href={item.href}
         target={item.type === 'external' ? '_blank' : undefined}
         rel={item.type === 'external' ? 'noreferrer' : undefined}
+        style={cardStyle}
       >
         {cardContent}
       </a>
@@ -125,26 +131,13 @@ function ContactPage({ language }) {
         <div className="section-shell contact-shell">
           <div className="contact-radar-content">
             <h2 className="contact-section-title">{copy.sectionTitle}</h2>
-            <div className="contact-grid contact-grid--page">
-              {copy.cards.map((item) => (
-                <BorderGlow
-                  key={item.title}
-                  className="contact-card-glow"
-                  edgeSensitivity={10}
-                  glowColor="0 0 100"
-                  backgroundColor="rgba(8, 8, 10, 0.38)"
-                  borderRadius={26}
-                  glowRadius={30}
-                  glowIntensity={0.9}
-                  coneSpread={24}
-                  animated={false}
-                  colors={['#f5f5f5', '#d7d7d7', '#ffffff']}
-                  fillOpacity={0.18}
-                >
-                  {renderContactCard(item)}
-                </BorderGlow>
-              ))}
-            </div>
+            <ReadyChromaGrid
+              items={copy.cards}
+              className="contact-grid contact-grid--page"
+              cardClassName="contact-card"
+              radius={220}
+              renderCard={renderContactCard}
+            />
           </div>
         </div>
       </section>
