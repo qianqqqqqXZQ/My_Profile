@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
 import ProfileLanyard from '../components/ProfileLanyard'
 import Stack from '../components/Stack'
-import { campusActivities, profileHighlights, strengths } from '../content/siteContent'
+import {
+  campusActivities,
+  offCampusActivities,
+  profileHighlights,
+  strengths,
+} from '../content/siteContent'
 import './HomePage.css'
 
 function ProfilePage() {
@@ -83,6 +88,68 @@ function ProfilePage() {
     ))
   }, [activeGallery])
 
+  const renderActivityEntries = (items) =>
+    items.map((item) => {
+      const itemKey = `${item.organization}-${item.period}`
+      const coverPhoto = item.photos?.[0] ?? null
+
+      return (
+        <article key={itemKey} className="campus-activity-entry card-surface">
+          <div className="campus-activity-copy">
+            <p className="campus-activity-period">{item.period}</p>
+            <p className="campus-activity-organization">{item.organization}</p>
+            <h3>{item.role}</h3>
+
+            <ul className="campus-activity-bullets">
+              {item.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+
+            {item.linkHref ? (
+              <a
+                className="inline-link campus-activity-link"
+                href={item.linkHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.linkLabel}
+              </a>
+            ) : null}
+          </div>
+
+          <div className="campus-activity-photo" aria-label={item.photoAlt}>
+            {coverPhoto ? (
+              <div className="campus-photo-gallery">
+                <button
+                  type="button"
+                  className="campus-photo-hero"
+                  onClick={() => setActiveGallery(item)}
+                  aria-label={`Open photo gallery for ${item.role}`}
+                >
+                  <span className="campus-photo-card campus-photo-card--single">
+                    <span
+                      className="campus-photo-card-backdrop"
+                      style={{ backgroundImage: `url(${coverPhoto.src})` }}
+                      aria-hidden="true"
+                    />
+                    <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
+                  </span>
+                  <span className="campus-photo-open-indicator">
+                    Open gallery / {item.photos.length} photos
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <div className="campus-activity-photo-frame">
+                <span>{item.photoLabel}</span>
+              </div>
+            )}
+          </div>
+        </article>
+      )
+    })
+
   return (
     <div className="page-route page-profile">
       <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
@@ -138,67 +205,35 @@ function ProfilePage() {
               </p>
             </div>
 
+            <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
+          </div>
+        </section>
+
+        <section id="off-campus-activities" className="content-section course-activities-section">
+          <div className="section-shell">
+            <div className="section-header">
+              <p className="eyebrow">Off-Campus Activities</p>
+              <h2>External practice, competitions, and community engagement</h2>
+              <p className="section-intro">
+                A dedicated section for internships, volunteering, competitions, and
+                other experience that happens beyond the university setting.
+              </p>
+            </div>
+
             <div className="campus-activity-timeline">
-              {campusActivities.map((item) => {
-                const itemKey = `${item.organization}-${item.period}`
-                const coverPhoto = item.photos?.[0] ?? null
-
-                return (
-                  <article key={itemKey} className="campus-activity-entry card-surface">
-                    <div className="campus-activity-copy">
-                      <p className="campus-activity-period">{item.period}</p>
-                      <p className="campus-activity-organization">{item.organization}</p>
-                      <h3>{item.role}</h3>
-
-                      <ul className="campus-activity-bullets">
-                        {item.bullets.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
-                        ))}
-                      </ul>
-
-                      {item.linkHref ? (
-                        <a
-                          className="inline-link campus-activity-link"
-                          href={item.linkHref}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {item.linkLabel}
-                        </a>
-                      ) : null}
-                    </div>
-
-                    <div className="campus-activity-photo" aria-label={item.photoAlt}>
-                      {coverPhoto ? (
-                        <div className="campus-photo-gallery">
-                          <button
-                            type="button"
-                            className="campus-photo-hero"
-                            onClick={() => setActiveGallery(item)}
-                            aria-label={`Open photo gallery for ${item.role}`}
-                          >
-                            <span className="campus-photo-card campus-photo-card--single">
-                              <span
-                                className="campus-photo-card-backdrop"
-                                style={{ backgroundImage: `url(${coverPhoto.src})` }}
-                                aria-hidden="true"
-                              />
-                              <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
-                            </span>
-                            <span className="campus-photo-open-indicator">
-                              Open gallery · {item.photos.length} photos
-                            </span>
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="campus-activity-photo-frame">
-                          <span>{item.photoLabel}</span>
-                        </div>
-                      )}
-                    </div>
-                  </article>
-                )
-              })}
+              {offCampusActivities.length ? (
+                renderActivityEntries(offCampusActivities)
+              ) : (
+                <article className="campus-activity-empty card-surface">
+                  <p className="campus-activity-empty-label">Section Ready</p>
+                  <h3>Add your off-campus experience here</h3>
+                  <p>
+                    This module is now in place after Campus Activities. Once you give me
+                    the specific experience details, I can turn them into cards in the same
+                    layout immediately.
+                  </p>
+                </article>
+              )}
             </div>
           </div>
         </section>
@@ -249,7 +284,7 @@ function ProfilePage() {
               <p className="eyebrow">Shuffle Crew Gallery</p>
               <h3 id="campus-gallery-title">{activeGallery.role}</h3>
               <p>
-                {activeGallery.organization} · {activeGallery.photos.length} photos
+                {activeGallery.organization} / {activeGallery.photos.length} photos
               </p>
               <span className="campus-gallery-stack-hint">Click or drag the top card to browse.</span>
             </div>

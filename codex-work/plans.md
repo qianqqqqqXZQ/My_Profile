@@ -56,3 +56,11 @@
 - [x] Copy the four newly provided Shuffle Crew photos into `generated-site/public/generated/shuffle-crew/`.
 - [x] Append the new photo entries to the Shuffle Crew `photos` array in `generated-site/src/content/siteContent.js`.
 - [x] Run verification, review for regressions, and update working notes.
+
+## Current Task: Add Off-Campus Activities Section
+
+- [x] Inspect the existing `Campus Activities` section structure and identify the shared render/data path.
+- [x] Add a dedicated `offCampusActivities` content export for future external-experience entries.
+- [x] Insert a new `Off-Campus Activities` module immediately after the campus activity section.
+- [x] Render a non-fabricated empty state so the new module is visible before real entries are provided.
+- [x] Run verification, review for regressions, and update working notes.

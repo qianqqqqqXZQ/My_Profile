@@ -2223,6 +2223,38 @@
   text-transform: uppercase;
 }
 
+.campus-activity-empty {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(9, 9, 9, 0.9);
+}
+
+.campus-activity-empty-label {
+  margin: 0;
+  color: rgba(244, 243, 239, 0.78);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.campus-activity-empty h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.campus-activity-empty p:last-child {
+  margin: 0;
+  max-width: 64ch;
+  color: rgba(244, 243, 239, 0.8);
+  line-height: 1.7;
+}
+
 .campus-gallery-modal-backdrop {
   position: fixed;
   inset: 0;

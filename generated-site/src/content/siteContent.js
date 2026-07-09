@@ -330,6 +330,8 @@ export const campusActivities = [
   },
 ]
 
+export const offCampusActivities = []
+
 export const contactLinks = [
   {
     label: 'Reach by Email',

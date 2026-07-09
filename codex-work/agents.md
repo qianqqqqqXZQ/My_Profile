@@ -41,6 +41,9 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 - Latest verification commands run for the Shuffle Crew gallery update: `npm run lint` and `npm run build`.
 - The Shuffle Crew gallery now includes four additional images at `shuffle-crew-14.jpg` through `shuffle-crew-17.jpg`, covering both outdoor showcase and stage-performance shots supplied on 2026-07-09.
 - Latest verification commands run for the additional Shuffle Crew photos task: `npm run lint` and `npm run build`.
+- `generated-site/src/pages/ProfilePage.jsx` now renders a second profile section, `Off-Campus Activities`, immediately after `Campus Activities`, reusing the same activity-card layout.
+- The new off-campus section is backed by `offCampusActivities` in `generated-site/src/content/siteContent.js`, which is currently an empty array and therefore shows an intentional empty-state card instead of fabricated experience content.
+- Latest verification commands run for the off-campus activities section task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
