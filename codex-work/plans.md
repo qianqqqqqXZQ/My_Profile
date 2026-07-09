@@ -64,3 +64,12 @@
 - [x] Insert a new `Off-Campus Activities` module immediately after the campus activity section.
 - [x] Render a non-fabricated empty state so the new module is visible before real entries are provided.
 - [x] Run verification, review for regressions, and update working notes.
+
+## Current Task: Rework Working Experience And Add Pony.ai
+
+- [x] Inspect the `Experience` page `Working Experience` module and confirm the current data/rendering shape.
+- [x] Create a Git backup commit before changing the work-experience content and layout.
+- [x] Replace the generic `workingExperience` content with a real Pony.ai work entry using a bullet-based structure.
+- [x] Update the `Experience` page work card rendering to show company logo, company name, period, role, and responsibility bullets.
+- [x] Restyle the `Working Experience` card so it reads like a resume/work-history module on desktop and mobile.
+- [x] Run `npm run build` and `npm run lint`, then review the diff for regressions.

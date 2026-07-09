@@ -247,13 +247,28 @@ function ExperiencePage() {
               <div className="working-strip">
                 {workingExperience.map((item) => (
                   <article key={`${item.company}-${item.role}`} className="working-strip-card">
-                    <div className="working-item-topline">
+                    <div className="working-card-header">
+                      <div className="working-company-lockup">
+                        {item.logoSrc ? (
+                          <span className="working-company-logo-shell" aria-hidden="true">
+                            <img
+                              className="working-company-logo"
+                              src={item.logoSrc}
+                              alt={item.logoAlt ?? `${item.company} logo`}
+                              loading="lazy"
+                            />
+                          </span>
+                        ) : null}
+                        <strong className="working-company-name">{item.company}</strong>
+                      </div>
                       <span className="working-period">{item.period}</span>
-                      <span className="experience-inline-tag">{item.highlight}</span>
                     </div>
                     <h3>{item.role}</h3>
-                    <strong>{item.company}</strong>
-                    <p>{item.description}</p>
+                    <ul className="working-bullets">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
                   </article>
                 ))}
               </div>

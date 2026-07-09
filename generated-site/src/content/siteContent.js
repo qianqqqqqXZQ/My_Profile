@@ -422,25 +422,15 @@ export const researchExperience = [
 
 export const workingExperience = [
   {
-    company: 'Academic and Personal Development',
-    role: 'Independent Builder',
-    period: '2025 - Present',
-    description: 'Carrying work from idea to shipped result through planning, interface implementation, iteration, and technical cleanup.',
-    highlight: 'End-to-end execution',
-  },
-  {
-    company: 'Research Collaboration Context',
-    role: 'Research Assistant Mindset',
-    period: '2025 - 2026',
-    description: 'Supporting research implementation with experiment-oriented coding, structured observation, and a bias toward reproducible progress.',
-    highlight: 'Research implementation',
-  },
-  {
-    company: 'Project Delivery Workflow',
-    role: 'Coordinator and Implementer',
-    period: 'Selected Work',
-    description: 'Managing scope, translating abstract ideas into task lists, and maintaining visual and technical quality through delivery cycles.',
-    highlight: 'Planning and delivery',
+    company: 'Pony.ai',
+    role: 'Algorithm Engineer',
+    period: 'July 2026 - Sep 2026',
+    logoSrc:
+      'https://ir.pony.ai/sites/g/files/knoqqb104676/themes/site/client_site/dist/images/logo.png',
+    logoAlt: 'Pony.ai logo',
+    bullets: [
+      'Built Pony World using 3D reconstruction knowledge.',
+    ],
   },
 ]
 

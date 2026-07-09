@@ -2544,16 +2544,19 @@
 
 .working-strip-card {
   position: relative;
-  min-height: 250px;
-  padding: 22px;
+  min-height: 280px;
+  padding: 26px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
-    rgba(14, 15, 15, 0.48);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.014)),
+    rgba(11, 12, 12, 0.62);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 28px rgba(0, 0, 0, 0.14);
+    0 24px 34px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .working-strip-card::before {
@@ -2567,14 +2570,64 @@
   pointer-events: none;
 }
 
-.working-item-topline {
+.working-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 18px;
+}
+
+.working-company-lockup {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.working-company-logo-shell {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 16px 28px rgba(0, 0, 0, 0.16);
+}
+
+.working-company-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.working-company-name {
+  display: block;
+  margin: 0;
+  color: rgba(245, 244, 240, 0.94);
+  font-size: clamp(1rem, 1vw, 1.08rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .working-period {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   color: rgba(244, 243, 239, 0.72);
   font-size: 0.78rem;
   letter-spacing: 0.18em;
@@ -2582,22 +2635,21 @@
 }
 
 .working-strip-card h3 {
-  margin: 18px 0 8px;
-  font-size: clamp(1.25rem, 1.5vw, 1.6rem);
-  letter-spacing: -0.03em;
-}
-
-.working-strip-card strong {
-  display: block;
-  margin-bottom: 10px;
-  color: rgba(245, 244, 240, 0.9);
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.working-strip-card p {
   margin: 0;
+  font-size: clamp(1.45rem, 1.9vw, 2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.working-bullets {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(244, 243, 239, 0.82);
+  line-height: 1.72;
+}
+
+.working-bullets li + li {
+  margin-top: 10px;
 }
 
 .experience-module--project {
@@ -3378,8 +3430,7 @@
     padding: 22px 22px 18px;
   }
 
-  .working-item-topline {
-    align-items: flex-start;
+  .working-card-header {
     flex-direction: column;
   }
 
@@ -3392,6 +3443,31 @@
 
   .campus-activity-entry {
     gap: 22px;
+  }
+
+  .working-company-lockup {
+    width: 100%;
+  }
+
+  .working-company-logo-shell {
+    width: 56px;
+    height: 56px;
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .working-company-name {
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+  }
+
+  .working-period {
+    min-height: 34px;
+    padding: 0 12px;
+  }
+
+  .working-bullets {
+    padding-left: 1rem;
   }
 
   .campus-activity-entry h3 {
