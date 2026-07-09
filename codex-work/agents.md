@@ -33,6 +33,10 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 - `generated-site/src/components/ContactBrandIcon.jsx` now contains rebuilt SVG variants for Gmail, Outlook, GitHub, and WeChat with monochrome idle rendering and chroma-triggered brand-color reveal on the contact page.
 - `generated-site/src/pages/ContactPage.jsx` injects a dedicated card theme order for the contact grid: Gmail red, Outlook blue, GitHub gold, WeChat green. `generated-site/src/pages/ReadyPage.jsx` still uses the original shared palette.
 - The contact-card chroma palette and the contact logos are intentionally decoupled: card hover rendering follows the requested four card colors, while each SVG logo always shows its own native brand appearance.
+- `generated-site/src/pages/ProfilePage.jsx` now upgrades only the `Shuffle Crew / Vice Captain` campus activity entry from a placeholder frame to a single clickable cover photo.
+- Clicking that single side photo opens a full gallery modal with backdrop close, `Esc` close, previous/next navigation, and a thumbnail filmstrip; the side card itself no longer shows multiple previews.
+- Shuffle Crew gallery assets now live in `generated-site/public/generated/shuffle-crew/`, and the corresponding `photos` array is stored on the Shuffle Crew item in `generated-site/src/content/siteContent.js`.
+- Latest verification commands run for the Shuffle Crew gallery update: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

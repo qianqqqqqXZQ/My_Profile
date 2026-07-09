@@ -2091,6 +2091,99 @@
   align-items: center;
 }
 
+.campus-photo-gallery {
+  width: 100%;
+  display: block;
+}
+
+.campus-photo-hero {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.campus-photo-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)),
+    rgba(12, 12, 12, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 22px 54px rgba(0, 0, 0, 0.34);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.campus-photo-card--single {
+  inset: 0;
+}
+
+.campus-photo-card-backdrop,
+.campus-photo-thumbnail-backdrop,
+.campus-gallery-image-backdrop,
+.campus-gallery-filmstrip-backdrop {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(20px) saturate(0.9);
+  opacity: 0.55;
+  transform: scale(1.1);
+}
+
+.campus-photo-card::after,
+.campus-photo-thumbnail::after,
+.campus-gallery-image-shell::after,
+.campus-gallery-filmstrip-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 24%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.14), transparent 44%);
+  pointer-events: none;
+}
+
+.campus-photo-card img,
+.campus-photo-thumbnail img,
+.campus-gallery-image,
+.campus-gallery-filmstrip-item img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.campus-photo-open-indicator {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(244, 243, 239, 0.86);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
 .campus-activity-photo-frame {
   position: relative;
   width: 100%;
@@ -2134,6 +2227,123 @@
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.campus-gallery-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(4, 5, 6, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.campus-gallery-modal {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: min(90vh, 980px);
+  padding: 28px;
+  border-radius: 30px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(11, 11, 11, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+  display: grid;
+  gap: 18px;
+}
+
+.campus-gallery-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(245, 244, 240, 0.92);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.campus-gallery-modal-header {
+  padding-right: 56px;
+}
+
+.campus-gallery-modal-header h3 {
+  margin: 8px 0 6px;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+}
+
+.campus-gallery-modal-header p:last-child {
+  margin: 0;
+  color: rgba(244, 243, 239, 0.72);
+}
+
+.campus-gallery-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.campus-gallery-nav {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(244, 243, 239, 0.92);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.campus-gallery-image-shell {
+  position: relative;
+  min-height: 54vh;
+  max-height: 62vh;
+  padding: 24px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
+    rgba(6, 6, 6, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.campus-gallery-image {
+  max-height: calc(62vh - 48px);
+}
+
+.campus-gallery-filmstrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: 10px;
+}
+
+.campus-gallery-filmstrip-item {
+  position: relative;
+  aspect-ratio: 1;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012)),
+    rgba(14, 14, 14, 0.88);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.campus-gallery-filmstrip-item.is-active {
+  border-color: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
 }
 
 .project-stack,
@@ -3187,6 +3397,55 @@
   .campus-activity-photo-frame span {
     font-size: 0.74rem;
     letter-spacing: 0.14em;
+  }
+
+  .campus-photo-hero {
+    min-height: 280px;
+  }
+
+  .campus-gallery-modal-backdrop {
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .campus-gallery-modal {
+    width: 100%;
+    max-height: 90svh;
+    padding: 20px 16px 16px;
+    border-radius: 24px;
+  }
+
+  .campus-gallery-modal-header {
+    padding-right: 42px;
+  }
+
+  .campus-gallery-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-gallery-image-shell {
+    order: 1;
+    min-height: 42vh;
+    max-height: 52vh;
+  }
+
+  .campus-gallery-image {
+    max-height: calc(52vh - 48px);
+  }
+
+  .campus-gallery-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+
+  .campus-gallery-nav--prev {
+    left: 12px;
+  }
+
+  .campus-gallery-nav--next {
+    right: 12px;
   }
 
   .research-modal-backdrop {

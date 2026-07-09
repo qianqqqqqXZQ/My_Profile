@@ -38,3 +38,14 @@
 - [x] Update the Vite entry HTML to reference the new bear favicon files.
 - [x] Run build verification and do a quick review for asset path regressions.
 - [x] Update the working notes with final asset paths and commands.
+
+## Current Task: Shuffle Crew Photo Gallery
+
+- [x] Inspect the `Profile` page campus activity module and identify the Shuffle Crew placeholder photo area.
+- [x] Create a Git backup commit before implementing the gallery upgrade.
+- [x] Copy the provided Shuffle Crew photos into `generated-site/public/generated/shuffle-crew/`.
+- [x] Extend the Shuffle Crew activity data with a `photos` array while keeping existing link behavior intact.
+- [x] Replace the placeholder frame with a collage-style thumbnail gallery and click-to-open modal viewer.
+- [x] Preserve fallback placeholder rendering for campus activity entries without photo data.
+- [x] Adjust the campus card to show only a single side image while keeping the full gallery interaction inside the modal.
+- [x] Run verification, review for regressions, and update working notes.

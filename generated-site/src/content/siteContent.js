@@ -254,6 +254,60 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
     photoLabel: 'Photo Placeholder',
+    photos: [
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-01.jpg',
+        alt: 'Shuffle Crew stage performance under red and blue lighting with white masks.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-02.jpg',
+        alt: 'Shuffle Crew dancer standing in a spotlight during a dark stage performance.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-03.jpg',
+        alt: 'Vice captain leading a Shuffle Crew routine in warm stage lighting.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-04.jpg',
+        alt: 'Wide dark stage composition featuring Shuffle Crew in a focused spotlight.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-05.jpg',
+        alt: 'Masked Shuffle Crew members posed on a dimly lit stage.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-06.jpg',
+        alt: 'Shuffle Crew vice captain performing center stage with masked dancers.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-07.jpg',
+        alt: 'Portrait-oriented stage photo of two masked Shuffle Crew performers.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-08.jpg',
+        alt: 'Full Shuffle Crew formation performing in front of a vivid blue backdrop.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-09.jpg',
+        alt: 'Shuffle Crew group performance framed by bold red lighting and masks.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-10.jpg',
+        alt: 'Campus stage dance performance with a breakdance move at center stage.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-11.jpg',
+        alt: 'Vice captain leading a trio dance performance on the UNNC stage.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-12.jpg',
+        alt: 'Solo-focused campus performance image with supporting dancers behind.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-13.jpg',
+        alt: 'Group dance photo with colorful costumes and stage lights at UNNC.',
+      },
+    ],
     linkLabel: 'View the Douyin performance highlight',
     linkHref:
       'https://www.douyin.com/jingxuan/search/%E8%B0%A6qqqqq?aid=84ece7e1-4646-4b1f-8398-491fa2125598&modal_id=7494149451603381539&type=general',
