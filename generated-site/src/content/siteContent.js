@@ -307,6 +307,22 @@ export const campusActivities = [
         src: '/generated/shuffle-crew/shuffle-crew-13.jpg',
         alt: 'Group dance photo with colorful costumes and stage lights at UNNC.',
       },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-14.jpg',
+        alt: 'Outdoor campus showcase photo featuring a handstand move in front of a large audience.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-15.jpg',
+        alt: 'Wide UNNC stage performance photo with the Shuffle Crew dancing beneath fireworks visuals.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-16.jpg',
+        alt: 'Portrait-oriented campus stage performance highlighting a floorwork pose with another dancer behind.',
+      },
+      {
+        src: '/generated/shuffle-crew/shuffle-crew-17.jpg',
+        alt: 'Outdoor battle-style performance shot capturing a one-hand freeze before a crowd on campus.',
+      },
     ],
     linkLabel: 'View the Douyin performance highlight',
     linkHref:

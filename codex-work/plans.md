@@ -45,7 +45,14 @@
 - [x] Create a Git backup commit before implementing the gallery upgrade.
 - [x] Copy the provided Shuffle Crew photos into `generated-site/public/generated/shuffle-crew/`.
 - [x] Extend the Shuffle Crew activity data with a `photos` array while keeping existing link behavior intact.
-- [x] Replace the placeholder frame with a collage-style thumbnail gallery and click-to-open modal viewer.
+- [x] Replace the placeholder frame with a single clickable cover photo and a click-to-open gallery entry point.
 - [x] Preserve fallback placeholder rendering for campus activity entries without photo data.
-- [x] Adjust the campus card to show only a single side image while keeping the full gallery interaction inside the modal.
+- [x] Swap the expanded gallery modal from the static carousel layout to a React Bits-inspired `Stack` interaction powered by `motion`.
+- [x] Run verification, review for regressions, and update working notes.
+
+## Current Task: Add More Shuffle Crew Photos
+
+- [x] Inspect the existing Shuffle Crew gallery asset naming and source data wiring.
+- [x] Copy the four newly provided Shuffle Crew photos into `generated-site/public/generated/shuffle-crew/`.
+- [x] Append the new photo entries to the Shuffle Crew `photos` array in `generated-site/src/content/siteContent.js`.
 - [x] Run verification, review for regressions, and update working notes.

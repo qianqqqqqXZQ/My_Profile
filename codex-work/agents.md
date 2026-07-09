@@ -34,9 +34,13 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 - `generated-site/src/pages/ContactPage.jsx` injects a dedicated card theme order for the contact grid: Gmail red, Outlook blue, GitHub gold, WeChat green. `generated-site/src/pages/ReadyPage.jsx` still uses the original shared palette.
 - The contact-card chroma palette and the contact logos are intentionally decoupled: card hover rendering follows the requested four card colors, while each SVG logo always shows its own native brand appearance.
 - `generated-site/src/pages/ProfilePage.jsx` now upgrades only the `Shuffle Crew / Vice Captain` campus activity entry from a placeholder frame to a single clickable cover photo.
-- Clicking that single side photo opens a full gallery modal with backdrop close, `Esc` close, previous/next navigation, and a thumbnail filmstrip; the side card itself no longer shows multiple previews.
+- Clicking that single side photo now opens a full gallery modal whose main interaction is a local `generated-site/src/components/Stack.jsx` card stack powered by the `motion` package.
+- The expanded gallery no longer uses the previous previous/next buttons or thumbnail filmstrip; users browse by clicking or dragging the top stack card.
 - Shuffle Crew gallery assets now live in `generated-site/public/generated/shuffle-crew/`, and the corresponding `photos` array is stored on the Shuffle Crew item in `generated-site/src/content/siteContent.js`.
+- The stack cards use a fixed outer frame with `object-fit: contain` and a blurred same-image backdrop so mixed portrait and landscape photos remain fully visible.
 - Latest verification commands run for the Shuffle Crew gallery update: `npm run lint` and `npm run build`.
+- The Shuffle Crew gallery now includes four additional images at `shuffle-crew-14.jpg` through `shuffle-crew-17.jpg`, covering both outdoor showcase and stage-performance shots supplied on 2026-07-09.
+- Latest verification commands run for the additional Shuffle Crew photos task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
