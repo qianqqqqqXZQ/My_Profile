@@ -73,3 +73,12 @@
 - [x] Update the `Experience` page work card rendering to show company logo, company name, period, role, and responsibility bullets.
 - [x] Restyle the `Working Experience` card so it reads like a resume/work-history module on desktop and mobile.
 - [x] Run `npm run build` and `npm run lint`, then review the diff for regressions.
+
+## Current Task: Update Top Navigation And Add GitHub Button
+
+- [x] Inspect the topbar layout, navigation data source, and current `Contact` button wiring.
+- [x] Create a Git backup commit before changing the shared header.
+- [x] Remove `Home` from the centered navigation and add `Contact` as the final centered nav item.
+- [x] Replace the right-side `Contact` button with a GitHub-style `View the code` external button.
+- [x] Run `npm run lint` and `npm run build`, then review the diff for regressions.
+- [x] Update the working notes after validation if any new repo guidance is discovered.

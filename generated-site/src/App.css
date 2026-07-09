@@ -685,6 +685,7 @@
 .contact-button,
 .primary-button,
 .secondary-button,
+.github-code-button,
 .inline-link {
   transition:
     transform 180ms ease,
@@ -692,6 +693,10 @@
     border-color 180ms ease,
     color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.github-code-button__icon path {
+  transition: fill 400ms ease;
 }
 
 .nav-links a {
@@ -838,15 +843,22 @@
 .contact-button,
 .primary-button,
 .secondary-button,
-.ready-button {
+.ready-button,
+.github-code-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
-  padding: 0 24px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 15px;
+}
+
+.contact-button,
+.primary-button,
+.secondary-button,
+.ready-button {
+  padding: 0 24px;
 }
 
 .contact-button {
@@ -865,14 +877,61 @@
   text-transform: uppercase;
 }
 
+.github-code-button {
+  gap: 15px;
+  padding: 10px 15px;
+  color: #ffffff;
+  background-color: #181717;
+  outline: 3px solid #181717;
+  outline-offset: -3px;
+  border: none;
+  white-space: nowrap;
+}
+
+.github-code-button__text {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1em;
+  line-height: 1;
+}
+
+.github-code-button__icon {
+  flex: 0 0 auto;
+}
+
+.github-code-button__icon path {
+  fill: #ffffff;
+}
+
 .contact-button:hover,
 .primary-button:hover,
 .secondary-button:hover,
 .ready-button:hover,
+.github-code-button:hover,
 .contact-card:hover,
 .home-route-card:hover,
 .clip-card:hover {
   transform: translateY(-2px);
+}
+
+.github-code-button:hover,
+.github-code-button:focus-visible {
+  background-color: #ffffff;
+}
+
+.github-code-button:hover .github-code-button__text,
+.github-code-button:focus-visible .github-code-button__text {
+  color: #181717;
+}
+
+.github-code-button:hover .github-code-button__icon path,
+.github-code-button:focus-visible .github-code-button__icon path {
+  fill: #181717;
+}
+
+.github-code-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.78);
+  outline-offset: 2px;
 }
 
 .primary-button {
@@ -3323,7 +3382,8 @@
 
   .language-button,
   .nav-links a,
-  .contact-button {
+  .contact-button,
+  .github-code-button {
     min-height: 46px;
   }
 
