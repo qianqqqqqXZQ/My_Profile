@@ -31,10 +31,10 @@
 
 ## Current Task: Bear Head Stardew Favicon
 
-- [ ] Inspect the current favicon wiring and existing generated asset paths.
-- [ ] Create a Git backup commit before replacing the favicon assets.
-- [ ] Generate a Stardew Valley-inspired pixel bear head icon from the provided reference photo.
-- [ ] Export favicon PNG and ICO files into the site public assets folder.
-- [ ] Update the Vite entry HTML to reference the new bear favicon files.
-- [ ] Run build verification and do a quick review for asset path regressions.
-- [ ] Update the working notes with final asset paths and commands.
+- [x] Inspect the current favicon wiring and existing generated asset paths.
+- [x] Create a Git backup commit before replacing the favicon assets.
+- [x] Generate a Stardew Valley-inspired pixel bear head icon from the provided reference photo.
+- [x] Export favicon PNG and ICO files into the site public assets folder.
+- [x] Update the Vite entry HTML to reference the new bear favicon files.
+- [x] Run build verification and do a quick review for asset path regressions.
+- [x] Update the working notes with final asset paths and commands.

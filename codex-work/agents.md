@@ -36,10 +36,12 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 
 ## Favicon Task Output
 
-- Active favicon assets from the uncropped dog photo:
-  - `generated-site/public/generated/favicon-dog-master.png`
-  - `generated-site/public/generated/favicon-dog-32.png`
-  - `generated-site/public/generated/favicon-dog-16.png`
-  - `generated-site/public/generated/favicon-dog.ico`
-- Previous person-based favicon drafts have been removed from `generated-site/public/generated/`.
-- Verification command run: `npm run build`
+- Active favicon assets for the Stardew-inspired bear head:
+  - `generated-site/public/generated/favicon-bear-stardew-master.png`
+  - `generated-site/public/generated/favicon-bear-stardew-32.png`
+  - `generated-site/public/generated/favicon-bear-stardew-16.png`
+  - `generated-site/public/generated/favicon-bear-stardew.ico`
+  - `generated-site/public/generated/favicon-bear-stardew-preview.png`
+- The favicon generation script lives at `codex-work/scripts/generate_bear_favicon.py` and uses the provided local photo as a color reference.
+- `generated-site/index.html` now points at `/generated/favicon-bear-stardew-32.png` and `/generated/favicon-bear-stardew.ico`.
+- Latest verification command run for the favicon refresh: `npm run build`
