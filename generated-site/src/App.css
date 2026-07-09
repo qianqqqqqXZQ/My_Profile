@@ -2516,14 +2516,14 @@
 .experience-module--working {
   padding: 28px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
-    linear-gradient(180deg, rgba(7, 8, 8, 0.94), rgba(10, 11, 11, 0.84));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    rgba(8, 9, 9, 0.9);
 }
 
 .experience-module--working::before {
   background:
-    radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.12), transparent 18%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 46%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 36%);
 }
 
 .section-header--compact {
@@ -2536,52 +2536,98 @@
   margin-bottom: 14px;
 }
 
-.working-strip {
+.working-ledger {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 22px;
 }
 
-.working-strip-card {
+.working-ledger-entry {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.working-ledger-rail {
   position: relative;
-  min-height: 280px;
-  padding: 26px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: center;
+}
+
+.working-ledger-rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02));
+}
+
+.working-ledger-dot {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  margin-top: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.014)),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.38));
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.03),
+    0 0 22px rgba(255, 255, 255, 0.16);
+}
+
+.working-ledger-body {
+  display: grid;
+  gap: 12px;
+}
+
+.working-ledger-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-right: 8px;
+}
+
+.working-ledger-type {
+  color: rgba(244, 243, 239, 0.62);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.working-ledger-card {
+  position: relative;
+  padding: 24px 26px 24px 24px;
+  border-left: 3px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0 24px 24px 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01) 22%),
     rgba(11, 12, 12, 0.62);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 24px 34px rgba(0, 0, 0, 0.18);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+    0 18px 34px rgba(0, 0, 0, 0.16);
 }
 
-.working-strip-card::before {
+.working-ledger-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 34%),
-    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.08), transparent 18%);
+    radial-gradient(circle at 92% 14%, rgba(255, 255, 255, 0.08), transparent 18%);
   pointer-events: none;
-}
-
-.working-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
 }
 
 .working-company-lockup {
   min-width: 0;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .working-company-logo-shell {
@@ -2610,13 +2656,20 @@
 
 .working-company-name {
   display: block;
-  margin: 0;
+  margin: 0 0 6px;
   color: rgba(245, 244, 240, 0.94);
   font-size: clamp(1rem, 1vw, 1.08rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.working-company-copy h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 1.9vw, 2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .working-period {
@@ -2634,15 +2687,8 @@
   text-transform: uppercase;
 }
 
-.working-strip-card h3 {
-  margin: 0;
-  font-size: clamp(1.45rem, 1.9vw, 2rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
 .working-bullets {
-  margin: 0;
+  margin: 22px 0 0;
   padding-left: 1.2rem;
   color: rgba(244, 243, 239, 0.82);
   line-height: 1.72;
@@ -3179,7 +3225,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .working-strip,
   .project-experience-grid,
   .campus-activity-timeline {
     grid-template-columns: 1fr;
@@ -3430,11 +3475,10 @@
     padding: 22px 22px 18px;
   }
 
-  .working-card-header {
-    flex-direction: column;
+  .working-ledger-entry {
+    grid-template-columns: 28px minmax(0, 1fr);
   }
 
-  .working-strip-card,
   .project-experience-tile,
   .campus-activity-entry {
     min-height: auto;
@@ -3445,8 +3489,15 @@
     gap: 22px;
   }
 
-  .working-company-lockup {
-    width: 100%;
+  .working-ledger-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  .working-ledger-card {
+    padding: 20px 18px 20px 18px;
+    border-radius: 0 20px 20px 0;
   }
 
   .working-company-logo-shell {
@@ -3464,6 +3515,12 @@
   .working-period {
     min-height: 34px;
     padding: 0 12px;
+  }
+
+  .working-company-lockup {
+    width: 100%;
+    grid-template-columns: 56px minmax(0, 1fr);
+    align-items: flex-start;
   }
 
   .working-bullets {

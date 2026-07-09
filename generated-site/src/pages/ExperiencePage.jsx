@@ -244,31 +244,45 @@ function ExperiencePage() {
             </div>
 
             <article className="experience-module experience-module--working card-surface">
-              <div className="working-strip">
+              <div className="working-ledger">
                 {workingExperience.map((item) => (
-                  <article key={`${item.company}-${item.role}`} className="working-strip-card">
-                    <div className="working-card-header">
-                      <div className="working-company-lockup">
-                        {item.logoSrc ? (
-                          <span className="working-company-logo-shell" aria-hidden="true">
-                            <img
-                              className="working-company-logo"
-                              src={item.logoSrc}
-                              alt={item.logoAlt ?? `${item.company} logo`}
-                              loading="lazy"
-                            />
-                          </span>
-                        ) : null}
-                        <strong className="working-company-name">{item.company}</strong>
-                      </div>
-                      <span className="working-period">{item.period}</span>
+                  <article key={`${item.company}-${item.role}`} className="working-ledger-entry">
+                    <div className="working-ledger-rail" aria-hidden="true">
+                      <span className="working-ledger-dot" />
                     </div>
-                    <h3>{item.role}</h3>
-                    <ul className="working-bullets">
-                      {item.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
+
+                    <div className="working-ledger-body">
+                      <div className="working-ledger-meta">
+                        <span className="working-period">{item.period}</span>
+                        <span className="working-ledger-type">Internship</span>
+                      </div>
+
+                      <div className="working-ledger-card">
+                        <div className="working-company-lockup">
+                          {item.logoSrc ? (
+                            <span className="working-company-logo-shell" aria-hidden="true">
+                              <img
+                                className="working-company-logo"
+                                src={item.logoSrc}
+                                alt={item.logoAlt ?? `${item.company} logo`}
+                                loading="lazy"
+                              />
+                            </span>
+                          ) : null}
+
+                          <div className="working-company-copy">
+                            <strong className="working-company-name">{item.company}</strong>
+                            <h3>{item.role}</h3>
+                          </div>
+                        </div>
+
+                        <ul className="working-bullets">
+                          {item.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </article>
                 ))}
               </div>
