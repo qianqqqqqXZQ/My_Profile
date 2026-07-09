@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
 import ProfileLanyard from '../components/ProfileLanyard'
+import Stack from '../components/Stack'
 import { campusActivities, profileHighlights, strengths } from '../content/siteContent'
 import './HomePage.css'
 
@@ -9,7 +10,6 @@ function ProfilePage() {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [activeGallery, setActiveGallery] = useState(null)
-  const [activePhotoIndex, setActivePhotoIndex] = useState(0)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -46,17 +46,6 @@ function ProfilePage() {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setActiveGallery(null)
-        return
-      }
-
-      if (event.key === 'ArrowRight') {
-        setActivePhotoIndex((currentIndex) => (currentIndex + 1) % activeGallery.photos.length)
-      }
-
-      if (event.key === 'ArrowLeft') {
-        setActivePhotoIndex(
-          (currentIndex) => (currentIndex - 1 + activeGallery.photos.length) % activeGallery.photos.length,
-        )
       }
     }
 
@@ -70,31 +59,29 @@ function ProfilePage() {
 
   const closeGallery = () => {
     setActiveGallery(null)
-    setActivePhotoIndex(0)
   }
 
-  const openGallery = (item, photoIndex = 0) => {
-    setActiveGallery(item)
-    setActivePhotoIndex(photoIndex)
-  }
-
-  const showPreviousPhoto = () => {
-    if (!activeGallery) {
-      return
+  const stackCards = useMemo(() => {
+    if (!activeGallery?.photos?.length) {
+      return []
     }
 
-    setActivePhotoIndex((currentIndex) => (currentIndex - 1 + activeGallery.photos.length) % activeGallery.photos.length)
-  }
-
-  const showNextPhoto = () => {
-    if (!activeGallery) {
-      return
-    }
-
-    setActivePhotoIndex((currentIndex) => (currentIndex + 1) % activeGallery.photos.length)
-  }
-
-  const activePhoto = activeGallery?.photos?.[activePhotoIndex] ?? null
+    return activeGallery.photos.map((photo, index) => (
+      <div key={photo.src} className="shuffle-stack-photo-card">
+        <div
+          className="shuffle-stack-photo-backdrop"
+          style={{ backgroundImage: `url(${photo.src})` }}
+          aria-hidden="true"
+        />
+        <img
+          className="shuffle-stack-photo-image"
+          src={photo.src}
+          alt={photo.alt}
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+      </div>
+    ))
+  }, [activeGallery])
 
   return (
     <div className="page-route page-profile">
@@ -187,7 +174,7 @@ function ProfilePage() {
                           <button
                             type="button"
                             className="campus-photo-hero"
-                            onClick={() => openGallery(item, 0)}
+                            onClick={() => setActiveGallery(item)}
                             aria-label={`Open photo gallery for ${item.role}`}
                           >
                             <span className="campus-photo-card campus-photo-card--single">
@@ -240,10 +227,10 @@ function ProfilePage() {
         </section>
       </main>
 
-      {activeGallery && activePhoto ? (
+      {activeGallery ? (
         <div className="campus-gallery-modal-backdrop" onClick={closeGallery}>
           <div
-            className="campus-gallery-modal"
+            className="campus-gallery-modal campus-gallery-modal--stack"
             role="dialog"
             aria-modal="true"
             aria-labelledby="campus-gallery-title"
@@ -258,60 +245,25 @@ function ProfilePage() {
               x
             </button>
 
-            <div className="campus-gallery-modal-header">
+            <div className="campus-gallery-modal-header campus-gallery-modal-header--stack">
               <p className="eyebrow">Shuffle Crew Gallery</p>
               <h3 id="campus-gallery-title">{activeGallery.role}</h3>
               <p>
-                {activeGallery.organization} · {activePhotoIndex + 1} / {activeGallery.photos.length}
+                {activeGallery.organization} · {activeGallery.photos.length} photos
               </p>
+              <span className="campus-gallery-stack-hint">Click or drag the top card to browse.</span>
             </div>
 
-            <div className="campus-gallery-stage">
-              <button
-                type="button"
-                className="campus-gallery-nav campus-gallery-nav--prev"
-                onClick={showPreviousPhoto}
-                aria-label="Show previous photo"
-              >
-                {'<'}
-              </button>
-
-              <div className="campus-gallery-image-shell">
-                <div
-                  className="campus-gallery-image-backdrop"
-                  style={{ backgroundImage: `url(${activePhoto.src})` }}
-                  aria-hidden="true"
+            <div className="campus-gallery-stack-stage">
+              <div className="campus-gallery-stack-shell">
+                <Stack
+                  randomRotation
+                  sensitivity={180}
+                  sendToBackOnClick
+                  mobileClickOnly
+                  cards={stackCards}
                 />
-                <img src={activePhoto.src} alt={activePhoto.alt} className="campus-gallery-image" />
               </div>
-
-              <button
-                type="button"
-                className="campus-gallery-nav campus-gallery-nav--next"
-                onClick={showNextPhoto}
-                aria-label="Show next photo"
-              >
-                {'>'}
-              </button>
-            </div>
-
-            <div className="campus-gallery-filmstrip" aria-label="Gallery thumbnails">
-              {activeGallery.photos.map((photo, index) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  className={`campus-gallery-filmstrip-item${index === activePhotoIndex ? ' is-active' : ''}`}
-                  onClick={() => setActivePhotoIndex(index)}
-                  aria-label={`Show photo ${index + 1}`}
-                >
-                  <span
-                    className="campus-gallery-filmstrip-backdrop"
-                    style={{ backgroundImage: `url(${photo.src})` }}
-                    aria-hidden="true"
-                  />
-                  <img src={photo.src} alt={photo.alt} loading="lazy" />
-                </button>
-              ))}
             </div>
           </div>
         </div>
