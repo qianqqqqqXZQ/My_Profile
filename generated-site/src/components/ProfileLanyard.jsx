@@ -14,7 +14,7 @@ import {
 } from '@react-three/rapier'
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 import * as THREE from 'three'
-import profileImage from '../../../img/Ziqian.jpg'
+import profileImage from '../../../img/profile-card-photo.jpg'
 import cardGLB from '../assets/lanyard/card.glb'
 import lanyardTexture from '../assets/lanyard/lanyard.png'
 import './ProfileLanyard.css'

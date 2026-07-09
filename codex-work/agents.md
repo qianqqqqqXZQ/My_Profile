@@ -27,6 +27,9 @@ Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
 
 ## UI Notes
 
+- `generated-site/src/components/ProfileLanyard.jsx` renders the profile-page lanyard card and now sources its portrait image from `img/profile-card-photo.jpg`.
+- Latest verification commands run for the profile card photo swap: `npm run lint` and `npm run build`.
+- The current source photo is high resolution; the production build emits `profile-card-photo-*.jpg` at roughly 3.8 MB, so image compression is the main remaining optimization if page weight becomes a concern.
 - `generated-site/src/pages/ReadyPage.jsx` now renders its four navigation cards with the reflective `BorderGlow` treatment.
 - `generated-site/src/pages/ContactPage.jsx` now reuses `generated-site/src/components/ReadyChromaGrid.jsx` so the four contact cards inherit the colored hover/follow-light effect while keeping their original link and modal behaviors.
 - Latest verification commands run for the card swap: `npm run build` and `npm run lint`.

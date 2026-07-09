@@ -82,3 +82,11 @@
 - [x] Replace the right-side `Contact` button with a GitHub-style `View the code` external button.
 - [x] Run `npm run lint` and `npm run build`, then review the diff for regressions.
 - [x] Update the working notes after validation if any new repo guidance is discovered.
+
+## Current Task: Replace Profile Card Photo
+
+- [x] Inspect the `Profile` card component and locate the current portrait asset import.
+- [x] Copy the user-provided photo into the project asset area.
+- [x] Update the profile lanyard card to use the new photo asset.
+- [x] Run verification and review for regressions.
+- [x] Update the working notes with the new asset path and validation commands.
