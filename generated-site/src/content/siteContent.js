@@ -211,14 +211,14 @@ export const profileHighlights = [
 export const campusActivities = [
   {
     period: 'Sep 2022 - Jul 2023',
-    organization: 'Zhangshu Middle School',
-    role: 'President, Student Union',
+    organization: 'Zhang Shu Senior High School Student Union',
+    role: 'President',
     bullets: [
       'Led a multi-department student union, including teams such as Publicity and Discipline Inspection, chaired weekly meetings, and organized routine discipline and classroom hygiene inspections across grades.',
       'Assisted the school in planning and delivering major events such as the sports meet and campus arts festival, serving in key coordination roles including overall event planning.',
       'Received the Outstanding Student Union Cadre award multiple times at the school recognition ceremony in acknowledgment of leadership and service performance.',
     ],
-    photoAlt: 'Reserved photo area for Zhangshu Middle School Student Union president experience',
+    photoAlt: 'Reserved photo area for Zhang Shu Senior High School Student Union president experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
       src: '/generated/campus-activity-covers/zhangshu-middle-school-cover.jpg',
@@ -227,13 +227,13 @@ export const campusActivities = [
   },
   {
     period: 'Oct 2024 - Sep 2025',
-    organization: 'Student Union',
-    role: 'PR and External Relations Department',
+    organization: 'University of Nottingham Ningbo China Student Union',
+    role: 'Public Relation Office',
     bullets: [
       'Managed operations for the official University of Nottingham Ningbo China souvenir store under the Student Union, including on-site sales during major campus events such as Open Day and graduation ceremonies, with peak single-event revenue exceeding RMB 30,000.',
       'Took primary responsibility for personnel coordination within the store, including staff scheduling, announcements, meeting minutes, and day-to-day team management.',
     ],
-    photoAlt: 'Reserved photo area for Student Union PR and External Relations Department experience',
+    photoAlt: 'Reserved photo area for University of Nottingham Ningbo China Student Union Public Relation Office experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
       src: '/generated/campus-activity-covers/unnc-student-union-cover.jpg',

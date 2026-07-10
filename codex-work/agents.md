@@ -59,6 +59,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the campus activity logo cover task: `npm run lint` and `npm run build`.
 - The Shuffle Crew entry now uses a custom `galleryLabel` (`View my performance photo`) and `linkAfterBulletIndex` to render the Douyin `View the video` link directly after the performance-view bullet instead of below the whole card.
 - Latest verification commands run for the Shuffle Crew copy refinement task: `npm run lint` and `npm run build`.
+- The first two campus activity entries in `generated-site/src/content/siteContent.js` now display `Zhang Shu Senior High School Student Union / President` and `University of Nottingham Ningbo China Student Union / Public Relation Office`.
+- Latest verification commands run for the campus activity title update: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

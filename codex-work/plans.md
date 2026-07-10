@@ -124,3 +124,10 @@
 - [x] Rename the Shuffle Crew gallery trigger to `View my performance photo`.
 - [x] Run `npm run lint` and `npm run build`, then review the content/rendering diff.
 - [x] Update the working notes with the final content behavior.
+
+## Current Task: Update Campus Activity Titles
+
+- [x] Update the Zhang Shu senior high school student union organization and role display text.
+- [x] Update the UNNC student union organization and department display text.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update the working notes with the final content changes.
