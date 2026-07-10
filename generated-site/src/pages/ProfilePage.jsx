@@ -216,9 +216,7 @@ function ProfilePage() {
             </div>
           </div>
         </section>
-      </HeroBackground>
 
-      <main>
         <section id="campus-activities" className="content-section course-activities-section">
           <div className="section-shell">
             <div className="section-header profile-campus-header">
@@ -235,7 +233,9 @@ function ProfilePage() {
             <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
           </div>
         </section>
+      </HeroBackground>
 
+      <main>
         <section id="off-campus-activities" className="content-section course-activities-section">
           <div className="section-shell">
             <div className="section-header">

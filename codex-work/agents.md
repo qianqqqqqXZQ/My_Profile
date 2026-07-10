@@ -63,6 +63,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the campus activity title update: `npm run lint` and `npm run build`.
 - The `Profile` page campus activities section now uses `Experience` as the eyebrow, `Campus Activities` as the main heading, and a lower-spaced intro paragraph describing the campus activities and optional photo galleries.
 - Latest verification commands run for the profile campus activities header update: `npm run build`, then `npm run lint` rerun separately after an initial lint/build parallel-run timestamp race.
+- The `Profile` hero background now covers the full Campus Activities area by placing that section inside the profile `HeroBackground` container. This replaced the earlier numeric overflow extension, which could be limited by canvas and stacking-context behavior. The section still appears immediately after the hero and reaches through the Shuffle Crew card.
+- Latest verification commands run for the profile hero background extension: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

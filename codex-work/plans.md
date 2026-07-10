@@ -139,3 +139,10 @@
 - [x] Lower the intro copy spacing under the new `Campus Activities` heading.
 - [x] Run `npm run lint` and `npm run build`, then review the diff.
 - [x] Update the working notes with the final content changes.
+
+## Current Task: Extend Profile Hero Background
+
+- [x] Inspect the profile hero background and campus activity layout.
+- [x] Extend the profile hero background layer downward behind the campus activities section without moving the section.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update the working notes with the final layout behavior.
