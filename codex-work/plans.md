@@ -131,3 +131,11 @@
 - [x] Update the UNNC student union organization and department display text.
 - [x] Run `npm run lint` and `npm run build`, then review the diff.
 - [x] Update the working notes with the final content changes.
+
+## Current Task: Update Profile Campus Activities Header
+
+- [x] Inspect the `Profile` page campus activities section text.
+- [x] Update the section eyebrow, title, and intro copy.
+- [x] Lower the intro copy spacing under the new `Campus Activities` heading.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update the working notes with the final content changes.

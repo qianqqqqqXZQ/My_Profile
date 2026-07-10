@@ -2105,6 +2105,10 @@
   isolation: isolate;
 }
 
+.profile-campus-header .section-intro {
+  margin-top: 24px;
+}
+
 .campus-activity-timeline {
   position: relative;
   z-index: 1;

@@ -221,12 +221,14 @@ function ProfilePage() {
       <main>
         <section id="campus-activities" className="content-section course-activities-section">
           <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Campus Activities</p>
-              <h2>Leadership, operations, and performance direction</h2>
+            <div className="section-header profile-campus-header">
+              <p className="eyebrow">Experience</p>
+              <h2>Campus Activities</h2>
               <p className="section-intro">
-                Two core extracurricular experiences that reflect how I work across
-                campus operations, team leadership, and public-facing performance.
+                These are some of the activities I have taken part in on campus,
+                showcasing my strong leadership, communication, innovation, and related
+                abilities. Some experiences can be opened as photo galleries for more
+                details.
               </p>
             </div>
 
