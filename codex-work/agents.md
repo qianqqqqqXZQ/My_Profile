@@ -47,6 +47,11 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - `generated-site/src/pages/ProfilePage.jsx` now renders a second profile section, `Off-Campus Activities`, immediately after `Campus Activities`, reusing the same activity-card layout.
 - The new off-campus section is backed by `offCampusActivities` in `generated-site/src/content/siteContent.js`, which is currently an empty array and therefore shows an intentional empty-state card instead of fabricated experience content.
 - Latest verification commands run for the off-campus activities section task: `npm run lint` and `npm run build`.
+- `generated-site/src/components/SiteLayout.jsx` now renders a text-only `Back to start` button at the left side of the fixed topbar, ahead of the language switcher, and it routes to `/`.
+- The shared header styling for that button lives in `generated-site/src/App.css` and intentionally uses the same glass-metal treatment as the rest of the topbar without any iconography.
+- Latest verification commands run for the topbar back-button task: `npm run lint` and `npm run build`.
+- The `UNNC Department of Campus Life / Administrative Intern` profile card now uses a single clickable image sourced from `generated-site/public/generated/unnc-intern/department-of-campus-life.jpg` through the shared `photos` rendering path in `generated-site/src/content/siteContent.js`.
+- Latest verification commands run for the UNNC intern photo task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

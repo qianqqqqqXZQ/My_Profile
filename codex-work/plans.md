@@ -90,3 +90,19 @@
 - [x] Update the profile lanyard card to use the new photo asset.
 - [x] Run verification and review for regressions.
 - [x] Update the working notes with the new asset path and validation commands.
+
+## Current Task: Add Back To Start Button In Topbar
+
+- [x] Inspect the shared topbar layout and identify the left-side insertion point.
+- [x] Add a new `Back to start` button on the left side of the navigation area linking to `/`.
+- [x] Remove the temporary icon treatment and keep the button text-only per final direction.
+- [x] Run `npm run lint` and `npm run build`, then review for regressions.
+- [x] Update the working notes after validation.
+
+## Current Task: Add UNNC Intern Photo
+
+- [x] Inspect the `Profile` page activity rendering path and confirm how photo placeholders are replaced.
+- [x] Copy the user-provided UNNC intern image into `generated-site/public/generated/unnc-intern/`.
+- [x] Attach the new image to the `UNNC Department of Campus Life / Administrative Intern` entry in `generated-site/src/content/siteContent.js`.
+- [x] Run `npm run lint` and `npm run build`, then review for regressions.
+- [x] Update the working notes with the new asset path and validation commands.

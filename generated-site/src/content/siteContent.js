@@ -242,6 +242,12 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for UNNC Department of Campus Life administrative internship',
     photoLabel: 'Photo Placeholder',
+    photos: [
+      {
+        src: '/generated/unnc-intern/department-of-campus-life.jpg',
+        alt: 'UNNC Department of Campus Life sign used for the administrative internship entry.',
+      },
+    ],
   },
   {
     period: 'Sep 2025 - Jul 2026',
