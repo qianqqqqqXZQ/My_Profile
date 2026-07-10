@@ -2203,6 +2203,15 @@
   margin-top: 18px;
 }
 
+.campus-activity-bullet-link {
+  display: block;
+  margin-top: 10px;
+}
+
+.campus-activity-link--inline {
+  margin-top: 0;
+}
+
 .campus-activity-photo {
   display: flex;
   align-items: center;

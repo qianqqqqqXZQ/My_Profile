@@ -93,6 +93,19 @@ function ProfilePage() {
       const itemKey = `${item.organization}-${item.period}`
       const coverPhoto = item.coverPhoto ?? item.photos?.[0] ?? null
       const hasGallery = Boolean(item.photos?.length)
+      const renderActivityLink = (className = 'inline-link campus-activity-link') =>
+        item.linkHref ? (
+          <a
+            className={className}
+            href={item.linkHref}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {item.linkLabel}
+          </a>
+        ) : null
+      const shouldRenderInlineLink =
+        item.linkHref && Number.isInteger(item.linkAfterBulletIndex)
 
       return (
         <article key={itemKey} className="campus-activity-entry card-surface">
@@ -102,21 +115,19 @@ function ProfilePage() {
             <h3>{item.role}</h3>
 
             <ul className="campus-activity-bullets">
-              {item.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
+              {item.bullets.map((bullet, index) => (
+                <li key={bullet}>
+                  {bullet}
+                  {shouldRenderInlineLink && item.linkAfterBulletIndex === index ? (
+                    <span className="campus-activity-bullet-link">
+                      {renderActivityLink('inline-link campus-activity-link campus-activity-link--inline')}
+                    </span>
+                  ) : null}
+                </li>
               ))}
             </ul>
 
-            {item.linkHref ? (
-              <a
-                className="inline-link campus-activity-link"
-                href={item.linkHref}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.linkLabel}
-              </a>
-            ) : null}
+            {item.linkHref && !shouldRenderInlineLink ? renderActivityLink() : null}
           </div>
 
           <div className="campus-activity-photo" aria-label={item.photoAlt}>
@@ -138,7 +149,7 @@ function ProfilePage() {
                       <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
                     </span>
                     <span className="campus-photo-open-indicator">
-                      Open gallery / {item.photos.length} photos
+                      {item.galleryLabel ?? `Open gallery / ${item.photos.length} photos`}
                     </span>
                   </button>
                 ) : (

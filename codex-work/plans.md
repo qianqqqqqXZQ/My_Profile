@@ -116,3 +116,11 @@
 - [x] Use the Shuffle Crew logo as the card cover while keeping the existing gallery photos unchanged.
 - [x] Run `npm run lint` and `npm run build`, then review the code for regressions.
 - [x] Update the working notes with the final asset paths and validation commands.
+
+## Current Task: Refine Shuffle Crew Activity Copy
+
+- [x] Update the Shuffle Crew activity bullet wording and add the cross-organization collaboration responsibility.
+- [x] Move the Douyin link button directly after the performance-view bullet and rename it to `View the video`.
+- [x] Rename the Shuffle Crew gallery trigger to `View my performance photo`.
+- [x] Run `npm run lint` and `npm run build`, then review the content/rendering diff.
+- [x] Update the working notes with the final content behavior.

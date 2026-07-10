@@ -57,6 +57,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - The DCL card now uses its existing `department-of-campus-life.jpg` as a static `coverPhoto`, so the gallery is disabled for that card.
 - The Shuffle Crew card uses `shuffle-crew-cover.jpg` as the visible cover while the gallery still opens the original `shuffle-crew-01.jpg` through `shuffle-crew-17.jpg` photos only.
 - Latest verification commands run for the campus activity logo cover task: `npm run lint` and `npm run build`.
+- The Shuffle Crew entry now uses a custom `galleryLabel` (`View my performance photo`) and `linkAfterBulletIndex` to render the Douyin `View the video` link directly after the performance-view bullet instead of below the whole card.
+- Latest verification commands run for the Shuffle Crew copy refinement task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

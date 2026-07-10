@@ -260,8 +260,9 @@ export const campusActivities = [
     organization: 'University of Nottingham Ningbo China Shuffle Crew',
     role: 'Vice Captain',
     bullets: [
-      'Led choreography structuring for major official campus events, including Show Night, X Show, and Open Day, covering movement design, formation arrangement, and music editing.',
+      'Led choreography structuring for major official campus events, including Show Night, XShow, and the New Year Gala, covering movement design, formation arrangement, and music editing.',
       'Organized and delivered the Shuffle Crew annual showcase while managing and performing in multiple programs throughout the production cycle.',
+      'Represented the team in coordination with internal and external organizations, supporting joint event delivery through partnership communication, co-hosting arrangements, and on-site performance support.',
       'A personal freestyle performance clip from a campus showcase reached over 5 million views and 70,000 likes on Douyin, providing strong public visibility for both the performance and the crew.',
     ],
     photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
@@ -340,7 +341,9 @@ export const campusActivities = [
         alt: 'Outdoor battle-style performance shot capturing a one-hand freeze before a crowd on campus.',
       },
     ],
-    linkLabel: 'View the Douyin performance highlight',
+    galleryLabel: 'View my performance photo',
+    linkLabel: 'View the video',
+    linkAfterBulletIndex: 3,
     linkHref:
       'https://www.douyin.com/jingxuan/search/%E8%B0%A6qqqqq?aid=84ece7e1-4646-4b1f-8398-491fa2125598&modal_id=7494149451603381539&type=general',
   },
