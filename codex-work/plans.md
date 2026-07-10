@@ -106,3 +106,13 @@
 - [x] Attach the new image to the `UNNC Department of Campus Life / Administrative Intern` entry in `generated-site/src/content/siteContent.js`.
 - [x] Run `npm run lint` and `npm run build`, then review for regressions.
 - [x] Update the working notes with the new asset path and validation commands.
+
+## Current Task: Campus Activity Logo Covers
+
+- [x] Create a Git backup commit before changing the campus activity media behavior.
+- [x] Generate 16:10 white/black expanded logo cover images for Zhangshu Middle School, UNNC Student Union, and Shuffle Crew.
+- [x] Add Zhangshu Middle School and UNNC Student Union covers without enabling gallery behavior.
+- [x] Disable gallery behavior for the UNNC Department of Campus Life card while keeping its existing logo visible.
+- [x] Use the Shuffle Crew logo as the card cover while keeping the existing gallery photos unchanged.
+- [x] Run `npm run lint` and `npm run build`, then review the code for regressions.
+- [x] Update the working notes with the final asset paths and validation commands.

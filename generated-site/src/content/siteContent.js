@@ -220,6 +220,10 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for Zhangshu Middle School Student Union president experience',
     photoLabel: 'Photo Placeholder',
+    coverPhoto: {
+      src: '/generated/campus-activity-covers/zhangshu-middle-school-cover.jpg',
+      alt: 'Zhangshu Senior High School Student Union logo centered on a white cover.',
+    },
   },
   {
     period: 'Oct 2024 - Sep 2025',
@@ -231,6 +235,10 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for Student Union PR and External Relations Department experience',
     photoLabel: 'Photo Placeholder',
+    coverPhoto: {
+      src: '/generated/campus-activity-covers/unnc-student-union-cover.jpg',
+      alt: 'UNNC Students Union logo centered on a white cover.',
+    },
   },
   {
     period: 'Mar 2025 - Jun 2026',
@@ -242,12 +250,10 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for UNNC Department of Campus Life administrative internship',
     photoLabel: 'Photo Placeholder',
-    photos: [
-      {
-        src: '/generated/unnc-intern/department-of-campus-life.jpg',
-        alt: 'UNNC Department of Campus Life sign used for the administrative internship entry.',
-      },
-    ],
+    coverPhoto: {
+      src: '/generated/unnc-intern/department-of-campus-life.jpg',
+      alt: 'UNNC Department of Campus Life sign used for the administrative internship entry.',
+    },
   },
   {
     period: 'Sep 2025 - Jul 2026',
@@ -260,6 +266,10 @@ export const campusActivities = [
     ],
     photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
     photoLabel: 'Photo Placeholder',
+    coverPhoto: {
+      src: '/generated/campus-activity-covers/shuffle-crew-cover.jpg',
+      alt: 'Shuffle Crew logo centered on a black cover.',
+    },
     photos: [
       {
         src: '/generated/shuffle-crew/shuffle-crew-01.jpg',

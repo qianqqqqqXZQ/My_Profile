@@ -2224,6 +2224,10 @@
   text-align: left;
 }
 
+.campus-photo-hero--static {
+  cursor: default;
+}
+
 .campus-photo-card {
   position: absolute;
   inset: 0;

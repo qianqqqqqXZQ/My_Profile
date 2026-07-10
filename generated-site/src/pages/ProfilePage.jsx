@@ -91,7 +91,8 @@ function ProfilePage() {
   const renderActivityEntries = (items) =>
     items.map((item) => {
       const itemKey = `${item.organization}-${item.period}`
-      const coverPhoto = item.photos?.[0] ?? null
+      const coverPhoto = item.coverPhoto ?? item.photos?.[0] ?? null
+      const hasGallery = Boolean(item.photos?.length)
 
       return (
         <article key={itemKey} className="campus-activity-entry card-surface">
@@ -121,24 +122,37 @@ function ProfilePage() {
           <div className="campus-activity-photo" aria-label={item.photoAlt}>
             {coverPhoto ? (
               <div className="campus-photo-gallery">
-                <button
-                  type="button"
-                  className="campus-photo-hero"
-                  onClick={() => setActiveGallery(item)}
-                  aria-label={`Open photo gallery for ${item.role}`}
-                >
-                  <span className="campus-photo-card campus-photo-card--single">
-                    <span
-                      className="campus-photo-card-backdrop"
-                      style={{ backgroundImage: `url(${coverPhoto.src})` }}
-                      aria-hidden="true"
-                    />
-                    <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
-                  </span>
-                  <span className="campus-photo-open-indicator">
-                    Open gallery / {item.photos.length} photos
-                  </span>
-                </button>
+                {hasGallery ? (
+                  <button
+                    type="button"
+                    className="campus-photo-hero"
+                    onClick={() => setActiveGallery(item)}
+                    aria-label={`Open photo gallery for ${item.role}`}
+                  >
+                    <span className="campus-photo-card campus-photo-card--single">
+                      <span
+                        className="campus-photo-card-backdrop"
+                        style={{ backgroundImage: `url(${coverPhoto.src})` }}
+                        aria-hidden="true"
+                      />
+                      <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
+                    </span>
+                    <span className="campus-photo-open-indicator">
+                      Open gallery / {item.photos.length} photos
+                    </span>
+                  </button>
+                ) : (
+                  <div className="campus-photo-hero campus-photo-hero--static">
+                    <span className="campus-photo-card campus-photo-card--single">
+                      <span
+                        className="campus-photo-card-backdrop"
+                        style={{ backgroundImage: `url(${coverPhoto.src})` }}
+                        aria-hidden="true"
+                      />
+                      <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
+                    </span>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="campus-activity-photo-frame">

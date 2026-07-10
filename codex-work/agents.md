@@ -50,8 +50,13 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - `generated-site/src/components/SiteLayout.jsx` now renders a text-only `Back to start` button at the left side of the fixed topbar, ahead of the language switcher, and it routes to `/`.
 - The shared header styling for that button lives in `generated-site/src/App.css` and intentionally uses the same glass-metal treatment as the rest of the topbar without any iconography.
 - Latest verification commands run for the topbar back-button task: `npm run lint` and `npm run build`.
-- The `UNNC Department of Campus Life / Administrative Intern` profile card now uses a single clickable image sourced from `generated-site/public/generated/unnc-intern/department-of-campus-life.jpg` through the shared `photos` rendering path in `generated-site/src/content/siteContent.js`.
+- The `UNNC Department of Campus Life / Administrative Intern` profile card uses a static cover image sourced from `generated-site/public/generated/unnc-intern/department-of-campus-life.jpg`.
 - Latest verification commands run for the UNNC intern photo task: `npm run lint` and `npm run build`.
+- Campus activity media now separates static `coverPhoto` images from gallery `photos` in `generated-site/src/pages/ProfilePage.jsx`; only entries with `photos` render the `Open gallery` button and modal behavior.
+- Zhangshu Middle School, UNNC Students Union, and Shuffle Crew logo covers live in `generated-site/public/generated/campus-activity-covers/` as 16:10 images. Zhangshu and UNNC Students Union are white expanded covers; Shuffle Crew is a black expanded cover.
+- The DCL card now uses its existing `department-of-campus-life.jpg` as a static `coverPhoto`, so the gallery is disabled for that card.
+- The Shuffle Crew card uses `shuffle-crew-cover.jpg` as the visible cover while the gallery still opens the original `shuffle-crew-01.jpg` through `shuffle-crew-17.jpg` photos only.
+- Latest verification commands run for the campus activity logo cover task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
