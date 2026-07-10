@@ -177,63 +177,65 @@ function ProfilePage() {
 
   return (
     <div className="page-route page-profile">
-      <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
-        <section ref={heroRef} className="page-hero page-profile-hero">
-          <div className="section-shell page-profile-hero-shell">
-            <aside className="profile-hero-visual" aria-hidden="true">
-              <ProfileLanyard paused={false} />
-            </aside>
+      <div ref={heroRef}>
+        <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
+          <section className="page-hero page-profile-hero">
+            <div className="section-shell page-profile-hero-shell">
+              <aside className="profile-hero-visual" aria-hidden="true">
+                <ProfileLanyard paused={false} />
+              </aside>
 
-            <div className="page-profile-hero-grid">
-              <div className="profile-hero-copy">
-                <p className="eyebrow">Profile</p>
-                <h1>Personal Background</h1>
-                <p className="page-lead">
-                  This page contains my personal information, but it only includes some
-                  general details such as educational background and hobbies. If you are
-                  interested in my specific development experiences and dance experiences,
-                  please click on the two buttons below.
-                </p>
+              <div className="page-profile-hero-grid">
+                <div className="profile-hero-copy">
+                  <p className="eyebrow">Profile</p>
+                  <h1>Personal Background</h1>
+                  <p className="page-lead">
+                    This page contains my personal information, but it only includes some
+                    general details such as educational background and hobbies. If you are
+                    interested in my specific development experiences and dance experiences,
+                    please click on the two buttons below.
+                  </p>
 
-                <div className="page-hero-actions">
-                  <Link className="primary-button" to="/experience">
-                    View Experience
-                  </Link>
-                  <Link className="secondary-button profile-dance-button" to="/dance">
-                    Dance Video
-                  </Link>
-                </div>
+                  <div className="page-hero-actions">
+                    <Link className="primary-button" to="/experience">
+                      View Experience
+                    </Link>
+                    <Link className="secondary-button profile-dance-button" to="/dance">
+                      Dance Video
+                    </Link>
+                  </div>
 
-                <div className="profile-highlights">
-                  {profileHighlights.map((item) => (
-                    <article key={item.label}>
-                      <span>{item.label}</span>
-                      <strong>{item.value}</strong>
-                    </article>
-                  ))}
+                  <div className="profile-highlights">
+                    {profileHighlights.map((item) => (
+                      <article key={item.label}>
+                        <span>{item.label}</span>
+                        <strong>{item.value}</strong>
+                      </article>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="campus-activities" className="content-section course-activities-section">
-          <div className="section-shell">
-            <div className="section-header profile-campus-header">
-              <p className="eyebrow">Experience</p>
-              <h2>Campus Activities</h2>
-              <p className="section-intro">
-                These are some of the activities I have taken part in on campus,
-                showcasing my strong leadership, communication, innovation, and related
-                abilities. Some experiences can be opened as photo galleries for more
-                details.
-              </p>
+          <section id="campus-activities" className="content-section course-activities-section">
+            <div className="section-shell">
+              <div className="section-header profile-campus-header">
+                <p className="eyebrow">Experience</p>
+                <h2>Campus Activities</h2>
+                <p className="section-intro">
+                  These are some of the activities I have taken part in on campus,
+                  showcasing my strong leadership, communication, innovation, and related
+                  abilities. Some experiences can be opened as photo galleries for more
+                  details.
+                </p>
+              </div>
+
+              <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
             </div>
-
-            <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
-          </div>
-        </section>
-      </HeroBackground>
+          </section>
+        </HeroBackground>
+      </div>
 
       <main>
         <section id="off-campus-activities" className="content-section course-activities-section">

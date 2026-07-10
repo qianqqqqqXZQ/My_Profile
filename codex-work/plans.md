@@ -146,3 +146,10 @@
 - [x] Extend the profile hero background layer downward behind the campus activities section without moving the section.
 - [x] Run `npm run lint` and `npm run build`, then review the diff.
 - [x] Update the working notes with the final layout behavior.
+
+## Current Task: Fix Profile Background Disappearing On Scroll
+
+- [x] Inspect the profile background visibility and canvas pause behavior.
+- [x] Move the profile background visibility observer from the hero section to the full hero-plus-campus background scope.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update the working notes with the root cause and final behavior.

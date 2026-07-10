@@ -65,6 +65,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the profile campus activities header update: `npm run build`, then `npm run lint` rerun separately after an initial lint/build parallel-run timestamp race.
 - The `Profile` hero background now covers the full Campus Activities area by placing that section inside the profile `HeroBackground` container. This replaced the earlier numeric overflow extension, which could be limited by canvas and stacking-context behavior. The section still appears immediately after the hero and reaches through the Shuffle Crew card.
 - Latest verification commands run for the profile hero background extension: `npm run lint` and `npm run build`.
+- The follow-up fix for the profile background disappearing on scroll moved the visibility observer from the hero-only section to the full HeroBackground scope. The earlier observer paused `Waves` after the hero left the viewport, and the pause transition cleared the canvas before any new frame was drawn.
+- Latest verification commands run for the profile background scroll fix: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
