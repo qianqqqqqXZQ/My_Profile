@@ -17,7 +17,7 @@ This repository contains a personal CV website. The active frontend lives in `ge
 - Production build: `npm run build`
 - Lint: `npm run lint`
 
-Run commands from `C:\Users\asus\Desktop\My_CV\generated-site`.
+Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 
 ## Current Asset Rule
 

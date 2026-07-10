@@ -31,33 +31,43 @@ function SiteLayout({ language, onLanguageChange }) {
           <span className="site-topbar-edge site-topbar-edge--left" aria-hidden="true" />
           <span className="site-topbar-edge site-topbar-edge--right" aria-hidden="true" />
 
-          <div className="language-switcher" aria-label="Language switcher">
-            <button
-              type="button"
-              className={`language-button${language === 'en' ? ' is-active' : ''}`}
-              aria-pressed={language === 'en'}
-              disabled={!isContactRoute}
-              onClick={() => {
-                if (isContactRoute) {
-                  onLanguageChange('en')
-                }
-              }}
+          <div className="topbar-leading-group">
+            <NavLink
+              to="/"
+              className="back-to-start-button"
+              aria-label="Back to start"
             >
-              EN
-            </button>
-            <button
-              type="button"
-              className={`language-button${language === 'zh' ? ' is-active' : ''}`}
-              aria-pressed={language === 'zh'}
-              disabled={!isContactRoute}
-              onClick={() => {
-                if (isContactRoute) {
-                  onLanguageChange('zh')
-                }
-              }}
-            >
-              ZH
-            </button>
+              <span className="back-to-start-button__text">Back to start</span>
+            </NavLink>
+
+            <div className="language-switcher" aria-label="Language switcher">
+              <button
+                type="button"
+                className={`language-button${language === 'en' ? ' is-active' : ''}`}
+                aria-pressed={language === 'en'}
+                disabled={!isContactRoute}
+                onClick={() => {
+                  if (isContactRoute) {
+                    onLanguageChange('en')
+                  }
+                }}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                className={`language-button${language === 'zh' ? ' is-active' : ''}`}
+                aria-pressed={language === 'zh'}
+                disabled={!isContactRoute}
+                onClick={() => {
+                  if (isContactRoute) {
+                    onLanguageChange('zh')
+                  }
+                }}
+              >
+                ZH
+              </button>
+            </div>
           </div>
 
           <nav className="nav-links" aria-label="Primary">
