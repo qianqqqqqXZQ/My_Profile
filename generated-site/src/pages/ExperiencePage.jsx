@@ -177,7 +177,7 @@ function ExperiencePage() {
 
         <section className="content-section">
           <div className="section-shell">
-            <div className="section-header">
+            <div className="section-header section-header--research">
               <p className="eyebrow">Research</p>
               <h2>Research Experience</h2>
               <p className="section-intro">
@@ -204,27 +204,29 @@ function ExperiencePage() {
                       <span className="timeline-period">{item.period}</span>
                       <h3>{item.title}</h3>
                     </button>
-                    {item.supervisor ? (
-                      item.supervisorUrl ? (
-                        <a
-                          className="research-supervisor-link"
-                          href={item.supervisorUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Supervisor: {item.supervisor}
-                        </a>
-                      ) : (
-                        <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
-                      )
-                    ) : null}
-                    <button
-                      type="button"
-                      className="research-card-action"
-                      onClick={() => setSelectedResearchExperience(item)}
-                    >
-                      View details
-                    </button>
+                    <div className="research-card-actions">
+                      <button
+                        type="button"
+                        className="research-card-action"
+                        onClick={() => setSelectedResearchExperience(item)}
+                      >
+                        View details
+                      </button>
+                      {item.supervisor ? (
+                        item.supervisorUrl ? (
+                          <a
+                            className="research-supervisor-link"
+                            href={item.supervisorUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Supervisor: {item.supervisor}
+                          </a>
+                        ) : (
+                          <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
+                        )
+                      ) : null}
+                    </div>
                     {item.focus ? (
                       <span className="experience-inline-tag">{item.focus}</span>
                     ) : null}

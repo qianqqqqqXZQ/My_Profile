@@ -1,5 +1,13 @@
 # Codex Task Plans
 
+## Current Task: Fine Tune Experience Research Layout
+
+- [x] Create a Git backup commit before changing the research layout follow-up.
+- [x] Lower the research module intro copy so it does not overlap the large heading.
+- [x] Move each `View details` control further right from the supervisor text.
+- [x] Run verification and review the diff.
+- [x] Update working notes with the final behavior and validation commands.
+
 ## Current Task: Update Experience Research Module
 
 - [x] Create a Git backup commit before changing the experience page research module.

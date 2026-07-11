@@ -71,6 +71,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Research cards now place `View details` directly after the supervisor line. Focus tags are rendered only when a `focus` value exists, and the current Edge/Dynamic research entries intentionally omit those tags.
 - The Dynamic Dual-Branch keyword spotting entry links `Prof. Heng Yu` to `https://research.nottingham.edu.cn/en/persons/heng-yu/`.
 - Latest verification commands run for the experience research module update: `npm run lint` and `npm run build`.
+- The research module follow-up uses `.section-header--research` to lower only that intro paragraph and gives `.research-card-action` a left offset so `View details` sits to the right of the supervisor line; mobile reduces the offset.
+- Latest verification commands run for the experience research layout follow-up: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
