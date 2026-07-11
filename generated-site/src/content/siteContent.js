@@ -380,22 +380,10 @@ export const contactLinks = [
 
 export const projectExperience = [
   {
-    title: 'Intelligent Resume Website',
-    period: '2026',
-    description: 'Designed and implemented a multi-page portfolio with interactive visuals, route-aware media behavior, and a refined editorial interface system.',
-    stack: 'React / Vite / Motion',
-  },
-  {
-    title: 'Coursework Engineering Prototype',
-    period: '2025',
-    description: 'Built a prototype-oriented software workflow for experimentation, iteration, and front-end delivery across academic development tasks.',
-    stack: 'Frontend / Prototyping / UI Systems',
-  },
-  {
-    title: 'Technical Exploration Archive',
-    period: 'Selected',
-    description: 'Collected small but focused implementation studies to validate interaction design, modular structure, and polished presentation quality.',
-    stack: 'Interface Craft / Iteration / Delivery',
+    title: 'UNNC Group Research Project (GRP)',
+    period: 'Oct 2026 - Jun 2027',
+    description: 'Placeholder for the upcoming UNNC GRP experience. Project details will be added after the work begins.',
+    stack: 'To be confirmed',
   },
 ]
 

@@ -300,7 +300,7 @@ function ExperiencePage() {
               <p className="eyebrow">Project</p>
               <h2>Project Experience</h2>
               <p className="section-intro">
-                The following are all the personal and team projects I have participated in.
+                This section is reserved for my upcoming UNNC GRP project experience.
               </p>
             </div>
 
