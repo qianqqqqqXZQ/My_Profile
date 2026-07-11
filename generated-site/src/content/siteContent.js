@@ -406,7 +406,6 @@ export const researchExperience = [
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
-    focus: 'Segmentation / CV',
     details: [
       {
         label: 'Model Development and Implementation',
@@ -427,8 +426,8 @@ export const researchExperience = [
     title: 'Dynamic Dual-Branch Neural Network for Personalized Keyword Spotting',
     period: 'June. 2026-Present',
     supervisor: 'Prof. Heng Yu',
+    supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
     description: 'Personalized keyword spotting research centered on a dynamic dual-branch neural network design.',
-    focus: 'Keyword Spotting / Speech',
     details: [
       {
         label: 'Current Status',

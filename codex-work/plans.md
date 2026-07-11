@@ -1,5 +1,15 @@
 # Codex Task Plans
 
+## Current Task: Update Experience Research Module
+
+- [x] Create a Git backup commit before changing the experience page research module.
+- [x] Update the research module eyebrow, heading, and intro copy.
+- [x] Move each research card `View details` button below the supervisor line.
+- [x] Remove the Edge and Dynamic research focus tags without leaving empty tag placeholders.
+- [x] Add Prof. Heng Yu's supervisor profile link.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior and validation commands.
+
 ## Completed Task: Favicon Refresh
 
 - [x] Inspect the website entrypoint and current favicon wiring.

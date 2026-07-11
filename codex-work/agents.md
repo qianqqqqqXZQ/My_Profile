@@ -67,6 +67,10 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the profile hero background extension: `npm run lint` and `npm run build`.
 - The follow-up fix for the profile background disappearing on scroll moved the visibility observer from the hero-only section to the full HeroBackground scope. The earlier observer paused `Waves` after the hero left the viewport, and the pause transition cleared the canvas before any new frame was drawn.
 - Latest verification commands run for the profile background scroll fix: `npm run lint` and `npm run build`.
+- The `Experience` page research module now uses `Research` as the section eyebrow, `Research Experience` as the heading, and an intro that directs users to click `View details` for specifics.
+- Research cards now place `View details` directly after the supervisor line. Focus tags are rendered only when a `focus` value exists, and the current Edge/Dynamic research entries intentionally omit those tags.
+- The Dynamic Dual-Branch keyword spotting entry links `Prof. Heng Yu` to `https://research.nottingham.edu.cn/en/persons/heng-yu/`.
+- Latest verification commands run for the experience research module update: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

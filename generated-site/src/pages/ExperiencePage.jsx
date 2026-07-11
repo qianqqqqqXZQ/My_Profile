@@ -178,10 +178,10 @@ function ExperiencePage() {
         <section className="content-section">
           <div className="section-shell">
             <div className="section-header">
-              <p className="eyebrow">Research Experience</p>
-              <h2>Academic direction and experiment themes</h2>
+              <p className="eyebrow">Research</p>
+              <h2>Research Experience</h2>
               <p className="section-intro">
-                A research-focused module with a structured timeline presentation and compact thematic tags.
+                The following are the research experiences I have participated in. You can click View details to see the specific content.
               </p>
             </div>
 
@@ -218,7 +218,6 @@ function ExperiencePage() {
                         <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
                       )
                     ) : null}
-                    <span className="experience-inline-tag">{item.focus}</span>
                     <button
                       type="button"
                       className="research-card-action"
@@ -226,6 +225,9 @@ function ExperiencePage() {
                     >
                       View details
                     </button>
+                    {item.focus ? (
+                      <span className="experience-inline-tag">{item.focus}</span>
+                    ) : null}
                   </article>
                 ))}
               </div>
