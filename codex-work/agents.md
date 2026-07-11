@@ -76,6 +76,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - The `Experience` page project module intentionally contains only one placeholder entry: `UNNC Group Research Project (GRP)`, dated `Oct 2026 - Jun 2027`, because the project has not started yet.
 - Do not add completed-project language or additional project cards unless the user provides real project details.
 - Latest verification commands run for the UNNC GRP placeholder task: `npm run lint` and `npm run build`.
+- Both entries in `researchExperience` now include the University of Nottingham SVG logo URL supplied by the user. `generated-site/src/pages/ExperiencePage.jsx` renders it inside `.research-card-logo-shell` on the right side of each detailed research card, with a single-column mobile fallback.
+- Latest verification commands run for the Nottingham research logo task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

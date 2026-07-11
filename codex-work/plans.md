@@ -1,5 +1,13 @@
 # Codex Task Plans
 
+## Current Task: Add Nottingham Logos To Research Cards
+
+- [x] Create a Git backup commit before changing the research card layout.
+- [x] Add the provided University of Nottingham logo URL to both research entries.
+- [x] Render the logo on the right side of each research card with responsive styling.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final layout change and validation commands.
+
 ## Current Task: Keep Only UNNC GRP Project Placeholder
 
 - [x] Create a Git backup commit before changing the project experience content.
