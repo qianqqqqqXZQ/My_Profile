@@ -1,5 +1,38 @@
 # Codex Task Plans
 
+## Current Task: Update Working Experience Description
+
+- [x] Replace the working experience intro with the requested computer science internship/work wording.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+
+## Current Task: Refine Experience Header Copy
+
+- [x] Change the working section title to `Working Experience`.
+- [x] Change the working section description wording to `intern or working experience`.
+- [x] Change the project section title to `Project Experience`.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+
+## Current Task: Match Experience Header Spacing
+
+- [x] Inspect the shared section header spacing and the research-specific intro spacing.
+- [x] Apply the same intro spacing treatment to the working and project section headers.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+
+## Current Task: Update Experience Section Labels
+
+- [x] Locate the hard-coded `Experience` page section header copy.
+- [x] Update the working section eyebrow, heading, and intro sentence.
+- [x] Update the bottom project section eyebrow, heading, intro sentence, and card micro-label.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+
+## Current Task: Polish Research Details Actions
+
+- [x] Inspect the experience page research module layout and existing staged changes.
+- [x] Swap `View details` before the supervisor line inside each research card.
+- [x] Add a shared action row so the button and supervisor keep a consistent, responsive gap.
+- [x] Restyle `View details` as a visible pill button instead of plain text.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+
 ## Current Task: Fine Tune Experience Research Layout
 
 - [x] Create a Git backup commit before changing the research layout follow-up.

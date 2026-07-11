@@ -239,11 +239,11 @@ function ExperiencePage() {
 
         <section className="content-section">
           <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Working Experience</p>
-              <h2>Execution, delivery, and collaboration rhythm</h2>
+            <div className="section-header section-header--research">
+              <p className="eyebrow">Working</p>
+              <h2>Working Experience</h2>
               <p className="section-intro">
-                A horizontal card composition that emphasizes role identity, working style, and delivery quality without using a vertical lane.
+                These are my computer science-related internship and work experiences in companies.
               </p>
             </div>
 
@@ -296,17 +296,17 @@ function ExperiencePage() {
 
         <section className="content-section">
           <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Project Experience</p>
-              <h2>Selected builds and technical outcomes</h2>
+            <div className="section-header section-header--research">
+              <p className="eyebrow">Project</p>
+              <h2>Project Experience</h2>
               <p className="section-intro">
-                A modular project grid that reads more like a curated capability board than a repeated timeline.
+                The following are all the personal and team projects I have participated in.
               </p>
             </div>
 
             <article className="experience-module experience-module--project card-surface">
               <div className="card-header">
-                <p className="micro-label">Project Experience</p>
+                <p className="micro-label">Project</p>
                 <span className="pill">Projects</span>
               </div>
               <div className="project-experience-grid">
