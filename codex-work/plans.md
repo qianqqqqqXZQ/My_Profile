@@ -1,5 +1,13 @@
 # Codex Task Plans
 
+## Current Task: Keep Only UNNC GRP Project Placeholder
+
+- [x] Create a Git backup commit before changing the project experience content.
+- [x] Replace the project experience list with a single 2026.10-2027.06 UNNC GRP placeholder.
+- [x] Adjust the project section intro so it accurately describes a future placeholder.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final content change and validation commands.
+
 ## Current Task: Update Working Experience Description
 
 - [x] Replace the working experience intro with the requested computer science internship/work wording.

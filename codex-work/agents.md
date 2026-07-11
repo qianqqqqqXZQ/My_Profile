@@ -73,6 +73,9 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the experience research module update: `npm run lint` and `npm run build`.
 - The research module follow-up uses `.section-header--research` to lower only that intro paragraph and gives `.research-card-action` a left offset so `View details` sits to the right of the supervisor line; mobile reduces the offset.
 - Latest verification commands run for the experience research layout follow-up: `npm run lint` and `npm run build`.
+- The `Experience` page project module intentionally contains only one placeholder entry: `UNNC Group Research Project (GRP)`, dated `Oct 2026 - Jun 2027`, because the project has not started yet.
+- Do not add completed-project language or additional project cards unless the user provides real project details.
+- Latest verification commands run for the UNNC GRP placeholder task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
