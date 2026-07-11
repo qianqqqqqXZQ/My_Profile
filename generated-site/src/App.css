@@ -2120,6 +2120,27 @@
   font-size: 0.88rem;
 }
 
+.timeline-item--typed {
+  padding-right: 128px;
+}
+
+.timeline-type-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(244, 243, 239, 0.74);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .projects-section .section-header,
 .course-activities-section .section-header,
 .strengths-section .section-header {
@@ -3777,6 +3798,15 @@
 
   .working-bullets {
     padding-left: 1rem;
+  }
+
+  .timeline-item--typed {
+    padding-right: 0;
+  }
+
+  .timeline-type-badge {
+    position: static;
+    margin-bottom: 12px;
   }
 
   .campus-activity-entry h3 {

@@ -4,6 +4,62 @@ import TextType from '../components/TextType'
 import researchArchitecture from '../assets/experience/research-architecture.png'
 import { projectExperience, researchExperience, workingExperience } from '../content/siteContent'
 
+const monthOrder = {
+  jan: 1,
+  january: 1,
+  feb: 2,
+  february: 2,
+  mar: 3,
+  march: 3,
+  apr: 4,
+  april: 4,
+  may: 5,
+  jun: 6,
+  june: 6,
+  jul: 7,
+  july: 7,
+  aug: 8,
+  august: 8,
+  sep: 9,
+  sept: 9,
+  september: 9,
+  oct: 10,
+  october: 10,
+  nov: 11,
+  november: 11,
+  dec: 12,
+  december: 12,
+}
+
+const getPeriodStartValue = (period) => {
+  const periodStart = period.split('-')[0]?.trim().replace('.', '') ?? ''
+  const year = Number(periodStart.match(/\d{4}/)?.[0] ?? 0)
+  const monthName = periodStart.match(/[A-Za-z]+/)?.[0]?.toLowerCase() ?? ''
+
+  return year * 100 + (monthOrder[monthName] ?? 0)
+}
+
+const timelineExperience = [
+  ...projectExperience.map((item) => ({
+    type: 'Project',
+    period: item.period,
+    title: item.title,
+    description: item.description,
+  })),
+  ...researchExperience.map((item) => ({
+    type: 'Research',
+    period: item.period,
+    title: item.title,
+    description: item.description,
+  })),
+  ...workingExperience.map((item) => ({
+    type: 'Working',
+    period: item.period,
+    title: `${item.company} - ${item.role}`,
+    description: item.bullets?.[0],
+  })),
+].sort((firstItem, secondItem) => getPeriodStartValue(secondItem.period) - getPeriodStartValue(firstItem.period))
+
 function ExperiencePage() {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -130,21 +186,22 @@ function ExperiencePage() {
           <div className="section-shell">
             <div className="section-header">
               <p className="eyebrow">Timeline</p>
-              <h2>Project and research timeline</h2>
+              <h2>Experience timeline</h2>
               <p className="section-intro">
-                A quick chronological view of academic exploration, engineering practice, and project delivery.
+                A quick chronological view of my project, research, and working experience.
               </p>
             </div>
 
             <div className="experience-stack">
               <div className="experience-card card-surface">
                 <div className="card-header">
-                  <p className="micro-label">Project Experience</p>
-                  <span className="pill">Projects</span>
+                  <p className="micro-label">Project / Research / Working</p>
+                  <span className="pill">Timeline</span>
                 </div>
                 <div className="timeline">
-                  {projectExperience.map((item) => (
-                    <article key={item.title} className="timeline-item">
+                  {timelineExperience.map((item) => (
+                    <article key={`${item.type}-${item.title}`} className="timeline-item timeline-item--typed">
+                      <span className="timeline-type-badge">{item.type}</span>
                       <span className="timeline-period">{item.period}</span>
                       <h3>{item.title}</h3>
                       <p>{item.description}</p>
@@ -152,25 +209,6 @@ function ExperiencePage() {
                   ))}
                 </div>
               </div>
-
-              <div className="experience-card card-surface">
-                <div className="card-header">
-                  <p className="micro-label">Research Experience</p>
-                  <span className="pill">Research</span>
-                </div>
-              <div className="timeline">
-                {researchExperience.map((item) => (
-                  <article key={item.title} className="timeline-item">
-                    <span className="timeline-period">{item.period}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    {item.supervisor ? (
-                      <p className="timeline-supervisor">Supervisor: {item.supervisor}</p>
-                    ) : null}
-                  </article>
-                ))}
-              </div>
-            </div>
             </div>
           </div>
         </section>
