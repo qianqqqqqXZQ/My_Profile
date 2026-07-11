@@ -393,6 +393,8 @@ export const researchExperience = [
     period: 'May. 2025-Present',
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
+    logoSrc: 'https://www.nottingham.ac.uk/SiteElements/Images/uon-logo/UoN-Nottingham-Blue-mobile.svg',
+    logoAlt: 'University of Nottingham logo',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
     details: [
       {
@@ -415,6 +417,8 @@ export const researchExperience = [
     period: 'June. 2026-Present',
     supervisor: 'Prof. Heng Yu',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
+    logoSrc: 'https://www.nottingham.ac.uk/SiteElements/Images/uon-logo/UoN-Nottingham-Blue-mobile.svg',
+    logoAlt: 'University of Nottingham logo',
     description: 'Personalized keyword spotting research centered on a dynamic dual-branch neural network design.',
     details: [
       {

@@ -196,35 +196,49 @@ function ExperiencePage() {
                     key={item.title}
                     className="research-experience-card timeline-item"
                   >
-                    <button
-                      type="button"
-                      className="research-card-trigger"
-                      onClick={() => setSelectedResearchExperience(item)}
-                    >
-                      <span className="timeline-period">{item.period}</span>
-                      <h3>{item.title}</h3>
-                    </button>
-                    <div className="research-card-actions">
-                      <button
-                        type="button"
-                        className="research-card-action"
-                        onClick={() => setSelectedResearchExperience(item)}
-                      >
-                        View details
-                      </button>
-                      {item.supervisor ? (
-                        item.supervisorUrl ? (
-                          <a
-                            className="research-supervisor-link"
-                            href={item.supervisorUrl}
-                            target="_blank"
-                            rel="noreferrer"
+                    <div className="research-card-layout">
+                      <div className="research-card-content">
+                        <button
+                          type="button"
+                          className="research-card-trigger"
+                          onClick={() => setSelectedResearchExperience(item)}
+                        >
+                          <span className="timeline-period">{item.period}</span>
+                          <h3>{item.title}</h3>
+                        </button>
+                        <div className="research-card-actions">
+                          <button
+                            type="button"
+                            className="research-card-action"
+                            onClick={() => setSelectedResearchExperience(item)}
                           >
-                            Supervisor: {item.supervisor}
-                          </a>
-                        ) : (
-                          <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
-                        )
+                            View details
+                          </button>
+                          {item.supervisor ? (
+                            item.supervisorUrl ? (
+                              <a
+                                className="research-supervisor-link"
+                                href={item.supervisorUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Supervisor: {item.supervisor}
+                              </a>
+                            ) : (
+                              <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
+                            )
+                          ) : null}
+                        </div>
+                      </div>
+                      {item.logoSrc ? (
+                        <div className="research-card-logo-shell" aria-hidden="true">
+                          <img
+                            className="research-card-logo"
+                            src={item.logoSrc}
+                            alt={item.logoAlt ?? ''}
+                            loading="lazy"
+                          />
+                        </div>
                       ) : null}
                     </div>
                     {item.focus ? (
