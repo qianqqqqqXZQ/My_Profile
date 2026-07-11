@@ -163,6 +163,10 @@ function HomeLanguageSelector({ language, onLanguageChange }) {
           </svg>
         </span>
       </button>
+      <span className="home-language-recommendation">
+        <span>Recommended: use the English version first</span>
+        <span>推荐优先使用英文版本</span>
+      </span>
 
       <div className="home-language-menu" role="menu" aria-label="Homepage language options">
         {LANGUAGE_OPTIONS.map((option) => {
