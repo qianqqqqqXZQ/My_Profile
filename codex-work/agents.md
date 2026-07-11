@@ -78,6 +78,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the UNNC GRP placeholder task: `npm run lint` and `npm run build`.
 - Both entries in `researchExperience` now include the University of Nottingham SVG logo URL supplied by the user. `generated-site/src/pages/ExperiencePage.jsx` renders it inside `.research-card-logo-shell` on the right side of each detailed research card, with a single-column mobile fallback.
 - Latest verification commands run for the Nottingham research logo task: `npm run lint` and `npm run build`.
+- `generated-site/src/components/HomeLanguageSelector.jsx` exports the shared `FlagIcon` SVG component. `generated-site/src/components/SiteLayout.jsx` reuses it in the topbar language switcher so the buttons show the US and China flags instead of `EN` and `ZH`.
+- Latest verification commands run for the topbar flag language switcher task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 

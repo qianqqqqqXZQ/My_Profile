@@ -86,7 +86,7 @@ function ChinaFlagIcon() {
   )
 }
 
-function FlagIcon({ code }) {
+export function FlagIcon({ code }) {
   return code === 'zh' ? <ChinaFlagIcon /> : <UsFlagIcon />
 }
 

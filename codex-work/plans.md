@@ -1,5 +1,14 @@
 # Codex Task Plans
 
+## Current Task: Use Flags In Topbar Language Switcher
+
+- [x] Create a Git backup commit before changing the shared header.
+- [x] Export and reuse the existing homepage flag SVG component.
+- [x] Replace the topbar `EN` and `ZH` labels with the US and China flags.
+- [x] Add focused CSS so the topbar flag buttons keep stable sizing.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final navigation behavior.
+
 ## Current Task: Add Nottingham Logos To Research Cards
 
 - [x] Create a Git backup commit before changing the research card layout.

@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { FlagIcon } from './HomeLanguageSelector'
 import { navigationLinks } from '../content/siteContent'
 
 const navSparkles = Array.from({ length: 6 }, (_, index) => index + 1)
@@ -45,6 +46,8 @@ function SiteLayout({ language, onLanguageChange }) {
                 type="button"
                 className={`language-button${language === 'en' ? ' is-active' : ''}`}
                 aria-pressed={language === 'en'}
+                aria-label="Switch to English"
+                title="English"
                 disabled={!isContactRoute}
                 onClick={() => {
                   if (isContactRoute) {
@@ -52,12 +55,16 @@ function SiteLayout({ language, onLanguageChange }) {
                   }
                 }}
               >
-                EN
+                <span className="language-button-flag">
+                  <FlagIcon code="en" />
+                </span>
               </button>
               <button
                 type="button"
                 className={`language-button${language === 'zh' ? ' is-active' : ''}`}
                 aria-pressed={language === 'zh'}
+                aria-label="Switch to Chinese"
+                title="Chinese"
                 disabled={!isContactRoute}
                 onClick={() => {
                   if (isContactRoute) {
@@ -65,7 +72,9 @@ function SiteLayout({ language, onLanguageChange }) {
                   }
                 }}
               >
-                ZH
+                <span className="language-button-flag">
+                  <FlagIcon code="zh" />
+                </span>
               </button>
             </div>
           </div>
