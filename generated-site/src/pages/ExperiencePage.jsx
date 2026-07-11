@@ -163,10 +163,9 @@ function ExperiencePage() {
                 <p className="eyebrow">Research Focus</p>
                 <h2 className="research-focus-title">Current Research Interests</h2>
                 <p className="research-focus-text">
-                  My current research interests lie in deep learning, dynamic neural network
-                  scheduling, and computer vision. My present work focuses primarily on
-                  dual-branch and multi-branch neural networks, including keyword and speaker
-                  recognition models as well as polyp segmentation models.
+                  <span>My current research interests lie in deep learning, dynamic neural network scheduling,</span>
+                  <span>and computer vision. My present work focuses primarily on dual-branch and</span>
+                  <span>multi-branch neural networks, including keyword and speaker recognition models as well as polyp segmentation models.</span>
                 </p>
               </div>
               <div className="research-focus-accent">

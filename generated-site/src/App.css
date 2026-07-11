@@ -1669,12 +1669,16 @@
 }
 
 .research-focus-text {
-  max-width: 38ch;
+  max-width: 72ch;
   margin: 0;
   color: rgba(232, 236, 232, 0.8);
   font-size: clamp(1rem, 1.15vw, 1.16rem);
   line-height: 1.72;
   text-wrap: pretty;
+}
+
+.research-focus-text span {
+  display: block;
 }
 
 .research-focus-accent {
@@ -3717,6 +3721,10 @@
     max-width: none;
     font-size: 0.98rem;
     line-height: 1.65;
+  }
+
+  .research-focus-text span {
+    display: inline;
   }
 
   .research-focus-accent {
