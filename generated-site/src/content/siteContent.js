@@ -381,66 +381,96 @@ export const contactLinks = [
 export const projectExperience = [
   {
     title: 'UNNC Group Research Project (GRP)',
+    titleZh: '宁波诺丁汉大学小组研究项目（GRP）',
     period: 'Oct 2026 - Jun 2027',
+    periodZh: '2026年10月 - 2027年6月',
     description: 'Placeholder for the upcoming UNNC GRP experience. Project details will be added after the work begins.',
+    descriptionZh: '这里预留即将开始的 UNNC GRP 项目经历。项目启动后会补充具体内容。',
     stack: 'To be confirmed',
+    stackZh: '待确认',
+    sortValue: 202610,
   },
 ]
 
 export const researchExperience = [
   {
     title: 'Edge-Enhanced Dual-Stream Transformer for Small Polyp Segmentation',
+    titleZh: '面向小息肉分割的边缘增强双流 Transformer',
     period: 'May. 2025-Present',
+    periodZh: '2025年5月 - 至今',
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
     logoSrc: 'https://www.nottingham.ac.uk/SiteElements/Images/uon-logo/UoN-Nottingham-Blue-mobile.svg',
     logoAlt: 'University of Nottingham logo',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
+    descriptionZh: '基于边缘增强双流 CNN-Transformer 架构的小息肉分割研究。',
     details: [
       {
         label: 'Model Development and Implementation',
+        labelZh: '模型开发与实现',
         text: 'Built a small polyp segmentation model on the OpenMMLab framework, integrating a dual-stream CNN-Transformer architecture with a Laplacian pyramid module and boundary-aware loss. Implemented and debugged key sub-modules including the CNN stream, Transformer stream, edge separation, attention fusion, and loss function.',
+        textZh: '基于 OpenMMLab 框架搭建小息肉分割模型，融合双流 CNN-Transformer 架构、拉普拉斯金字塔模块和边界感知损失。实现并调试 CNN 分支、Transformer 分支、边缘分离、注意力融合和损失函数等关键子模块。',
       },
       {
         label: 'Dataset Preparation',
+        labelZh: '数据集准备',
         text: 'Curated and preprocessed the Kvasir-SEG and ETIS-LaribPolypDB datasets, including normalization, annotation screening, and small-polyp subset partitioning.',
+        textZh: '整理并预处理 Kvasir-SEG 和 ETIS-LaribPolypDB 数据集，包括归一化、标注筛查以及小息肉子集划分。',
       },
       {
         label: 'Performance Evaluation',
+        labelZh: '性能评估',
         text: 'Conducted comparative experiments, validating the model\'s performance using Dice, IoU, and inference speed metrics.',
+        textZh: '开展对比实验，并使用 Dice、IoU 和推理速度等指标验证模型表现。',
       },
     ],
     publicationStatus: 'Still in progress',
+    publicationStatusZh: '仍在进行中',
+    sortValue: 202505,
   },
   {
     title: 'Dynamic Dual-Branch Neural Network for Personalized Keyword Spotting',
+    titleZh: '面向个性化关键词识别的动态双分支神经网络',
     period: 'June. 2026-Present',
+    periodZh: '2026年6月 - 至今',
     supervisor: 'Prof. Heng Yu',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
     logoSrc: 'https://www.nottingham.ac.uk/SiteElements/Images/uon-logo/UoN-Nottingham-Blue-mobile.svg',
     logoAlt: 'University of Nottingham logo',
     description: 'Personalized keyword spotting research centered on a dynamic dual-branch neural network design.',
+    descriptionZh: '围绕动态双分支神经网络设计展开的个性化关键词识别研究。',
     details: [
       {
         label: 'Current Status',
+        labelZh: '当前状态',
         text: 'Still in progress.',
+        textZh: '仍在进行中。',
       },
     ],
     publicationStatus: 'Still in progress',
+    publicationStatusZh: '仍在进行中',
+    sortValue: 202606,
   },
 ]
 
 export const workingExperience = [
   {
     company: 'Pony.ai',
+    companyZh: '小马智行',
     role: 'Algorithm Engineer',
+    roleZh: '算法工程师',
     period: 'July 2026 - Sep 2026',
+    periodZh: '2026年7月 - 2026年9月',
     logoSrc:
       'https://ir.pony.ai/sites/g/files/knoqqb104676/themes/site/client_site/dist/images/logo.png',
     logoAlt: 'Pony.ai logo',
     bullets: [
       'Built Pony World using 3D reconstruction knowledge.',
     ],
+    bulletsZh: [
+      '运用 3D 重建相关知识参与构建 Pony World。',
+    ],
+    sortValue: 202607,
   },
 ]
 

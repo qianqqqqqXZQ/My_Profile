@@ -21,7 +21,7 @@ function NavSparkles() {
 function SiteLayout({ language, onLanguageChange }) {
   const location = useLocation()
   const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
-  const isContactRoute = location.pathname === '/contact'
+  const canSwitchLanguage = ['/contact', '/experience'].includes(location.pathname)
 
   return (
     <div className="site-shell">
@@ -48,9 +48,9 @@ function SiteLayout({ language, onLanguageChange }) {
                 aria-pressed={language === 'en'}
                 aria-label="Switch to English"
                 title="English"
-                disabled={!isContactRoute}
+                disabled={!canSwitchLanguage}
                 onClick={() => {
-                  if (isContactRoute) {
+                  if (canSwitchLanguage) {
                     onLanguageChange('en')
                   }
                 }}
@@ -65,9 +65,9 @@ function SiteLayout({ language, onLanguageChange }) {
                 aria-pressed={language === 'zh'}
                 aria-label="Switch to Chinese"
                 title="Chinese"
-                disabled={!isContactRoute}
+                disabled={!canSwitchLanguage}
                 onClick={() => {
-                  if (isContactRoute) {
+                  if (canSwitchLanguage) {
                     onLanguageChange('zh')
                   }
                 }}

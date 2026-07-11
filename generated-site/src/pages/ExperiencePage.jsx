@@ -39,32 +39,136 @@ const getPeriodStartValue = (period) => {
   return year * 100 + (monthOrder[monthName] ?? 0)
 }
 
-const timelineExperience = [
-  ...projectExperience.map((item) => ({
-    type: 'Project',
-    period: item.period,
-    title: item.title,
-    description: item.description,
-  })),
-  ...researchExperience.map((item) => ({
-    type: 'Research',
-    period: item.period,
-    title: item.title,
-    description: item.description,
-  })),
-  ...workingExperience.map((item) => ({
-    type: 'Working',
-    period: item.period,
-    title: `${item.company} - ${item.role}`,
-    description: item.bullets?.[0],
-  })),
-].sort((firstItem, secondItem) => getPeriodStartValue(secondItem.period) - getPeriodStartValue(firstItem.period))
+const pageCopy = {
+  en: {
+    heroEyebrow: 'Experience',
+    heroGreeting: 'Hello World!',
+    heroText: 'Here is my\nResearch, Project and Working\nExperience...',
+    heroAriaLabel: 'Hello World! Here is my Research, Project and Working experience...',
+    focusEyebrow: 'Research Focus',
+    focusTitle: 'Current Research Interests',
+    focusLines: [
+      'My current research interests lie in deep learning, dynamic neural network scheduling,',
+      'and computer vision. My present work focuses primarily on dual-branch and',
+      'multi-branch neural networks, including keyword and speaker recognition models as well as polyp segmentation models.',
+    ],
+    timelineEyebrow: 'Timeline',
+    timelineTitle: 'Experience timeline',
+    timelineIntro: 'A quick chronological view of my project, research, and working experience.',
+    timelineMicroLabel: 'Project / Research / Working',
+    timelinePill: 'Timeline',
+    typeLabels: {
+      project: 'Project',
+      research: 'Research',
+      working: 'Working',
+    },
+    researchEyebrow: 'Research',
+    researchTitle: 'Research Experience',
+    researchIntro:
+      'The following are the research experiences I have participated in. You can click View details to see the specific content.',
+    researchMicroLabel: 'Research Experience',
+    researchPill: 'Research',
+    viewDetails: 'View details',
+    supervisorLabel: 'Supervisor',
+    workingEyebrow: 'Working',
+    workingTitle: 'Working Experience',
+    workingIntro: 'These are my computer science-related internship and work experiences in companies.',
+    workingType: 'Internship',
+    projectEyebrow: 'Project',
+    projectTitle: 'Project Experience',
+    projectIntro: 'This section is reserved for my upcoming UNNC GRP project experience.',
+    projectMicroLabel: 'Project',
+    projectPill: 'Projects',
+    modalCloseLabel: 'Close research details',
+    modalEyebrow: 'Research Details',
+    publicationStatusTitle: 'Publication Status',
+  },
+  zh: {
+    heroEyebrow: '经历',
+    heroGreeting: 'Hello World!',
+    heroText: '这里是我的\n科研、项目和工作\n经历...',
+    heroAriaLabel: 'Hello World! 这里是我的科研、项目和工作经历...',
+    focusEyebrow: '研究方向',
+    focusTitle: '当前研究兴趣',
+    focusLines: [
+      '我目前的研究兴趣集中在深度学习、动态神经网络调度',
+      '以及计算机视觉方向。现阶段主要关注双分支和',
+      '多分支神经网络，包括关键词/说话人识别模型以及息肉分割模型。',
+    ],
+    timelineEyebrow: '时间线',
+    timelineTitle: '经历时间线',
+    timelineIntro: '按时间顺序快速浏览我的项目、科研和工作经历。',
+    timelineMicroLabel: '项目 / 科研 / 工作',
+    timelinePill: '时间线',
+    typeLabels: {
+      project: '项目',
+      research: '科研',
+      working: '工作',
+    },
+    researchEyebrow: '科研',
+    researchTitle: '科研经历',
+    researchIntro: '以下是我参与过的科研经历。你可以点击查看详情了解具体内容。',
+    researchMicroLabel: '科研经历',
+    researchPill: '科研',
+    viewDetails: '查看详情',
+    supervisorLabel: '导师',
+    workingEyebrow: '工作',
+    workingTitle: '工作经历',
+    workingIntro: '这里展示我与计算机科学相关的公司实习和工作经历。',
+    workingType: '实习',
+    projectEyebrow: '项目',
+    projectTitle: '项目经历',
+    projectIntro: '这一部分预留给我即将开始的 UNNC GRP 项目经历。',
+    projectMicroLabel: '项目',
+    projectPill: '项目',
+    modalCloseLabel: '关闭科研详情',
+    modalEyebrow: '科研详情',
+    publicationStatusTitle: '发表状态',
+  },
+}
 
-function ExperiencePage() {
+const getLocalizedValue = (item, field, language) => {
+  if (language === 'zh') {
+    return item[`${field}Zh`] ?? item[field]
+  }
+
+  return item[field]
+}
+
+const getLocalizedDetails = (details, language) =>
+  details.map((detail) => ({
+    label: getLocalizedValue(detail, 'label', language),
+    text: getLocalizedValue(detail, 'text', language),
+  }))
+
+function ExperiencePage({ language = 'en' }) {
+  const copy = pageCopy[language] ?? pageCopy.en
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [selectedResearchExperience, setSelectedResearchExperience] = useState(null)
-  const experienceHeroText = 'Here is my\nResearch, Project and Working\nExperience...'
+  const timelineExperience = [
+    ...projectExperience.map((item) => ({
+      type: copy.typeLabels.project,
+      period: getLocalizedValue(item, 'period', language),
+      title: getLocalizedValue(item, 'title', language),
+      description: getLocalizedValue(item, 'description', language),
+      sortValue: item.sortValue ?? getPeriodStartValue(item.period),
+    })),
+    ...researchExperience.map((item) => ({
+      type: copy.typeLabels.research,
+      period: getLocalizedValue(item, 'period', language),
+      title: getLocalizedValue(item, 'title', language),
+      description: getLocalizedValue(item, 'description', language),
+      sortValue: item.sortValue ?? getPeriodStartValue(item.period),
+    })),
+    ...workingExperience.map((item) => ({
+      type: copy.typeLabels.working,
+      period: getLocalizedValue(item, 'period', language),
+      title: `${getLocalizedValue(item, 'company', language)} - ${getLocalizedValue(item, 'role', language)}`,
+      description: getLocalizedValue(item, 'bullets', language)?.[0],
+      sortValue: item.sortValue ?? getPeriodStartValue(item.period),
+    })),
+  ].sort((firstItem, secondItem) => secondItem.sortValue - firstItem.sortValue)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -129,20 +233,20 @@ function ExperiencePage() {
         <section ref={heroRef} className="experience-hero">
           <div className="section-shell experience-hero-shell">
             <div className="experience-hero-copy">
-              <p className="eyebrow">Experience</p>
+              <p className="eyebrow">{copy.heroEyebrow}</p>
               <h1
                 className="experience-hero-title"
-                aria-label="Hello World! Here is my Research, Project and Working experience..."
+                aria-label={copy.heroAriaLabel}
               >
                 <span className="experience-title-placeholder" aria-hidden="true">
-                  {experienceHeroText}
+                  {copy.heroText}
                 </span>
                 <TextType
                   as="span"
                   className="experience-title-type"
                   text={[
-                    'Hello World!',
-                    experienceHeroText,
+                    copy.heroGreeting,
+                    copy.heroText,
                   ]}
                   typingSpeed={56}
                   deletingSpeed={26}
@@ -160,12 +264,12 @@ function ExperiencePage() {
           <div className="section-shell">
             <article className="research-focus-card card-surface">
               <div className="research-focus-copy">
-                <p className="eyebrow">Research Focus</p>
-                <h2 className="research-focus-title">Current Research Interests</h2>
+                <p className="eyebrow">{copy.focusEyebrow}</p>
+                <h2 className="research-focus-title">{copy.focusTitle}</h2>
                 <p className="research-focus-text">
-                  <span>My current research interests lie in deep learning, dynamic neural network scheduling,</span>
-                  <span>and computer vision. My present work focuses primarily on dual-branch and</span>
-                  <span>multi-branch neural networks, including keyword and speaker recognition models as well as polyp segmentation models.</span>
+                  {copy.focusLines.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
                 </p>
               </div>
               <div className="research-focus-accent">
@@ -184,18 +288,18 @@ function ExperiencePage() {
         <section className="content-section experience-timeline-section">
           <div className="section-shell">
             <div className="section-header">
-              <p className="eyebrow">Timeline</p>
-              <h2>Experience timeline</h2>
+              <p className="eyebrow">{copy.timelineEyebrow}</p>
+              <h2>{copy.timelineTitle}</h2>
               <p className="section-intro">
-                A quick chronological view of my project, research, and working experience.
+                {copy.timelineIntro}
               </p>
             </div>
 
             <div className="experience-stack">
               <div className="experience-card card-surface">
                 <div className="card-header">
-                  <p className="micro-label">Project / Research / Working</p>
-                  <span className="pill">Timeline</span>
+                  <p className="micro-label">{copy.timelineMicroLabel}</p>
+                  <span className="pill">{copy.timelinePill}</span>
                 </div>
                 <div className="timeline">
                   {timelineExperience.map((item) => (
@@ -215,17 +319,17 @@ function ExperiencePage() {
         <section className="content-section">
           <div className="section-shell">
             <div className="section-header section-header--research">
-              <p className="eyebrow">Research</p>
-              <h2>Research Experience</h2>
+              <p className="eyebrow">{copy.researchEyebrow}</p>
+              <h2>{copy.researchTitle}</h2>
               <p className="section-intro">
-                The following are the research experiences I have participated in. You can click View details to see the specific content.
+                {copy.researchIntro}
               </p>
             </div>
 
             <article className="experience-module experience-module--research card-surface">
               <div className="card-header">
-                <p className="micro-label">Research Experience</p>
-                <span className="pill">Research</span>
+                <p className="micro-label">{copy.researchMicroLabel}</p>
+                <span className="pill">{copy.researchPill}</span>
               </div>
               <div className="timeline">
                 {researchExperience.map((item) => (
@@ -240,8 +344,8 @@ function ExperiencePage() {
                           className="research-card-trigger"
                           onClick={() => setSelectedResearchExperience(item)}
                         >
-                          <span className="timeline-period">{item.period}</span>
-                          <h3>{item.title}</h3>
+                          <span className="timeline-period">{getLocalizedValue(item, 'period', language)}</span>
+                          <h3>{getLocalizedValue(item, 'title', language)}</h3>
                         </button>
                         <div className="research-card-actions">
                           <button
@@ -249,7 +353,7 @@ function ExperiencePage() {
                             className="research-card-action"
                             onClick={() => setSelectedResearchExperience(item)}
                           >
-                            View details
+                            {copy.viewDetails}
                           </button>
                           {item.supervisor ? (
                             item.supervisorUrl ? (
@@ -259,10 +363,10 @@ function ExperiencePage() {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                Supervisor: {item.supervisor}
+                                {copy.supervisorLabel}: {item.supervisor}
                               </a>
                             ) : (
-                              <p className="research-supervisor-text">Supervisor: {item.supervisor}</p>
+                              <p className="research-supervisor-text">{copy.supervisorLabel}: {item.supervisor}</p>
                             )
                           ) : null}
                         </div>
@@ -291,10 +395,10 @@ function ExperiencePage() {
         <section className="content-section">
           <div className="section-shell">
             <div className="section-header section-header--research">
-              <p className="eyebrow">Working</p>
-              <h2>Working Experience</h2>
+              <p className="eyebrow">{copy.workingEyebrow}</p>
+              <h2>{copy.workingTitle}</h2>
               <p className="section-intro">
-                These are my computer science-related internship and work experiences in companies.
+                {copy.workingIntro}
               </p>
             </div>
 
@@ -308,8 +412,8 @@ function ExperiencePage() {
 
                     <div className="working-ledger-body">
                       <div className="working-ledger-meta">
-                        <span className="working-period">{item.period}</span>
-                        <span className="working-ledger-type">Internship</span>
+                        <span className="working-period">{getLocalizedValue(item, 'period', language)}</span>
+                        <span className="working-ledger-type">{copy.workingType}</span>
                       </div>
 
                       <div className="working-ledger-card">
@@ -326,13 +430,13 @@ function ExperiencePage() {
                           ) : null}
 
                           <div className="working-company-copy">
-                            <strong className="working-company-name">{item.company}</strong>
-                            <h3>{item.role}</h3>
+                            <strong className="working-company-name">{getLocalizedValue(item, 'company', language)}</strong>
+                            <h3>{getLocalizedValue(item, 'role', language)}</h3>
                           </div>
                         </div>
 
                         <ul className="working-bullets">
-                          {item.bullets.map((bullet) => (
+                          {getLocalizedValue(item, 'bullets', language).map((bullet) => (
                             <li key={bullet}>{bullet}</li>
                           ))}
                         </ul>
@@ -348,25 +452,25 @@ function ExperiencePage() {
         <section className="content-section">
           <div className="section-shell">
             <div className="section-header section-header--research">
-              <p className="eyebrow">Project</p>
-              <h2>Project Experience</h2>
+              <p className="eyebrow">{copy.projectEyebrow}</p>
+              <h2>{copy.projectTitle}</h2>
               <p className="section-intro">
-                This section is reserved for my upcoming UNNC GRP project experience.
+                {copy.projectIntro}
               </p>
             </div>
 
             <article className="experience-module experience-module--project card-surface">
               <div className="card-header">
-                <p className="micro-label">Project</p>
-                <span className="pill">Projects</span>
+                <p className="micro-label">{copy.projectMicroLabel}</p>
+                <span className="pill">{copy.projectPill}</span>
               </div>
               <div className="project-experience-grid">
                 {projectExperience.map((item) => (
                   <article key={item.title} className="project-experience-tile">
-                    <span className="timeline-period">{item.period}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <span className="experience-inline-tag">{item.stack}</span>
+                    <span className="timeline-period">{getLocalizedValue(item, 'period', language)}</span>
+                    <h3>{getLocalizedValue(item, 'title', language)}</h3>
+                    <p>{getLocalizedValue(item, 'description', language)}</p>
+                    <span className="experience-inline-tag">{getLocalizedValue(item, 'stack', language)}</span>
                   </article>
                 ))}
               </div>
@@ -391,40 +495,42 @@ function ExperiencePage() {
             <button
               type="button"
               className="research-modal-close"
-              aria-label="Close research details"
+              aria-label={copy.modalCloseLabel}
               onClick={() => setSelectedResearchExperience(null)}
             >
               x
             </button>
             <div className="research-modal-header">
-              <p className="eyebrow">Research Details</p>
-              <h2 id="research-modal-title">{selectedResearchExperience.title}</h2>
+              <p className="eyebrow">{copy.modalEyebrow}</p>
+              <h2 id="research-modal-title">
+                {getLocalizedValue(selectedResearchExperience, 'title', language)}
+              </h2>
               <div className="research-modal-meta">
-                <span>{selectedResearchExperience.period}</span>
+                <span>{getLocalizedValue(selectedResearchExperience, 'period', language)}</span>
                 {selectedResearchExperience.supervisorUrl ? (
                   <a
                     href={selectedResearchExperience.supervisorUrl}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Supervisor: {selectedResearchExperience.supervisor}
+                    {copy.supervisorLabel}: {selectedResearchExperience.supervisor}
                   </a>
                 ) : (
-                  <span>Supervisor: {selectedResearchExperience.supervisor}</span>
+                  <span>{copy.supervisorLabel}: {selectedResearchExperience.supervisor}</span>
                 )}
               </div>
             </div>
 
             <div className="research-modal-body">
-              {selectedResearchExperience.details.map((detail) => (
+              {getLocalizedDetails(selectedResearchExperience.details, language).map((detail) => (
                 <section key={detail.label} className="research-modal-detail">
                   <h3>{detail.label}</h3>
                   <p>{detail.text}</p>
                 </section>
               ))}
               <section className="research-modal-detail research-modal-publication">
-                <h3>Publication Status</h3>
-                <p>{selectedResearchExperience.publicationStatus}</p>
+                <h3>{copy.publicationStatusTitle}</h3>
+                <p>{getLocalizedValue(selectedResearchExperience, 'publicationStatus', language)}</p>
               </section>
             </div>
           </article>
