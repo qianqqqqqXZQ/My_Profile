@@ -234,62 +234,62 @@ function ProfilePage() {
               <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
             </div>
           </section>
+
+          <main>
+            <section id="off-campus-activities" className="content-section course-activities-section">
+              <div className="section-shell">
+                <div className="section-header">
+                  <p className="eyebrow">Off-Campus Activities</p>
+                  <h2>External practice, competitions, and community engagement</h2>
+                  <p className="section-intro">
+                    A dedicated section for internships, volunteering, competitions, and
+                    other experience that happens beyond the university setting.
+                  </p>
+                </div>
+
+                <div className="campus-activity-timeline">
+                  {offCampusActivities.length ? (
+                    renderActivityEntries(offCampusActivities)
+                  ) : (
+                    <article className="campus-activity-empty card-surface">
+                      <p className="campus-activity-empty-label">Section Ready</p>
+                      <h3>Add your off-campus experience here</h3>
+                      <p>
+                        This module is now in place after Campus Activities. Once you give me
+                        the specific experience details, I can turn them into cards in the same
+                        layout immediately.
+                      </p>
+                    </article>
+                  )}
+                </div>
+              </div>
+            </section>
+
+            <section className="content-section strengths-section">
+              <div className="section-shell">
+                <div className="section-header">
+                  <p className="eyebrow">Strengths</p>
+                  <h2>Core qualities</h2>
+                  <p className="section-intro">
+                    A concise set of profile statements that now sits beneath the hero instead of
+                    competing with it.
+                  </p>
+                </div>
+
+                <div className="strength-grid">
+                  {strengths.map((item, index) => (
+                    <article key={item.title} className="strength-card card-surface">
+                      <span className="strength-index">0{index + 1}</span>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </main>
         </HeroBackground>
       </div>
-
-      <main>
-        <section id="off-campus-activities" className="content-section course-activities-section">
-          <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Off-Campus Activities</p>
-              <h2>External practice, competitions, and community engagement</h2>
-              <p className="section-intro">
-                A dedicated section for internships, volunteering, competitions, and
-                other experience that happens beyond the university setting.
-              </p>
-            </div>
-
-            <div className="campus-activity-timeline">
-              {offCampusActivities.length ? (
-                renderActivityEntries(offCampusActivities)
-              ) : (
-                <article className="campus-activity-empty card-surface">
-                  <p className="campus-activity-empty-label">Section Ready</p>
-                  <h3>Add your off-campus experience here</h3>
-                  <p>
-                    This module is now in place after Campus Activities. Once you give me
-                    the specific experience details, I can turn them into cards in the same
-                    layout immediately.
-                  </p>
-                </article>
-              )}
-            </div>
-          </div>
-        </section>
-
-        <section className="content-section strengths-section">
-          <div className="section-shell">
-            <div className="section-header">
-              <p className="eyebrow">Strengths</p>
-              <h2>Core qualities</h2>
-              <p className="section-intro">
-                A concise set of profile statements that now sits beneath the hero instead of
-                competing with it.
-              </p>
-            </div>
-
-            <div className="strength-grid">
-              {strengths.map((item, index) => (
-                <article key={item.title} className="strength-card card-surface">
-                  <span className="strength-index">0{index + 1}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
 
       {activeGallery ? (
         <div className="campus-gallery-modal-backdrop" onClick={closeGallery}>
