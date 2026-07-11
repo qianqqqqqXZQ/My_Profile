@@ -2189,6 +2189,10 @@
   isolation: isolate;
 }
 
+.page-profile #campus-activities {
+  padding-top: clamp(220px, 26svh, 340px);
+}
+
 .profile-campus-header .section-intro {
   margin-top: 24px;
 }
@@ -3515,6 +3519,10 @@
     grid-template-columns: 1fr;
   }
 
+  .page-profile #campus-activities {
+    padding-top: clamp(160px, 20svh, 240px);
+  }
+
   .research-modal-body {
     grid-template-columns: 1fr;
   }
@@ -3812,6 +3820,10 @@
 
   .campus-activity-entry {
     gap: 22px;
+  }
+
+  .page-profile #campus-activities {
+    padding-top: 148px;
   }
 
   .working-ledger-meta {
