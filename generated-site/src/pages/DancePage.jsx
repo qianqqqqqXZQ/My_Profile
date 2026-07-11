@@ -1,23 +1,14 @@
-import PageBanner from '../components/PageBanner'
 import { danceClips } from '../content/siteContent'
 
 function DancePage() {
   return (
-    <div className="page-route">
-      <PageBanner
-        eyebrow="Dance Videos"
-        title="Dance videos"
-        summary="Performance clips, edits, and video links in one place."
-        metaLabel="Motion Archive"
-        metaTitle="Video-first layout"
-        metaText="Bilibili, YouTube, Douyin, or local video links fit here."
-        items={[
-          { label: 'Format', value: 'Video links and performance clips' },
-          { label: 'Tone', value: 'Same dark premium style' },
-          { label: 'Layout', value: 'Wide featured card plus clip grid' },
-          { label: 'Status', value: 'Waiting for real footage' },
-        ]}
-      />
+    <div className="page-route page-dance">
+      <section className="dance-hero" aria-label="Dance video hero">
+        <video className="dance-hero-video" autoPlay muted loop playsInline aria-hidden="true">
+          <source src="/generated/dance/dance-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="dance-hero-scrim" />
+      </section>
 
       <section className="content-section">
         <div className="section-shell">
