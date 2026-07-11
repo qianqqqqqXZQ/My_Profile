@@ -1,5 +1,22 @@
 # Codex Task Plans
 
+## Current Task: Split Research Focus Copy Into Three Lines
+
+- [x] Locate the Research Focus paragraph on the Experience page.
+- [x] Split the copy into three explicit desktop lines without changing the wording.
+- [x] Add responsive styling so mobile can still wrap naturally.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior.
+
+## Current Task: Build Simple Experience Timeline
+
+- [x] Create a Git backup commit before changing the experience page structure.
+- [x] Restore the original detailed Research, Working, and Project modules.
+- [x] Replace only the top Timeline area with a simple chronological list across project, research, and working entries.
+- [x] Add a small type badge to each timeline item without logos, buttons, or details.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final timeline behavior.
+
 ## Current Task: Use Flags In Topbar Language Switcher
 
 - [x] Create a Git backup commit before changing the shared header.

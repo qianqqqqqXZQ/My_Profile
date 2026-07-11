@@ -80,6 +80,11 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the Nottingham research logo task: `npm run lint` and `npm run build`.
 - `generated-site/src/components/HomeLanguageSelector.jsx` exports the shared `FlagIcon` SVG component. `generated-site/src/components/SiteLayout.jsx` reuses it in the topbar language switcher so the buttons show the US and China flags instead of `EN` and `ZH`.
 - Latest verification commands run for the topbar flag language switcher task: `npm run lint` and `npm run build`.
+- The `Experience` page keeps the detailed Research, Working, and Project modules as separate sections below the top timeline.
+- Only the top `Timeline` area is unified: it lists project, research, and working entries chronologically with a small type badge (`Project`, `Research`, or `Working`) and no logos, detail buttons, or modal behavior.
+- Latest verification commands run for the simple experience timeline task: `npm run lint` and `npm run build`.
+- The `Experience` page Research Focus paragraph is split into three explicit desktop lines using inline spans inside `.research-focus-text`; mobile switches those spans back to inline so the paragraph can wrap naturally.
+- Latest verification commands run for the Research Focus three-line copy task: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
