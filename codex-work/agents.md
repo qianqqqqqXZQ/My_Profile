@@ -85,6 +85,12 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the simple experience timeline task: `npm run lint` and `npm run build`.
 - The `Experience` page Research Focus paragraph is split into three explicit desktop lines using inline spans inside `.research-focus-text`; mobile switches those spans back to inline so the paragraph can wrap naturally.
 - Latest verification commands run for the Research Focus three-line copy task: `npm run lint` and `npm run build`.
+- `generated-site/src/App.jsx` now passes the global `homeLanguage` state into `ExperiencePage`.
+- `generated-site/src/components/SiteLayout.jsx` enables the topbar flag language switcher on both `/contact` and `/experience`; other topbar routes still show disabled language buttons.
+- `generated-site/src/pages/ExperiencePage.jsx` localizes the Experience hero, Research Focus, unified timeline, Research, Working, Project, and research-detail modal copy from a local `pageCopy` map.
+- `generated-site/src/content/siteContent.js` keeps English experience fields as the source fields and adds `*Zh` variants plus `sortValue` for project, research, and working entries. The timeline uses `sortValue` so Chinese date strings do not affect ordering.
+- Latest verification commands run for the Experience Chinese mode task: `npm run lint` and `npm run build`.
+- Follow-up Chinese copy fix: `ExperiencePage.jsx` keeps `Hello World!` in English for the Chinese hero while translating the following hero lines; `siteContent.js` adds `companyZh: '小马智行'` and the Experience timeline/work card renders localized company names. Latest verification commands: `npm run lint` and `npm run build`.
 
 ## Favicon Task Output
 
@@ -97,3 +103,10 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - The favicon generation script lives at `codex-work/scripts/generate_bear_favicon.py` and uses the provided local photo as a color reference.
 - `generated-site/index.html` now points at `/generated/favicon-bear-stardew-32.png` and `/generated/favicon-bear-stardew.ico`.
 - Latest verification command run for the favicon refresh: `npm run build`
+
+## Homepage Language Recommendation
+
+- `generated-site/src/components/HomeLanguageSelector.jsx` shows a two-line recommendation beside the homepage language selector.
+- The recommendation text is `Recommended: use the English version first` on the first line and `推荐优先使用英文版本` on the second line, with no slash separator.
+- `generated-site/src/App.css` styles `.home-language-recommendation` as a compact glass pill; the Chinese line is centered with `.home-language-recommendation span + span`.
+- Latest verification commands run for this task: `npm run lint` and `npm run build`.

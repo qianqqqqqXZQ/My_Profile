@@ -1,5 +1,28 @@
 # Codex Task Plans
 
+## Current Task: Add Homepage English Version Recommendation
+
+- [x] Add a bilingual recommendation beside the homepage language selector.
+- [x] Style the recommendation so it stays readable next to the selector on desktop and mobile.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior.
+
+## Current Task: Fix Experience Chinese Copy Gaps
+
+- [x] Keep `Hello World!` in English while translating the rest of the Experience hero in Chinese mode.
+- [x] Render Pony.ai as 小马智行 in Chinese mode.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior.
+
+## Current Task: Develop Chinese Mode For Experience Page
+
+- [x] Create a Git backup commit before changing the experience page language behavior.
+- [x] Pass the global language state into the Experience page and enable the topbar switcher there.
+- [x] Add Chinese copy fields for research, working, project, timeline, and modal details.
+- [x] Render localized Experience page text without changing the existing English layout.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior.
+
 ## Current Task: Split Research Focus Copy Into Three Lines
 
 - [x] Locate the Research Focus paragraph on the Experience page.
