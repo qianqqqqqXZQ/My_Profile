@@ -1,5 +1,22 @@
 # Codex Task Plans
 
+## Current Task: Rename Experience Entry To Academic
+
+- [x] Locate the visible Experience navigation and page hero copy.
+- [x] Change the navigation entry label to `Academic` without changing the route.
+- [x] Change the Experience page hero eyebrow to `Academic`.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final behavior.
+
+## Current Task: Replace Dance Hero Video
+
+- [x] Create a Git backup commit before replacing the video asset.
+- [x] Inspect the new video encoding and existing dance hero asset path.
+- [x] Transcode the new video to browser-safe H.264 and replace the public asset.
+- [x] Rebuild the site so `dist` contains the replacement video.
+- [x] Run lint/build verification and review the diff.
+- [x] Update working notes with the replacement details.
+
 ## Current Task: Add Dance Video Hero
 
 - [x] Inspect the current Dance page structure and shared styling.

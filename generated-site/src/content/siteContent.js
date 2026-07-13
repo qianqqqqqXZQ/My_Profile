@@ -27,7 +27,7 @@ export const readyPageContent = {
       {
         label: 'Academic',
         to: '/experience',
-        title: 'Develop Experience',
+        title: 'Academic',
         description: 'Develop relevant research experience, work experience and project management experience',
       },
       {

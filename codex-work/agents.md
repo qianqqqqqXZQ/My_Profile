@@ -92,9 +92,12 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - `generated-site/src/App.jsx` now passes the global `homeLanguage` state into `ExperiencePage`.
 - `generated-site/src/components/SiteLayout.jsx` enables the topbar flag language switcher on both `/contact` and `/experience`; other topbar routes still show disabled language buttons.
 - `generated-site/src/pages/ExperiencePage.jsx` localizes the Experience hero, Research Focus, unified timeline, Research, Working, Project, and research-detail modal copy from a local `pageCopy` map.
+- The `/experience` route remains unchanged, but its top navigation label, ready-page entry label, and ready-page card title now display `Academic`; the English Experience page hero eyebrow also displays `Academic`.
 - `generated-site/src/content/siteContent.js` keeps English experience fields as the source fields and adds `*Zh` variants plus `sortValue` for project, research, and working entries. The timeline uses `sortValue` so Chinese date strings do not affect ordering.
 - Latest verification commands run for the Experience Chinese mode task: `npm run lint` and `npm run build`.
 - Follow-up Chinese copy fix: `ExperiencePage.jsx` keeps `Hello World!` in English for the Chinese hero while translating the following hero lines; `siteContent.js` adds `companyZh: '小马智行'` and the Experience timeline/work card renders localized company names. Latest verification commands: `npm run lint` and `npm run build`.
+
+- Latest verification commands run for the Academic label rename task: `npm run build`, then `npm run lint` rerun separately after an initial parallel lint/build timestamp race.
 
 ## Dance Hero
 
@@ -102,6 +105,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - The dance hero video lives at `generated-site/public/generated/dance/dance-hero.mp4` and is referenced as `/generated/dance/dance-hero.mp4`.
 - The provided source video was HEVC/H.265, which rendered black in Chromium. The site copy was transcoded to H.264 with no audio for browser-safe autoplay background use; the original desktop source file was not changed.
 - Latest verification commands run for the dance video hero task: `npm run lint`, `npm run build`, HTTP 200 checks for `/dance` and `/generated/dance/dance-hero.mp4`, and Playwright screenshots at `codex-work/screenshots/dance-hero-desktop.png` and `codex-work/screenshots/dance-hero-mobile.png`.
+- Follow-up replacement source video: `C:\Users\asus\Desktop\22ed97fd71877382f4220571f1b3599d.mp4`. It was HEVC/H.265 with AAC audio, then transcoded to H.264 (`avc1`), yuv420p, no audio, 960x544, 30 fps, and written over `generated-site/public/generated/dance/dance-hero.mp4`.
+- Latest verification commands run for the dance hero video replacement: `npm run lint`, `npm run build`, and ffmpeg inspection of `generated-site/dist/generated/dance/dance-hero.mp4`.
 
 ## Favicon Task Output
 
