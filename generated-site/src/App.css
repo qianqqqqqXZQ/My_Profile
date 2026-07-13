@@ -1776,6 +1776,128 @@
   filter: saturate(0.94) contrast(1.02);
 }
 
+.academic-background-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  gap: 34px;
+  padding: 34px;
+  overflow: hidden;
+}
+
+.academic-background-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.72), transparent 68%);
+  pointer-events: none;
+}
+
+.academic-background-heading,
+.academic-background-details,
+.academic-course-list {
+  position: relative;
+  z-index: 1;
+}
+
+.academic-background-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.academic-background-heading h2 {
+  max-width: 16ch;
+  margin-bottom: 0;
+  font-size: clamp(2rem, 3vw, 3.3rem);
+  line-height: 0.98;
+}
+
+.academic-background-heading p:not(.eyebrow) {
+  max-width: 560px;
+  margin: 22px 0 0;
+  color: rgba(244, 243, 239, 0.68);
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  line-height: 1.65;
+}
+
+.academic-background-details {
+  align-self: end;
+  display: grid;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.academic-background-detail {
+  display: grid;
+  grid-template-columns: minmax(92px, auto) minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.academic-background-detail span {
+  color: rgba(244, 243, 239, 0.58);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.academic-background-detail strong {
+  min-width: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.06rem, 1.6vw, 1.36rem);
+  font-weight: 650;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.academic-course-list {
+  grid-column: 1 / -1;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.academic-course-list h3 {
+  margin: 0 0 18px;
+  color: rgba(244, 243, 239, 0.72);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.academic-course-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.academic-course-list li {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(244, 243, 239, 0.74);
+  font-size: 0.82rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
 .experience-timeline-section {
   padding-top: 88px;
 }
@@ -3516,6 +3638,20 @@
     padding-top: 132px;
   }
 
+  .academic-background-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px;
+  }
+
+  .academic-background-heading {
+    min-height: auto;
+  }
+
+  .academic-background-heading h2 {
+    max-width: 16ch;
+  }
+
   .contact-hero-shell {
     padding-top: 148px;
   }
@@ -3764,6 +3900,33 @@
 
   .page-experience .content-section:first-of-type {
     padding-top: 108px;
+  }
+
+  .academic-background-card {
+    gap: 24px;
+    padding: 22px;
+  }
+
+  .academic-background-heading h2 {
+    max-width: 100%;
+  }
+
+  .academic-background-details {
+    gap: 14px;
+  }
+
+  .academic-background-detail {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .academic-course-list {
+    padding-top: 22px;
+  }
+
+  .academic-course-list li {
+    width: 100%;
+    border-radius: 14px;
   }
 
   .contact-hero {

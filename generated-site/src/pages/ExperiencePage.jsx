@@ -141,6 +141,33 @@ const getLocalizedDetails = (details, language) =>
     text: getLocalizedValue(detail, 'text', language),
   }))
 
+const academicBackgroundItems = [
+  {
+    label: 'GPA',
+    value: '3.7 (UK First-Class Honours equivalent)',
+  },
+  {
+    label: 'Language Ability',
+    value: 'English (currently preparing for TOEFL), Chinese (native)',
+  },
+]
+
+const undergraduateCourses = [
+  'Computer Fundamentals',
+  'Databases and Interfaces',
+  'Foundation Algebra for Physical Science & Engineering',
+  'Foundation Calculus and Mathematical Techniques',
+  'Foundation Physics',
+  'Fundamental of Artificial Intelligence',
+  'Introduction to Algorithms',
+  'Introduction to Mathematical Software and Programming',
+  'Mathematics for Computer Scientists',
+  'Programming and Algorithms',
+  'Programming Paradigms',
+  'Software Engineering',
+  'Systems and Architecture',
+]
+
 function ExperiencePage({ language = 'en' }) {
   const copy = pageCopy[language] ?? pageCopy.en
   const heroRef = useRef(null)
@@ -257,6 +284,38 @@ function ExperiencePage({ language = 'en' }) {
                 />
               </h1>
             </div>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <div className="section-shell">
+            <article className="academic-background-card card-surface">
+              <div className="academic-background-heading">
+                <p className="eyebrow">Academic Background</p>
+                <h2>My Basic Academic Background</h2>
+                <p>
+                  The following is some of my basic personal academic information.
+                </p>
+              </div>
+
+              <div className="academic-background-details">
+                {academicBackgroundItems.map((item) => (
+                  <div key={item.label} className="academic-background-detail">
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </div>
+                ))}
+              </div>
+
+              <div className="academic-course-list">
+                <h3>Undergraduate Courses Taken</h3>
+                <ul>
+                  {undergraduateCourses.map((course) => (
+                    <li key={course}>{course}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
           </div>
         </section>
 
