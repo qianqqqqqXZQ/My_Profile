@@ -1,5 +1,11 @@
 import { danceClips } from '../content/siteContent'
 
+const danceHeroTitle = 'Welcome to My Dance Space'
+const danceHeroTitleLines = [
+  ['Welcome', 'to', 'My'],
+  ['Dance', 'Space'],
+]
+
 function DancePage() {
   return (
     <div className="page-route page-dance">
@@ -8,6 +14,26 @@ function DancePage() {
           <source src="/generated/dance/dance-hero.mp4" type="video/mp4" />
         </video>
         <div className="dance-hero-scrim" />
+        <div className="dance-hero-title-shell">
+          <div className="dance-hero-title-group">
+            <p className="eyebrow dance-hero-eyebrow">DANCE VIDEO</p>
+            <h1 className="dance-hero-title" aria-label={danceHeroTitle}>
+              {danceHeroTitleLines.map((line) => (
+                <span key={line.join(' ')} className="dance-hero-title-line" aria-hidden="true">
+                  {line.map((word) => (
+                    <span key={word} className="dance-hero-title-word">
+                      {word.split('').map((character, index) => (
+                        <span key={`${character}-${index}`} className="dance-hero-title-letter">
+                          {character}
+                        </span>
+                      ))}
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </h1>
+          </div>
+        </div>
       </section>
 
       <section className="content-section">
