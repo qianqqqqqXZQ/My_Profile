@@ -143,14 +143,41 @@ const getLocalizedDetails = (details, language) =>
 
 const academicBackgroundItems = [
   {
-    label: 'GPA',
-    value: '3.7 (UK First-Class Honours equivalent)',
+    label: {
+      en: 'GPA',
+      zh: 'GPA',
+    },
+    value: {
+      en: '3.7 (UK First-Class Honours equivalent)',
+      zh: '3.7 (\u82f1\u5236\u4e00\u7b49\u5b66\u4f4d)',
+    },
   },
   {
-    label: 'Language Ability',
-    value: 'English (currently preparing for TOEFL), Chinese (native)',
+    label: {
+      en: 'Language Ability',
+      zh: '\u8bed\u8a00\u80fd\u529b',
+    },
+    value: {
+      en: 'English (currently preparing for TOEFL), Chinese (native)',
+      zh: '\u82f1\u8bed(\u6258\u798f\u6b63\u5728\u5907\u8003), \u4e2d\u6587(\u6bcd\u8bed)',
+    },
   },
 ]
+
+const academicBackgroundCopy = {
+  en: {
+    eyebrow: 'Academic Background',
+    title: 'My Basic Academic Background',
+    description: 'The following is some of my basic personal academic information.',
+    coursesTitle: 'Undergraduate Courses Taken',
+  },
+  zh: {
+    eyebrow: '\u5b66\u672f\u80cc\u666f',
+    title: '\u6211\u7684\u57fa\u7840\u5b66\u672f\u80cc\u666f',
+    description: '\u4ee5\u4e0b\u662f\u6211\u7684\u4e00\u4e9b\u57fa\u672c\u7684\u4e2a\u4eba\u5b66\u672f\u4fe1\u606f\u3002',
+    coursesTitle: '\u672c\u79d1\u9636\u6bb5\u6240\u4fee\u8bfe\u7a0b',
+  },
+}
 
 const undergraduateCourses = [
   'Computer Fundamentals',
@@ -170,6 +197,7 @@ const undergraduateCourses = [
 
 function ExperiencePage({ language = 'en' }) {
   const copy = pageCopy[language] ?? pageCopy.en
+  const academicCopy = academicBackgroundCopy[language] ?? academicBackgroundCopy.en
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [selectedResearchExperience, setSelectedResearchExperience] = useState(null)
@@ -291,24 +319,24 @@ function ExperiencePage({ language = 'en' }) {
           <div className="section-shell">
             <article className="academic-background-card card-surface">
               <div className="academic-background-heading">
-                <p className="eyebrow">Academic Background</p>
-                <h2>My Basic Academic Background</h2>
+                <p className="eyebrow">{academicCopy.eyebrow}</p>
+                <h2>{academicCopy.title}</h2>
                 <p>
-                  The following is some of my basic personal academic information.
+                  {academicCopy.description}
                 </p>
               </div>
 
               <div className="academic-background-details">
                 {academicBackgroundItems.map((item) => (
-                  <div key={item.label} className="academic-background-detail">
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
+                  <div key={item.label.en} className="academic-background-detail">
+                    <span>{item.label[language] ?? item.label.en}</span>
+                    <strong>{item.value[language] ?? item.value.en}</strong>
                   </div>
                 ))}
               </div>
 
               <div className="academic-course-list">
-                <h3>Undergraduate Courses Taken</h3>
+                <h3>{academicCopy.coursesTitle}</h3>
                 <ul>
                   {undergraduateCourses.map((course) => (
                     <li key={course}>{course}</li>
