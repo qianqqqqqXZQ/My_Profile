@@ -1,5 +1,28 @@
 # Codex Task Plans
 
+## Current Task: Add Dance Video Hero
+
+- [x] Inspect the current Dance page structure and shared styling.
+- [x] Copy the provided dance video into the site public asset area.
+- [x] Replace the Dance page top banner with a text-free video hero.
+- [x] Add responsive hero styling that keeps the video full-bleed and behind the fixed topbar.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final asset path and validation commands.
+
+## Current Task: Cover Full Profile Page Background
+
+- [x] Inspect the current Profile background wrapper and existing working notes.
+- [x] Move the remaining Profile page sections into the shared `HeroBackground` scope.
+- [x] Run `npm run lint` and `npm run build`, then review the diff and full-page screenshot.
+- [x] Update working notes with the final full-page background behavior.
+
+## Current Task: Lower Profile Activity Sections
+
+- [x] Create a Git backup commit before changing the profile layout.
+- [x] Add vertical spacing so the Profile hero no longer reveals Activity wording in the first viewport.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes with the final layout behavior.
+
 ## Current Task: Add Homepage English Version Recommendation
 
 - [x] Add a bilingual recommendation beside the homepage language selector.

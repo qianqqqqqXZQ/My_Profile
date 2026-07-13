@@ -67,6 +67,10 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the profile hero background extension: `npm run lint` and `npm run build`.
 - The follow-up fix for the profile background disappearing on scroll moved the visibility observer from the hero-only section to the full HeroBackground scope. The earlier observer paused `Waves` after the hero left the viewport, and the pause transition cleared the canvas before any new frame was drawn.
 - Latest verification commands run for the profile background scroll fix: `npm run lint` and `npm run build`.
+- `generated-site/src/App.css` now gives `.page-profile #campus-activities` extra responsive top padding so the Profile first viewport does not reveal Activity/Campus Activities wording while keeping that section inside the hero background.
+- Latest verification commands run for the profile activity spacing task: `npm run lint`, `npm run build`, and Chrome headless screenshots at 1440x900 and 390x844.
+- `generated-site/src/pages/ProfilePage.jsx` now keeps all Profile page sections inside the shared `HeroBackground` scope, so the animated Waves background covers Profile hero, Campus Activities, Off-Campus Activities, and Strengths instead of stopping after Campus Activities.
+- Latest verification commands run for the full-profile background task: `npm run lint`, `npm run build`, and a Playwright full-page Chrome screenshot at `codex-work/screenshots/profile-full-page-background.png`.
 - The `Experience` page research module now uses `Research` as the section eyebrow, `Research Experience` as the heading, and an intro that directs users to click `View details` for specifics.
 - Research cards now place `View details` directly after the supervisor line. Focus tags are rendered only when a `focus` value exists, and the current Edge/Dynamic research entries intentionally omit those tags.
 - The Dynamic Dual-Branch keyword spotting entry links `Prof. Heng Yu` to `https://research.nottingham.edu.cn/en/persons/heng-yu/`.
@@ -91,6 +95,13 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - `generated-site/src/content/siteContent.js` keeps English experience fields as the source fields and adds `*Zh` variants plus `sortValue` for project, research, and working entries. The timeline uses `sortValue` so Chinese date strings do not affect ordering.
 - Latest verification commands run for the Experience Chinese mode task: `npm run lint` and `npm run build`.
 - Follow-up Chinese copy fix: `ExperiencePage.jsx` keeps `Hello World!` in English for the Chinese hero while translating the following hero lines; `siteContent.js` adds `companyZh: '小马智行'` and the Experience timeline/work card renders localized company names. Latest verification commands: `npm run lint` and `npm run build`.
+
+## Dance Hero
+
+- `generated-site/src/pages/DancePage.jsx` now starts with a text-free full-viewport video hero instead of the shared `PageBanner`.
+- The dance hero video lives at `generated-site/public/generated/dance/dance-hero.mp4` and is referenced as `/generated/dance/dance-hero.mp4`.
+- The provided source video was HEVC/H.265, which rendered black in Chromium. The site copy was transcoded to H.264 with no audio for browser-safe autoplay background use; the original desktop source file was not changed.
+- Latest verification commands run for the dance video hero task: `npm run lint`, `npm run build`, HTTP 200 checks for `/dance` and `/generated/dance/dance-hero.mp4`, and Playwright screenshots at `codex-work/screenshots/dance-hero-desktop.png` and `codex-work/screenshots/dance-hero-mobile.png`.
 
 ## Favicon Task Output
 
