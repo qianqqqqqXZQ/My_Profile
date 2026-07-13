@@ -41,7 +41,7 @@ const getPeriodStartValue = (period) => {
 
 const pageCopy = {
   en: {
-    heroEyebrow: 'Experience',
+    heroEyebrow: 'Academic',
     heroGreeting: 'Hello World!',
     heroText: 'Here is my\nResearch, Project and Working\nExperience...',
     heroAriaLabel: 'Hello World! Here is my Research, Project and Working experience...',

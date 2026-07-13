@@ -1,6 +1,6 @@
 export const navigationLinks = [
   { label: 'Profile', to: '/profile' },
-  { label: 'Experience', to: '/experience' },
+  { label: 'Academic', to: '/experience' },
   { label: 'Dance Videos', to: '/dance' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -25,7 +25,7 @@ export const readyPageContent = {
         description: 'This page contains some general personal information of mine, such as my hobbies.',
       },
       {
-        label: 'Experience',
+        label: 'Academic',
         to: '/experience',
         title: 'Develop Experience',
         description: 'Develop relevant research experience, work experience and project management experience',
