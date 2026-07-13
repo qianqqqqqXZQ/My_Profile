@@ -1,5 +1,22 @@
 # Codex Task Plans
 
+## Current Task: Add Academic Background Module
+
+- [ ] Locate the current research section on the Academic/Experience page.
+- [ ] Add a new Academic Background module above Current Research Interests with the requested GPA, language, and course content.
+- [ ] Add responsive styling for the academic background details and long course list.
+- [ ] Run `npm run lint` and `npm run build`, then review the diff.
+- [ ] Update working notes after validation.
+
+## Current Task: Replace Dance Hero Video Again
+
+- [x] Create a Git backup commit before replacing the current video asset.
+- [x] Inspect the new video encoding and current dance hero path.
+- [x] Transcode the new video to browser-safe H.264 and replace the public asset.
+- [x] Rebuild the site so `dist` contains the replacement video.
+- [x] Run lint/build verification and review the diff.
+- [x] Update working notes with the replacement details.
+
 ## Current Task: Rename Experience Entry To Academic
 
 - [x] Locate the visible Experience navigation and page hero copy.

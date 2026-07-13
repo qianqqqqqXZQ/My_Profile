@@ -107,6 +107,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the dance video hero task: `npm run lint`, `npm run build`, HTTP 200 checks for `/dance` and `/generated/dance/dance-hero.mp4`, and Playwright screenshots at `codex-work/screenshots/dance-hero-desktop.png` and `codex-work/screenshots/dance-hero-mobile.png`.
 - Follow-up replacement source video: `C:\Users\asus\Desktop\22ed97fd71877382f4220571f1b3599d.mp4`. It was HEVC/H.265 with AAC audio, then transcoded to H.264 (`avc1`), yuv420p, no audio, 960x544, 30 fps, and written over `generated-site/public/generated/dance/dance-hero.mp4`.
 - Latest verification commands run for the dance hero video replacement: `npm run lint`, `npm run build`, and ffmpeg inspection of `generated-site/dist/generated/dance/dance-hero.mp4`.
+- Second follow-up replacement source video: `C:\Users\asus\Desktop\e78e46f566a0f63298896699ca95ec6d.mp4`. It was HEVC/H.265 with AAC audio, then transcoded to H.264 (`avc1`), yuv420p, no audio, 1280x720, 30 fps, and written over `generated-site/public/generated/dance/dance-hero.mp4`.
+- Latest verification commands run for the second dance hero video replacement: `npm run lint`, `npm run build`, and ffmpeg inspection of `generated-site/dist/generated/dance/dance-hero.mp4`.
 
 ## Favicon Task Output
 
