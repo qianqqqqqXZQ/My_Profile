@@ -33,8 +33,43 @@ const CONTACT_CARD_THEMES = [
 function ContactPage({ language }) {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [shouldRenderGlobe, setShouldRenderGlobe] = useState(false)
   const [isWechatModalOpen, setIsWechatModalOpen] = useState(false)
   const copy = contactPageContent[language] ?? contactPageContent.en
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    let didCancel = false
+    let timeoutId
+    let idleCallbackId
+
+    const renderGlobe = () => {
+      if (!didCancel) {
+        setShouldRenderGlobe(true)
+      }
+    }
+
+    if ('requestIdleCallback' in window) {
+      idleCallbackId = window.requestIdleCallback(renderGlobe, { timeout: 600 })
+    } else {
+      timeoutId = window.setTimeout(renderGlobe, 450)
+    }
+
+    return () => {
+      didCancel = true
+
+      if (idleCallbackId) {
+        window.cancelIdleCallback(idleCallbackId)
+      }
+
+      if (timeoutId) {
+        window.clearTimeout(timeoutId)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -137,7 +172,7 @@ function ContactPage({ language }) {
     <div className="page-route page-contact">
       <div className="page-contact-background" aria-hidden="true">
         <div className="contact-hero-orbit" />
-        <ContactGlobe paused={!isHeroVisible} />
+        {shouldRenderGlobe ? <ContactGlobe paused={!isHeroVisible} /> : null}
         <div className="contact-hero-scrim" />
         <div className="contact-hero-noise" />
       </div>
