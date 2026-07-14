@@ -214,10 +214,23 @@ const createArcObjects = (arcsData) =>
     const end = latLngToVector3(arc.endLat, arc.endLng, GLOBE_RADIUS + 0.2)
     const curve = createCurve(start, end, arc.arcAlt)
     const points = curve.getPoints(140)
+    const positionBuffer = new Float32Array(ARC_TRAIL_LENGTH * 3)
+    const colorBuffer = new Float32Array(ARC_TRAIL_LENGTH * 3)
+    const positionAttribute = new THREE.BufferAttribute(positionBuffer, 3).setUsage(
+      THREE.DynamicDrawUsage,
+    )
+    const colorAttribute = new THREE.BufferAttribute(colorBuffer, 3).setUsage(
+      THREE.DynamicDrawUsage,
+    )
 
     const trailGeometry = new THREE.BufferGeometry()
-    trailGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(0), 3))
-    trailGeometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(0), 3))
+    trailGeometry.setAttribute('position', positionAttribute)
+    trailGeometry.setAttribute('color', colorAttribute)
+    trailGeometry.setDrawRange(0, 0)
+    trailGeometry.boundingSphere = new THREE.Sphere(
+      new THREE.Vector3(0, 0, 0),
+      GLOBE_RADIUS * (1 + (arc.arcAlt ?? 0.25) + 0.1),
+    )
 
     const trailMaterial = new THREE.LineBasicMaterial({
       vertexColors: true,
@@ -240,6 +253,7 @@ const createArcObjects = (arcsData) =>
     )
 
     const pulse = new THREE.PointLight(arc.color, 0.9, 36, 2.4)
+    const trailColor = new THREE.Color(arc.color)
 
     return {
       arc,
@@ -249,48 +263,53 @@ const createArcObjects = (arcsData) =>
       particle,
       pulse,
       offset: index * 380,
-      positionBuffer: new Float32Array(ARC_TRAIL_LENGTH * 3),
-      colorBuffer: new Float32Array(ARC_TRAIL_LENGTH * 3),
+      colorAttribute,
+      positionAttribute,
+      positionBuffer,
+      colorBuffer,
+      trailColor,
     }
   })
 
 const updateArcTrail = (arcObject, elapsedMs) => {
-  const { points, trail, particle, pulse, offset, positionBuffer, colorBuffer } = arcObject
+  const {
+    points,
+    trail,
+    particle,
+    pulse,
+    offset,
+    positionAttribute,
+    colorAttribute,
+    positionBuffer,
+    colorBuffer,
+    trailColor,
+  } = arcObject
   const totalPoints = points.length
   const progress = ((elapsedMs + offset) % ARC_DURATION) / ARC_DURATION
   const headIndex = Math.max(1, Math.floor(progress * (totalPoints - 1)))
   const startIndex = Math.max(0, headIndex - ARC_TRAIL_LENGTH + 1)
-  const visiblePoints = points.slice(startIndex, headIndex + 1)
-  const visibleCount = visiblePoints.length
+  const visibleCount = headIndex - startIndex + 1
 
   if (!visibleCount) return
 
   for (let index = 0; index < visibleCount; index += 1) {
-    const point = visiblePoints[index]
+    const point = points[startIndex + index]
     const bufferIndex = index * 3
     const intensity = (index + 1) / visibleCount
+    const colorIntensity = 0.25 + intensity * 0.75
 
     positionBuffer[bufferIndex] = point.x
     positionBuffer[bufferIndex + 1] = point.y
     positionBuffer[bufferIndex + 2] = point.z
 
-    const color = new THREE.Color(arcObject.arc.color).multiplyScalar(0.25 + intensity * 0.75)
-    colorBuffer[bufferIndex] = color.r
-    colorBuffer[bufferIndex + 1] = color.g
-    colorBuffer[bufferIndex + 2] = color.b
+    colorBuffer[bufferIndex] = trailColor.r * colorIntensity
+    colorBuffer[bufferIndex + 1] = trailColor.g * colorIntensity
+    colorBuffer[bufferIndex + 2] = trailColor.b * colorIntensity
   }
 
-  // Rebuild only the currently visible trail slice so each arc keeps a moving head
-  // without storing full-length geometry for every frame.
-  trail.geometry.setAttribute(
-    'position',
-    new THREE.BufferAttribute(positionBuffer.slice(0, visibleCount * 3), 3),
-  )
-  trail.geometry.setAttribute(
-    'color',
-    new THREE.BufferAttribute(colorBuffer.slice(0, visibleCount * 3), 3),
-  )
-  trail.geometry.computeBoundingSphere()
+  trail.geometry.setDrawRange(0, visibleCount)
+  positionAttribute.needsUpdate = true
+  colorAttribute.needsUpdate = true
 
   const headPoint = points[headIndex]
   particle.position.copy(headPoint)

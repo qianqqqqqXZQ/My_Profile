@@ -1,5 +1,12 @@
 # Codex Task Plans
 
+## Current Task: Reuse Contact Globe Arc Buffers
+
+- [x] Inspect the current arc trail geometry update path.
+- [x] Replace per-frame BufferAttribute recreation and `slice()` allocation with fixed dynamic buffers.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
 ## Current Task: Lazy Load ContactGlobe Chunk
 
 - [x] Replace the static `ContactGlobe` import with a React lazy dynamic import.

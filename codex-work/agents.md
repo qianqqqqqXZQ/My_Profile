@@ -42,6 +42,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the ContactGlobe delayed initialization task: `npm run lint` and `npm run build`.
 - `generated-site/src/pages/ContactPage.jsx` lazy-loads `ContactGlobe` with `React.lazy()` and `Suspense fallback={null}` after the existing idle/timer delay. Production build now emits a separate `ContactGlobe-*.js` chunk, so the contact globe scene code is not loaded through the static page import.
 - Latest verification commands run for the ContactGlobe lazy-load task: `npm run lint`, `npm run build`, and a `/contact` HTTP 200 check against the local Vite server.
+- `generated-site/src/components/contactGlobeScene.js` now creates fixed dynamic `BufferAttribute`s for each contact globe arc trail and updates their underlying typed arrays with `setDrawRange()` instead of recreating attributes with `slice()` every frame. Arc trail colors also reuse a cached `THREE.Color`.
+- Latest verification commands run for the ContactGlobe arc-buffer reuse task: `npm run lint`, `npm run build`, and a `/contact` HTTP 200 check against the local Vite server.
 - `generated-site/src/pages/ProfilePage.jsx` now upgrades only the `Shuffle Crew / Vice Captain` campus activity entry from a placeholder frame to a single clickable cover photo.
 - Clicking that single side photo now opens a full gallery modal whose main interaction is a local `generated-site/src/components/Stack.jsx` card stack powered by the `motion` package.
 - The expanded gallery no longer uses the previous previous/next buttons or thumbnail filmstrip; users browse by clicking or dragging the top stack card.
