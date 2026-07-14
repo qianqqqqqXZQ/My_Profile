@@ -1,5 +1,12 @@
 # Codex Task Plans
 
+## Current Task: Delay ContactGlobe Initialization
+
+- [x] Add a delayed render state for the Contact globe background.
+- [x] Use browser idle time when available, with a short timer fallback.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
 ## Current Task: Add FadeContent To Contact Hero Text
 
 - [x] Add the React Bits `FadeContent` component to the React component directory.
