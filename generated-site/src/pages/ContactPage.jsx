@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ContactBrandIcon from '../components/ContactBrandIcon'
 import ContactGlobe from '../components/ContactGlobe'
+import FadeContent from '../components/FadeContent'
 import ReadyChromaGrid from '../components/ReadyChromaGrid'
 import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
@@ -144,8 +145,12 @@ function ContactPage({ language }) {
       <section ref={heroRef} className="contact-hero">
         <div className="section-shell contact-hero-shell">
           <div className="contact-hero-copy">
-            <h1>{copy.hero.title}</h1>
-            <p className="page-lead">{copy.hero.summary}</p>
+            <FadeContent blur duration={1000} ease="power2.out" threshold={0.2}>
+              <h1>{copy.hero.title}</h1>
+            </FadeContent>
+            <FadeContent blur duration={1000} delay={180} ease="power2.out" threshold={0.2}>
+              <p className="page-lead">{copy.hero.summary}</p>
+            </FadeContent>
           </div>
         </div>
       </section>

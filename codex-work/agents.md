@@ -36,6 +36,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - `generated-site/src/components/ContactBrandIcon.jsx` now contains rebuilt SVG variants for Gmail, Outlook, GitHub, and WeChat with monochrome idle rendering and chroma-triggered brand-color reveal on the contact page.
 - `generated-site/src/pages/ContactPage.jsx` injects a dedicated card theme order for the contact grid: Gmail red, Outlook blue, GitHub gold, WeChat green. `generated-site/src/pages/ReadyPage.jsx` still uses the original shared palette.
 - The contact-card chroma palette and the contact logos are intentionally decoupled: card hover rendering follows the requested four card colors, while each SVG logo always shows its own native brand appearance.
+- `generated-site/src/components/FadeContent.jsx` contains the React Bits GSAP/ScrollTrigger fade wrapper. `generated-site/src/pages/ContactPage.jsx` wraps the Contact hero title and lead copy in `FadeContent` with blur enabled and a slight lead-text delay.
+- Latest verification commands run for the Contact hero FadeContent task: `npm run lint` and `npm run build`.
 - `generated-site/src/pages/ProfilePage.jsx` now upgrades only the `Shuffle Crew / Vice Captain` campus activity entry from a placeholder frame to a single clickable cover photo.
 - Clicking that single side photo now opens a full gallery modal whose main interaction is a local `generated-site/src/components/Stack.jsx` card stack powered by the `motion` package.
 - The expanded gallery no longer uses the previous previous/next buttons or thumbnail filmstrip; users browse by clicking or dragging the top stack card.

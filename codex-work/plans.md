@@ -1,5 +1,12 @@
 # Codex Task Plans
 
+## Current Task: Add FadeContent To Contact Hero Text
+
+- [x] Add the React Bits `FadeContent` component to the React component directory.
+- [x] Wrap the Contact hero title and lead text with the fade animation.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
 ## Current Task: Add Dancing Dance Hero Title
 
 - [x] Inspect the current Dance page video hero and available animation/style patterns.
