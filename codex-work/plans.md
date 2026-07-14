@@ -1,12 +1,68 @@
 # Codex Task Plans
 
+## Current Task: Add Dancing Dance Hero Title
+
+- [x] Inspect the current Dance page video hero and available animation/style patterns.
+- [x] Add `Welcome to My Dance Space` as an animated React hero title.
+- [x] Style the title so letters bounce from the left into the center and remain readable on desktop and mobile.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Make Dance Hero Letters Jump From Offscreen Left
+
+- [x] Adjust the Dance hero title animation so letters begin outside the left edge of the viewport.
+- [x] Preserve the centered final title layout and continuing bounce.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Make Dance Hero Title Jump In As One Row
+
+- [x] Replace per-letter offscreen entry with a single-row title animation.
+- [x] Keep the full title arranged in one line while it slowly jumps from offscreen left to center.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Make Dance Hero Title Walk In Smoothly In Two Rows
+
+- [x] Arrange the Dance hero title into two fixed rows.
+- [x] Replace the stepped hop-in animation with a smoother walking-style entrance from offscreen left.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Add Dance Video Eyebrow To Dance Hero
+
+- [x] Match the Academic hero eyebrow placement above the Dance hero title.
+- [x] Add a small `DANCE VIDEO` label that moves with the smooth title entrance.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
 ## Current Task: Add Academic Background Module
 
-- [ ] Locate the current research section on the Academic/Experience page.
-- [ ] Add a new Academic Background module above Current Research Interests with the requested GPA, language, and course content.
-- [ ] Add responsive styling for the academic background details and long course list.
-- [ ] Run `npm run lint` and `npm run build`, then review the diff.
-- [ ] Update working notes after validation.
+- [x] Locate the current research section on the Academic/Experience page.
+- [x] Add a new Academic Background module above Current Research Interests with the requested GPA, language, and course content.
+- [x] Add responsive styling for the academic background details and long course list.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: English Academic Background Copy
+
+- [x] Convert the Academic Background module copy to English.
+- [x] Add the requested English description below the module title.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Resize Academic Background Heading
+
+- [x] Match the Academic Background heading size to the other module headings.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
+
+## Current Task: Localize Academic Background Module
+
+- [x] Add Chinese copy for the Academic Background module.
+- [x] Render the module copy from the current page language.
+- [x] Run `npm run lint` and `npm run build`, then review the diff.
+- [x] Update working notes after validation.
 
 ## Current Task: Replace Dance Hero Video Again
 
