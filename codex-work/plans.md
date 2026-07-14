@@ -1,5 +1,12 @@
 # Codex Task Plans
 
+## Current Task: Lazy Load ContactGlobe Chunk
+
+- [x] Replace the static `ContactGlobe` import with a React lazy dynamic import.
+- [x] Render the lazy globe only after the existing idle/timer delay.
+- [x] Run `npm run lint` and `npm run build`, then confirm ContactGlobe/Three.js split into a separate build chunk.
+- [x] Update working notes after validation.
+
 ## Current Task: Delay ContactGlobe Initialization
 
 - [x] Add a delayed render state for the Contact globe background.

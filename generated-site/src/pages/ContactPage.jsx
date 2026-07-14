@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import ContactBrandIcon from '../components/ContactBrandIcon'
-import ContactGlobe from '../components/ContactGlobe'
 import FadeContent from '../components/FadeContent'
 import ReadyChromaGrid from '../components/ReadyChromaGrid'
 import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
+
+const ContactGlobe = lazy(() => import('../components/ContactGlobe'))
 
 const CONTACT_CARD_THEMES = [
   {
@@ -172,7 +173,11 @@ function ContactPage({ language }) {
     <div className="page-route page-contact">
       <div className="page-contact-background" aria-hidden="true">
         <div className="contact-hero-orbit" />
-        {shouldRenderGlobe ? <ContactGlobe paused={!isHeroVisible} /> : null}
+        {shouldRenderGlobe ? (
+          <Suspense fallback={null}>
+            <ContactGlobe paused={!isHeroVisible} />
+          </Suspense>
+        ) : null}
         <div className="contact-hero-scrim" />
         <div className="contact-hero-noise" />
       </div>

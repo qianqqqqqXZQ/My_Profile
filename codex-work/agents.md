@@ -40,6 +40,8 @@ Run commands from `C:\Users\asus\Desktop\My_CV_new\generated-site`.
 - Latest verification commands run for the Contact hero FadeContent task: `npm run lint` and `npm run build`.
 - `generated-site/src/pages/ContactPage.jsx` delays mounting `ContactGlobe` until `requestIdleCallback` runs, with a 600ms idle timeout and a 450ms `setTimeout` fallback for browsers without idle callbacks. This lets Contact hero text paint before the Three.js globe initializes.
 - Latest verification commands run for the ContactGlobe delayed initialization task: `npm run lint` and `npm run build`.
+- `generated-site/src/pages/ContactPage.jsx` lazy-loads `ContactGlobe` with `React.lazy()` and `Suspense fallback={null}` after the existing idle/timer delay. Production build now emits a separate `ContactGlobe-*.js` chunk, so the contact globe scene code is not loaded through the static page import.
+- Latest verification commands run for the ContactGlobe lazy-load task: `npm run lint`, `npm run build`, and a `/contact` HTTP 200 check against the local Vite server.
 - `generated-site/src/pages/ProfilePage.jsx` now upgrades only the `Shuffle Crew / Vice Captain` campus activity entry from a placeholder frame to a single clickable cover photo.
 - Clicking that single side photo now opens a full gallery modal whose main interaction is a local `generated-site/src/components/Stack.jsx` card stack powered by the `motion` package.
 - The expanded gallery no longer uses the previous previous/next buttons or thumbnail filmstrip; users browse by clicking or dragging the top stack card.
