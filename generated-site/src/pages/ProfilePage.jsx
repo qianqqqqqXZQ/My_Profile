@@ -238,12 +238,12 @@ function ProfilePage() {
           <main>
             <section id="off-campus-activities" className="content-section course-activities-section">
               <div className="section-shell">
-                <div className="section-header">
-                  <p className="eyebrow">Off-Campus Activities</p>
-                  <h2>External practice, competitions, and community engagement</h2>
+                <div className="section-header profile-off-campus-header">
+                  <p className="eyebrow">Experience</p>
+                  <h2>Social Activities</h2>
                   <p className="section-intro">
-                    A dedicated section for internships, volunteering, competitions, and
-                    other experience that happens beyond the university setting.
+                    The following are some of the activities I have participated in off
+                    campus.
                   </p>
                 </div>
 

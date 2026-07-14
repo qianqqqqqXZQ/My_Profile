@@ -2320,7 +2320,8 @@
   padding-top: clamp(220px, 26svh, 340px);
 }
 
-.profile-campus-header .section-intro {
+.profile-campus-header .section-intro,
+.profile-off-campus-header .section-intro {
   margin-top: 24px;
 }
 
