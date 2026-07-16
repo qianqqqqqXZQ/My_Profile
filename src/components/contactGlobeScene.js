@@ -104,11 +104,11 @@ const earthFragmentShader = /* glsl */ `
 const GLOBE_RADIUS = 100
 const ARC_DURATION = 2600
 const ARC_TRAIL_LENGTH = 22
-const POINT_TEXTURE = '/contact-globe/dot.png'
-const EARTH_DAY_TEXTURE = '/contact-globe/day.jpg'
-const EARTH_NIGHT_TEXTURE = '/contact-globe/night.jpg'
-const EARTH_SPECULAR_TEXTURE = '/contact-globe/specularClouds.jpg'
-const COUNTRIES_URL = '/contact-globe/globe.json'
+const POINT_TEXTURE = '/media/contact-globe/dot.png'
+const EARTH_DAY_TEXTURE = '/media/contact-globe/day.jpg'
+const EARTH_NIGHT_TEXTURE = '/media/contact-globe/night.jpg'
+const EARTH_SPECULAR_TEXTURE = '/media/contact-globe/specularClouds.jpg'
+const COUNTRIES_URL = '/media/contact-globe/globe.json'
 
 const clampDpr = () => Math.min(window.devicePixelRatio || 1, 1.6)
 

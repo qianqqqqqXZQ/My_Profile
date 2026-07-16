@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import personImage from '../../../img/home-hero/person-source.jpg'
-import armorImage from '../../../img/home-hero/armor-source.jpg'
+import personImage from '../assets/home-hero/person-source.jpg'
+import armorImage from '../assets/home-hero/armor-source.jpg'
 import './PhotoLens.css'
 
 const FOLLOW_HALF_LIFE = 0.06

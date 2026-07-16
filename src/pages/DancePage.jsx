@@ -11,7 +11,7 @@ function DancePage() {
     <div className="page-route page-dance">
       <section className="dance-hero" aria-label="Dance video hero">
         <video className="dance-hero-video" autoPlay muted loop playsInline aria-hidden="true">
-          <source src="/generated/dance/dance-hero.mp4" type="video/mp4" />
+          <source src="/media/video/dance-hero.mp4" type="video/mp4" />
         </video>
         <div className="dance-hero-scrim" />
         <div className="dance-hero-title-shell">

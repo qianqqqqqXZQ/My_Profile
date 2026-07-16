@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import './App.css'
+import './styles/App.css'
 import { BackgroundAudioProvider } from './components/BackgroundAudioManager'
 import HomeLanguageSelector from './components/HomeLanguageSelector'
 import MuteToggleButton from './components/MuteToggleButton'

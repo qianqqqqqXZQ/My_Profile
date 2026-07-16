@@ -221,7 +221,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for Zhang Shu Senior High School Student Union president experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/generated/campus-activity-covers/zhangshu-middle-school-cover.jpg',
+      src: '/media/images/campus-activity-covers/zhangshu-middle-school-cover.jpg',
       alt: 'Zhangshu Senior High School Student Union logo centered on a white cover.',
     },
   },
@@ -236,7 +236,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for University of Nottingham Ningbo China Student Union Public Relation Office experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/generated/campus-activity-covers/unnc-student-union-cover.jpg',
+      src: '/media/images/campus-activity-covers/unnc-student-union-cover.jpg',
       alt: 'UNNC Students Union logo centered on a white cover.',
     },
   },
@@ -251,7 +251,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for UNNC Department of Campus Life administrative internship',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/generated/unnc-intern/department-of-campus-life.jpg',
+      src: '/media/images/unnc-intern/department-of-campus-life.jpg',
       alt: 'UNNC Department of Campus Life sign used for the administrative internship entry.',
     },
   },
@@ -268,76 +268,76 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/generated/campus-activity-covers/shuffle-crew-cover.jpg',
+      src: '/media/images/campus-activity-covers/shuffle-crew-cover.jpg',
       alt: 'Shuffle Crew logo centered on a black cover.',
     },
     photos: [
       {
-        src: '/generated/shuffle-crew/shuffle-crew-01.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-01.jpg',
         alt: 'Shuffle Crew stage performance under red and blue lighting with white masks.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-02.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-02.jpg',
         alt: 'Shuffle Crew dancer standing in a spotlight during a dark stage performance.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-03.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-03.jpg',
         alt: 'Vice captain leading a Shuffle Crew routine in warm stage lighting.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-04.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-04.jpg',
         alt: 'Wide dark stage composition featuring Shuffle Crew in a focused spotlight.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-05.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-05.jpg',
         alt: 'Masked Shuffle Crew members posed on a dimly lit stage.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-06.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-06.jpg',
         alt: 'Shuffle Crew vice captain performing center stage with masked dancers.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-07.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-07.jpg',
         alt: 'Portrait-oriented stage photo of two masked Shuffle Crew performers.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-08.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-08.jpg',
         alt: 'Full Shuffle Crew formation performing in front of a vivid blue backdrop.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-09.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-09.jpg',
         alt: 'Shuffle Crew group performance framed by bold red lighting and masks.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-10.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-10.jpg',
         alt: 'Campus stage dance performance with a breakdance move at center stage.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-11.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-11.jpg',
         alt: 'Vice captain leading a trio dance performance on the UNNC stage.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-12.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-12.jpg',
         alt: 'Solo-focused campus performance image with supporting dancers behind.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-13.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-13.jpg',
         alt: 'Group dance photo with colorful costumes and stage lights at UNNC.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-14.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-14.jpg',
         alt: 'Outdoor campus showcase photo featuring a handstand move in front of a large audience.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-15.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-15.jpg',
         alt: 'Wide UNNC stage performance photo with the Shuffle Crew dancing beneath fireworks visuals.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-16.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-16.jpg',
         alt: 'Portrait-oriented campus stage performance highlighting a floorwork pose with another dancer behind.',
       },
       {
-        src: '/generated/shuffle-crew/shuffle-crew-17.jpg',
+        src: '/media/images/shuffle-crew/shuffle-crew-17.jpg',
         alt: 'Outdoor battle-style performance shot capturing a one-hand freeze before a crowd on campus.',
       },
     ],

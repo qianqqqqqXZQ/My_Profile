@@ -1,20 +1,20 @@
 # Personal CV Website
 
 This repository contains a personal portfolio / CV website built with React and Vite.
-The public-facing app lives in `generated-site/`.
 
 ## Repository Layout
 
-- `generated-site/`: main application source, static assets, and Vite configuration
-- `generated-site/src/pages/`: route-level pages
-- `generated-site/src/components/`: shared UI, animation, audio, and interaction components
-- `generated-site/src/content/siteContent.js`: structured content used by the routes
-- `generated-site/public/`: static assets served directly by Vite
+- `src/pages/`: route-level pages
+- `src/components/`: shared UI, animation, audio, and interaction components
+- `src/content/siteContent.js`: structured content used by the routes
+- `src/assets/`: imported assets bundled by Vite
+- `src/styles/`: global application styles
+- `public/`: static assets served directly by Vite
+- `public/media/`: public audio, video, image, and contact globe assets
 
 ## Development
 
 ```bash
-cd generated-site
 npm install
 npm run dev
 ```
@@ -22,7 +22,6 @@ npm run dev
 ## Validation
 
 ```bash
-cd generated-site
 npm run lint
 npm run build
 ```
