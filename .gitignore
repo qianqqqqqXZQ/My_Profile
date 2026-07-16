@@ -2,4 +2,5 @@ workspace-meta/
 generated-site/node_modules/
 generated-site/dist/
 generated-site/dist-ssr/
+codex-work/
 *.log
