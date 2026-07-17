@@ -3326,7 +3326,7 @@
   grid-column: 1 / -1;
 }
 
-.research-repository-button {
+.github-code-button--compact {
   justify-self: start;
   width: 122px;
   height: 122px;
@@ -3335,6 +3335,7 @@
   justify-content: center;
   padding: 12px;
   border-radius: 999px;
+  outline: none;
   background: #ffffff;
   color: #000000;
   transform: scale(0.5);
@@ -3346,20 +3347,29 @@
     color 240ms ease;
 }
 
-.research-repository-button svg {
+.github-code-button--compact svg {
   width: 98px;
   height: 98px;
 }
 
-.research-repository-button:hover,
-.research-repository-button:focus-visible {
+.github-code-button--compact .github-code-button__icon path {
+  fill: #000000;
+}
+
+.github-code-button--compact:hover,
+.github-code-button--compact:focus-visible {
   padding: 0;
   background: #000000;
   color: #ffffff;
   transform: scale(1);
 }
 
-.research-repository-button:focus-visible {
+.github-code-button--compact:hover .github-code-button__icon path,
+.github-code-button--compact:focus-visible .github-code-button__icon path {
+  fill: #ffffff;
+}
+
+.github-code-button--compact:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.8);
   outline-offset: 4px;
 }

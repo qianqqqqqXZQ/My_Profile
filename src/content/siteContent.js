@@ -426,9 +426,9 @@ export const researchExperience = [
         textZh: '开展对比实验，并使用 Dice、IoU 和推理速度等指标验证模型表现。',
       },
     ],
-    publicationStatus: '\u6b63\u5728\u4ee5\u7b2c\u4e8c\u4f5c\u8005\u8eab\u4efd\u6295\u7a3f\u81f3CVIU',
+    publicationStatus: 'Currently under submission to CVIU as the second author.',
     publicationStatusZh: '仍在进行中',
-    publicationStatusZhOverride: '\u6b63\u5728\u4ee5\u7b2c\u4e8c\u4f5c\u8005\u8eab\u4efd\u6295\u7a3f\u81f3CVIU',
+    publicationStatusZhOverride: 'Currently under submission to CVIU as the second author.',
     sortValue: 202505,
   },
   {
