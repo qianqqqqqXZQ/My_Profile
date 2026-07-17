@@ -598,7 +598,7 @@ function ExperiencePage({ language = 'en' }) {
                 {getLocalizedValue(selectedResearchExperience, 'title', language)}
               </h2>
               <div className="research-modal-meta">
-                  <span>{copy.timeLabel ?? 'Time'}: {getLocalizedValue(selectedResearchExperience, 'period', language)}</span>
+                <span>{copy.timeLabel ?? 'Time'}: {getLocalizedValue(selectedResearchExperience, 'period', language)}</span>
                 {selectedResearchExperience.supervisorUrl ? (
                   <a
                     href={selectedResearchExperience.supervisorUrl}
