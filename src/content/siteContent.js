@@ -400,6 +400,7 @@ export const researchExperience = [
     periodZh: '2025年5月 - 至今',
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
+    authorshipLabel: 'Paper: Second Author',
     logoSrc: 'https://www.nottingham.ac.uk/SiteElements/Images/uon-logo/UoN-Nottingham-Blue-mobile.svg',
     logoAlt: 'University of Nottingham logo',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',

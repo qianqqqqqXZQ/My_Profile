@@ -2891,6 +2891,23 @@
   border-color: rgba(255, 255, 255, 0.68);
 }
 
+.research-authorship-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(245, 244, 240, 0.78);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .research-card-action {
   display: inline-flex;
   align-items: center;

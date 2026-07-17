@@ -456,6 +456,9 @@ function ExperiencePage({ language = 'en' }) {
                               <p className="research-supervisor-text">{copy.supervisorLabel}: {item.supervisor}</p>
                             )
                           ) : null}
+                          {item.authorshipLabel ? (
+                            <span className="research-authorship-tag">{item.authorshipLabel}</span>
+                          ) : null}
                         </div>
                       </div>
                       {item.logoSrc ? (
