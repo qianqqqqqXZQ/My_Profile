@@ -3326,6 +3326,44 @@
   grid-column: 1 / -1;
 }
 
+.research-repository-button {
+  justify-self: start;
+  width: 122px;
+  height: 122px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #000000;
+  transform: scale(0.5);
+  transform-origin: left center;
+  transition:
+    transform 240ms ease,
+    padding 240ms ease,
+    background-color 240ms ease,
+    color 240ms ease;
+}
+
+.research-repository-button svg {
+  width: 98px;
+  height: 98px;
+}
+
+.research-repository-button:hover,
+.research-repository-button:focus-visible {
+  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  transform: scale(1);
+}
+
+.research-repository-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 4px;
+}
+
 .featured-card {
   display: grid;
   grid-template-columns: minmax(480px, 0.92fr) minmax(0, 1fr);

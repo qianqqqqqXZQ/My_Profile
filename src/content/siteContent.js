@@ -397,6 +397,7 @@ export const researchExperience = [
     title: 'Edge-Enhanced Dual-Stream Transformer for Small Polyp Segmentation',
     titleZh: '面向小息肉分割的边缘增强双流 Transformer',
     period: 'May. 2025-Present',
+    repositoryUrl: 'https://github.com/dashen2004/Edge-Enhanced-Dual-Stream-Transformer-for-Small-Polyp-Segmentation',
     periodZh: '2025年5月 - 至今',
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
@@ -425,8 +426,9 @@ export const researchExperience = [
         textZh: '开展对比实验，并使用 Dice、IoU 和推理速度等指标验证模型表现。',
       },
     ],
-    publicationStatus: 'Still in progress',
+    publicationStatus: '\u6b63\u5728\u4ee5\u7b2c\u4e8c\u4f5c\u8005\u8eab\u4efd\u6295\u7a3f\u81f3CVIU',
     publicationStatusZh: '仍在进行中',
+    publicationStatusZhOverride: '\u6b63\u5728\u4ee5\u7b2c\u4e8c\u4f5c\u8005\u8eab\u4efd\u6295\u7a3f\u81f3CVIU',
     sortValue: 202505,
   },
   {
