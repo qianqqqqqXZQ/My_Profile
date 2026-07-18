@@ -110,7 +110,7 @@ const EARTH_NIGHT_TEXTURE = '/media/contact-globe/night.jpg'
 const EARTH_SPECULAR_TEXTURE = '/media/contact-globe/specularClouds.jpg'
 const COUNTRIES_URL = '/media/contact-globe/globe.json'
 
-const clampDpr = () => Math.min(window.devicePixelRatio || 1, 1.6)
+const clampDpr = () => Math.min(window.devicePixelRatio || 1, 1.25)
 
 const latLngToVector3 = (lat, lng, radius) => {
   const phi = ((90 - lat) * Math.PI) / 180
@@ -156,7 +156,12 @@ const createCountries = (countriesData, radius) => {
     for (const polygon of polygons) {
       for (const ring of polygon) {
         if (!Array.isArray(ring) || ring.length < 2) continue
-        const points = ring.map(([lng, lat]) => latLngToVector3(lat, lng, radius + 0.15))
+        // The source GeoJSON is intentionally detailed. Sampling long rings keeps
+        // country outlines readable while avoiding thousands of tiny geometries.
+        const step = ring.length > 900 ? 4 : ring.length > 450 ? 3 : ring.length > 220 ? 2 : 1
+        const points = ring
+          .filter((_, index) => index % step === 0 || index === ring.length - 1)
+          .map(([lng, lat]) => latLngToVector3(lat, lng, radius + 0.15))
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
         group.add(new THREE.LineLoop(geometry, material))
       }
@@ -326,7 +331,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   camera.position.set(0, 62, 278)
 
   const renderer = new THREE.WebGLRenderer({
-    antialias: true,
+    antialias: window.innerWidth >= 900,
     alpha: true,
     powerPreference: 'high-performance',
   })
@@ -369,7 +374,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   // The earth uses a custom shader so day color, night emission, cloud highlights,
   // and atmospheric rim light can be tuned independently from the rest of the scene.
   const earth = new THREE.Mesh(
-    new THREE.SphereGeometry(GLOBE_RADIUS, 96, 96),
+    new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64),
     new THREE.ShaderMaterial({
       uniforms: {
         uDayTexture: { value: earthDayTexture },
@@ -391,7 +396,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   globeRoot.add(earth)
 
   const atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(GLOBE_RADIUS * 1.08, 96, 96),
+    new THREE.SphereGeometry(GLOBE_RADIUS * 1.08, 64, 64),
     new THREE.ShaderMaterial({
       vertexShader: atmosphereVertexShader,
       fragmentShader: atmosphereFragmentShader,
@@ -471,6 +476,14 @@ export function createContactGlobeScene({ container, paused = false }) {
   window.addEventListener('resize', resize)
   resize()
 
+  const scheduleIdle = (callback) => {
+    if ('requestIdleCallback' in window) {
+      return { type: 'idle', id: window.requestIdleCallback(callback, { timeout: 2200 }) }
+    }
+    return { type: 'timeout', id: window.setTimeout(callback, 1200) }
+  }
+
+  let countriesSchedule
   fetch(COUNTRIES_URL)
     .then((response) => {
       if (!response.ok) {
@@ -482,8 +495,11 @@ export function createContactGlobeScene({ container, paused = false }) {
       if (destroyed) {
         return
       }
-      const countriesLines = createCountries(countriesData, GLOBE_RADIUS)
-      countriesGroup.add(countriesLines)
+      countriesSchedule = scheduleIdle(() => {
+        if (!destroyed) {
+          countriesGroup.add(createCountries(countriesData, GLOBE_RADIUS))
+        }
+      })
     })
     .catch(() => {
       // Keep the hero functional even if the auxiliary country-outline data fails to load.
@@ -532,6 +548,13 @@ export function createContactGlobeScene({ container, paused = false }) {
     destroy() {
       destroyed = true
       window.cancelAnimationFrame(frameId)
+      if (countriesSchedule) {
+        if (countriesSchedule.type === 'idle') {
+          window.cancelIdleCallback(countriesSchedule.id)
+        } else {
+          window.clearTimeout(countriesSchedule.id)
+        }
+      }
       resizeObserver?.disconnect()
       window.removeEventListener('resize', resize)
 
