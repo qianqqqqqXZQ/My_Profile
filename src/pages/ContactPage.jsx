@@ -185,10 +185,10 @@ function ContactPage({ language }) {
       <section ref={heroRef} className="contact-hero">
         <div className="section-shell contact-hero-shell">
           <div className="contact-hero-copy">
-            <FadeContent blur duration={1000} ease="power2.out" threshold={0.2}>
+            <FadeContent duration={1000} ease="power2.out" threshold={0.2}>
               <h1>{copy.hero.title}</h1>
             </FadeContent>
-            <FadeContent blur duration={1000} delay={180} ease="power2.out" threshold={0.2}>
+            <FadeContent duration={1000} delay={180} ease="power2.out" threshold={0.2}>
               <p className="page-lead">{copy.hero.summary}</p>
             </FadeContent>
           </div>
