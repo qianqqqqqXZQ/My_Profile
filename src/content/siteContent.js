@@ -349,7 +349,19 @@ export const campusActivities = [
   },
 ]
 
-export const offCampusActivities = []
+export const offCampusActivities = [
+  {
+    period: 'Ongoing',
+    organization: 'Off-Campus Hip-Hop Dance Community',
+    role: 'Dance Event Organizer, Judge & Guest',
+    bullets: [
+      'Organized and co-hosted multiple Hip-Hop dance events and competitions to strengthen the Hip-Hop dance community across universities in Ningbo, including collaborations with brands such as adidas.',
+      'Invited to serve as a judge or guest at a range of public dance events, while earning multiple awards in external competitions as both an individual dancer and a team member.',
+    ],
+    photoAlt: 'Reserved photo area for off-campus Hip-Hop dance activities',
+    photoLabel: 'Photo Placeholder',
+  },
+]
 
 export const contactLinks = [
   {
