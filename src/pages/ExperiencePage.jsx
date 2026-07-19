@@ -74,6 +74,7 @@ const pageCopy = {
     workingTitle: 'Working Experience',
     workingIntro: 'These are my computer science-related internship and work experiences in companies.',
     workingType: 'Internship',
+    leaderLabel: 'Leader',
     projectEyebrow: 'Project',
     projectTitle: 'Project Experience',
     projectIntro: 'The following are personal and team projects I have participated in.',
@@ -171,7 +172,9 @@ const academicBackgroundCopy = {
     eyebrow: 'Academic Background',
     title: 'My Basic Academic Background',
     description: 'The following is some of my basic personal academic information.',
-    coursesTitle: 'Undergraduate Courses Taken',
+    coursesTitle: 'Undergraduate Coursework',
+    professionalCoursesTitle: 'Professional Courses',
+    englishCoursesTitle: 'English Courses',
   },
   zh: {
     eyebrow: '\u5b66\u672f\u80cc\u666f',
@@ -181,7 +184,7 @@ const academicBackgroundCopy = {
   },
 }
 
-const undergraduateCourses = [
+const professionalCourses = [
   'Computer Fundamentals',
   'Databases and Interfaces',
   'Foundation Algebra for Physical Science & Engineering',
@@ -197,9 +200,28 @@ const undergraduateCourses = [
   'Systems and Architecture',
 ]
 
+const englishCourses = [
+  'Oral Communication Skills A',
+  'Oral Communication Skills B',
+  'Reading and Writing in Academic Contexts',
+  'English in Specific Academic Contexts B',
+]
+
+const courseGroupTitles = {
+  en: {
+    professional: 'Professional Courses',
+    english: 'English Courses',
+  },
+  zh: {
+    professional: '\u4e13\u4e1a\u8bfe',
+    english: '\u82f1\u8bed\u8bfe',
+  },
+}
+
 function ExperiencePage({ language = 'en' }) {
   const copy = pageCopy[language] ?? pageCopy.en
   const academicCopy = academicBackgroundCopy[language] ?? academicBackgroundCopy.en
+  const courseTitles = courseGroupTitles[language] ?? courseGroupTitles.en
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [selectedResearchExperience, setSelectedResearchExperience] = useState(null)
@@ -339,11 +361,22 @@ function ExperiencePage({ language = 'en' }) {
 
               <div className="academic-course-list">
                 <h3>{academicCopy.coursesTitle}</h3>
-                <ul>
-                  {undergraduateCourses.map((course) => (
-                    <li key={course}>{course}</li>
-                  ))}
-                </ul>
+                <div className="academic-course-group">
+                  <h4>{courseTitles.professional}</h4>
+                  <ul>
+                    {professionalCourses.map((course) => (
+                      <li key={course}>{course}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="academic-course-group">
+                  <h4>{courseTitles.english}</h4>
+                  <ul>
+                    {englishCourses.map((course) => (
+                      <li key={course}>{course}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </article>
           </div>
@@ -524,6 +557,11 @@ function ExperiencePage({ language = 'en' }) {
                           <div className="working-company-copy">
                             <strong className="working-company-name">{getLocalizedValue(item, 'company', language)}</strong>
                             <h3>{getLocalizedValue(item, 'role', language)}</h3>
+                            {item.leader ? (
+                              <p className="working-leader">
+                                {language === 'zh' ? '\u8d1f\u8d23\u4eba' : copy.leaderLabel}: {getLocalizedValue(item, 'leader', language)}
+                              </p>
+                            ) : null}
                           </div>
                         </div>
 

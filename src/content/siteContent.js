@@ -479,11 +479,14 @@ export const workingExperience = [
     logoSrc:
       'https://ir.pony.ai/sites/g/files/knoqqb104676/themes/site/client_site/dist/images/logo.png',
     logoAlt: 'Pony.ai logo',
+    leader: 'Bo Xiao',
     bullets: [
-      'Built Pony World using 3D reconstruction knowledge.',
+      'Research and reproduce VGGT and its variants, including QVGGT, InfiniteVGGT, and VGGT4D, with a focus on adapting VGGT for autonomous driving deployment through model quantization and a streaming architecture.',
+      'Still in work.',
     ],
-    bulletsZh: [
-      '运用 3D 重建相关知识参与构建 Pony World。',
+    bulletsZhOverride: [
+      'Research and reproduce VGGT and its variants, including QVGGT, InfiniteVGGT, and VGGT4D, with a focus on adapting VGGT for autonomous driving deployment through model quantization and a streaming architecture.',
+      'Still in work.',
     ],
     sortValue: 202607,
   },
