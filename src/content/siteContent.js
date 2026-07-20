@@ -357,6 +357,8 @@ export const offCampusActivities = [
     bullets: [
       'Organized and co-hosted multiple Hip-Hop dance events and competitions to strengthen the Hip-Hop dance community across universities in Ningbo, including collaborations with brands such as adidas.',
       'Invited to serve as a judge or guest at a range of public dance events, while earning multiple awards in external competitions as both an individual dancer and a team member.',
+      'Current member of Ningbo Twenty Two Locking Crew, invited with the team to participate in numerous public performances and film a major music video.',
+      "Dance Instructor at D-Day Dance Studio, Jiangxi, responsible for choreographing instructors' showcase performances for the studio's anniversary celebrations over multiple years.",
     ],
     photoAlt: 'Reserved photo area for off-campus Hip-Hop dance activities',
     photoLabel: 'Photo Placeholder',
