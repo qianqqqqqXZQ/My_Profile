@@ -12,12 +12,12 @@ import {
 import './HomePage.css'
 
 const dailyPhotoPlaceholders = [
-  'https://picsum.photos/seed/daily-photo-01/1200/900?grayscale',
-  'https://picsum.photos/seed/daily-photo-02/1200/900?grayscale',
-  'https://picsum.photos/seed/daily-photo-03/1200/900?grayscale',
-  'https://picsum.photos/seed/daily-photo-04/1200/900?grayscale',
-  'https://picsum.photos/seed/daily-photo-05/1200/900?grayscale',
-  'https://picsum.photos/seed/daily-photo-06/1200/900?grayscale',
+  '/media/images/daily-photo/daily-photo-01.jpg',
+  '/media/images/daily-photo/daily-photo-02.jpg',
+  '/media/images/daily-photo/daily-photo-03.jpg',
+  '/media/images/daily-photo/daily-photo-04.jpg',
+  '/media/images/daily-photo/daily-photo-05.jpg',
+  '/media/images/daily-photo/daily-photo-06.jpg',
   'https://picsum.photos/seed/daily-photo-07/1200/900?grayscale',
   'https://picsum.photos/seed/daily-photo-08/1200/900?grayscale',
 ]
