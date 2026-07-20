@@ -2332,6 +2332,10 @@
   z-index: 1;
 }
 
+.photo-collection-section .section-intro {
+  margin-top: 24px;
+}
+
 .photo-collection-gallery {
   height: clamp(390px, 52vw, 620px);
   min-height: 390px;

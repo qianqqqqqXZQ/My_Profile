@@ -281,7 +281,7 @@ function ProfilePage() {
                 <div className="section-header">
                   <p className="eyebrow">Photo</p>
                   <h2>Daily Photo Collection</h2>
-                  <p className="section-intro">以下是我日常生活中的一些照片</p>
+                  <p className="section-intro">Here are some photos from my daily life.</p>
                 </div>
 
                 <div className="photo-collection-gallery">
