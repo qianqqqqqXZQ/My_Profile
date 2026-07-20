@@ -1,15 +1,26 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
+import CircularGallery from '../components/CircularGallery'
 import ProfileLanyard from '../components/ProfileLanyard'
 import Stack from '../components/Stack'
 import {
   campusActivities,
   offCampusActivities,
   profileHighlights,
-  strengths,
 } from '../content/siteContent'
 import './HomePage.css'
+
+const dailyPhotoPlaceholders = [
+  'https://picsum.photos/seed/daily-photo-01/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-02/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-03/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-04/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-05/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-06/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-07/1200/900?grayscale',
+  'https://picsum.photos/seed/daily-photo-08/1200/900?grayscale',
+]
 
 function ProfilePage() {
   const heroRef = useRef(null)
@@ -265,25 +276,16 @@ function ProfilePage() {
               </div>
             </section>
 
-            <section className="content-section strengths-section">
+            <section className="content-section photo-collection-section">
               <div className="section-shell">
                 <div className="section-header">
-                  <p className="eyebrow">Strengths</p>
-                  <h2>Core qualities</h2>
-                  <p className="section-intro">
-                    A concise set of profile statements that now sits beneath the hero instead of
-                    competing with it.
-                  </p>
+                  <p className="eyebrow">Photo</p>
+                  <h2>Daily Photo Collection</h2>
+                  <p className="section-intro">以下是我日常生活中的一些照片</p>
                 </div>
 
-                <div className="strength-grid">
-                  {strengths.map((item, index) => (
-                    <article key={item.title} className="strength-card card-surface">
-                      <span className="strength-index">0{index + 1}</span>
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                    </article>
-                  ))}
+                <div className="photo-collection-gallery">
+                  <CircularGallery images={dailyPhotoPlaceholders} />
                 </div>
               </div>
             </section>

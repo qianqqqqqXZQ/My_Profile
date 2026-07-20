@@ -2322,8 +2322,26 @@
 
 .projects-section .section-header,
 .course-activities-section .section-header,
-.strengths-section .section-header {
+.strengths-section .section-header,
+.photo-collection-section .section-header {
   margin-bottom: 36px;
+}
+
+.photo-collection-section {
+  position: relative;
+  z-index: 1;
+}
+
+.photo-collection-gallery {
+  height: clamp(390px, 52vw, 620px);
+  min-height: 390px;
+}
+
+@media (max-width: 640px) {
+  .photo-collection-gallery {
+    height: 390px;
+    min-height: 0;
+  }
 }
 
 .course-activities-section {
