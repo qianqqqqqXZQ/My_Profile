@@ -524,10 +524,10 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-02',
-    img: 'https://picsum.photos/seed/dance-cover-02/900/1340?grayscale',
-    alt: 'Portrait placeholder for a dance video cover.',
-    aspectRatio: 0.67,
-    title: 'Stage Cut',
+    img: '/media/images/dance-covers/dance-cover-02.jpg',
+    alt: 'A dancer performing before an audience at an indoor dance event.',
+    aspectRatio: 0.75,
+    title: 'Judge Show',
     url: '',
   },
   {
