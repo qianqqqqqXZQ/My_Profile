@@ -483,11 +483,11 @@ export const workingExperience = [
     logoAlt: 'Pony.ai logo',
     leader: 'Bo Xiao',
     bullets: [
-      'Research and reproduce VGGT and its variants, including QVGGT, InfiniteVGGT, and VGGT4D, with a focus on adapting VGGT for autonomous driving deployment through model quantization and a streaming architecture.',
+      'Research VGGT and a range of VGGT-based 3D reconstruction variants to address autonomous-driving data-collection challenges, including visual occlusion and long-term data acquisition.',
       'Still in work.',
     ],
     bulletsZhOverride: [
-      'Research and reproduce VGGT and its variants, including QVGGT, InfiniteVGGT, and VGGT4D, with a focus on adapting VGGT for autonomous driving deployment through model quantization and a streaming architecture.',
+      'Research VGGT and a range of VGGT-based 3D reconstruction variants to address autonomous-driving data-collection challenges, including visual occlusion and long-term data acquisition.',
       'Still in work.',
     ],
     sortValue: 202607,
