@@ -888,54 +888,6 @@
   height: 8px;
 }
 
-.nav-links a:hover .nav-sparkle,
-.nav-links a:focus-visible .nav-sparkle {
-  opacity: 1;
-  filter: drop-shadow(0 0 10px rgba(255, 245, 223, 0.92));
-}
-
-.nav-links a:hover .nav-sparkle-1,
-.nav-links a:focus-visible .nav-sparkle-1 {
-  top: -72%;
-  left: -18%;
-  transform: translate(-50%, -50%) scale(1) rotate(-10deg);
-}
-
-.nav-links a:hover .nav-sparkle-2,
-.nav-links a:focus-visible .nav-sparkle-2 {
-  top: -22%;
-  left: 16%;
-  transform: translate(-50%, -50%) scale(1) rotate(10deg);
-}
-
-.nav-links a:hover .nav-sparkle-3,
-.nav-links a:focus-visible .nav-sparkle-3 {
-  top: 76%;
-  left: 28%;
-  transform: translate(-50%, -50%) scale(1) rotate(-4deg);
-}
-
-.nav-links a:hover .nav-sparkle-4,
-.nav-links a:focus-visible .nav-sparkle-4 {
-  top: 22%;
-  left: 84%;
-  transform: translate(-50%, -50%) scale(1) rotate(8deg);
-}
-
-.nav-links a:hover .nav-sparkle-5,
-.nav-links a:focus-visible .nav-sparkle-5 {
-  top: 22%;
-  left: 116%;
-  transform: translate(-50%, -50%) scale(1) rotate(14deg);
-}
-
-.nav-links a:hover .nav-sparkle-6,
-.nav-links a:focus-visible .nav-sparkle-6 {
-  top: 2%;
-  left: 62%;
-  transform: translate(-50%, -50%) scale(1) rotate(-14deg);
-}
-
 .nav-links a::after {
   content: '';
   position: absolute;
