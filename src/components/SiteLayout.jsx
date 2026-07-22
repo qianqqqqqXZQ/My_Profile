@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { FlagIcon } from './HomeLanguageSelector'
 import { navigationLinks } from '../content/siteContent'
+import { preloadContactGlobeAssets } from './contactGlobeAssets'
 
 const navSparkles = Array.from({ length: 6 }, (_, index) => index + 1)
 
@@ -86,6 +87,8 @@ function SiteLayout({ language, onLanguageChange }) {
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) => (isActive ? 'active' : undefined)}
+                onPointerEnter={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
+                onFocus={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
               >
                 <span className="nav-link-label">{item.label}</span>
                 <NavSparkles />

@@ -437,6 +437,12 @@
   z-index: 1;
   transform: scale(1.03);
   filter: saturate(1.1) contrast(1.04);
+  opacity: 0;
+  transition: opacity 560ms ease-out;
+}
+
+.contact-globe-canvas.is-ready {
+  opacity: 1;
 }
 
 .contact-hero-orbit {

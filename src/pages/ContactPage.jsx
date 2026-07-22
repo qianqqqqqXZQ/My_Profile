@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import ContactBrandIcon from '../components/ContactBrandIcon'
 import FadeContent from '../components/FadeContent'
 import ReadyChromaGrid from '../components/ReadyChromaGrid'
+import { preloadContactGlobeAssets } from '../components/contactGlobeAssets'
 import { contactPageContent } from '../content/siteContent'
 import wechatQrImage from '../assets/contact/wechat-qr.jpg'
 import '../components/ContactBrandIcon.css'
@@ -35,6 +36,7 @@ function ContactPage({ language }) {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [shouldRenderGlobe, setShouldRenderGlobe] = useState(false)
+  const [globeAssets, setGlobeAssets] = useState(null)
   const [isWechatModalOpen, setIsWechatModalOpen] = useState(false)
   const copy = contactPageContent[language] ?? contactPageContent.en
 
@@ -47,17 +49,26 @@ function ContactPage({ language }) {
     let timeoutId
     let idleCallbackId
 
-    const renderGlobe = () => {
-      if (!didCancel) {
-        setShouldRenderGlobe(true)
-      }
-    }
+    preloadContactGlobeAssets()
+      .then((assets) => {
+        if (didCancel) return
 
-    if ('requestIdleCallback' in window) {
-      idleCallbackId = window.requestIdleCallback(renderGlobe, { timeout: 600 })
-    } else {
-      timeoutId = window.setTimeout(renderGlobe, 450)
-    }
+        const renderGlobe = () => {
+          if (!didCancel) {
+            setGlobeAssets(assets)
+            setShouldRenderGlobe(true)
+          }
+        }
+
+        if ('requestIdleCallback' in window) {
+          idleCallbackId = window.requestIdleCallback(renderGlobe, { timeout: 600 })
+        } else {
+          timeoutId = window.setTimeout(renderGlobe, 0)
+        }
+      })
+      .catch(() => {
+        // The CSS background remains usable if optional WebGL assets cannot load.
+      })
 
     return () => {
       didCancel = true
@@ -175,7 +186,7 @@ function ContactPage({ language }) {
         <div className="contact-hero-orbit" />
         {shouldRenderGlobe ? (
           <Suspense fallback={null}>
-            <ContactGlobe paused={!isHeroVisible} />
+            <ContactGlobe assets={globeAssets} paused={!isHeroVisible} />
           </Suspense>
         ) : null}
         <div className="contact-hero-scrim" />

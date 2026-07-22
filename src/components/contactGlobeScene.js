@@ -104,12 +104,6 @@ const earthFragmentShader = /* glsl */ `
 const GLOBE_RADIUS = 100
 const ARC_DURATION = 2600
 const ARC_TRAIL_LENGTH = 22
-const POINT_TEXTURE = '/media/contact-globe/dot.png'
-const EARTH_DAY_TEXTURE = '/media/contact-globe/day.jpg'
-const EARTH_NIGHT_TEXTURE = '/media/contact-globe/night.jpg'
-const EARTH_SPECULAR_TEXTURE = '/media/contact-globe/specularClouds.jpg'
-const COUNTRIES_URL = '/media/contact-globe/globe.json'
-
 const clampDpr = () => Math.min(window.devicePixelRatio || 1, 1.25)
 
 const latLngToVector3 = (lat, lng, radius) => {
@@ -130,12 +124,14 @@ const createCurve = (start, end, arcAltitude = 0.25) => {
   return new THREE.QuadraticBezierCurve3(start, elevation, end)
 }
 
-const setTextureQuality = (texture, renderer) => {
-  texture.colorSpace = THREE.SRGBColorSpace
+const createTexture = (image, renderer, colorSpace = THREE.NoColorSpace) => {
+  const texture = new THREE.Texture(image)
+  texture.colorSpace = colorSpace
   texture.anisotropy = renderer.capabilities.getMaxAnisotropy()
   texture.wrapS = THREE.ClampToEdgeWrapping
   texture.wrapT = THREE.ClampToEdgeWrapping
   texture.needsUpdate = true
+  return texture
 }
 
 const createCountries = (countriesData, radius) => {
@@ -322,7 +318,7 @@ const updateArcTrail = (arcObject, elapsedMs) => {
   pulse.position.copy(headPoint)
 }
 
-export function createContactGlobeScene({ container, paused = false }) {
+export function createContactGlobeScene({ assets, container, paused = false, onReady }) {
   const scene = new THREE.Scene()
   scene.background = null
   scene.fog = new THREE.FogExp2('#02040a', 0.00125)
@@ -357,17 +353,10 @@ export function createContactGlobeScene({ container, paused = false }) {
   globeRoot.rotation.z = THREE.MathUtils.degToRad(-18)
   scene.add(globeRoot)
 
-  const textureLoader = new THREE.TextureLoader()
-  const earthDayTexture = textureLoader.load(EARTH_DAY_TEXTURE)
-  const earthNightTexture = textureLoader.load(EARTH_NIGHT_TEXTURE)
-  const earthSpecularTexture = textureLoader.load(EARTH_SPECULAR_TEXTURE)
-  const dotTexture = textureLoader.load(POINT_TEXTURE)
-  setTextureQuality(earthDayTexture, renderer)
-  setTextureQuality(earthNightTexture, renderer)
-  earthSpecularTexture.anisotropy = renderer.capabilities.getMaxAnisotropy()
-  earthSpecularTexture.wrapS = THREE.ClampToEdgeWrapping
-  earthSpecularTexture.wrapT = THREE.ClampToEdgeWrapping
-  earthSpecularTexture.needsUpdate = true
+  const earthDayTexture = createTexture(assets.day, renderer, THREE.SRGBColorSpace)
+  const earthNightTexture = createTexture(assets.night, renderer, THREE.SRGBColorSpace)
+  const earthSpecularTexture = createTexture(assets.specular, renderer)
+  const dotTexture = createTexture(assets.dot, renderer, THREE.SRGBColorSpace)
 
   const sunDirection = new THREE.Vector3(-1.1, 0.42, 0.95).normalize()
 
@@ -413,6 +402,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   )
   globeRoot.add(atmosphere)
   const countriesGroup = new THREE.Group()
+  countriesGroup.add(createCountries(assets.countries, GLOBE_RADIUS))
   globeRoot.add(countriesGroup)
 
   const pointGroup = createPointCloud(contactGlobePoints, dotTexture)
@@ -476,35 +466,6 @@ export function createContactGlobeScene({ container, paused = false }) {
   window.addEventListener('resize', resize)
   resize()
 
-  const scheduleIdle = (callback) => {
-    if ('requestIdleCallback' in window) {
-      return { type: 'idle', id: window.requestIdleCallback(callback, { timeout: 2200 }) }
-    }
-    return { type: 'timeout', id: window.setTimeout(callback, 1200) }
-  }
-
-  let countriesSchedule
-  fetch(COUNTRIES_URL)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to load countries data: ${response.status}`)
-      }
-      return response.json()
-    })
-    .then((countriesData) => {
-      if (destroyed) {
-        return
-      }
-      countriesSchedule = scheduleIdle(() => {
-        if (!destroyed) {
-          countriesGroup.add(createCountries(countriesData, GLOBE_RADIUS))
-        }
-      })
-    })
-    .catch(() => {
-      // Keep the hero functional even if the auxiliary country-outline data fails to load.
-    })
-
   const render = () => {
     if (destroyed) return
 
@@ -540,6 +501,7 @@ export function createContactGlobeScene({ container, paused = false }) {
   }
 
   render()
+  onReady?.()
 
   return {
     setPaused(nextPaused) {
@@ -548,13 +510,6 @@ export function createContactGlobeScene({ container, paused = false }) {
     destroy() {
       destroyed = true
       window.cancelAnimationFrame(frameId)
-      if (countriesSchedule) {
-        if (countriesSchedule.type === 'idle') {
-          window.cancelIdleCallback(countriesSchedule.id)
-        } else {
-          window.clearTimeout(countriesSchedule.id)
-        }
-      }
       resizeObserver?.disconnect()
       window.removeEventListener('resize', resize)
 
