@@ -10,6 +10,7 @@ const Particles = lazy(() => import('../components/Particles'))
 function HomePage({ language }) {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const heroRef = useRef(null)
+  const readyButtonRef = useRef(null)
   const touchStartYRef = useRef(null)
   const copy = homePageContent[language] ?? homePageContent.en
 
@@ -59,6 +60,72 @@ function HomePage({ language }) {
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchmove', preventTouchBounce)
       window.removeEventListener('keydown', preventKeyboardBounce)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !readyButtonRef.current) {
+      return undefined
+    }
+
+    const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    if (!supportsFinePointer.matches || prefersReducedMotion.matches) {
+      return undefined
+    }
+
+    const button = readyButtonRef.current
+    const maxDistance = 180
+    const maxPull = 8
+    let frameId = null
+    let pointer = null
+
+    const renderPull = () => {
+      frameId = null
+      if (!pointer) {
+        return
+      }
+
+      const rect = button.getBoundingClientRect()
+      const offsetX = pointer.x - (rect.left + rect.width / 2)
+      const offsetY = pointer.y - (rect.top + rect.height / 2)
+      const distance = Math.hypot(offsetX, offsetY)
+
+      if (distance >= maxDistance) {
+        button.style.setProperty('--magnetic-x', '0px')
+        button.style.setProperty('--magnetic-y', '0px')
+        return
+      }
+
+      const strength = (1 - distance / maxDistance) ** 2
+      button.style.setProperty('--magnetic-x', `${(offsetX / maxDistance) * maxPull * strength}px`)
+      button.style.setProperty('--magnetic-y', `${(offsetY / maxDistance) * maxPull * strength}px`)
+    }
+
+    const handlePointerMove = (event) => {
+      pointer = { x: event.clientX, y: event.clientY }
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(renderPull)
+      }
+    }
+
+    const resetPull = () => {
+      pointer = null
+      button.style.setProperty('--magnetic-x', '0px')
+      button.style.setProperty('--magnetic-y', '0px')
+    }
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    window.addEventListener('blur', resetPull)
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('blur', resetPull)
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId)
+      }
+      resetPull()
     }
   }, [])
 
@@ -152,7 +219,7 @@ function HomePage({ language }) {
               <p className="hero-summary hero-summary-home">{copy.summary}</p>
 
               <div className="hero-actions">
-                <Link className="ready-button" to="/ready" onClick={handleReady}>
+                <Link ref={readyButtonRef} className="ready-button" to="/ready" onClick={handleReady}>
                   {copy.ctaLabel}
                 </Link>
               </div>
