@@ -158,10 +158,21 @@ function ProfilePage() {
                     <span className="campus-photo-card campus-photo-card--single">
                       <span
                         className="campus-photo-card-backdrop"
-                        style={{ backgroundImage: `url(${coverPhoto.src})` }}
+                        style={{
+                          backgroundImage: `url(${coverPhoto.src})`,
+                          backgroundPosition: coverPhoto.objectPosition ?? 'center',
+                        }}
                         aria-hidden="true"
                       />
-                      <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
+                      <img
+                        src={coverPhoto.src}
+                        alt={coverPhoto.alt}
+                        loading="lazy"
+                        style={{
+                          objectFit: coverPhoto.objectFit ?? 'contain',
+                          objectPosition: coverPhoto.objectPosition ?? 'center',
+                        }}
+                      />
                     </span>
                     <span className="campus-photo-open-indicator">
                       {item.galleryLabel ?? `Open gallery / ${item.photos.length} photos`}
@@ -172,10 +183,21 @@ function ProfilePage() {
                     <span className="campus-photo-card campus-photo-card--single">
                       <span
                         className="campus-photo-card-backdrop"
-                        style={{ backgroundImage: `url(${coverPhoto.src})` }}
+                        style={{
+                          backgroundImage: `url(${coverPhoto.src})`,
+                          backgroundPosition: coverPhoto.objectPosition ?? 'center',
+                        }}
                         aria-hidden="true"
                       />
-                      <img src={coverPhoto.src} alt={coverPhoto.alt} loading="lazy" />
+                      <img
+                        src={coverPhoto.src}
+                        alt={coverPhoto.alt}
+                        loading="lazy"
+                        style={{
+                          objectFit: coverPhoto.objectFit ?? 'contain',
+                          objectPosition: coverPhoto.objectPosition ?? 'center',
+                        }}
+                      />
                     </span>
                   </div>
                 )}

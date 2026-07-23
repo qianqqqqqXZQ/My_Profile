@@ -359,14 +359,24 @@ export const offCampusActivities = [
       'Current member of Ningbo Twenty Two Locking Crew, invited with the team to participate in numerous public performances and film a major music video.',
       "Dance Instructor at D-Day Dance Studio, Jiangxi, responsible for choreographing instructors' showcase performances for the studio's anniversary celebrations over multiple years.",
     ],
-    photoAlt: 'Reserved photo area for off-campus Hip-Hop dance activities',
-    photoLabel: 'Photo Placeholder',
+    photoAlt: 'Dance Event poster for the off-campus Hip-Hop dance activities',
+    coverPhoto: {
+      src: '/media/images/offcampus-covers/dance-event-cover.jpg',
+      alt: 'Dance Event poster featuring the event branding and schedule.',
+      objectFit: 'cover',
+      objectPosition: 'center top',
+    },
   },
   {
     period: 'OTHERS',
     bullets: [],
-    photoAlt: 'Reserved photo area for other off-campus activities',
-    photoLabel: 'Photo Placeholder',
+    photoAlt: 'Photo from another off-campus activity',
+    coverPhoto: {
+      src: '/media/images/offcampus-covers/other-activity-cover.jpg',
+      alt: 'Portrait photo from another off-campus activity with the people centered.',
+      objectFit: 'cover',
+      objectPosition: 'center center',
+    },
   },
 ]
 
