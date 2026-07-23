@@ -463,6 +463,12 @@ export const researchExperience = [
     descriptionZh: '围绕动态双分支神经网络设计展开的个性化关键词识别研究。',
     details: [
       {
+        label: 'Research Focus',
+        labelZh: '\u7814\u7a76\u91cd\u70b9',
+        text: 'Researching a deployable dual-branch multitask learning neural network for Keyword Spotting (KWS) and Speaker Verification (SV) on embedded devices, incorporating dynamic neural network scheduling strategies such as early exit.',
+        textZh: '\u7814\u7a76\u53ef\u90e8\u7f72\u4e8e\u5d4c\u5165\u5f0f\u8bbe\u5907\u7684 KWS\uff08\u5173\u952e\u8bcd\u8bc6\u522b\uff09\u548c SV\uff08\u8bf4\u8bdd\u4eba\u9a8c\u8bc1\uff09\u53cc\u5206\u652f\u591a\u4efb\u52a1\u5b66\u4e60\u795e\u7ecf\u7f51\u7edc\uff0c\u5e76\u5728\u7f51\u7edc\u4e2d\u5f15\u5165 early exit \u7b49\u52a8\u6001\u795e\u7ecf\u7f51\u7edc\u8c03\u5ea6\u7b56\u7565\u3002',
+      },
+      {
         label: 'Current Status',
         labelZh: '当前状态',
         text: 'Still in progress.',
