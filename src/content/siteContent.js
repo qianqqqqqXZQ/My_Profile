@@ -351,8 +351,7 @@ export const campusActivities = [
 
 export const offCampusActivities = [
   {
-    period: 'Ongoing',
-    organization: 'Off-Campus Hip-Hop Dance Community',
+    period: 'DACING',
     role: 'Dance Event Organizer, Judge & Guest',
     bullets: [
       'Organized and co-hosted multiple Hip-Hop dance events and competitions to strengthen the Hip-Hop dance community across universities in Ningbo, including collaborations with brands such as adidas.',
@@ -361,6 +360,12 @@ export const offCampusActivities = [
       "Dance Instructor at D-Day Dance Studio, Jiangxi, responsible for choreographing instructors' showcase performances for the studio's anniversary celebrations over multiple years.",
     ],
     photoAlt: 'Reserved photo area for off-campus Hip-Hop dance activities',
+    photoLabel: 'Photo Placeholder',
+  },
+  {
+    period: 'OTHERS',
+    bullets: [],
+    photoAlt: 'Reserved photo area for other off-campus activities',
     photoLabel: 'Photo Placeholder',
   },
 ]

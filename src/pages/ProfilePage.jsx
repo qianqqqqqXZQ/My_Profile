@@ -122,21 +122,25 @@ function ProfilePage() {
         <article key={itemKey} className="campus-activity-entry card-surface">
           <div className="campus-activity-copy">
             <p className="campus-activity-period">{item.period}</p>
-            <p className="campus-activity-organization">{item.organization}</p>
-            <h3>{item.role}</h3>
+            {item.organization ? (
+              <p className="campus-activity-organization">{item.organization}</p>
+            ) : null}
+            {item.role ? <h3>{item.role}</h3> : null}
 
-            <ul className="campus-activity-bullets">
-              {item.bullets.map((bullet, index) => (
-                <li key={bullet}>
-                  {bullet}
-                  {shouldRenderInlineLink && item.linkAfterBulletIndex === index ? (
-                    <span className="campus-activity-bullet-link">
-                      {renderActivityLink('inline-link campus-activity-link campus-activity-link--inline')}
-                    </span>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
+            {item.bullets.length ? (
+              <ul className="campus-activity-bullets">
+                {item.bullets.map((bullet, index) => (
+                  <li key={bullet}>
+                    {bullet}
+                    {shouldRenderInlineLink && item.linkAfterBulletIndex === index ? (
+                      <span className="campus-activity-bullet-link">
+                        {renderActivityLink('inline-link campus-activity-link campus-activity-link--inline')}
+                      </span>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
             {item.linkHref && !shouldRenderInlineLink ? renderActivityLink() : null}
           </div>
