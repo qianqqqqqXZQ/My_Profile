@@ -232,70 +232,68 @@ function ProfilePage() {
               </div>
             </div>
           </section>
-
-          <section id="campus-activities" className="content-section course-activities-section">
-            <div className="section-shell">
-              <div className="section-header profile-campus-header">
-                <p className="eyebrow">Experience</p>
-                <h2>Campus Activities</h2>
-                <p className="section-intro">
-                  These are some of the activities I have taken part in on campus,
-                  showcasing my strong leadership, communication, innovation, and related
-                  abilities. Some experiences can be opened as photo galleries for more
-                  details.
-                </p>
-              </div>
-
-              <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
-            </div>
-          </section>
-
-          <main>
-            <section id="off-campus-activities" className="content-section course-activities-section">
-              <div className="section-shell">
-                <div className="section-header profile-off-campus-header">
-                  <p className="eyebrow">Experience</p>
-                  <h2>Social Activities</h2>
-                  <p className="section-intro">
-                    The following are some of the activities I have participated in off
-                    campus.
-                  </p>
-                </div>
-
-                <div className="campus-activity-timeline">
-                  {offCampusActivities.length ? (
-                    renderActivityEntries(offCampusActivities)
-                  ) : (
-                    <article className="campus-activity-empty card-surface">
-                      <p className="campus-activity-empty-label">Section Ready</p>
-                      <h3>Add your off-campus experience here</h3>
-                      <p>
-                        This module is now in place after Campus Activities. Once you give me
-                        the specific experience details, I can turn them into cards in the same
-                        layout immediately.
-                      </p>
-                    </article>
-                  )}
-                </div>
-              </div>
-            </section>
-
-            <section className="content-section photo-collection-section">
-              <div className="section-shell">
-                <div className="section-header">
-                  <p className="eyebrow">Photo</p>
-                  <h2>Daily Photo Collection</h2>
-                  <p className="section-intro">Here are some photos from my daily life.</p>
-                </div>
-
-                <div className="photo-collection-gallery">
-                  <CircularGallery images={dailyPhotoPlaceholders} />
-                </div>
-              </div>
-            </section>
-          </main>
         </HeroBackground>
       </div>
+
+      <section id="campus-activities" className="content-section course-activities-section">
+        <div className="section-shell">
+          <div className="section-header profile-campus-header">
+            <p className="eyebrow">Experience</p>
+            <h2>Campus Activities</h2>
+            <p className="section-intro">
+              These are some of the activities I have taken part in on campus, showcasing my
+              strong leadership, communication, innovation, and related abilities. Some
+              experiences can be opened as photo galleries for more details.
+            </p>
+          </div>
+
+          <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
+        </div>
+      </section>
+
+      <main>
+        <section id="off-campus-activities" className="content-section course-activities-section">
+          <div className="section-shell">
+            <div className="section-header profile-off-campus-header">
+              <p className="eyebrow">Experience</p>
+              <h2>Social Activities</h2>
+              <p className="section-intro">
+                The following are some of the activities I have participated in off campus.
+              </p>
+            </div>
+
+            <div className="campus-activity-timeline">
+              {offCampusActivities.length ? (
+                renderActivityEntries(offCampusActivities)
+              ) : (
+                <article className="campus-activity-empty card-surface">
+                  <p className="campus-activity-empty-label">Section Ready</p>
+                  <h3>Add your off-campus experience here</h3>
+                  <p>
+                    This module is now in place after Campus Activities. Once you give me the
+                    specific experience details, I can turn them into cards in the same layout
+                    immediately.
+                  </p>
+                </article>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section className="content-section photo-collection-section">
+          <div className="section-shell">
+            <div className="section-header">
+              <p className="eyebrow">Photo</p>
+              <h2>Daily Photo Collection</h2>
+              <p className="section-intro">Here are some photos from my daily life.</p>
+            </div>
+
+            <div className="photo-collection-gallery">
+              <CircularGallery images={dailyPhotoPlaceholders} />
+            </div>
+          </div>
+        </section>
+      </main>
 
       {activeGallery ? (
         <div className="campus-gallery-modal-backdrop" onClick={closeGallery}>
