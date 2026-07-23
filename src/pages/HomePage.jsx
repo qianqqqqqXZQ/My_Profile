@@ -76,8 +76,10 @@ function HomePage({ language }) {
     }
 
     const button = readyButtonRef.current
-    const maxDistance = 180
-    const maxPull = 8
+    const label = button.querySelector('.ready-button-label')
+    const maxDistance = 320
+    const maxPull = 12
+    const maxLabelPull = 21
     let frameId = null
     let pointer = null
 
@@ -95,12 +97,22 @@ function HomePage({ language }) {
       if (distance >= maxDistance) {
         button.style.setProperty('--magnetic-x', '0px')
         button.style.setProperty('--magnetic-y', '0px')
+        label?.style.setProperty('--magnetic-label-x', '0px')
+        label?.style.setProperty('--magnetic-label-y', '0px')
         return
       }
 
       const strength = (1 - distance / maxDistance) ** 2
       button.style.setProperty('--magnetic-x', `${(offsetX / maxDistance) * maxPull * strength}px`)
       button.style.setProperty('--magnetic-y', `${(offsetY / maxDistance) * maxPull * strength}px`)
+      label?.style.setProperty(
+        '--magnetic-label-x',
+        `${(offsetX / maxDistance) * maxLabelPull * strength}px`,
+      )
+      label?.style.setProperty(
+        '--magnetic-label-y',
+        `${(offsetY / maxDistance) * maxLabelPull * strength}px`,
+      )
     }
 
     const handlePointerMove = (event) => {
@@ -114,6 +126,8 @@ function HomePage({ language }) {
       pointer = null
       button.style.setProperty('--magnetic-x', '0px')
       button.style.setProperty('--magnetic-y', '0px')
+      label?.style.setProperty('--magnetic-label-x', '0px')
+      label?.style.setProperty('--magnetic-label-y', '0px')
     }
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true })
@@ -220,7 +234,7 @@ function HomePage({ language }) {
 
               <div className="hero-actions">
                 <Link ref={readyButtonRef} className="ready-button" to="/ready" onClick={handleReady}>
-                  {copy.ctaLabel}
+                  <span className="ready-button-label">{copy.ctaLabel}</span>
                 </Link>
               </div>
             </div>
