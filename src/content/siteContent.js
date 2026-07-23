@@ -205,7 +205,7 @@ export const profileHighlights = [
   { label: 'NAME', value: 'Ziqian Xiong' },
   { label: 'BIRTH', value: '2006/3/7' },
   { label: 'SCHOOL', value: 'University of Nottingham Ningbo China' },
-  { label: 'HOBBY', value: 'Dancing and Music' },
+  { label: 'HOBBY', value: 'Dancing, Music and Magic' },
 ]
 
 export const campusActivities = [
