@@ -540,7 +540,7 @@ export const danceClips = [
     img: '/media/images/dance-covers/dance-cover-01.jpg',
     alt: 'Dancer leaping on stage during a competition battle performance.',
     aspectRatio: 0.563,
-    title: 'battle',
+    title: 'Battle',
     url: '',
   },
   {
@@ -556,7 +556,7 @@ export const danceClips = [
     img: '/media/images/dance-covers/dance-cover-03.jpg',
     alt: 'Two dancers performing a synchronized acrobatic move in an indoor venue.',
     aspectRatio: 1.811,
-    title: 'performance',
+    title: 'Performance',
     url: '',
   },
   {
@@ -564,7 +564,7 @@ export const danceClips = [
     img: '/media/images/dance-covers/dance-cover-04.jpg',
     alt: 'Dancer performing before a group on a warmly lit stage.',
     aspectRatio: 0.562,
-    title: 'cypher',
+    title: 'Cypher',
     url: '',
   },
   {
@@ -572,7 +572,7 @@ export const danceClips = [
     img: '/media/images/dance-covers/dance-cover-05.jpg',
     alt: 'Dancer captured mid-move in a studio cypher surrounded by spectators.',
     aspectRatio: 1.808,
-    title: 'cypher',
+    title: 'Cypher',
     url: '',
   },
   {
