@@ -1435,6 +1435,13 @@
   margin-top: 18px;
 }
 
+.page-profile[lang='zh-CN'] .profile-highlights span,
+.page-profile[lang='zh-CN'] .campus-activity-period,
+.page-profile[lang='zh-CN'] .campus-activity-organization,
+.page-profile[lang='zh-CN'] .campus-gallery-stack-hint {
+  letter-spacing: 0.08em;
+}
+
 .profile-hero-visual .lanyard-wrapper {
   width: min(100%, 640px);
   pointer-events: auto;

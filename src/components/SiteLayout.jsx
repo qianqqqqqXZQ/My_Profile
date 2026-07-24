@@ -22,7 +22,8 @@ function NavSparkles() {
 function SiteLayout({ language, onLanguageChange }) {
   const location = useLocation()
   const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
-  const canSwitchLanguage = ['/contact', '/experience'].includes(location.pathname)
+  const canSwitchLanguage = ['/profile', '/contact', '/experience'].includes(location.pathname)
+  const isChinese = language === 'zh'
 
   return (
     <div className="site-shell">
@@ -37,9 +38,11 @@ function SiteLayout({ language, onLanguageChange }) {
             <NavLink
               to="/"
               className="back-to-start-button"
-              aria-label="Back to start"
+              aria-label={isChinese ? '返回首页' : 'Back to start'}
             >
-              <span className="back-to-start-button__text">Back to start</span>
+              <span className="back-to-start-button__text">
+                {isChinese ? '返回首页' : 'Back to start'}
+              </span>
             </NavLink>
 
             <div className="language-switcher" aria-label="Language switcher">
@@ -83,14 +86,14 @@ function SiteLayout({ language, onLanguageChange }) {
           <nav className="nav-links" aria-label="Primary">
             {navigationLinks.map((item) => (
               <NavLink
-                key={item.label}
+                key={item.to}
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) => (isActive ? 'active' : undefined)}
                 onPointerEnter={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
                 onFocus={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
               >
-                <span className="nav-link-label">{item.label}</span>
+                <span className="nav-link-label">{isChinese ? item.labelZh : item.label}</span>
                 <NavSparkles />
               </NavLink>
             ))}

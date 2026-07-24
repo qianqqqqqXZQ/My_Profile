@@ -4,11 +4,7 @@ import HeroBackground from '../components/HeroBackground'
 import CircularGallery from '../components/CircularGallery'
 import ProfileLanyard from '../components/ProfileLanyard'
 import Stack from '../components/Stack'
-import {
-  campusActivities,
-  offCampusActivities,
-  profileHighlights,
-} from '../content/siteContent'
+import { profilePageContent } from '../content/siteContent'
 import './HomePage.css'
 
 const dailyPhotoPlaceholders = [
@@ -22,10 +18,11 @@ const dailyPhotoPlaceholders = [
   '/media/images/daily-photo/daily-photo-08.jpg',
 ]
 
-function ProfilePage() {
+function ProfilePage({ language }) {
   const heroRef = useRef(null)
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [activeGallery, setActiveGallery] = useState(null)
+  const copy = profilePageContent[language] ?? profilePageContent.en
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -153,7 +150,7 @@ function ProfilePage() {
                     type="button"
                     className="campus-photo-hero"
                     onClick={() => setActiveGallery(item)}
-                    aria-label={`Open photo gallery for ${item.role}`}
+                    aria-label={copy.gallery.openLabel(item.role)}
                   >
                     <span className="campus-photo-card campus-photo-card--single">
                       <span
@@ -175,7 +172,7 @@ function ProfilePage() {
                       />
                     </span>
                     <span className="campus-photo-open-indicator">
-                      {item.galleryLabel ?? `Open gallery / ${item.photos.length} photos`}
+                      {item.galleryLabel ?? copy.gallery.fallbackLabel(item.photos.length)}
                     </span>
                   </button>
                 ) : (
@@ -213,7 +210,7 @@ function ProfilePage() {
     })
 
   return (
-    <div className="page-route page-profile">
+    <div className="page-route page-profile" lang={language === 'zh' ? 'zh-CN' : 'en'}>
       <div ref={heroRef}>
         <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
           <section className="page-hero page-profile-hero">
@@ -224,26 +221,21 @@ function ProfilePage() {
 
               <div className="page-profile-hero-grid">
                 <div className="profile-hero-copy">
-                  <p className="eyebrow">Profile</p>
-                  <h1>Personal Background</h1>
-                  <p className="page-lead">
-                    This page contains my personal information, but it only includes some
-                    general details such as educational background and hobbies. If you are
-                    interested in my specific development experiences and dance experiences,
-                    please click on the two buttons below.
-                  </p>
+                  <p className="eyebrow">{copy.hero.eyebrow}</p>
+                  <h1>{copy.hero.title}</h1>
+                  <p className="page-lead">{copy.hero.lead}</p>
 
                   <div className="page-hero-actions">
                     <Link className="primary-button" to="/experience">
-                      View Experience
+                      {copy.hero.experienceAction}
                     </Link>
                     <Link className="secondary-button profile-dance-button" to="/dance">
-                      Dance Video
+                      {copy.hero.danceAction}
                     </Link>
                   </div>
 
                   <div className="profile-highlights">
-                    {profileHighlights.map((item) => (
+                    {copy.hero.highlights.map((item) => (
                       <article key={item.label}>
                         <span>{item.label}</span>
                         <strong>{item.value}</strong>
@@ -260,16 +252,14 @@ function ProfilePage() {
       <section id="campus-activities" className="content-section course-activities-section">
         <div className="section-shell">
           <div className="section-header profile-campus-header">
-            <p className="eyebrow">Experience</p>
-            <h2>Campus Activities</h2>
-            <p className="section-intro">
-              These are some of the activities I have taken part in on campus, showcasing my
-              strong leadership, communication, innovation, and related abilities. Some
-              experiences can be opened as photo galleries for more details.
-            </p>
+            <p className="eyebrow">{copy.campus.eyebrow}</p>
+            <h2>{copy.campus.title}</h2>
+            <p className="section-intro">{copy.campus.intro}</p>
           </div>
 
-          <div className="campus-activity-timeline">{renderActivityEntries(campusActivities)}</div>
+          <div className="campus-activity-timeline">
+            {renderActivityEntries(copy.campus.activities)}
+          </div>
         </div>
       </section>
 
@@ -277,25 +267,19 @@ function ProfilePage() {
         <section id="off-campus-activities" className="content-section course-activities-section">
           <div className="section-shell">
             <div className="section-header profile-off-campus-header">
-              <p className="eyebrow">Experience</p>
-              <h2>Social Activities</h2>
-              <p className="section-intro">
-                The following are some of the activities I have participated in off campus.
-              </p>
+              <p className="eyebrow">{copy.offCampus.eyebrow}</p>
+              <h2>{copy.offCampus.title}</h2>
+              <p className="section-intro">{copy.offCampus.intro}</p>
             </div>
 
             <div className="campus-activity-timeline">
-              {offCampusActivities.length ? (
-                renderActivityEntries(offCampusActivities)
+              {copy.offCampus.activities.length ? (
+                renderActivityEntries(copy.offCampus.activities)
               ) : (
                 <article className="campus-activity-empty card-surface">
-                  <p className="campus-activity-empty-label">Section Ready</p>
-                  <h3>Add your off-campus experience here</h3>
-                  <p>
-                    This module is now in place after Campus Activities. Once you give me the
-                    specific experience details, I can turn them into cards in the same layout
-                    immediately.
-                  </p>
+                  <p className="campus-activity-empty-label">{copy.offCampus.empty.label}</p>
+                  <h3>{copy.offCampus.empty.title}</h3>
+                  <p>{copy.offCampus.empty.description}</p>
                 </article>
               )}
             </div>
@@ -305,9 +289,9 @@ function ProfilePage() {
         <section className="content-section photo-collection-section">
           <div className="section-shell">
             <div className="section-header">
-              <p className="eyebrow">Photo</p>
-              <h2>Daily Photo Collection</h2>
-              <p className="section-intro">Here are some photos from my daily life.</p>
+              <p className="eyebrow">{copy.photos.eyebrow}</p>
+              <h2>{copy.photos.title}</h2>
+              <p className="section-intro">{copy.photos.intro}</p>
             </div>
 
             <div className="photo-collection-gallery">
@@ -330,18 +314,16 @@ function ProfilePage() {
               type="button"
               className="campus-gallery-close"
               onClick={closeGallery}
-              aria-label="Close photo gallery"
+              aria-label={copy.gallery.closeLabel}
             >
               x
             </button>
 
             <div className="campus-gallery-modal-header campus-gallery-modal-header--stack">
-              <p className="eyebrow">Shuffle Crew Gallery</p>
+              <p className="eyebrow">{copy.gallery.eyebrow}</p>
               <h3 id="campus-gallery-title">{activeGallery.role}</h3>
-              <p>
-                {activeGallery.organization} / {activeGallery.photos.length} photos
-              </p>
-              <span className="campus-gallery-stack-hint">Click or drag the top card to browse.</span>
+              <p>{copy.gallery.countLabel(activeGallery.organization, activeGallery.photos.length)}</p>
+              <span className="campus-gallery-stack-hint">{copy.gallery.hint}</span>
             </div>
 
             <div className="campus-gallery-stack-stage">

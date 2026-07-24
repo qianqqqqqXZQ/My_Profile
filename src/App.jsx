@@ -45,7 +45,7 @@ function App() {
       <Routes>
         <Route element={<SiteLayout language={homeLanguage} onLanguageChange={setHomeLanguage} />}>
           <Route index element={<HomePage language={homeLanguage} />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage language={homeLanguage} />} />
           <Route path="experience" element={<ExperiencePage language={homeLanguage} />} />
           <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
           <Route path="dance" element={<DancePage />} />

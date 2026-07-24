@@ -1,8 +1,8 @@
 export const navigationLinks = [
-  { label: 'Profile', to: '/profile' },
-  { label: 'Academic', to: '/experience' },
-  { label: 'Dance Videos', to: '/dance' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Profile', labelZh: '个人背景', to: '/profile' },
+  { label: 'Academic', labelZh: '开发经历', to: '/experience' },
+  { label: 'Dance Videos', labelZh: '舞蹈视频', to: '/dance' },
+  { label: 'Contact', labelZh: '联系方式', to: '/contact' },
 ]
 
 export const heroHighlights = [
@@ -379,6 +379,200 @@ export const offCampusActivities = [
     },
   },
 ]
+
+const chineseCampusActivities = campusActivities.map((activity, index) => {
+  const localizedActivity = [
+    {
+      period: '2022年9月 - 2023年7月',
+      organization: '樟树中学学生会',
+      role: '主席',
+      bullets: [
+        '统筹学生会宣传部、纪检部等多个部门，主持每周例会，并组织各年级的日常纪律与教室卫生检查。',
+        '协助学校策划和执行运动会、校园艺术节等大型活动，承担总体活动策划等核心协调工作。',
+        '因领导力与服务表现突出，多次在学校表彰大会上获评“优秀学生会干部”。',
+      ],
+      photoAlt: '樟树中学学生会主席经历的图片区域',
+      coverAlt: '白色封面中央的樟树中学学生会标志。',
+    },
+    {
+      period: '2024年10月 - 2025年9月',
+      organization: '宁波诺丁汉大学学生会',
+      role: '公共关系部',
+      bullets: [
+        '负责学生会官方文创商店的运营，包括开放日、毕业典礼等大型校园活动的现场销售；单场活动销售额峰值超过3万元。',
+        '主要负责商店的人事协调，包括排班、通知发布、会议纪要以及日常团队管理。',
+      ],
+      photoAlt: '宁波诺丁汉大学学生会公共关系部经历的图片区域',
+      coverAlt: '白色封面中央的宁波诺丁汉大学学生会标志。',
+    },
+    {
+      period: '2025年3月 - 2026年6月',
+      organization: '宁波诺丁汉大学校园生活部',
+      role: '行政实习生',
+      bullets: [
+        '通过校园热线为在校生、家长和校友提供支持，协调外部合作机构的咨询，并就学籍和档案流程提供解答。',
+        '通过档案系统管理学生材料，并通过邮件与校内部门对接，收集和整理所需学生文件。',
+      ],
+      photoAlt: '宁波诺丁汉大学校园生活部行政实习经历的图片区域',
+      coverAlt: '用于行政实习经历的宁波诺丁汉大学校园生活部标识。',
+    },
+    {
+      period: '2025年9月 - 2026年7月',
+      organization: '宁波诺丁汉大学 Shuffle Crew',
+      role: '副队长',
+      bullets: [
+        '主导 Show Night、XShow 和新年晚会等大型官方校园活动的舞蹈编排，包括动作设计、队形编排和音乐剪辑。',
+        '组织并完成 Shuffle Crew 年度专场演出，在完整制作周期内统筹并参与多个节目表演。',
+        '代表团队与校内外组织沟通，通过合作洽谈、联合主办和现场演出支持，推动联合活动落地。',
+        '个人在校园专场中的即兴表演视频于抖音获得超过500万播放和7万点赞，为表演与团队带来广泛曝光。',
+      ],
+      photoAlt: '宁波诺丁汉大学 Shuffle Crew 副队长经历的图片区域',
+      coverAlt: '黑色封面中央的 Shuffle Crew 标志。',
+    },
+  ][index]
+  const { coverAlt, ...localizedFields } = localizedActivity
+
+  return {
+    ...activity,
+    ...localizedFields,
+    photoLabel: '图片占位区',
+    coverPhoto: activity.coverPhoto
+      ? { ...activity.coverPhoto, alt: coverAlt }
+      : activity.coverPhoto,
+    photos: activity.photos?.map((photo, photoIndex) => ({
+      ...photo,
+      alt: `Shuffle Crew 舞台演出照片 ${photoIndex + 1}`,
+    })),
+    galleryLabel: activity.photos?.length ? '查看演出照片' : activity.galleryLabel,
+    linkLabel: activity.linkHref ? '查看视频' : activity.linkLabel,
+  }
+})
+
+const chineseOffCampusActivities = offCampusActivities.map((activity, index) => {
+  const localizedActivity = [
+    {
+      period: '舞蹈',
+      role: '舞蹈活动策划、评委及嘉宾',
+      bullets: [
+        '组织并联合主办多场街舞活动与赛事，推动宁波高校间的街舞社群交流，并与 adidas 等品牌合作。',
+        '多次受邀担任公开舞蹈活动的评委或嘉宾，并以个人舞者和团队成员身份在校外赛事中获得多个奖项。',
+        '现为宁波 Twenty Two Locking Crew 成员，随团队受邀参与多场公开演出，并拍摄大型音乐视频。',
+        '担任江西舞月天舞蹈工作室舞蹈教师，连续多年负责工作室周年庆教师秀的编舞工作。',
+      ],
+      photoAlt: '校外街舞活动的海报',
+      coverAlt: '展示活动品牌和日程的舞蹈活动海报。',
+    },
+    {
+      period: '其他',
+      bullets: [],
+      photoAlt: '另一项校外活动的照片',
+      coverAlt: '另一项校外活动的肖像照片，人物位于画面中央。',
+    },
+  ][index]
+  const { coverAlt, ...localizedFields } = localizedActivity
+
+  return {
+    ...activity,
+    ...localizedFields,
+    photoLabel: '图片占位区',
+    coverPhoto: activity.coverPhoto
+      ? { ...activity.coverPhoto, alt: coverAlt }
+      : activity.coverPhoto,
+  }
+})
+
+export const profilePageContent = {
+  en: {
+    hero: {
+      eyebrow: 'Profile',
+      title: 'Personal Background',
+      lead:
+        'This page contains my personal information, but it only includes some general details such as educational background and hobbies. If you are interested in my specific development experiences and dance experiences, please click on the two buttons below.',
+      experienceAction: 'View Experience',
+      danceAction: 'Dance Video',
+      highlights: profileHighlights,
+    },
+    campus: {
+      eyebrow: 'Experience',
+      title: 'Campus Activities',
+      intro:
+        'These are some of the activities I have taken part in on campus, showcasing my strong leadership, communication, innovation, and related abilities. Some experiences can be opened as photo galleries for more details.',
+      activities: campusActivities,
+    },
+    offCampus: {
+      eyebrow: 'Experience',
+      title: 'Social Activities',
+      intro: 'The following are some of the activities I have participated in off campus.',
+      activities: offCampusActivities,
+      empty: {
+        label: 'Section Ready',
+        title: 'Add your off-campus experience here',
+        description:
+          'This module is now in place after Campus Activities. Once you give me the specific experience details, I can turn them into cards in the same layout immediately.',
+      },
+    },
+    photos: {
+      eyebrow: 'Photo',
+      title: 'Daily Photo Collection',
+      intro: 'Here are some photos from my daily life.',
+    },
+    gallery: {
+      openLabel: (role) => `Open photo gallery for ${role}`,
+      fallbackLabel: (count) => `Open gallery / ${count} photos`,
+      closeLabel: 'Close photo gallery',
+      eyebrow: 'Shuffle Crew Gallery',
+      countLabel: (organization, count) => `${organization} / ${count} photos`,
+      hint: 'Click or drag the top card to browse.',
+    },
+  },
+  zh: {
+    hero: {
+      eyebrow: '个人背景',
+      title: '个人概况',
+      lead:
+        '这里记录了我的一些基础个人信息，包括教育背景与兴趣爱好。如果你想了解我的开发经历或舞蹈经历，可以通过下方按钮进入对应页面。',
+      experienceAction: '查看开发经历',
+      danceAction: '舞蹈视频',
+      highlights: [
+        { label: '姓名', value: '熊子谦' },
+        { label: '出生日期', value: '2006/3/7' },
+        { label: '学校', value: '宁波诺丁汉大学' },
+        { label: '兴趣爱好', value: '舞蹈、音乐与魔术' },
+      ],
+    },
+    campus: {
+      eyebrow: '经历',
+      title: '校园经历',
+      intro:
+        '以下是在校期间参与的部分活动，展现了我的领导力、沟通能力、创新能力及相关综合素养。部分经历支持打开照片图库查看详情。',
+      activities: chineseCampusActivities,
+    },
+    offCampus: {
+      eyebrow: '经历',
+      title: '社会活动',
+      intro: '以下是我在校外参与的部分活动。',
+      activities: chineseOffCampusActivities,
+      empty: {
+        label: '模块已就绪',
+        title: '在这里添加你的校外经历',
+        description: '该模块已设置在校园经历之后；提供具体经历后，即可按相同布局生成活动卡片。',
+      },
+    },
+    photos: {
+      eyebrow: '照片',
+      title: '日常照片集',
+      intro: '这里记录了一些我的日常生活照片。',
+    },
+    gallery: {
+      openLabel: (role) => `打开${role}照片图库`,
+      fallbackLabel: (count) => `打开图库 / 共 ${count} 张`,
+      closeLabel: '关闭照片图库',
+      eyebrow: 'Shuffle Crew 图集',
+      countLabel: (organization, count) => `${organization} / 共 ${count} 张`,
+      hint: '点击或拖动顶部卡片浏览照片。',
+    },
+  },
+}
 
 export const contactLinks = [
   {
