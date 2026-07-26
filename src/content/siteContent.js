@@ -740,12 +740,12 @@ export const dancePageContent = {
     galleryLabel: 'Dance video collection',
   },
   zh: {
-    eyebrow: '\u821e\u8e48\u89c6\u9891',
+    eyebrow: '\u8857\u821e\u89c6\u9891',
     heroLabel: '\u821e\u8e48\u89c6\u9891\u9996\u5c4f',
-    heroTitle: '\u6b22\u8fce\u6765\u5230\u6211\u7684\u821e\u8e48\u7a7a\u95f4',
+    heroTitle: '\u6b22\u8fce\u6536\u770b\u6211\u7684\u821e\u8e48\u89c6\u9891',
     heroTitleLines: [
-      ['\u6b22\u8fce\u6765\u5230\u6211\u7684'],
-      ['\u821e\u8e48\u7a7a\u95f4'],
+      ['\u6b22\u8fce\u6536\u770b\u6211\u7684'],
+      ['\u821e\u8e48\u89c6\u9891'],
     ],
     galleryLabel: '\u821e\u8e48\u89c6\u9891\u5408\u96c6',
   },
@@ -759,7 +759,7 @@ export const danceClips = [
     altZh: '\u821e\u8005\u5728\u6bd4\u8d5b\u5bf9\u6218\u4e2d\u4e8e\u821e\u53f0\u8df3\u8dc3\u3002',
     aspectRatio: 0.563,
     title: 'Battle',
-    titleZh: '\u5bf9\u6218',
+    titleZh: 'Battle',
     url: '',
   },
   {
@@ -769,7 +769,7 @@ export const danceClips = [
     altZh: '\u821e\u8005\u5728\u5ba4\u5185\u821e\u8e48\u6d3b\u52a8\u4e2d\u9762\u5bf9\u89c2\u4f17\u8868\u6f14\u3002',
     aspectRatio: 0.75,
     title: 'Judge Show',
-    titleZh: '\u8bc4\u59d4\u79c0',
+    titleZh: '\u88c1\u5224\u79c0',
     url: '',
   },
   {
@@ -779,7 +779,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u5ba4\u5185\u573a\u5730\u5b8c\u6210\u9ed8\u5951\u7684\u6280\u5de7\u52a8\u4f5c\u3002',
     aspectRatio: 1.811,
     title: 'Performance',
-    titleZh: '\u821e\u53f0\u6f14\u51fa',
+    titleZh: '\u6f14\u51fa',
     url: '',
   },
   {
@@ -789,7 +789,7 @@ export const danceClips = [
     altZh: '\u821e\u8005\u5728\u6696\u8272\u821e\u53f0\u4e0a\u9762\u5bf9\u4f17\u4eba\u8fdb\u884c\u6597\u821e\u3002',
     aspectRatio: 0.562,
     title: 'Cypher',
-    titleZh: '\u6597\u821e\u5708',
+    titleZh: 'Cypher',
     url: '',
   },
   {
@@ -799,7 +799,7 @@ export const danceClips = [
     altZh: '\u821e\u8005\u5728\u89c2\u4f17\u56f4\u7ed5\u7684\u5de5\u4f5c\u5ba4\u6597\u821e\u5708\u4e2d\u5b9a\u683c\u4e8e\u52a8\u4f5c\u77ac\u95f4\u3002',
     aspectRatio: 1.808,
     title: 'Cypher',
-    titleZh: '\u6597\u821e\u5708',
+    titleZh: 'Cypher',
     url: '',
   },
   {
