@@ -1,25 +1,26 @@
-import { danceClips } from '../content/siteContent'
+import { danceClips, dancePageContent } from '../content/siteContent'
 import Masonry from '../components/Masonry'
 
-const danceHeroTitle = 'Welcome to My Dance Space'
-const danceHeroTitleLines = [
-  ['Welcome', 'to', 'My'],
-  ['Dance', 'Space'],
-]
+function DancePage({ language }) {
+  const copy = dancePageContent[language] ?? dancePageContent.en
+  const localizedClips = danceClips.map((clip) =>
+    language === 'zh'
+      ? { ...clip, alt: clip.altZh, title: clip.titleZh }
+      : clip
+  )
 
-function DancePage() {
   return (
-    <div className="page-route page-dance">
-      <section className="dance-hero" aria-label="Dance video hero">
+    <div className="page-route page-dance" lang={language === 'zh' ? 'zh-CN' : 'en'}>
+      <section className="dance-hero" aria-label={copy.heroLabel}>
         <video className="dance-hero-video" autoPlay muted loop playsInline aria-hidden="true">
           <source src="/media/video/dance-hero.mp4" type="video/mp4" />
         </video>
         <div className="dance-hero-scrim" />
         <div className="dance-hero-title-shell">
           <div className="dance-hero-title-group">
-            <p className="eyebrow dance-hero-eyebrow">DANCE VIDEO</p>
-            <h1 className="dance-hero-title" aria-label={danceHeroTitle}>
-              {danceHeroTitleLines.map((line) => (
+            <p className="eyebrow dance-hero-eyebrow">{copy.eyebrow}</p>
+            <h1 className="dance-hero-title" aria-label={copy.heroTitle}>
+              {copy.heroTitleLines.map((line) => (
                 <span key={line.join(' ')} className="dance-hero-title-line" aria-hidden="true">
                   {line.map((word) => (
                     <span key={word} className="dance-hero-title-word">
@@ -37,9 +38,9 @@ function DancePage() {
         </div>
       </section>
 
-      <section id="dance-gallery" className="dance-gallery-section" aria-label="Dance video collection">
+      <section id="dance-gallery" className="dance-gallery-section" aria-label={copy.galleryLabel}>
         <div className="section-shell dance-gallery-shell">
-          <Masonry items={danceClips} animateFrom="center" />
+          <Masonry items={localizedClips} animateFrom="center" />
         </div>
       </section>
     </div>

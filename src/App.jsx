@@ -48,7 +48,7 @@ function App() {
           <Route path="profile" element={<ProfilePage language={homeLanguage} />} />
           <Route path="experience" element={<ExperiencePage language={homeLanguage} />} />
           <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
-          <Route path="dance" element={<DancePage />} />
+          <Route path="dance" element={<DancePage language={homeLanguage} />} />
           <Route path="contact" element={<ContactPage language={homeLanguage} />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
