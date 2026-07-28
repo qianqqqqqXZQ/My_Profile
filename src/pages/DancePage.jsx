@@ -40,7 +40,7 @@ function DancePage({ language }) {
 
       <section id="dance-gallery" className="dance-gallery-section" aria-label={copy.galleryLabel}>
         <div className="section-shell dance-gallery-shell">
-          <Masonry items={localizedClips} animateFrom="center" />
+          <Masonry items={localizedClips} animateFrom="center" balanceColumns />
         </div>
       </section>
     </div>

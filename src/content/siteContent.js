@@ -340,6 +340,10 @@ export const campusActivities = [
         src: '/media/images/shuffle-crew/shuffle-crew-17.jpg',
         alt: 'Outdoor battle-style performance shot capturing a one-hand freeze before a crowd on campus.',
       },
+      {
+        src: '/media/images/shuffle-crew/shuffle-crew-18.jpg',
+        alt: 'Shuffle Crew dancer performing on an outdoor campus stage with the team and audience behind.',
+      },
     ],
     galleryLabel: 'View my performance photo',
     linkLabel: 'View the video',
@@ -910,6 +914,16 @@ export const danceClips = [
     aspectRatio: 1179 / 1913,
     title: 'Short Reels',
     titleZh: 'Short Reels',
+    url: '',
+  },
+  {
+    id: 'dance-cover-17',
+    img: '/media/images/dance-covers/dance-cover-17.jpg',
+    alt: 'A dancer performing a low floorwork move at an outdoor cypher surrounded by spectators.',
+    altZh: '\u821e\u8005\u5728\u89c2\u4f17\u56f4\u7ed5\u7684\u6237\u5916 Cypher \u4e2d\u5b8c\u6210\u4f4e\u4f4d\u5730\u677f\u52a8\u4f5c\u3002',
+    aspectRatio: 884 / 1572,
+    title: 'Cypher',
+    titleZh: 'Cypher',
     url: '',
   },
 ]

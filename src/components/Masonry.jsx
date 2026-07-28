@@ -22,6 +22,7 @@ function Masonry({
   stagger = 0.045,
   animateFrom = 'bottom',
   hoverScale = 0.975,
+  balanceColumns = false,
 }) {
   const containerRef = useRef(null)
   const itemRefs = useRef(new Map())
@@ -51,7 +52,17 @@ function Masonry({
 
     const columnWidth = (width - gap * (columns - 1)) / columns
     const columnHeights = Array.from({ length: columns }, () => 0)
-    const grid = items.map((item) => {
+    const orderedItems = balanceColumns && columns > 1
+      ? items
+        .map((item, sourceIndex) => ({ ...item, sourceIndex }))
+        .sort((first, second) => {
+          const firstHeight = 1 / (Number(first.aspectRatio) || 16 / 9)
+          const secondHeight = 1 / (Number(second.aspectRatio) || 16 / 9)
+          return secondHeight - firstHeight || first.sourceIndex - second.sourceIndex
+        })
+      : items
+
+    const grid = orderedItems.map((item) => {
       const column = columnHeights.indexOf(Math.min(...columnHeights))
       const ratio = Number(item.aspectRatio) || 16 / 9
       const itemHeight = columnWidth / ratio
@@ -66,7 +77,7 @@ function Masonry({
       grid,
       height: Math.max(0, ...columnHeights) - gap,
     }
-  }, [columns, gap, items, width])
+  }, [balanceColumns, columns, gap, items, width])
 
   useLayoutEffect(() => {
     if (!grid.length) return
