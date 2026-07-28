@@ -698,11 +698,11 @@ export const workingExperience = [
     logoAlt: 'Pony.ai logo',
     leader: 'Bo Xiao',
     bullets: [
-      'Research VGGT and a range of VGGT-based 3D reconstruction variants to address autonomous-driving data-collection challenges, including visual occlusion and long-term data acquisition.',
+      'Conduct a systematic investigation of cutting-edge VGGT-related 3D/4D reconstruction techniques, spanning scene-level reconstruction (QVGGT, Dynamic-VGGT, VGGT-4D, and VGGT-MPR) and object-level non-rigid reconstruction (MoSca); develop a multidimensional evaluation framework by integrating 3D Gaussian Splatting (3DGS) rendering, and explore deployment pathways for autonomous-driving scene reconstruction and simulation.',
       'Still in work.',
     ],
     bulletsZhOverride: [
-      'Research VGGT and a range of VGGT-based 3D reconstruction variants to address autonomous-driving data-collection challenges, including visual occlusion and long-term data acquisition.',
+      '系统调研VGGT相关的前沿3D/4D重建技术，覆盖场景级重建（QVGGT/Dynamic-VGGT/VGGT-4D/VGGT-MPR）与物体级非刚体重建（MoSca），并结合3DGS渲染技术构建多维评估框架，探索其在自动驾驶场景重建与仿真中的落地路径。',
       'Still in work.',
     ],
     sortValue: 202607,
