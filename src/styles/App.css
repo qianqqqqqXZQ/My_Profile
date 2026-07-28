@@ -3391,7 +3391,7 @@
   padding: 0;
   background: #000000;
   color: #ffffff;
-  transform: scale(1);
+  transform: scale(0.5);
 }
 
 .github-code-button--compact:hover .github-code-button__icon path,
