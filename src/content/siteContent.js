@@ -411,14 +411,14 @@ const chineseCampusActivities = campusActivities.map((activity, index) => {
     },
     {
       period: '2025年3月 - 2026年6月',
-      organization: '宁波诺丁汉大学校园生活部',
+      organization: '宁波诺丁汉大学学生事务与发展中心',
       role: '行政实习生',
       bullets: [
         '通过校园热线为在校生、家长和校友提供支持，协调外部合作机构的咨询，并就学籍和档案流程提供解答。',
         '通过档案系统管理学生材料，并通过邮件与校内部门对接，收集和整理所需学生文件。',
       ],
-      photoAlt: '宁波诺丁汉大学校园生活部行政实习经历的图片区域',
-      coverAlt: '用于行政实习经历的宁波诺丁汉大学校园生活部标识。',
+      photoAlt: '宁波诺丁汉大学学生事务与发展中心行政实习经历的图片区域',
+      coverAlt: '用于行政实习经历的宁波诺丁汉大学学生事务与发展中心标识。',
     },
     {
       period: '2025年9月 - 2026年7月',
@@ -458,10 +458,10 @@ const chineseOffCampusActivities = offCampusActivities.map((activity, index) => 
       period: '舞蹈',
       role: '舞蹈活动策划、评委及嘉宾',
       bullets: [
-        '组织并联合主办多场街舞活动与赛事，推动宁波高校间的街舞社群交流，并与 adidas 等品牌合作。',
+        '组织并联合主办多场街舞活动与赛事，推动宁波高校间的街舞社群交流，并与阿迪达斯等品牌合作。',
         '多次受邀担任公开舞蹈活动的评委或嘉宾，并以个人舞者和团队成员身份在校外赛事中获得多个奖项。',
-        '现为宁波 Twenty Two Locking Crew 成员，随团队受邀参与多场公开演出，并拍摄大型音乐视频。',
-        '担任江西舞月天舞蹈工作室舞蹈教师，连续多年负责工作室周年庆教师秀的编舞工作。',
+        '现为宁波二十二 Locking Crew 成员，随团队受邀参与多场公开演出，并拍摄大型音乐视频。',
+        '担任江西舞月天舞蹈工作室舞蹈教师，连续多年负责工作室周年庆导师秀的编舞工作。',
       ],
       photoAlt: '校外街舞活动的海报',
       coverAlt: '展示活动品牌和日程的舞蹈活动海报。',
@@ -654,8 +654,8 @@ export const researchExperience = [
       },
     ],
     publicationStatus: 'Currently under submission to CVIU as the second author.',
-    publicationStatusZh: '仍在进行中',
-    publicationStatusZhOverride: 'Currently under submission to CVIU as the second author.',
+    publicationStatusZh: '目前以第二作者身份投稿至CVIU（CCFB）',
+    publicationStatusZhOverride: '目前以第二作者身份投稿至CVIU（CCFB）',
     sortValue: 202505,
   },
   {
@@ -783,7 +783,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u5ba4\u5185\u573a\u5730\u5b8c\u6210\u9ed8\u5951\u7684\u6280\u5de7\u52a8\u4f5c\u3002',
     aspectRatio: 1.811,
     title: 'Performance',
-    titleZh: '\u6f14\u51fa',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -813,7 +813,7 @@ export const danceClips = [
     altZh: '\u821e\u8005\u5728\u7d2b\u84dd\u706f\u5149\u4e0b\u8fdb\u884c\u5730\u677f\u52a8\u4f5c\u8868\u6f14\u3002',
     aspectRatio: 0.5631,
     title: 'Performance',
-    titleZh: 'Performance',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -823,7 +823,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u6c5f\u8fb9\u6865\u65c1\u62cd\u6444\u6237\u5916\u77ed\u89c6\u9891\u3002',
     aspectRatio: 0.5666,
     title: 'Short Reels',
-    titleZh: 'Short Reels',
+    titleZh: '短视频',
     url: '',
   },
   {
@@ -833,7 +833,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u7ea2\u8272\u706f\u5149\u7684\u821e\u8e48\u6559\u5ba4\u4e2d\u7ec3\u4e60\u7f16\u821e\u3002',
     aspectRatio: 1.8083,
     title: 'Practice Video',
-    titleZh: 'Practice Video',
+    titleZh: '练习视频',
     url: '',
   },
   {
@@ -843,7 +843,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u955c\u9762\u5899\u7684\u9ed1\u8272\u821e\u8e48\u6559\u5ba4\u4e2d\u7ec3\u4e60\u52a8\u4f5c\u3002',
     aspectRatio: 1.7945,
     title: 'Practice Video',
-    titleZh: 'Practice Video',
+    titleZh: '练习视频',
     url: '',
   },
   {
@@ -863,7 +863,7 @@ export const danceClips = [
     altZh: '\u4e94\u540d\u821e\u8005\u5728\u57ce\u5e02\u5929\u9645\u7ebf\u524d\u7684\u6237\u5916\u7ec3\u4e60\u7f16\u821e\u3002',
     aspectRatio: 1179 / 658,
     title: 'Performance',
-    titleZh: 'Performance',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -873,7 +873,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u6237\u5916\u6392\u7ec3\u7f16\u821e\u52a8\u4f5c\u3002',
     aspectRatio: 1179 / 879,
     title: 'Performance',
-    titleZh: 'Performance',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -893,7 +893,7 @@ export const danceClips = [
     altZh: '\u7fa4\u821e\u5728\u7eff\u8272\u821e\u53f0\u706f\u5149\u4e0b\u8868\u6f14\u3002',
     aspectRatio: 1179 / 660,
     title: 'Performance',
-    titleZh: 'Performance',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -903,7 +903,7 @@ export const danceClips = [
     altZh: '\u821e\u7fa4\u5728\u7ea2\u8272\u821e\u53f0\u4e0a\u7ec4\u6210\u591a\u81c2\u526a\u5f71\u9020\u578b\u3002',
     aspectRatio: 1179 / 666,
     title: 'Performance',
-    titleZh: 'Performance',
+    titleZh: '表演视频',
     url: '',
   },
   {
@@ -913,7 +913,7 @@ export const danceClips = [
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u843d\u5730\u7a97\u5e18\u524d\u7684\u821e\u8e48\u6559\u5ba4\u7ec3\u4e60\u3002',
     aspectRatio: 1179 / 1913,
     title: 'Short Reels',
-    titleZh: 'Short Reels',
+    titleZh: '短视频',
     url: '',
   },
   {
