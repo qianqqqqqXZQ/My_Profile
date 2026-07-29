@@ -693,8 +693,8 @@ export const workingExperience = [
   {
     company: 'Pony.ai',
     companyZh: '小马智行',
-    role: 'Algorithm Engineer',
-    roleZh: '算法工程师',
+    role: 'Algorithm Intern',
+    roleZh: '算法实习生',
     period: 'July 2026 - Sep 2026',
     periodZh: '2026年7月 - 2026年9月',
     logoSrc:
