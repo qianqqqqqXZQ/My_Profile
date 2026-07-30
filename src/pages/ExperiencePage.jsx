@@ -185,26 +185,26 @@ const academicBackgroundCopy = {
 }
 
 const professionalCourses = [
-  'Computer Fundamentals',
-  'Databases and Interfaces',
-  'Foundation Algebra for Physical Science & Engineering',
-  'Foundation Calculus and Mathematical Techniques',
-  'Foundation Physics',
-  'Fundamental of Artificial Intelligence',
-  'Introduction to Algorithms',
-  'Introduction to Mathematical Software and Programming',
-  'Mathematics for Computer Scientists',
-  'Programming and Algorithms',
-  'Programming Paradigms',
-  'Software Engineering',
-  'Systems and Architecture',
+  { en: 'Computer Fundamentals', zh: '计算机基础概论' },
+  { en: 'Databases and Interfaces', zh: '数据库系统' },
+  { en: 'Foundation Algebra for Physical Science & Engineering', zh: '物理科学与工程基础代数' },
+  { en: 'Foundation Calculus and Mathematical Techniques', zh: '基础微积分和数学技巧' },
+  { en: 'Foundation Physics', zh: '基础物理' },
+  { en: 'Fundamental of Artificial Intelligence', zh: '人工智能导论' },
+  { en: 'Introduction to Algorithms', zh: '算法导论' },
+  { en: 'Introduction to Mathematical Software and Programming', zh: '数学软件与程序设计导论' },
+  { en: 'Mathematics for Computer Scientists', zh: '计算机科学数学基础' },
+  { en: 'Programming and Algorithms', zh: '编程与算法' },
+  { en: 'Programming Paradigms', zh: '编程范式' },
+  { en: 'Software Engineering', zh: '软件工程' },
+  { en: 'Systems and Architecture', zh: '计算机系统架构' },
 ]
 
 const englishCourses = [
-  'Oral Communication Skills A',
-  'Oral Communication Skills B',
-  'Reading and Writing in Academic Contexts',
-  'English in Specific Academic Contexts B',
+  { en: 'Oral Communication Skills A', zh: '口语交流技巧 A' },
+  { en: 'Oral Communication Skills B', zh: '口语交流技巧 B' },
+  { en: 'Reading and Writing in Academic Contexts', zh: '学术阅读与写作' },
+  { en: 'English in Specific Academic Contexts B', zh: '特定学术语境中的英语 B：理学与工程学' },
 ]
 
 const courseGroupTitles = {
@@ -365,7 +365,7 @@ function ExperiencePage({ language = 'en' }) {
                   <h4>{courseTitles.professional}</h4>
                   <ul>
                     {professionalCourses.map((course) => (
-                      <li key={course}>{course}</li>
+                      <li key={course.en}>{course[language] ?? course.en}</li>
                     ))}
                   </ul>
                 </div>
@@ -373,7 +373,7 @@ function ExperiencePage({ language = 'en' }) {
                   <h4>{courseTitles.english}</h4>
                   <ul>
                     {englishCourses.map((course) => (
-                      <li key={course}>{course}</li>
+                      <li key={course.en}>{course[language] ?? course.en}</li>
                     ))}
                   </ul>
                 </div>
