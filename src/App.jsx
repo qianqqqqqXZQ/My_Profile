@@ -8,7 +8,6 @@ import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
 import { homePageLanguageStorageKey } from './content/siteContent'
 import ContactPage from './pages/ContactPage'
-import DanceCoversPage from './pages/DanceCoversPage'
 import DancePage from './pages/DancePage'
 import ExperiencePage from './pages/ExperiencePage'
 import HomePage from './pages/HomePage'
@@ -50,7 +49,6 @@ function App() {
           <Route path="experience" element={<ExperiencePage language={homeLanguage} />} />
           <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
           <Route path="dance" element={<DancePage language={homeLanguage} />} />
-          <Route path="dance/covers" element={<DanceCoversPage language={homeLanguage} />} />
           <Route path="contact" element={<ContactPage language={homeLanguage} />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />

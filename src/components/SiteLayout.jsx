@@ -22,7 +22,7 @@ function NavSparkles() {
 function SiteLayout({ language, onLanguageChange }) {
   const location = useLocation()
   const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
-  const canSwitchLanguage = ['/profile', '/contact', '/experience', '/dance', '/dance/covers'].includes(location.pathname)
+  const canSwitchLanguage = ['/profile', '/contact', '/experience', '/dance'].includes(location.pathname)
   const isChinese = language === 'zh'
 
   return (

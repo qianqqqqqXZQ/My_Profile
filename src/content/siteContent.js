@@ -735,8 +735,6 @@ export const strengths = [
 export const dancePageContent = {
   en: {
     eyebrow: 'DANCE VIDEO',
-    coversEyebrow: 'VIDEO STORE ARCHIVE',
-    backToPortal: 'Return to the television',
     heroLabel: 'Dance video hero',
     heroTitle: 'Welcome to My Dance Space',
     heroTitleLines: [
@@ -747,8 +745,6 @@ export const dancePageContent = {
   },
   zh: {
     eyebrow: '\u8857\u821e\u89c6\u9891',
-    coversEyebrow: '\u5f55\u50cf\u5e26\u9986\u6863\u6848',
-    backToPortal: '\u8fd4\u56de\u590d\u53e4\u7535\u89c6',
     heroLabel: '\u821e\u8e48\u89c6\u9891\u9996\u5c4f',
     heroTitle: '\u6b22\u8fce\u6536\u770b\u6211\u7684\u821e\u8e48\u89c6\u9891',
     heroTitleLines: [
