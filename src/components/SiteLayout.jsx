@@ -1,9 +1,15 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { FlagIcon } from './HomeLanguageSelector'
 import { navigationLinks } from '../content/siteContent'
 import { preloadContactGlobeAssets } from './contactGlobeAssets'
 
 const navSparkles = Array.from({ length: 6 }, (_, index) => index + 1)
+const mobileNavigationMediaQuery = '(max-width: 720px)'
+
+function isMobileNavigation() {
+  return typeof window !== 'undefined' && window.matchMedia(mobileNavigationMediaQuery).matches
+}
 
 function NavSparkles() {
   return navSparkles.map((sparkle) => (
@@ -21,13 +27,51 @@ function NavSparkles() {
 
 function SiteLayout({ language, onLanguageChange }) {
   const location = useLocation()
+  const [isTopbarCollapsed, setIsTopbarCollapsed] = useState(() => isMobileNavigation())
   const showTopbar = location.pathname !== '/' && location.pathname !== '/ready'
   const canSwitchLanguage = ['/profile', '/contact', '/experience', '/dance'].includes(location.pathname)
   const isChinese = language === 'zh'
 
+  useEffect(() => {
+    if (isMobileNavigation()) {
+      setIsTopbarCollapsed(true)
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(mobileNavigationMediaQuery)
+    const updateNavigationState = (event) => setIsTopbarCollapsed(event.matches)
+
+    mediaQuery.addEventListener('change', updateNavigationState)
+
+    return () => mediaQuery.removeEventListener('change', updateNavigationState)
+  }, [])
+
+  const collapseTopbarOnMobile = () => {
+    if (isMobileNavigation()) {
+      setIsTopbarCollapsed(true)
+    }
+  }
+
   return (
     <div className="site-shell">
-      {showTopbar ? (
+      {showTopbar && isTopbarCollapsed ? (
+        <button
+          type="button"
+          className="topbar-reveal-toggle"
+          aria-label="Expand navigation"
+          title="Expand navigation"
+          onClick={() => setIsTopbarCollapsed(false)}
+        >
+          <span className="nav-toggle__icon" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+      ) : null}
+
+      {showTopbar && !isTopbarCollapsed ? (
         <header className="site-topbar topbar">
           <span className="site-topbar-metal" aria-hidden="true" />
           <span className="site-topbar-sheen" aria-hidden="true" />
@@ -81,15 +125,34 @@ function SiteLayout({ language, onLanguageChange }) {
                 </span>
               </button>
             </div>
+
+            <button
+              type="button"
+              className="nav-toggle is-open"
+              aria-label="Collapse navigation"
+              title="Collapse navigation"
+              onClick={() => setIsTopbarCollapsed(true)}
+            >
+              <span className="nav-toggle__icon" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
           </div>
 
-          <nav className="nav-links" aria-label="Primary">
+          <nav
+            id="primary-navigation"
+            className="nav-links"
+            aria-label="Primary"
+          >
             {navigationLinks.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) => (isActive ? 'active' : undefined)}
+                onClick={collapseTopbarOnMobile}
                 onPointerEnter={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
                 onFocus={item.to === '/contact' ? preloadContactGlobeAssets : undefined}
               >
