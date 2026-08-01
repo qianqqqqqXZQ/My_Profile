@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Component, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, extend, useFrame } from '@react-three/fiber'
-import { Environment, useGLTF, useTexture } from '@react-three/drei'
+import { useGLTF, useTexture } from '@react-three/drei'
 import {
   BallCollider,
   CuboidCollider,
@@ -33,6 +33,34 @@ const MOBILE_DRAG_MAX_STEP = 1.15
 const DESKTOP_MAX_SPIN = 10
 const MOBILE_MAX_SPIN = 14
 
+function supportsWebGL() {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('webgl2') || canvas.getContext('webgl')
+
+  context?.getExtension('WEBGL_lose_context')?.loseContext()
+  return Boolean(context)
+}
+
+class LanyardSceneBoundary extends Component {
+  state = { hasError: false }
+
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  componentDidCatch() {
+    this.props.onError()
+  }
+
+  render() {
+    return this.state.hasError ? null : this.props.children
+  }
+}
+
 export default function ProfileLanyard({
   position = [0, 0, 28],
   gravity = [0, -40, 0],
@@ -41,6 +69,8 @@ export default function ProfileLanyard({
   paused = false,
 }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768)
+  const [canRenderScene, setCanRenderScene] = useState(false)
+  const [hasSceneError, setHasSceneError] = useState(false)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -48,20 +78,40 @@ export default function ProfileLanyard({
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  useEffect(() => {
+    setCanRenderScene(supportsWebGL())
+  }, [])
+
+  const handleContextLoss = (event) => {
+    event.preventDefault()
+    setHasSceneError(true)
+  }
+
   return (
     <div className="lanyard-wrapper" aria-label="Profile lanyard widget">
-      <Canvas
-        camera={{ position, fov }}
-        dpr={[1, isMobile ? 1.25 : 1.5]}
-        frameloop={paused ? 'never' : 'always'}
-        gl={{ alpha: transparent }}
-      >
-        <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={isMobile ? 1 / 24 : 1 / 45}>
-          <Band isMobile={isMobile} paused={paused} />
-        </Physics>
-        {!paused ? <Environment preset="city" /> : null}
-      </Canvas>
+      {canRenderScene && !hasSceneError ? (
+        <LanyardSceneBoundary onError={() => setHasSceneError(true)}>
+          <Canvas
+            camera={{ position, fov }}
+            dpr={[1, isMobile ? 1.25 : 1.5]}
+            frameloop={paused ? 'never' : 'always'}
+            gl={{ alpha: transparent, antialias: !isMobile, powerPreference: 'high-performance' }}
+            onCreated={({ gl }) => {
+              gl.domElement.addEventListener('webglcontextlost', handleContextLoss, { once: true })
+            }}
+          >
+            <ambientLight intensity={2.4} />
+            <directionalLight position={[4, 7, 5]} intensity={3.2} />
+            <directionalLight position={[-5, 2, -3]} intensity={1.4} color="#b9d5ff" />
+            <pointLight position={[0, -2, 4]} intensity={1.1} color="#ffe4c4" />
+            <Suspense fallback={null}>
+              <Physics gravity={gravity} timeStep={isMobile ? 1 / 24 : 1 / 45}>
+                <Band isMobile={isMobile} paused={paused} />
+              </Physics>
+            </Suspense>
+          </Canvas>
+        </LanyardSceneBoundary>
+      ) : null}
     </div>
   )
 }
@@ -118,7 +168,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, paused = false })
   )
 
   const cardMap = useMemo(() => {
-    const baseMap = materials.base.map
+    const baseMap = materials.base?.map
     if (!baseMap?.image) return baseMap
 
     const canvas = document.createElement('canvas')
