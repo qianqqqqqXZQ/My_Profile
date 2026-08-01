@@ -103,7 +103,6 @@ export default function ProfileLanyard({
             <ambientLight intensity={2.4} />
             <directionalLight position={[4, 7, 5]} intensity={3.2} />
             <directionalLight position={[-5, 2, -3]} intensity={1.4} color="#b9d5ff" />
-            <pointLight position={[0, -2, 4]} intensity={1.1} color="#ffe4c4" />
             <Suspense fallback={null}>
               <Physics gravity={gravity} timeStep={isMobile ? 1 / 24 : 1 / 45}>
                 <Band isMobile={isMobile} paused={paused} />
