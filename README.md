@@ -2,6 +2,8 @@
 
 An interactive personal CV and portfolio website for Ziqian Xiong, a Computer Science student at the University of Nottingham Ningbo China. The site combines structured academic and activity information with a visual, motion-focused presentation.
 
+![Homepage preview](public/media/images/readme/homepage-preview.png)
+
 ## What This Project Contains
 
 - A home introduction with English and Chinese copy, a language selector, and a gated navigation experience.
