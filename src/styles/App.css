@@ -1203,6 +1203,10 @@
   padding-top: 0;
 }
 
+.profile-page-background {
+  min-height: 100svh;
+}
+
 .page-hero {
   position: relative;
   padding: 42px 0 8px;

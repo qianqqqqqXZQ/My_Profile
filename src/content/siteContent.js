@@ -371,17 +371,6 @@ export const offCampusActivities = [
       objectPosition: 'center top',
     },
   },
-  {
-    period: 'OTHERS',
-    bullets: [],
-    photoAlt: 'Photo from another off-campus activity',
-    coverPhoto: {
-      src: '/media/images/offcampus-covers/other-activity-cover.jpg',
-      alt: 'Portrait photo from another off-campus activity with the people centered.',
-      objectFit: 'cover',
-      objectPosition: 'center center',
-    },
-  },
 ]
 
 const chineseCampusActivities = campusActivities.map((activity, index) => {

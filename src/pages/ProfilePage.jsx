@@ -19,8 +19,8 @@ const dailyPhotoPlaceholders = [
 ]
 
 function ProfilePage({ language }) {
-  const heroRef = useRef(null)
-  const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const profileRef = useRef(null)
+  const [isProfileVisible, setIsProfileVisible] = useState(true)
   const [activeGallery, setActiveGallery] = useState(null)
   const copy = profilePageContent[language] ?? profilePageContent.en
 
@@ -31,7 +31,7 @@ function ProfilePage({ language }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsHeroVisible(entry?.isIntersecting ?? true)
+        setIsProfileVisible(entry?.isIntersecting ?? true)
       },
       {
         threshold: 0.05,
@@ -39,8 +39,8 @@ function ProfilePage({ language }) {
       },
     )
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current)
+    if (profileRef.current) {
+      observer.observe(profileRef.current)
     }
 
     return () => {
@@ -210,44 +210,41 @@ function ProfilePage({ language }) {
     })
 
   return (
-    <div className="page-route page-profile" lang={language === 'zh' ? 'zh-CN' : 'en'}>
-      <div ref={heroRef}>
-        <HeroBackground variant="waves" className="profile-hero-shell" paused={!isHeroVisible}>
-          <section className="page-hero page-profile-hero">
-            <div className="section-shell page-profile-hero-shell">
-              <aside className="profile-hero-visual" aria-hidden="true">
-                <ProfileLanyard paused={false} />
-              </aside>
+    <div ref={profileRef} className="page-route page-profile" lang={language === 'zh' ? 'zh-CN' : 'en'}>
+      <HeroBackground variant="waves" className="profile-page-background" paused={!isProfileVisible}>
+        <section className="page-hero page-profile-hero">
+          <div className="section-shell page-profile-hero-shell">
+            <aside className="profile-hero-visual" aria-hidden="true">
+              <ProfileLanyard paused={false} />
+            </aside>
 
-              <div className="page-profile-hero-grid">
-                <div className="profile-hero-copy">
-                  <p className="eyebrow">{copy.hero.eyebrow}</p>
-                  <h1>{copy.hero.title}</h1>
-                  <p className="page-lead">{copy.hero.lead}</p>
+            <div className="page-profile-hero-grid">
+              <div className="profile-hero-copy">
+                <p className="eyebrow">{copy.hero.eyebrow}</p>
+                <h1>{copy.hero.title}</h1>
+                <p className="page-lead">{copy.hero.lead}</p>
 
-                  <div className="page-hero-actions">
-                    <Link className="primary-button" to="/experience">
-                      {copy.hero.experienceAction}
-                    </Link>
-                    <Link className="secondary-button profile-dance-button" to="/dance">
-                      {copy.hero.danceAction}
-                    </Link>
-                  </div>
+                <div className="page-hero-actions">
+                  <Link className="primary-button" to="/experience">
+                    {copy.hero.experienceAction}
+                  </Link>
+                  <Link className="secondary-button profile-dance-button" to="/dance">
+                    {copy.hero.danceAction}
+                  </Link>
+                </div>
 
-                  <div className="profile-highlights">
-                    {copy.hero.highlights.map((item) => (
-                      <article key={item.label}>
-                        <span>{item.label}</span>
-                        <strong>{item.value}</strong>
-                      </article>
-                    ))}
-                  </div>
+                <div className="profile-highlights">
+                  {copy.hero.highlights.map((item) => (
+                    <article key={item.label}>
+                      <span>{item.label}</span>
+                      <strong>{item.value}</strong>
+                    </article>
+                  ))}
                 </div>
               </div>
             </div>
-          </section>
-        </HeroBackground>
-      </div>
+          </div>
+        </section>
 
       <section id="campus-activities" className="content-section course-activities-section">
         <div className="section-shell">
@@ -300,6 +297,7 @@ function ProfilePage({ language }) {
           </div>
         </section>
       </main>
+      </HeroBackground>
 
       {activeGallery ? (
         <div className="campus-gallery-modal-backdrop" onClick={closeGallery}>
