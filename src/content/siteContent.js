@@ -691,12 +691,14 @@ export const workingExperience = [
     logoAlt: 'Pony.ai logo',
     leader: 'Bo Xiao',
     bullets: [
-      'Conduct a systematic investigation of cutting-edge VGGT-related 3D/4D reconstruction techniques, spanning scene-level reconstruction (QVGGT, Dynamic-VGGT, VGGT-4D, and VGGT-MPR) and object-level non-rigid reconstruction (MoSca); develop a multidimensional evaluation framework by integrating 3D Gaussian Splatting (3DGS) rendering, and explore deployment pathways for autonomous-driving scene reconstruction and simulation.',
-      'Still in work.',
+      'Conduct a systematic investigation of cutting-edge VGGT-related 3D/4D reconstruction techniques, spanning scene-level reconstruction (QVGGT, Dynamic-VGGT, VGGT-4D, and VGGT-MPR) and object-level non-rigid reconstruction (MoSca); explore deployment pathways for autonomous-driving scene reconstruction and simulation.',
+      'For the company\'s existing object-level 3D reconstruction pipeline based on DA3 depth estimation and 3D Gaussian Splatting, introduced VGGT for comparative evaluation of multi-view geometry and depth estimation. Completed solution validation, engineering integration, and full-pipeline replacement, improving the reconstruction quality and stability of the 3D Gaussian representation.',
+      'Still in progress.',
     ],
     bulletsZhOverride: [
-      '系统调研VGGT相关的前沿3D/4D重建技术，覆盖场景级重建（QVGGT/Dynamic-VGGT/VGGT-4D/VGGT-MPR）与物体级非刚体重建（MoSca），并结合3DGS渲染技术构建多维评估框架，探索其在自动驾驶场景重建与仿真中的落地路径。',
-      'Still in work.',
+      '系统调研前沿 VGGT 相关 3D/4D 重建技术，覆盖场景级重建（QVGGT、Dynamic-VGGT、VGGT-4D 和 VGGT-MPR）及对象级非刚体重建（MoSca）；探索其在自动驾驶场景重建与仿真中的落地路径。',
+      '针对公司现有基于 DA3 深度估计和 3D Gaussian Splatting 的对象级 3D 重建流水线，引入 VGGT 对多视角几何与深度估计进行对比评估。完成方案验证、工程集成和全流程替换，提升了 3D Gaussian 表示的重建质量与稳定性。',
+      '仍在进行中。',
     ],
     sortValue: 202607,
   },
