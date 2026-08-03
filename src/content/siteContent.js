@@ -690,6 +690,8 @@ export const workingExperience = [
       'https://ir.pony.ai/sites/g/files/knoqqb104676/themes/site/client_site/dist/images/logo.png',
     logoAlt: 'Pony.ai logo',
     leader: 'Bo Xiao',
+    timelineDescription: '',
+    timelineDescriptionZh: '',
     bullets: [
       'Conduct a systematic investigation of cutting-edge VGGT-related 3D/4D reconstruction techniques, spanning scene-level reconstruction (QVGGT, Dynamic-VGGT, VGGT-4D, and VGGT-MPR) and object-level non-rigid reconstruction (MoSca); explore deployment pathways for autonomous-driving scene reconstruction and simulation.',
       'For the company\'s existing object-level 3D reconstruction pipeline based on DA3 depth estimation and 3D Gaussian Splatting, introduced VGGT for comparative evaluation of multi-view geometry and depth estimation. Completed solution validation, engineering integration, and full-pipeline replacement, improving the reconstruction quality and stability of the 3D Gaussian representation.',

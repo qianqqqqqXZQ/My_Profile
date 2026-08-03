@@ -244,7 +244,9 @@ function ExperiencePage({ language = 'en' }) {
       type: copy.typeLabels.working,
       period: getLocalizedValue(item, 'period', language),
       title: `${getLocalizedValue(item, 'company', language)} - ${getLocalizedValue(item, 'role', language)}`,
-      description: getLocalizedValue(item, 'bullets', language)?.[0],
+      description:
+        getLocalizedValue(item, 'timelineDescription', language) ??
+        getLocalizedValue(item, 'bullets', language)?.[0],
       sortValue: item.sortValue ?? getPeriodStartValue(item.period),
     })),
   ].sort((firstItem, secondItem) => secondItem.sortValue - firstItem.sortValue)
@@ -429,7 +431,7 @@ function ExperiencePage({ language = 'en' }) {
                       <span className="timeline-type-badge">{item.type}</span>
                       <span className="timeline-period">{item.period}</span>
                       <h3>{item.title}</h3>
-                      <p>{item.description}</p>
+                      {item.description ? <p>{item.description}</p> : null}
                     </article>
                   ))}
                 </div>
