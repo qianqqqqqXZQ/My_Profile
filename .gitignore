@@ -2,10 +2,16 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+
+# Local development logs
 *.log
 
+# Agent-generated working notes, screenshots, browser profiles, and temporary output
 codex-work/
+.codex-workspace/
 workspace-meta/
+playwright-report/
+test-results/
 
 .vscode/*
 !.vscode/extensions.json
