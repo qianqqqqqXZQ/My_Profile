@@ -1,5 +1,7 @@
 # Ziqian Xiong | Personal CV & Portfolio
 
+[English] | [中文](README.zh-CN.md)
+
 An interactive personal website by Ziqian Xiong, a Computer Science student at the University of Nottingham Ningbo China. It brings academic work, campus life, dance, and contact details together in a bilingual, motion-focused portfolio.
 
 [**Enter the Website**](https://qqqqqprofile.vercel.app)
