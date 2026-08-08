@@ -165,6 +165,16 @@ const academicBackgroundItems = [
       zh: '\u82f1\u8bed(\u6258\u798f\u6b63\u5728\u5907\u8003), \u4e2d\u6587(\u6bcd\u8bed)',
     },
   },
+  {
+    label: {
+      en: 'Programming Languages',
+      zh: '\u7f16\u7a0b\u8bed\u8a00',
+    },
+    value: {
+      en: 'Python, Verilog, C/C++, Java, Haskell, HTML, CSS, JavaScript, Lean',
+      zh: 'Python, Verilog, C/C++, Java, Haskell, HTML, CSS, JavaScript, Lean',
+    },
+  },
 ]
 
 const academicBackgroundCopy = {
