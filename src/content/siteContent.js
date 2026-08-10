@@ -1,6 +1,6 @@
 export const navigationLinks = [
   { label: 'Profile', labelZh: '个人背景', to: '/profile' },
-  { label: 'Academic', labelZh: '开发经历', to: '/experience' },
+  { label: 'Academic', labelZh: '学术经历', to: '/experience' },
   { label: 'Dance Videos', labelZh: '舞蹈视频', to: '/dance' },
   { label: 'Contact', labelZh: '联系方式', to: '/contact' },
 ]
@@ -56,10 +56,10 @@ export const readyPageContent = {
         description: '\u8fd9\u4e00\u9875\u5305\u542b\u6211\u7684\u4e00\u4e9b\u57fa\u672c\u4e2a\u4eba\u4fe1\u606f\uff0c\u4f8b\u5982\u7231\u597d\u7b49\u5185\u5bb9\u3002',
       },
       {
-        label: '\u5f00\u53d1\u7ecf\u5386',
+        label: '\u5b66\u672f\u7ecf\u5386',
         to: '/experience',
-        title: '\u5f00\u53d1\u7ecf\u5386',
-        description: '\u67e5\u770b\u4e0e\u5f00\u53d1\u76f8\u5173\u7684\u79d1\u7814\u3001\u5de5\u4f5c\u4ee5\u53ca\u9879\u76ee\u7ec4\u7ec7\u7ecf\u5386\u3002',
+        title: '\u5b66\u672f\u7ecf\u5386',
+        description: '\u67e5\u770b\u6211\u7684\u79d1\u7814\u3001\u5de5\u4f5c\u4ee5\u53ca\u9879\u76ee\u7ec4\u7ec7\u7ecf\u5386\u3002',
       },
       {
         label: '\u821e\u8e48\u89c6\u9891',
@@ -523,8 +523,8 @@ export const profilePageContent = {
       eyebrow: '个人背景',
       title: '个人概况',
       lead:
-        '这里记录了我的一些基础个人信息，包括教育背景与兴趣爱好。如果你想了解我的开发经历或舞蹈经历，可以通过下方按钮进入对应页面。',
-      experienceAction: '查看开发经历',
+        '这里记录了我的一些基础个人信息，包括教育背景与兴趣爱好。如果你想了解我的学术经历或舞蹈经历，可以通过下方按钮进入对应页面。',
+      experienceAction: '查看学术经历',
       danceAction: '舞蹈视频',
       highlights: [
         { label: '姓名', value: '熊子谦' },
