@@ -121,7 +121,7 @@ const pageCopy = {
     workingType: '实习',
     projectEyebrow: '项目',
     projectTitle: '项目经历',
-    projectIntro: '以下是我参与的个人项目与团队项目',
+    projectIntro: '以下是我参与的个人项目与团队项目。',
     projectMicroLabel: '项目',
     projectPill: '项目',
     modalCloseLabel: '关闭科研详情',
@@ -196,7 +196,7 @@ const academicBackgroundCopy = {
 
 const professionalCourses = [
   { en: 'Computer Fundamentals', zh: '计算机基础概论' },
-  { en: 'Databases and Interfaces', zh: '数据库系统' },
+  { en: 'Databases and Interfaces', zh: '数据库与接口' },
   { en: 'Foundation Algebra for Physical Science & Engineering', zh: '物理科学与工程基础代数' },
   { en: 'Foundation Calculus and Mathematical Techniques', zh: '基础微积分和数学技巧' },
   { en: 'Foundation Physics', zh: '基础物理' },

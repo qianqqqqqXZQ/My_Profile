@@ -165,7 +165,7 @@ function HomeLanguageSelector({ language, onLanguageChange }) {
       </button>
       <span className="home-language-recommendation">
         <span>Recommended: use the English version first</span>
-        <span>推荐优先使用英文版本</span>
+        <span>建议优先使用英文版</span>
       </span>
 
       <div className="home-language-menu" role="menu" aria-label="Homepage language options">
