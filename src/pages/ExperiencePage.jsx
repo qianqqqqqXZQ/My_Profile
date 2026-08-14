@@ -228,12 +228,40 @@ const courseGroupTitles = {
   },
 }
 
+function AcademicStackSection({ children, className = '', index, isMotionReady, isVisible, sectionRefs }) {
+  const sectionClassName = [
+    'content-section',
+    'academic-stack-section',
+    className,
+    isMotionReady ? 'academic-stack-section--motion-ready' : '',
+    isVisible ? 'is-stack-visible' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  return (
+    <section
+      ref={(element) => {
+        sectionRefs.current[index] = element
+      }}
+      className={sectionClassName}
+      data-academic-stack-index={index}
+      style={{ '--academic-stack-order': index + 1 }}
+    >
+      {children}
+    </section>
+  )
+}
+
 function ExperiencePage({ language = 'en' }) {
   const copy = pageCopy[language] ?? pageCopy.en
   const academicCopy = academicBackgroundCopy[language] ?? academicBackgroundCopy.en
   const courseTitles = courseGroupTitles[language] ?? courseGroupTitles.en
   const heroRef = useRef(null)
+  const academicStackSectionRefs = useRef([])
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [isAcademicStackMotionReady, setIsAcademicStackMotionReady] = useState(false)
+  const [visibleAcademicStackSections, setVisibleAcademicStackSections] = useState(() => new Set())
   const [selectedResearchExperience, setSelectedResearchExperience] = useState(null)
   const timelineExperience = [
     ...projectExperience.map((item) => ({
@@ -282,6 +310,58 @@ function ExperiencePage({ language = 'en' }) {
 
     return () => {
       observer.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const scrollRoot = document.documentElement
+    scrollRoot.classList.add('academic-scroll-snap-enabled')
+
+    if (!('IntersectionObserver' in window)) {
+      return () => {
+        scrollRoot.classList.remove('academic-scroll-snap-enabled')
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const newlyVisibleIndexes = entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => Number(entry.target.dataset.academicStackIndex))
+          .filter((index) => Number.isInteger(index))
+
+        if (newlyVisibleIndexes.length === 0) {
+          return
+        }
+
+        setVisibleAcademicStackSections((currentIndexes) => {
+          const nextIndexes = new Set(currentIndexes)
+
+          newlyVisibleIndexes.forEach((index) => nextIndexes.add(index))
+
+          return nextIndexes.size === currentIndexes.size ? currentIndexes : nextIndexes
+        })
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -12% 0px',
+      },
+    )
+
+    academicStackSectionRefs.current.forEach((section) => {
+      if (section) {
+        observer.observe(section)
+      }
+    })
+    setIsAcademicStackMotionReady(true)
+
+    return () => {
+      observer.disconnect()
+      scrollRoot.classList.remove('academic-scroll-snap-enabled')
     }
   }, [])
 
@@ -351,7 +431,12 @@ function ExperiencePage({ language = 'en' }) {
           </div>
         </section>
 
-        <section className="content-section">
+        <AcademicStackSection
+          index={0}
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(0)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <article className="academic-background-card card-surface">
               <div className="academic-background-heading">
@@ -392,9 +477,14 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </article>
           </div>
-        </section>
+        </AcademicStackSection>
 
-        <section className="content-section">
+        <AcademicStackSection
+          index={1}
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(1)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <article className="research-focus-card card-surface">
               <div className="research-focus-copy">
@@ -417,9 +507,15 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </article>
           </div>
-        </section>
+        </AcademicStackSection>
 
-        <section className="content-section experience-timeline-section">
+        <AcademicStackSection
+          index={2}
+          className="experience-timeline-section"
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(2)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <div className="section-header">
               <p className="eyebrow">{copy.timelineEyebrow}</p>
@@ -448,9 +544,14 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </div>
           </div>
-        </section>
+        </AcademicStackSection>
 
-        <section className="content-section">
+        <AcademicStackSection
+          index={3}
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(3)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <div className="section-header section-header--research">
               <p className="eyebrow">{copy.researchEyebrow}</p>
@@ -527,9 +628,14 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </article>
           </div>
-        </section>
+        </AcademicStackSection>
 
-        <section className="content-section">
+        <AcademicStackSection
+          index={4}
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(4)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <div className="section-header section-header--research">
               <p className="eyebrow">{copy.workingEyebrow}</p>
@@ -589,9 +695,14 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </article>
           </div>
-        </section>
+        </AcademicStackSection>
 
-        <section className="content-section">
+        <AcademicStackSection
+          index={5}
+          isMotionReady={isAcademicStackMotionReady}
+          isVisible={visibleAcademicStackSections.has(5)}
+          sectionRefs={academicStackSectionRefs}
+        >
           <div className="section-shell">
             <div className="section-header section-header--research">
               <p className="eyebrow">{copy.projectEyebrow}</p>
@@ -618,7 +729,7 @@ function ExperiencePage({ language = 'en' }) {
               </div>
             </article>
           </div>
-        </section>
+        </AcademicStackSection>
       </div>
 
       {selectedResearchExperience ? (
