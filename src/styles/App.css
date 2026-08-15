@@ -2528,6 +2528,10 @@ html.academic-scroll-snap-enabled {
   gap: 24px;
 }
 
+.campus-activity-reveal {
+  width: 100%;
+}
+
 .campus-activity-entry {
   position: relative;
   display: grid;

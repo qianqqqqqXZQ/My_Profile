@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBackground from '../components/HeroBackground'
 import CircularGallery from '../components/CircularGallery'
+import FadeContent from '../components/FadeContent'
 import ProfileLanyard from '../components/ProfileLanyard'
 import Stack from '../components/Stack'
 import { profilePageContent } from '../content/siteContent'
@@ -97,8 +98,9 @@ function ProfilePage({ language }) {
   }, [activeGallery])
 
   const renderActivityEntries = (items) =>
-    items.map((item) => {
+    items.map((item, index) => {
       const itemKey = `${item.organization}-${item.period}`
+      const entranceDirection = index % 2 === 0 ? -1 : 1
       const coverPhoto = item.coverPhoto ?? item.photos?.[0] ?? null
       const hasGallery = Boolean(item.photos?.length)
       const renderActivityLink = (className = 'inline-link campus-activity-link') =>
@@ -116,96 +118,105 @@ function ProfilePage({ language }) {
         item.linkHref && Number.isInteger(item.linkAfterBulletIndex)
 
       return (
-        <article key={itemKey} className="campus-activity-entry card-surface">
-          <div className="campus-activity-copy">
-            <p className="campus-activity-period">{item.period}</p>
-            {item.organization ? (
-              <p className="campus-activity-organization">{item.organization}</p>
-            ) : null}
-            {item.role ? <h3>{item.role}</h3> : null}
+        <FadeContent
+          key={itemKey}
+          className="campus-activity-reveal"
+          initialX={entranceDirection * 76}
+          duration={760}
+          ease="power3.out"
+          threshold={0.16}
+        >
+          <article className="campus-activity-entry card-surface">
+            <div className="campus-activity-copy">
+              <p className="campus-activity-period">{item.period}</p>
+              {item.organization ? (
+                <p className="campus-activity-organization">{item.organization}</p>
+              ) : null}
+              {item.role ? <h3>{item.role}</h3> : null}
 
-            {item.bullets.length ? (
-              <ul className="campus-activity-bullets">
-                {item.bullets.map((bullet, index) => (
-                  <li key={bullet}>
-                    {bullet}
-                    {shouldRenderInlineLink && item.linkAfterBulletIndex === index ? (
-                      <span className="campus-activity-bullet-link">
-                        {renderActivityLink('inline-link campus-activity-link campus-activity-link--inline')}
+              {item.bullets.length ? (
+                <ul className="campus-activity-bullets">
+                  {item.bullets.map((bullet, bulletIndex) => (
+                    <li key={bullet}>
+                      {bullet}
+                      {shouldRenderInlineLink && item.linkAfterBulletIndex === bulletIndex ? (
+                        <span className="campus-activity-bullet-link">
+                          {renderActivityLink('inline-link campus-activity-link campus-activity-link--inline')}
+                        </span>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
+              {item.linkHref && !shouldRenderInlineLink ? renderActivityLink() : null}
+            </div>
+
+            <div className="campus-activity-photo" aria-label={item.photoAlt}>
+              {coverPhoto ? (
+                <div className="campus-photo-gallery">
+                  {hasGallery ? (
+                    <button
+                      type="button"
+                      className="campus-photo-hero"
+                      onClick={() => setActiveGallery(item)}
+                      aria-label={copy.gallery.openLabel(item.role)}
+                    >
+                      <span className="campus-photo-card campus-photo-card--single">
+                        <span
+                          className="campus-photo-card-backdrop"
+                          style={{
+                            backgroundImage: `url(${coverPhoto.src})`,
+                            backgroundPosition: coverPhoto.objectPosition ?? 'center',
+                          }}
+                          aria-hidden="true"
+                        />
+                        <img
+                          src={coverPhoto.src}
+                          alt={coverPhoto.alt}
+                          loading="lazy"
+                          style={{
+                            objectFit: coverPhoto.objectFit ?? 'contain',
+                            objectPosition: coverPhoto.objectPosition ?? 'center',
+                          }}
+                        />
                       </span>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-
-            {item.linkHref && !shouldRenderInlineLink ? renderActivityLink() : null}
-          </div>
-
-          <div className="campus-activity-photo" aria-label={item.photoAlt}>
-            {coverPhoto ? (
-              <div className="campus-photo-gallery">
-                {hasGallery ? (
-                  <button
-                    type="button"
-                    className="campus-photo-hero"
-                    onClick={() => setActiveGallery(item)}
-                    aria-label={copy.gallery.openLabel(item.role)}
-                  >
-                    <span className="campus-photo-card campus-photo-card--single">
-                      <span
-                        className="campus-photo-card-backdrop"
-                        style={{
-                          backgroundImage: `url(${coverPhoto.src})`,
-                          backgroundPosition: coverPhoto.objectPosition ?? 'center',
-                        }}
-                        aria-hidden="true"
-                      />
-                      <img
-                        src={coverPhoto.src}
-                        alt={coverPhoto.alt}
-                        loading="lazy"
-                        style={{
-                          objectFit: coverPhoto.objectFit ?? 'contain',
-                          objectPosition: coverPhoto.objectPosition ?? 'center',
-                        }}
-                      />
-                    </span>
-                    <span className="campus-photo-open-indicator">
-                      {item.galleryLabel ?? copy.gallery.fallbackLabel(item.photos.length)}
-                    </span>
-                  </button>
-                ) : (
-                  <div className="campus-photo-hero campus-photo-hero--static">
-                    <span className="campus-photo-card campus-photo-card--single">
-                      <span
-                        className="campus-photo-card-backdrop"
-                        style={{
-                          backgroundImage: `url(${coverPhoto.src})`,
-                          backgroundPosition: coverPhoto.objectPosition ?? 'center',
-                        }}
-                        aria-hidden="true"
-                      />
-                      <img
-                        src={coverPhoto.src}
-                        alt={coverPhoto.alt}
-                        loading="lazy"
-                        style={{
-                          objectFit: coverPhoto.objectFit ?? 'contain',
-                          objectPosition: coverPhoto.objectPosition ?? 'center',
-                        }}
-                      />
-                    </span>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="campus-activity-photo-frame">
-                <span>{item.photoLabel}</span>
-              </div>
-            )}
-          </div>
-        </article>
+                      <span className="campus-photo-open-indicator">
+                        {item.galleryLabel ?? copy.gallery.fallbackLabel(item.photos.length)}
+                      </span>
+                    </button>
+                  ) : (
+                    <div className="campus-photo-hero campus-photo-hero--static">
+                      <span className="campus-photo-card campus-photo-card--single">
+                        <span
+                          className="campus-photo-card-backdrop"
+                          style={{
+                            backgroundImage: `url(${coverPhoto.src})`,
+                            backgroundPosition: coverPhoto.objectPosition ?? 'center',
+                          }}
+                          aria-hidden="true"
+                        />
+                        <img
+                          src={coverPhoto.src}
+                          alt={coverPhoto.alt}
+                          loading="lazy"
+                          style={{
+                            objectFit: coverPhoto.objectFit ?? 'contain',
+                            objectPosition: coverPhoto.objectPosition ?? 'center',
+                          }}
+                        />
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="campus-activity-photo-frame">
+                  <span>{item.photoLabel}</span>
+                </div>
+              )}
+            </div>
+          </article>
+        </FadeContent>
       )
     })
 

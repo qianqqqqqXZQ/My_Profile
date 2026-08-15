@@ -13,6 +13,7 @@ function FadeContent({
   delay = 0,
   threshold = 0.1,
   initialOpacity = 0,
+  initialX = 0,
   disappearAfter = 0,
   disappearDuration = 0.5,
   disappearEase = 'power2.in',
@@ -39,9 +40,22 @@ function FadeContent({
 
     const startPct = (1 - threshold) * 100
     const getSeconds = (val) => (typeof val === 'number' && val > 10 ? val / 1000 : val)
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion) {
+      gsap.set(el, {
+        autoAlpha: 1,
+        x: 0,
+        filter: 'blur(0px)',
+        willChange: 'auto',
+      })
+
+      return undefined
+    }
 
     gsap.set(el, {
       autoAlpha: initialOpacity,
+      x: initialX,
       filter: blur ? 'blur(10px)' : 'blur(0px)',
       willChange: 'opacity, filter, transform',
     })
@@ -67,6 +81,7 @@ function FadeContent({
 
     timeline.to(el, {
       autoAlpha: 1,
+      x: 0,
       filter: 'blur(0px)',
       duration: getSeconds(duration),
       ease,
