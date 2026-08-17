@@ -2,7 +2,7 @@
 
 ## Overview
 
-`My_CV_new` is a Vite + React personal CV site with routed pages for Home, Profile, Experience, Ready, Dance, and Contact. The Profile page is implemented in `src/pages/ProfilePage.jsx` and shares page styling from `src/styles/App.css`.
+`My_CV_new` is a Vite + React personal CV site with routed pages for Home, Profile, Experience, Ready, Dance, and Contact. The Experience page is implemented in `src/pages/ExperiencePage.jsx` and shares page styling from `src/styles/App.css`.
 
 ## Structure
 
@@ -20,6 +20,6 @@
 
 ## Working Notes
 
-- Profile activity cards are rendered by `renderActivityEntries` in `ProfilePage.jsx` for both Campus Activities and Social Activities.
-- Activity cards use `FadeContent` with alternating `initialX` values so each card enters from the opposite side as it reaches the viewport.
-- Keep scroll animations one-time, keyboard/accessibility friendly, responsive, and disabled for users who prefer reduced motion.
+- Research-interest copy is defined in the localized `pageCopy` object in `src/pages/ExperiencePage.jsx`.
+- The `focusLines` arrays render as individual display lines in the `research-focus-card` section.
+- Check line lengths on desktop and mobile after changing this copy, since each item maps to a displayed line.
