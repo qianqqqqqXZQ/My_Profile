@@ -23,3 +23,4 @@
 - Research-interest copy is defined in the localized `pageCopy` object in `src/pages/ExperiencePage.jsx`.
 - The `focusLines` arrays render as individual display lines in the `research-focus-card` section.
 - Check line lengths on desktop and mobile after changing this copy, since each item maps to a displayed line.
+- Working-experience records are defined in `src/content/siteContent.js`; `getLocalizedValue` uses a `fieldZh` value for Chinese when present, otherwise falls back to English.

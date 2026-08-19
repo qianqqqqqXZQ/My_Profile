@@ -688,7 +688,8 @@ export const workingExperience = [
     periodZh: '2026年7月 - 2026年9月',
     logoSrc: '/media/images/logos/pony-ai.png',
     logoAlt: 'Pony.ai logo',
-    leader: 'Bo Xiao',
+    leader: 'Yingying Wu',
+    leaderZh: '吴盈盈',
     timelineDescription: '',
     timelineDescriptionZh: '',
     bullets: [
