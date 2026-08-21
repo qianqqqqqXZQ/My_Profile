@@ -355,7 +355,7 @@ export const campusActivities = [
 
 export const offCampusActivities = [
   {
-    period: 'DACING',
+    period: 'DANCING',
     role: 'Dance Event Organizer, Judge & Guest',
     bullets: [
       'Organized and co-hosted multiple Hip-Hop dance events and competitions to strengthen the Hip-Hop dance community across universities in Ningbo, including collaborations with brands such as adidas.',
