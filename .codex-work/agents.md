@@ -20,6 +20,8 @@
 
 ## Working Notes
 
+- The current task adds the `4DGS-Edit-and-Compare` personal project before the GRP entry in `projectExperience`, with English/Chinese copy and a GitHub link button rendered by `ExperiencePage.jsx`.
+
 - Research-interest copy is defined in the localized `pageCopy` object in `src/pages/ExperiencePage.jsx`.
 - The `focusLines` arrays render as individual display lines in the `research-focus-card` section.
 - Check line lengths on desktop and mobile after changing this copy, since each item maps to a displayed line.

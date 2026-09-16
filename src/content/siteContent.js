@@ -596,6 +596,20 @@ export const contactLinks = [
 
 export const projectExperience = [
   {
+    title: '4DGS-Edit-and-Compare',
+    titleZh: '4DGS-Edit-and-Compare',
+    period: 'July 2026 - Sep 2026',
+    periodZh: '2026年7月 - 2026年9月',
+    description: 'Developed at Pony.ai as a point-cloud editing and comparison tool for 4D Gaussian Splatting. It supports rotating, translating, or deleting selected regions, while enabling side-by-side editing and quantitative evaluation of multiple point clouds.',
+    descriptionZh: '在小马智行期间开发的一款 4D Gaussian Splatting 点云编辑与对比工具，支持对选定点云区域进行旋转、平移和删除，也支持同时编辑、对比多个点云并输出量化评估指标。',
+    stack: 'Personal Project',
+    stackZh: '个人项目',
+    repositoryUrl: 'https://github.com/qianqqqqqXZQ/4DGS-Edit-and-Compare',
+    repositoryLabel: 'View the project on GitHub',
+    repositoryLabelZh: '在 GitHub 查看项目',
+    sortValue: 202607,
+  },
+  {
     title: 'UNNC Group Research Project (GRP)',
     titleZh: '宁波诺丁汉大学小组研究项目（GRP）',
     period: 'Oct 2026 - Jun 2027',
