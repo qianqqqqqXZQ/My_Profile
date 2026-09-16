@@ -3443,7 +3443,11 @@ html.academic-scroll-snap-enabled {
 
 .project-github-button__text {
   position: absolute;
-  width: 120px;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
   color: #ffffff;
   font-weight: 600;
   opacity: 0;

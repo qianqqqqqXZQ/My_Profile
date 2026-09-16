@@ -13,6 +13,12 @@
 - [x] Place the label and GitHub button in one horizontal action row.
 - [x] Re-run lint and production build checks.
 
+## Follow-up: Center Expanded GitHub Label
+
+- [x] Identify the expanded-label positioning issue.
+- [x] Center the GitHub label across the full expanded button.
+- [x] Re-run lint and production build checks.
+
 # Algorithm Intern Title Update
 
 - [x] Locate the bilingual working-experience title source.
