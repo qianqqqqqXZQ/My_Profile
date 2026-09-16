@@ -11,7 +11,7 @@
 
 - [x] Shorten the 4DGS personal-project label for both languages.
 - [x] Place the label and GitHub button in one horizontal action row.
-- [ ] Re-run lint and production build checks.
+- [x] Re-run lint and production build checks.
 
 # Algorithm Intern Title Update
 
