@@ -26,3 +26,11 @@
 - The `focusLines` arrays render as individual display lines in the `research-focus-card` section.
 - Check line lengths on desktop and mobile after changing this copy, since each item maps to a displayed line.
 - Working-experience records are defined in `src/content/siteContent.js`; `getLocalizedValue` uses a `fieldZh` value for Chinese when present, otherwise falls back to English.
+- The Pony.ai working-experience title is localized through `role` and `roleZh`; keep these fields synchronized when changing the displayed job title.
+
+## Profile Cover Full-Image Preview (2026-09-16)
+
+- Static Profile activity covers are rendered in `src/pages/ProfilePage.jsx`; clicking one sets `activePhoto` and opens the single-image modal.
+- Multi-photo activities continue to use `activeGallery` and the existing `Stack` component.
+- The full-image modal styles are in `src/styles/App.css` under `.campus-gallery-modal--image` and use `object-fit: contain` so poster edges remain visible.
+- Both English and Chinese labels for opening and closing the full image are defined in `profilePageContent.gallery` in `src/content/siteContent.js`.

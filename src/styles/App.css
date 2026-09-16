@@ -3396,7 +3396,6 @@ html.academic-scroll-snap-enabled {
 .experience-inline-tag {
   display: inline-flex;
   align-items: center;
-  margin-top: 16px;
   min-height: 30px;
   padding: 0 12px;
   border-radius: 999px;
@@ -3408,13 +3407,19 @@ html.academic-scroll-snap-enabled {
   text-transform: uppercase;
 }
 
+.project-experience-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
 .project-github-button {
   align-self: flex-start;
   position: relative;
   z-index: 1;
   width: 45px;
   height: 45px;
-  margin-top: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

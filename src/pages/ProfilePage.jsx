@@ -327,7 +327,7 @@ function ProfilePage({ language }) {
             className="campus-gallery-modal campus-gallery-modal--image"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="campus-image-title"
+            aria-label={activePhoto.alt}
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -339,7 +339,7 @@ function ProfilePage({ language }) {
               x
             </button>
             <div className="campus-image-modal-stage">
-              <img id="campus-image-title" src={activePhoto.src} alt={activePhoto.alt} />
+              <img src={activePhoto.src} alt={activePhoto.alt} />
             </div>
           </div>
         </div>
