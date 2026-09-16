@@ -359,14 +359,14 @@ export const offCampusActivities = [
     role: 'Dance Event Organizer, Judge & Guest',
     bullets: [
       'Organized and co-hosted multiple Hip-Hop dance events and competitions to strengthen the Hip-Hop dance community across universities in Ningbo, including collaborations with brands such as adidas.',
-      'Invited to serve as a judge or guest at a range of public dance events, while earning multiple awards in external competitions as both an individual dancer and a team member.',
+      'Invited multiple times to serve as both a judge and a guest at regional stops of national dance competitions and university Hip-Hop dance competitions, while earning multiple awards in external competitions as both an individual dancer and a team member.',
       'Current member of Ningbo Twenty Two Locking Crew, invited with the team to participate in numerous public performances and film a major music video.',
       "Dance Instructor at D-Day Dance Studio, Jiangxi, responsible for choreographing instructors' showcase performances for the studio's anniversary celebrations over multiple years.",
     ],
-    photoAlt: 'Dance Event poster for the off-campus Hip-Hop dance activities',
+    photoAlt: 'Poster for the 2026 International Street Dance League Jiangxi regional competition',
     coverPhoto: {
       src: '/media/images/offcampus-covers/dance-event-cover.jpg',
-      alt: 'Dance Event poster featuring the event branding and schedule.',
+      alt: 'Poster for the 2026 International Street Dance League Jiangxi regional competition.',
       objectFit: 'cover',
       objectPosition: 'center top',
     },
@@ -448,12 +448,12 @@ const chineseOffCampusActivities = offCampusActivities.map((activity, index) => 
       role: '舞蹈活动策划、评委及嘉宾',
       bullets: [
         '组织并联合主办多场街舞活动与赛事，促进宁波高校街舞社群之间的交流，并与阿迪达斯等品牌合作。',
-        '多次受邀担任公开舞蹈活动的评委或嘉宾，并以个人舞者和团队成员的身份在校外赛事中获得多个奖项。',
+        '多次受邀担任全国比赛分站赛及高校街舞比赛的裁判和嘉宾，并以个人舞者和团队成员的身份在校外赛事中获得多个奖项。',
         '现为宁波二十二 Locking Crew 成员，随团队受邀参与多场公开演出，并参与一支大型音乐视频的拍摄。',
         '担任江西舞月天舞蹈工作室舞蹈教师，连续多年负责工作室周年庆导师秀的编舞工作。',
       ],
-      photoAlt: '校外街舞活动的海报',
-      coverAlt: '展示活动品牌和日程的舞蹈活动海报。',
+      photoAlt: '2026国际街舞联赛江西赛区比赛海报',
+      coverAlt: '2026国际街舞联赛江西赛区比赛海报。',
     },
     {
       period: '其他',
