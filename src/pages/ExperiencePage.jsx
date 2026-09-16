@@ -684,8 +684,23 @@ function ExperiencePage({ language = 'en' }) {
                         </div>
 
                         <ul className="working-bullets">
-                          {getLocalizedValue(item, 'bullets', language).map((bullet) => (
-                            <li key={bullet}>{bullet}</li>
+                          {getLocalizedValue(item, 'bullets', language).map((bullet, bulletIndex) => (
+                            <li key={bullet}>
+                              {bullet}
+                              {item.bulletLinkIndex === bulletIndex && item.bulletLinkHref ? (
+                                <>
+                                  {' '}
+                                  <a
+                                    className="inline-link"
+                                    href={item.bulletLinkHref}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {language === 'zh' ? item.bulletLinkLabelZh : item.bulletLinkLabel}
+                                  </a>
+                                </>
+                              ) : null}
+                            </li>
                           ))}
                         </ul>
                       </div>
