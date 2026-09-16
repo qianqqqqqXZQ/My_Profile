@@ -23,6 +23,7 @@ function ProfilePage({ language }) {
   const profileRef = useRef(null)
   const [isProfileVisible, setIsProfileVisible] = useState(true)
   const [activeGallery, setActiveGallery] = useState(null)
+  const [activePhoto, setActivePhoto] = useState(null)
   const copy = profilePageContent[language] ?? profilePageContent.en
 
   useEffect(() => {
@@ -50,7 +51,7 @@ function ProfilePage({ language }) {
   }, [])
 
   useEffect(() => {
-    if (!activeGallery || typeof window === 'undefined') {
+    if ((!activeGallery && !activePhoto) || typeof window === 'undefined') {
       return undefined
     }
 
@@ -60,6 +61,7 @@ function ProfilePage({ language }) {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setActiveGallery(null)
+        setActivePhoto(null)
       }
     }
 
@@ -69,10 +71,14 @@ function ProfilePage({ language }) {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeGallery])
+  }, [activeGallery, activePhoto])
 
   const closeGallery = () => {
     setActiveGallery(null)
+  }
+
+  const closePhoto = () => {
+    setActivePhoto(null)
   }
 
   const stackCards = useMemo(() => {
@@ -186,7 +192,12 @@ function ProfilePage({ language }) {
                       </span>
                     </button>
                   ) : (
-                    <div className="campus-photo-hero campus-photo-hero--static">
+                    <button
+                      type="button"
+                      className="campus-photo-hero campus-photo-hero--static"
+                      onClick={() => setActivePhoto(coverPhoto)}
+                      aria-label={copy.gallery.openImageLabel(item.role)}
+                    >
                       <span className="campus-photo-card campus-photo-card--single">
                         <span
                           className="campus-photo-card-backdrop"
@@ -206,7 +217,7 @@ function ProfilePage({ language }) {
                           }}
                         />
                       </span>
-                    </div>
+                    </button>
                   )}
                 </div>
               ) : (
@@ -309,6 +320,30 @@ function ProfilePage({ language }) {
         </section>
       </main>
       </HeroBackground>
+
+      {activePhoto ? (
+        <div className="campus-gallery-modal-backdrop" onClick={closePhoto}>
+          <div
+            className="campus-gallery-modal campus-gallery-modal--image"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="campus-image-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="campus-gallery-close"
+              onClick={closePhoto}
+              aria-label={copy.gallery.closeImageLabel}
+            >
+              x
+            </button>
+            <div className="campus-image-modal-stage">
+              <img id="campus-image-title" src={activePhoto.src} alt={activePhoto.alt} />
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {activeGallery ? (
         <div className="campus-gallery-modal-backdrop" onClick={closeGallery}>

@@ -511,8 +511,10 @@ export const profilePageContent = {
     },
     gallery: {
       openLabel: (role) => `Open photo gallery for ${role}`,
+      openImageLabel: (role) => `Open the full image for ${role}`,
       fallbackLabel: (count) => `Open gallery / ${count} photos`,
       closeLabel: 'Close photo gallery',
+      closeImageLabel: 'Close full image preview',
       eyebrow: 'Shuffle Crew Gallery',
       countLabel: (organization, count) => `${organization} / ${count} photos`,
       hint: 'Click or drag the top card to browse.',
@@ -558,8 +560,10 @@ export const profilePageContent = {
     },
     gallery: {
       openLabel: (role) => `打开${role}照片图库`,
+      openImageLabel: (role) => `查看${role}完整图片`,
       fallbackLabel: (count) => `打开图库 / 共 ${count} 张`,
       closeLabel: '关闭照片图库',
+      closeImageLabel: '关闭完整图片预览',
       eyebrow: 'Shuffle Crew 图集',
       countLabel: (organization, count) => `${organization} / 共 ${count} 张`,
       hint: '点击或拖动顶部卡片浏览照片。',

@@ -2838,6 +2838,28 @@ html.academic-scroll-snap-enabled {
   width: min(980px, 100%);
 }
 
+.campus-gallery-modal--image {
+  width: min(900px, 100%);
+  max-height: min(94vh, 1100px);
+  padding: 18px;
+}
+
+.campus-image-modal-stage {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.campus-image-modal-stage img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(94vh - 36px);
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
 .campus-gallery-close {
   position: absolute;
   top: 14px;
