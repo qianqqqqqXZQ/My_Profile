@@ -50,7 +50,7 @@ const pageCopy = {
     focusLines: [
       'My current research interests lie at the intersection of computer vision (CV) and AI infrastructure.',
       'Within CV, I focus on small-polyp medical image segmentation, while my internship at Pony.ai sparked a strong interest in 3D Gaussian Splatting (3DGS).',
-      'For AI infrastructure, I study dynamic neural networks, particularly early-exit networks, for keyword spotting and speaker recognition. I also plan to explore GPU scheduling and model acceleration, with the longer-term goal of efficient edge deployment and acceleration for vision models.',
+      'For AI infrastructure, I am developing a dual-branch multitask neural network for keyword spotting and speaker verification with early-exit scheduling. At the system level, I am exploring FPGA implementations that can reassign resources from a branch that finishes early to the remaining branch, with the longer-term goal of improving adaptive inference efficiency on edge devices.',
     ],
     timelineEyebrow: 'Timeline',
     timelineTitle: 'Experience timeline',
@@ -96,7 +96,7 @@ const pageCopy = {
     focusLines: [
       '我目前的研究兴趣聚焦于计算机视觉（CV）与 AI Infra。',
       '在 CV 方向，我重点关注小息肉医学图像分割；小马智行的实习经历也激发了我对 3D Gaussian Splatting（3DGS）的浓厚兴趣。',
-      '在 AI Infra 方向，我关注将动态神经网络，尤其是早退网络，应用于关键词识别和说话人识别，并计划进一步探索 GPU 调度与模型加速。未来，我希望将 CV 与 AI Infra 结合，探索视觉模型的边缘端部署与高效加速。',
+      '在 AI Infra 方向，我正在设计一个用于关键词识别和说话人识别多任务学习的双分支神经网络，并在网络中加入 early exit 调度机制。在系统层面，我进一步探索 FPGA 实现：当一条分支提前完成后，尝试将释放的资源分配给另一条仍在运行的分支，目标是提升边缘设备上的自适应推理效率。',
     ],
     timelineEyebrow: '时间线',
     timelineTitle: '经历时间线',

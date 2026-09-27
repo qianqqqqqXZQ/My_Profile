@@ -19,6 +19,8 @@ An interactive personal website by Ziqian Xiong, a Computer Science student at t
 
 The home page (`/`) introduces the site and lets visitors choose English or Chinese. `/ready` is the internal page selector opened by the home-page call to action. Unrecognised routes redirect to `/`.
 
+The Academic page includes ongoing research on a dynamic dual-branch neural network for multitask Keyword Spotting (KWS) and Speaker Verification (SV). The work combines early-exit scheduling at the network level with FPGA system exploration: when one branch finishes early, the implementation studies whether its released hardware resources can be reassigned to the other branch to improve utilization, latency, and throughput.
+
 More pages and features are under active development.
 
 ## Features

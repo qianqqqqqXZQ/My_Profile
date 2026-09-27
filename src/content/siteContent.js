@@ -674,24 +674,32 @@ export const researchExperience = [
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
     logoSrc: '/media/images/logos/university-of-nottingham.svg',
     logoAlt: 'University of Nottingham logo',
-    description: 'Personalized keyword spotting research centered on a dynamic dual-branch neural network design.',
-    descriptionZh: '围绕动态双分支神经网络设计展开的个性化关键词识别研究。',
+    description:
+      'Proposed a dynamic dual-branch neural network for multitask Keyword Spotting (KWS) and Speaker Verification (SV), and investigated FPGA resource scheduling when one branch exits early.',
+    descriptionZh:
+      '提出一种面向关键词识别（KWS）和说话人识别（SV）多任务学习的动态双分支神经网络，并探索在 FPGA 上一条分支提前退出后如何将释放的资源动态分配给另一条分支。',
     details: [
       {
-        label: 'Research Focus',
-        labelZh: '\u7814\u7a76\u91cd\u70b9',
-        text: 'Researching a deployable dual-branch multitask learning neural network for Keyword Spotting (KWS) and Speaker Verification (SV) on embedded devices, incorporating dynamic neural network scheduling strategies such as early exit.',
-        textZh: '\u7814\u7a76\u4e00\u79cd\u53ef\u90e8\u7f72\u5728\u5d4c\u5165\u5f0f\u8bbe\u5907\u4e0a\u7684 KWS\uff08\u5173\u952e\u8bcd\u8bc6\u522b\uff09\u548c SV\uff08\u8bf4\u8bdd\u4eba\u9a8c\u8bc1\uff09\u53cc\u5206\u652f\u591a\u4efb\u52a1\u5b66\u4e60\u795e\u7ecf\u7f51\u7edc\uff0c\u5e76\u5f15\u5165 early exit \u7b49\u52a8\u6001\u795e\u7ecf\u7f51\u7edc\u8c03\u5ea6\u7b56\u7565\u3002',
+        label: 'Network Architecture',
+        labelZh: '网络架构',
+        text: 'Proposed a dual-branch neural network for multitask learning across Keyword Spotting (KWS) and Speaker Verification (SV). The architecture introduces early-exit scheduling so that each task branch can terminate its computation once its prediction meets the required confidence or execution condition, providing a basis for adaptive inference on resource-constrained devices.',
+        textZh: '提出一种用于关键词识别（KWS）和说话人识别（SV）多任务学习的双分支神经网络。网络中加入 early exit 调度机制，使每个任务分支在预测结果达到所需置信度或满足执行条件后提前结束计算，为资源受限设备上的自适应推理提供基础。',
+      },
+      {
+        label: 'FPGA System Exploration',
+        labelZh: 'FPGA 系统探索',
+        text: 'Explored an FPGA implementation in which hardware resources released by a branch that finishes early can be reassigned to the remaining branch. The system-level study focuses on dynamic resource sharing, hardware utilization, latency, and throughput, with the goal of improving execution efficiency under changing branch completion times.',
+        textZh: '在系统层面探索 FPGA 实现方案：当一条分支提前完成并释放硬件资源后，研究是否能够将这些资源重新分配给仍在运行的另一条分支。重点关注动态资源共享、硬件利用率、推理延迟和吞吐率，旨在应对两条分支完成时间不同的情况并提升整体执行效率。',
       },
       {
         label: 'Current Status',
         labelZh: '当前状态',
-        text: 'Still in progress.',
-        textZh: '仍在进行中。',
+        text: 'Ongoing research covering the network design, early-exit scheduling strategy, and FPGA resource-reallocation evaluation.',
+        textZh: '研究仍在进行中，当前围绕网络设计、early exit 调度策略以及 FPGA 资源再分配方案展开评估。',
       },
     ],
-    publicationStatus: 'Still in progress',
-    publicationStatusZh: '仍在进行中',
+    publicationStatus: 'Ongoing research',
+    publicationStatusZh: '研究进行中',
     sortValue: 202606,
   },
 ]
