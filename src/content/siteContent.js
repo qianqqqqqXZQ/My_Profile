@@ -803,6 +803,7 @@ export const danceClips = [
     aspectRatio: 0.563,
     title: 'Battle',
     titleZh: 'Battle',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/cypher1.mp4',
     url: '',
   },
   {
