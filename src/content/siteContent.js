@@ -627,8 +627,8 @@ export const projectExperience = [
   {
     title: 'MomoFocus',
     titleZh: 'MomoFocus',
-    period: '2026 - Present',
-    periodZh: '2026年至今',
+    period: 'Sep 2026 - Oct 2026',
+    periodZh: '2026年9月 - 10月',
     description:
       'MomoFocus is a warm, integrated productivity app that brings a to-do list, notes, and a Pomodoro timer into one focused workspace, helping users organize tasks, capture ideas, and build a welcoming atmosphere for learning.',
     descriptionZh:
@@ -638,7 +638,7 @@ export const projectExperience = [
     repositoryUrl: 'https://github.com/qianqqqqqXZQ/MomoFocus',
     repositoryLabel: 'View the project on GitHub',
     repositoryLabelZh: '在 GitHub 查看项目',
-    sortValue: 202610,
+    sortValue: 202609,
   },
 ]
 
