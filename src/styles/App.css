@@ -3933,6 +3933,119 @@ html.academic-scroll-snap-enabled {
   max-width: none;
 }
 
+.dance-video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 3, 3, 0.86);
+  backdrop-filter: blur(14px);
+}
+
+.dance-video-modal {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: min(92svh, 900px);
+  overflow: auto;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(30, 30, 30, 0.98), rgba(9, 9, 9, 0.98));
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.62);
+}
+
+.dance-video-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.dance-video-modal-header .eyebrow {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.dance-video-modal-header h2 {
+  margin-top: 4px;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.dance-video-modal-close {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  color: var(--text-high);
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.dance-video-modal-close:hover,
+.dance-video-modal-close:focus-visible {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.dance-video-modal-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: #000;
+}
+
+.dance-video-modal-stage video {
+  width: 100%;
+  max-height: calc(92svh - 150px);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+
+.dance-video-modal-error {
+  padding: 14px 18px;
+  color: #f0c5c5;
+  font-size: 0.9rem;
+}
+
+.dance-video-modal-close:focus-visible {
+  outline: 2px solid var(--text-high);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .dance-video-modal-backdrop {
+    align-items: end;
+    padding: 12px;
+  }
+
+  .dance-video-modal {
+    width: 100%;
+    max-height: 90svh;
+    padding: 16px;
+  }
+
+  .dance-video-modal-header {
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .dance-video-modal-stage video {
+    max-height: calc(90svh - 120px);
+  }
+}
+
 @media (max-width: 1440px) {
   .about-grid {
     grid-template-columns: 340px minmax(0, 1fr);

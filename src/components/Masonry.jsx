@@ -23,6 +23,7 @@ function Masonry({
   animateFrom = 'bottom',
   hoverScale = 0.975,
   balanceColumns = false,
+  onItemClick,
 }) {
   const containerRef = useRef(null)
   const itemRefs = useRef(new Map())
@@ -146,6 +147,16 @@ function Masonry({
           <a key={item.id} {...sharedProps} href={item.url} target="_blank" rel="noreferrer" aria-label={item.title || item.alt}>
             {content}
           </a>
+        ) : item.videoUrl && onItemClick ? (
+          <button
+            key={item.id}
+            {...sharedProps}
+            type="button"
+            onClick={(event) => onItemClick(item, event)}
+            aria-label={item.actionLabel || item.title || item.alt}
+          >
+            {content}
+          </button>
         ) : (
           <div key={item.id} {...sharedProps}>
             {content}

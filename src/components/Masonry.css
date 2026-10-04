@@ -23,6 +23,22 @@ a.masonry-item {
   cursor: pointer;
 }
 
+button.masonry-item {
+  width: auto;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+}
+
+.masonry-item:focus-visible {
+  z-index: 1;
+  outline: 2px solid rgba(245, 245, 243, 0.92);
+  outline-offset: 3px;
+}
+
 .masonry-item img,
 .masonry-item-scrim {
   position: absolute;

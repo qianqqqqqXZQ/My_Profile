@@ -973,6 +973,7 @@ export const danceClips = [
     aspectRatio: 1179 / 2097,
     title: 'Judge Show',
     titleZh: '裁判秀',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/judge1.mp4',
     url: '',
   },
 ]
