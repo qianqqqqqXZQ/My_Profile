@@ -624,6 +624,22 @@ export const projectExperience = [
     stackZh: '待确认',
     sortValue: 202610,
   },
+  {
+    title: 'MomoFocus',
+    titleZh: 'MomoFocus',
+    period: '2026 - Present',
+    periodZh: '2026年至今',
+    description:
+      'MomoFocus is a warm, integrated productivity app that brings a to-do list, notes, and a Pomodoro timer into one focused workspace, helping users organize tasks, capture ideas, and build a welcoming atmosphere for learning.',
+    descriptionZh:
+      'MomoFocus 是一款将待办事项、备忘录与番茄钟整合到同一工作空间的专注效率工具，帮助用户梳理任务、记录灵感，并营造温馨而专注的学习氛围。',
+    stack: 'Personal',
+    stackZh: '个人',
+    repositoryUrl: 'https://github.com/qianqqqqqXZQ/MomoFocus',
+    repositoryLabel: 'View the project on GitHub',
+    repositoryLabelZh: '在 GitHub 查看项目',
+    sortValue: 202610,
+  },
 ]
 
 export const researchExperience = [
@@ -947,6 +963,16 @@ export const danceClips = [
     aspectRatio: 884 / 1572,
     title: 'Cypher',
     titleZh: 'Cypher',
+    url: '',
+  },
+  {
+    id: 'dance-cover-18',
+    img: '/media/images/dance-covers/dance-cover-18.jpg',
+    alt: 'Judge performing on stage during a street dance competition.',
+    altZh: '街舞比赛中，裁判在舞台上进行表演。',
+    aspectRatio: 1179 / 2097,
+    title: 'Judge Show',
+    titleZh: '裁判秀',
     url: '',
   },
 ]
