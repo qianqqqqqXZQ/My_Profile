@@ -803,6 +803,7 @@ export const danceClips = [
     aspectRatio: 0.563,
     title: 'Battle',
     titleZh: 'Battle',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/battle1.mp4',
     url: '',
   },
   {
@@ -863,6 +864,7 @@ export const danceClips = [
     aspectRatio: 0.5666,
     title: 'Short Reels',
     titleZh: '短视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/short1.mp4',
     url: '',
   },
   {
@@ -883,6 +885,7 @@ export const danceClips = [
     aspectRatio: 1.7945,
     title: 'Practice Video',
     titleZh: '练习视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/practice1.mp4',
     url: '',
   },
   {
