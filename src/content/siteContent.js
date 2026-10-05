@@ -627,7 +627,7 @@ export const projectExperience = [
     repositoryUrl: 'https://github.com/qianqqqqqXZQ/MomoFocus',
     repositoryLabel: 'View the project on GitHub',
     repositoryLabelZh: '在 GitHub 查看项目',
-    sortValue: 202609,
+    sortValue: 202610,
   },
   {
     title: 'UNNC Group Research Project (GRP)',
