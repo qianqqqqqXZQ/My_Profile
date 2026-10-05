@@ -68,7 +68,7 @@
 - [x] Add the second research repository URL while preserving the existing bilingual modal layout.
 - [x] Run lint, production build, and diff checks.
 - [x] Complete a focused code review; the existing modal consumes the new URL without component changes.
-- [ ] Push the verified commit to `origin/main`.
+- [x] Push the verified commit to `origin/main`.
 
 ## Follow-up: Timeline Ordering
 
