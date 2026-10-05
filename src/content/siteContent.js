@@ -614,17 +614,6 @@ export const projectExperience = [
     sortValue: 202607,
   },
   {
-    title: 'UNNC Group Research Project (GRP)',
-    titleZh: '宁波诺丁汉大学小组研究项目（GRP）',
-    period: 'Oct 2026 - Jun 2027',
-    periodZh: '2026年10月 - 2027年6月',
-    description: 'Placeholder for the upcoming UNNC GRP experience. Project details will be added after the work begins.',
-    descriptionZh: '这里预留即将开始的 UNNC GRP 项目经历。项目启动后会补充具体内容。',
-    stack: 'To be confirmed',
-    stackZh: '待确认',
-    sortValue: 202610,
-  },
-  {
     title: 'MomoFocus',
     titleZh: 'MomoFocus',
     period: 'Sep 2026 - Oct 2026',
@@ -639,6 +628,17 @@ export const projectExperience = [
     repositoryLabel: 'View the project on GitHub',
     repositoryLabelZh: '在 GitHub 查看项目',
     sortValue: 202609,
+  },
+  {
+    title: 'UNNC Group Research Project (GRP)',
+    titleZh: '宁波诺丁汉大学小组研究项目（GRP）',
+    period: 'Oct 2026 - Jun 2027',
+    periodZh: '2026年10月 - 2027年6月',
+    description: 'Placeholder for the upcoming UNNC GRP experience. Project details will be added after the work begins.',
+    descriptionZh: '这里预留即将开始的 UNNC GRP 项目经历。项目启动后会补充具体内容。',
+    stack: 'To be confirmed',
+    stackZh: '待确认',
+    sortValue: 202610,
   },
 ]
 

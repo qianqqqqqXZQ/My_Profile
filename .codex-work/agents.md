@@ -34,3 +34,9 @@
 - Multi-photo activities continue to use `activeGallery` and the existing `Stack` component.
 - The full-image modal styles are in `src/styles/App.css` under `.campus-gallery-modal--image` and use `object-fit: contain` so poster edges remain visible.
 - Both English and Chinese labels for opening and closing the full image are defined in `profilePageContent.gallery` in `src/content/siteContent.js`.
+
+## Project Experience Ordering (2026-10-04)
+
+- `projectExperience` is defined in `src/content/siteContent.js`; its source order controls the displayed project order.
+- The intended order is `4DGS-Edit-and-Compare`, `MomoFocus`, then `UNNC Group Research Project (GRP)`.
+- Keep the bilingual fields and each entry's `sortValue` synchronized with the source record when editing this list.

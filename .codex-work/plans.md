@@ -46,3 +46,17 @@
 - `npm run lint` passed on 2026-09-16.
 - `npm run build` passed on 2026-09-16 with only the existing Vite large-chunk advisory.
 - `git diff --check` passed; the static cover now uses `object-fit: contain` in the full-image modal.
+
+# Project Experience Order Update (2026-10-04)
+
+- [x] Locate the `projectExperience` entries for MomoFocus and UNNC GRP.
+- [x] Create a Git safety checkpoint before editing (`ed037a9`).
+- [x] Move MomoFocus before the GRP entry without changing either record's content.
+- [x] Run lint, production build, and diff checks.
+- [x] Review the final diff; no unrelated changes were introduced.
+
+## Verification
+
+- `npm run lint` passed on 2026-10-04.
+- `npm run build` passed on 2026-10-04 with only the existing Vite large-chunk advisory.
+- `git diff --check` passed.
