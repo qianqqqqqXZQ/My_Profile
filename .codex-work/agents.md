@@ -40,3 +40,10 @@
 - `projectExperience` is defined in `src/content/siteContent.js`; its source order controls the displayed project order.
 - The intended order is `4DGS-Edit-and-Compare`, `MomoFocus`, then `UNNC Group Research Project (GRP)`.
 - Keep the bilingual fields and each entry's `sortValue` synchronized with the source record when editing this list.
+
+## Second Research Repository (2026-10-05)
+
+- The second `researchExperience` entry is the Dynamic Dual-Branch KWS/SV research project.
+- Its repository is `https://github.com/qianqqqqqXZQ/Dual-Branch_EE` and is exposed through the same research-detail modal GitHub action as the first research entry.
+- Keep research links in `src/content/siteContent.js`; no component change is needed when only the repository URL changes.
+- The Experience timeline sorts by `sortValue` descending; MomoFocus and GRP intentionally share `sortValue: 202610` so the source order places MomoFocus first in both the timeline and the bottom Project Experience grid.

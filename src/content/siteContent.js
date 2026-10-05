@@ -686,6 +686,7 @@ export const researchExperience = [
     titleZh: '面向个性化关键词识别的动态双分支神经网络',
     period: 'June. 2026-Present',
     periodZh: '2026年6月 - 至今',
+    repositoryUrl: 'https://github.com/qianqqqqqXZQ/Dual-Branch_EE',
     supervisor: 'Prof. Heng Yu',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
     logoSrc: '/media/images/logos/university-of-nottingham.svg',

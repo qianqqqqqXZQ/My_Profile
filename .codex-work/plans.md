@@ -60,3 +60,24 @@
 - `npm run lint` passed on 2026-10-04.
 - `npm run build` passed on 2026-10-04 with only the existing Vite large-chunk advisory.
 - `git diff --check` passed.
+
+# Link Dual-Branch_EE to the Second Research Entry (2026-10-05)
+
+- [x] Inspect the existing research-entry layout and the `Dual-Branch_EE` repository.
+- [x] Create a Git safety checkpoint before editing (`ce9065e`).
+- [x] Add the second research repository URL while preserving the existing bilingual modal layout.
+- [x] Run lint, production build, and diff checks.
+- [x] Complete a focused code review; the existing modal consumes the new URL without component changes.
+- [ ] Push the verified commit to `origin/main`.
+
+## Follow-up: Timeline Ordering
+
+- [x] Confirm the bottom Project Experience grid and the sorted Experience timeline use different ordering behavior.
+- [x] Align MomoFocus and GRP to the same timeline sort month so the source order keeps MomoFocus first in both views.
+- [x] Run lint, production build, and diff checks.
+
+## Verification
+
+- `npm run lint` passed on 2026-10-05.
+- `npm run build` passed on 2026-10-05 with only the existing Vite large-chunk advisory.
+- `git diff --check` passed.
