@@ -825,6 +825,7 @@ export const danceClips = [
     aspectRatio: 1.811,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance1.mp4',
     url: '',
   },
   {
@@ -897,6 +898,7 @@ export const danceClips = [
     aspectRatio: 1.7864,
     title: 'Battle',
     titleZh: 'Battle',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/battle2.mp4',
     url: '',
   },
   {
