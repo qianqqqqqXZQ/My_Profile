@@ -848,6 +848,7 @@ export const danceClips = [
     aspectRatio: 1.808,
     title: 'Cypher',
     titleZh: 'Cypher',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/cypher3.mp4',
     url: '',
   },
   {
@@ -858,6 +859,7 @@ export const danceClips = [
     aspectRatio: 0.5631,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance2.mp4',
     url: '',
   },
   {
@@ -879,6 +881,7 @@ export const danceClips = [
     aspectRatio: 1.8083,
     title: 'Practice Video',
     titleZh: '练习视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/practice2.mp4',
     url: '',
   },
   {
@@ -921,6 +924,7 @@ export const danceClips = [
     aspectRatio: 1179 / 879,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance4.mp4',
     url: '',
   },
   {
@@ -952,6 +956,7 @@ export const danceClips = [
     aspectRatio: 1179 / 666,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance3.mp4',
     url: '',
   },
   {
