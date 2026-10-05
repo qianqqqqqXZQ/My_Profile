@@ -1,9 +1,11 @@
+import { assetPath } from '../utils/assetPath'
+
 export const contactGlobeAssetUrls = {
-  day: '/media/contact-globe/day.jpg',
-  night: '/media/contact-globe/night.jpg',
-  specular: '/media/contact-globe/specularClouds.jpg',
-  dot: '/media/contact-globe/dot.png',
-  countries: '/media/contact-globe/globe.json',
+  day: assetPath('/media/contact-globe/day.jpg'),
+  night: assetPath('/media/contact-globe/night.jpg'),
+  specular: assetPath('/media/contact-globe/specularClouds.jpg'),
+  dot: assetPath('/media/contact-globe/dot.png'),
+  countries: assetPath('/media/contact-globe/globe.json'),
 }
 
 let assetPromise

@@ -1,3 +1,5 @@
+import { assetPath } from '../utils/assetPath'
+
 export const navigationLinks = [
   { label: 'Profile', labelZh: '个人背景', to: '/profile' },
   { label: 'Academic', labelZh: '学术经历', to: '/experience' },
@@ -221,7 +223,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for Zhang Shu Senior High School Student Union president experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/media/images/campus-activity-covers/zhangshu-middle-school-cover.jpg',
+      src: assetPath('/media/images/campus-activity-covers/zhangshu-middle-school-cover.jpg'),
       alt: 'Zhangshu Senior High School Student Union logo centered on a white cover.',
     },
   },
@@ -236,7 +238,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for University of Nottingham Ningbo China Student Union Public Relation Office experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/media/images/campus-activity-covers/unnc-student-union-cover.jpg',
+      src: assetPath('/media/images/campus-activity-covers/unnc-student-union-cover.jpg'),
       alt: 'UNNC Students Union logo centered on a white cover.',
     },
   },
@@ -251,7 +253,7 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for UNNC Department of Campus Life administrative internship',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/media/images/unnc-intern/department-of-campus-life.jpg',
+      src: assetPath('/media/images/unnc-intern/department-of-campus-life.jpg'),
       alt: 'UNNC Department of Campus Life sign used for the administrative internship entry.',
     },
   },
@@ -268,80 +270,80 @@ export const campusActivities = [
     photoAlt: 'Reserved photo area for UNNC Shuffle Crew vice captain experience',
     photoLabel: 'Photo Placeholder',
     coverPhoto: {
-      src: '/media/images/campus-activity-covers/shuffle-crew-cover.jpg',
+      src: assetPath('/media/images/campus-activity-covers/shuffle-crew-cover.jpg'),
       alt: 'Shuffle Crew logo centered on a black cover.',
     },
     photos: [
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-01.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-01.jpg'),
         alt: 'Shuffle Crew stage performance under red and blue lighting with white masks.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-02.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-02.jpg'),
         alt: 'Shuffle Crew dancer standing in a spotlight during a dark stage performance.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-03.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-03.jpg'),
         alt: 'Vice captain leading a Shuffle Crew routine in warm stage lighting.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-04.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-04.jpg'),
         alt: 'Wide dark stage composition featuring Shuffle Crew in a focused spotlight.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-05.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-05.jpg'),
         alt: 'Masked Shuffle Crew members posed on a dimly lit stage.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-06.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-06.jpg'),
         alt: 'Shuffle Crew vice captain performing center stage with masked dancers.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-07.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-07.jpg'),
         alt: 'Portrait-oriented stage photo of two masked Shuffle Crew performers.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-08.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-08.jpg'),
         alt: 'Full Shuffle Crew formation performing in front of a vivid blue backdrop.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-09.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-09.jpg'),
         alt: 'Shuffle Crew group performance framed by bold red lighting and masks.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-10.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-10.jpg'),
         alt: 'Campus stage dance performance with a breakdance move at center stage.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-11.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-11.jpg'),
         alt: 'Vice captain leading a trio dance performance on the UNNC stage.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-12.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-12.jpg'),
         alt: 'Solo-focused campus performance image with supporting dancers behind.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-13.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-13.jpg'),
         alt: 'Group dance photo with colorful costumes and stage lights at UNNC.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-14.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-14.jpg'),
         alt: 'Outdoor campus showcase photo featuring a handstand move in front of a large audience.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-15.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-15.jpg'),
         alt: 'Wide UNNC stage performance photo with the Shuffle Crew dancing beneath fireworks visuals.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-16.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-16.jpg'),
         alt: 'Portrait-oriented campus stage performance highlighting a floorwork pose with another dancer behind.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-17.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-17.jpg'),
         alt: 'Outdoor battle-style performance shot capturing a one-hand freeze before a crowd on campus.',
       },
       {
-        src: '/media/images/shuffle-crew/shuffle-crew-18.jpg',
+        src: assetPath('/media/images/shuffle-crew/shuffle-crew-18.jpg'),
         alt: 'Shuffle Crew dancer performing on an outdoor campus stage with the team and audience behind.',
       },
     ],
@@ -365,7 +367,7 @@ export const offCampusActivities = [
     ],
     photoAlt: 'Poster for the 2026 International Street Dance League Jiangxi regional competition',
     coverPhoto: {
-      src: '/media/images/offcampus-covers/dance-event-cover.jpg',
+      src: assetPath('/media/images/offcampus-covers/dance-event-cover.jpg'),
       alt: 'Poster for the 2026 International Street Dance League Jiangxi regional competition.',
       objectFit: 'cover',
       objectPosition: 'center top',
@@ -652,7 +654,7 @@ export const researchExperience = [
     supervisor: 'Prof. Fiseha Berhanu Tesema',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/fiseha-berhanu-tesema/',
     authorshipLabel: 'Paper: Second Author',
-    logoSrc: '/media/images/logos/university-of-nottingham.svg',
+    logoSrc: assetPath('/media/images/logos/university-of-nottingham.svg'),
     logoAlt: 'University of Nottingham logo',
     description: 'Small polyp segmentation research using an edge-enhanced dual-stream CNN-Transformer architecture.',
     descriptionZh: '基于边缘增强双流 CNN-Transformer 架构的小息肉分割研究。',
@@ -689,7 +691,7 @@ export const researchExperience = [
     repositoryUrl: 'https://github.com/qianqqqqqXZQ/Dual-Branch_EE',
     supervisor: 'Prof. Heng Yu',
     supervisorUrl: 'https://research.nottingham.edu.cn/en/persons/heng-yu/',
-    logoSrc: '/media/images/logos/university-of-nottingham.svg',
+    logoSrc: assetPath('/media/images/logos/university-of-nottingham.svg'),
     logoAlt: 'University of Nottingham logo',
     description:
       'Proposed a dynamic dual-branch neural network for multitask Keyword Spotting (KWS) and Speaker Verification (SV), and investigated FPGA resource scheduling when one branch exits early.',
@@ -729,7 +731,7 @@ export const workingExperience = [
     roleZh: '算法实习生 | 人工智能部',
     period: 'July 2026 - Sep 2026',
     periodZh: '2026年7月 - 2026年9月',
-    logoSrc: '/media/images/logos/pony-ai.png',
+    logoSrc: assetPath('/media/images/logos/pony-ai.png'),
     logoAlt: 'Pony.ai logo',
     leader: 'Yingying Wu',
     leaderZh: '吴盈盈',
@@ -798,7 +800,7 @@ export const dancePageContent = {
 export const danceClips = [
   {
     id: 'dance-cover-01',
-    img: '/media/images/dance-covers/dance-cover-01.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-01.jpg'),
     alt: 'Dancer leaping on stage during a competition battle performance.',
     altZh: '\u821e\u8005\u5728\u821e\u53f0\u6bd4\u8d5b\u4e2d\u8df3\u8dc3\u3002',
     aspectRatio: 0.563,
@@ -809,7 +811,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-02',
-    img: '/media/images/dance-covers/dance-cover-02.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-02.jpg'),
     alt: 'A dancer performing before an audience at an indoor dance event.',
     altZh: '\u821e\u8005\u5728\u5ba4\u5185\u821e\u8e48\u6d3b\u52a8\u4e2d\u9762\u5bf9\u89c2\u4f17\u8868\u6f14\u3002',
     aspectRatio: 0.75,
@@ -819,7 +821,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-03',
-    img: '/media/images/dance-covers/dance-cover-03.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-03.jpg'),
     alt: 'Two dancers performing a synchronized acrobatic move in an indoor venue.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u5ba4\u5185\u573a\u5730\u914d\u5408\u5b8c\u6210\u6280\u5de7\u52a8\u4f5c\u3002',
     aspectRatio: 1.811,
@@ -830,7 +832,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-04',
-    img: '/media/images/dance-covers/dance-cover-04.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-04.jpg'),
     alt: 'Dancer performing before a group on a warmly lit stage.',
     altZh: '\u821e\u8005\u5728\u6696\u8272\u706f\u5149\u4e0b\u4e0e\u4eba\u6597\u821e\u3002',
     aspectRatio: 0.562,
@@ -840,7 +842,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-05',
-    img: '/media/images/dance-covers/dance-cover-05.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-05.jpg'),
     alt: 'Dancer captured mid-move in a studio cypher surrounded by spectators.',
     altZh: '\u821e\u8005\u5728\u89c2\u4f17\u73af\u7ed5\u7684\u5de5\u4f5c\u5ba4\u6597\u821e\u5708\u4e2d\u5b9a\u683c\u5728\u52a8\u4f5c\u77ac\u95f4\u3002',
     aspectRatio: 1.808,
@@ -850,7 +852,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-06',
-    img: '/media/images/dance-covers/dance-cover-06.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-06.jpg'),
     alt: 'Floorwork performance on stage under vivid purple and blue lighting.',
     altZh: '\u821e\u8005\u5728\u7d2b\u84dd\u706f\u5149\u4e0b\u8fdb\u884c\u5730\u677f\u52a8\u4f5c\u8868\u6f14\u3002',
     aspectRatio: 0.5631,
@@ -860,7 +862,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-07',
-    img: '/media/images/dance-covers/dance-cover-07.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-07.jpg'),
     alt: 'Two dancers performing an outdoor short reel beside a riverside bridge.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u6c5f\u8fb9\u6865\u65c1\u62cd\u6444\u6237\u5916\u77ed\u89c6\u9891\u3002',
     aspectRatio: 0.5666,
@@ -871,7 +873,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-08',
-    img: '/media/images/dance-covers/dance-cover-08.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-08.jpg'),
     alt: 'Two dancers rehearsing choreography in a red-lit studio.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u7ea2\u8272\u706f\u5149\u7684\u821e\u8e48\u6559\u5ba4\u4e2d\u7ec3\u4e60\u7f16\u821e\u3002',
     aspectRatio: 1.8083,
@@ -881,7 +883,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-09',
-    img: '/media/images/dance-covers/dance-cover-09.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-09.jpg'),
     alt: 'Two dancers practicing a routine in a dark studio with mirrored walls.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u5e26\u6709\u955c\u9762\u5899\u7684\u9ed1\u8272\u821e\u8e48\u6559\u5ba4\u4e2d\u7ec3\u4e60\u52a8\u4f5c\u3002',
     aspectRatio: 1.7945,
@@ -892,7 +894,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-10',
-    img: '/media/images/dance-covers/dance-cover-10.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-10.jpg'),
     alt: 'A floorwork battle move performed in front of a seated dance crowd.',
     altZh: '\u821e\u8005\u5728\u56f4\u89c2\u4eba\u7fa4\u9762\u524d\u5b8c\u6210\u5730\u677f\u6597\u821e\u52a8\u4f5c\u3002',
     aspectRatio: 1.7864,
@@ -903,7 +905,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-11',
-    img: '/media/images/dance-covers/dance-cover-11.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-11.jpg'),
     alt: 'Five dancers practicing choreography outdoors with a city skyline behind them.',
     altZh: '\u4e94\u540d\u821e\u8005\u5728\u57ce\u5e02\u5929\u9645\u7ebf\u524d\u8fdb\u884c\u6237\u5916\u7f16\u821e\u7ec3\u4e60\u3002',
     aspectRatio: 1179 / 658,
@@ -913,7 +915,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-12',
-    img: '/media/images/dance-covers/dance-cover-12.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-12.jpg'),
     alt: 'Two dancers rehearsing an outdoor choreographed move.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u6237\u5916\u6392\u7ec3\u7f16\u821e\u52a8\u4f5c\u3002',
     aspectRatio: 1179 / 879,
@@ -923,7 +925,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-13',
-    img: '/media/images/dance-covers/dance-cover-13.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-13.jpg'),
     alt: 'A dancer holding a floorwork pose during a stage showcase.',
     altZh: '\u821e\u8005\u5728\u821e\u53f0\u6f14\u51fa\u4e2d\u5b8c\u6210\u5730\u677f\u52a8\u4f5c\u9020\u578b\u3002',
     aspectRatio: 1179 / 2106,
@@ -934,7 +936,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-14',
-    img: '/media/images/dance-covers/dance-cover-14.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-14.jpg'),
     alt: 'A group dance performance under green stage lighting.',
     altZh: '\u821e\u8005\u4eec\u5728\u7eff\u8272\u821e\u53f0\u706f\u5149\u4e0b\u8868\u6f14\u3002',
     aspectRatio: 1179 / 660,
@@ -944,7 +946,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-15',
-    img: '/media/images/dance-covers/dance-cover-15.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-15.jpg'),
     alt: 'A dance group forming a many-armed silhouette on a red-lit stage.',
     altZh: '\u821e\u8005\u4eec\u5728\u7ea2\u8272\u821e\u53f0\u706f\u5149\u4e0b\u7ec4\u6210\u591a\u81c2\u526a\u5f71\u9020\u578b\u3002',
     aspectRatio: 1179 / 666,
@@ -954,7 +956,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-16',
-    img: '/media/images/dance-covers/dance-cover-16.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-16.jpg'),
     alt: 'Two dancers practicing in a studio with floor-to-ceiling curtains.',
     altZh: '\u4e24\u540d\u821e\u8005\u5728\u6709\u843d\u5730\u7a97\u5e18\u7684\u821e\u8e48\u6559\u5ba4\u4e2d\u7ec3\u4e60\u3002',
     aspectRatio: 1179 / 1913,
@@ -965,7 +967,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-17',
-    img: '/media/images/dance-covers/dance-cover-17.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-17.jpg'),
     alt: 'A dancer performing a low floorwork move at an outdoor cypher surrounded by spectators.',
     altZh: '\u821e\u8005\u5728\u89c2\u4f17\u73af\u7ed5\u7684\u6237\u5916 Cypher \u4e2d\u5b8c\u6210\u4f4e\u4f4d\u5730\u677f\u52a8\u4f5c\u3002',
     aspectRatio: 884 / 1572,
@@ -976,7 +978,7 @@ export const danceClips = [
   },
   {
     id: 'dance-cover-18',
-    img: '/media/images/dance-covers/dance-cover-18.jpg',
+    img: assetPath('/media/images/dance-covers/dance-cover-18.jpg'),
     alt: 'Judge performing on stage during a street dance competition.',
     altZh: '街舞比赛中，裁判在舞台上进行表演。',
     aspectRatio: 1179 / 2097,

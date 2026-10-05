@@ -6,17 +6,18 @@ import FadeContent from '../components/FadeContent'
 import ProfileLanyard from '../components/ProfileLanyard'
 import Stack from '../components/Stack'
 import { profilePageContent } from '../content/siteContent'
+import { assetPath } from '../utils/assetPath'
 import './HomePage.css'
 
 const dailyPhotoPlaceholders = [
-  '/media/images/daily-photo/daily-photo-01.jpg',
-  '/media/images/daily-photo/daily-photo-02.jpg',
-  '/media/images/daily-photo/daily-photo-03.jpg',
-  '/media/images/daily-photo/daily-photo-04.jpg',
-  '/media/images/daily-photo/daily-photo-05.jpg',
-  '/media/images/daily-photo/daily-photo-06.jpg',
-  '/media/images/daily-photo/daily-photo-07.jpg',
-  '/media/images/daily-photo/daily-photo-08.jpg',
+  assetPath('/media/images/daily-photo/daily-photo-01.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-02.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-03.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-04.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-05.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-06.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-07.jpg'),
+  assetPath('/media/images/daily-photo/daily-photo-08.jpg'),
 ]
 
 function ProfilePage({ language }) {

@@ -1,8 +1,9 @@
 import { createContext } from 'react'
+import { assetPath } from '../utils/assetPath'
 
 export const audioSources = {
-  groupA: '/media/audio/bgm1.mp3',
-  groupB: '/media/audio/bgm2.mp3',
+  groupA: assetPath('/media/audio/bgm1.mp3'),
+  groupB: assetPath('/media/audio/bgm2.mp3'),
 }
 
 export const interactionEvents = ['pointerdown', 'keydown', 'touchstart']

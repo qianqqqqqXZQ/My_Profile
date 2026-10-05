@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { danceClips, dancePageContent } from '../content/siteContent'
 import Masonry from '../components/Masonry'
+import { assetPath } from '../utils/assetPath'
 
 function DancePage({ language }) {
   const copy = dancePageContent[language] ?? dancePageContent.en
@@ -82,7 +83,7 @@ function DancePage({ language }) {
     <div className="page-route page-dance" lang={language === 'zh' ? 'zh-CN' : 'en'}>
       <section className="dance-hero" aria-label={copy.heroLabel}>
         <video className="dance-hero-video" autoPlay muted loop playsInline aria-hidden="true">
-          <source src="/media/video/dance-hero.mp4" type="video/mp4" />
+          <source src={assetPath('/media/video/dance-hero.mp4')} type="video/mp4" />
         </video>
         <div className="dance-hero-scrim" />
         <div className="dance-hero-title-shell">
