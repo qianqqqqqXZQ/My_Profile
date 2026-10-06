@@ -838,6 +838,7 @@ export const danceClips = [
     aspectRatio: 0.562,
     title: 'Cypher',
     titleZh: 'Cypher',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/cypher4.mp4',
     url: '',
   },
   {
@@ -914,6 +915,7 @@ export const danceClips = [
     aspectRatio: 1179 / 658,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance5.mp4',
     url: '',
   },
   {
