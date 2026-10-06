@@ -817,6 +817,7 @@ export const danceClips = [
     aspectRatio: 0.75,
     title: 'Judge Show',
     titleZh: '\u88c1\u5224\u79c0',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/judge2.mp4',
     url: '',
   },
   {
@@ -948,6 +949,7 @@ export const danceClips = [
     aspectRatio: 1179 / 660,
     title: 'Performance',
     titleZh: '表演视频',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/performance6.mp4',
     url: '',
   },
   {
