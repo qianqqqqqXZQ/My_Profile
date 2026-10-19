@@ -13,175 +13,33 @@
   aspect-ratio: 0.76;
   border-radius: 36px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.11), transparent 18%),
-    radial-gradient(circle at 62% 24%, rgba(255, 255, 255, 0.08), transparent 22%),
-    linear-gradient(180deg, #0f0f0f 0%, #060606 68%, #030303 100%);
+  isolation: isolate;
+  background: #060606;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     0 26px 100px rgba(0, 0, 0, 0.58),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transform: translate3d(var(--parallax-x), var(--parallax-y), 0);
-  will-change: transform;
 }
 
-.photo-lens-backdrop,
-.photo-lens-layer,
-.photo-lens-reveal,
-.photo-lens-shade,
-.photo-lens-glow {
+.photo-lens-image,
+.photo-lens-fluid {
   position: absolute;
   inset: 0;
-}
-
-.photo-lens-backdrop {
-  background:
-    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.08), transparent 22%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.1));
-}
-
-.photo-lens-layer {
-  display: grid;
-  place-items: end center;
-}
-
-.photo-lens-layer-back {
-  opacity: 0.96;
-  filter: saturate(0.97) brightness(0.84) contrast(1.02);
-}
-
-.photo-lens-layer-front {
-  opacity: 1;
-  filter: saturate(1.04) brightness(1.02) contrast(1.02);
-  transform: translate3d(0, -1%, 0);
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .photo-lens-image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   object-position: center top;
-  pointer-events: none;
   user-select: none;
 }
 
-.photo-lens-image-front {
-  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-}
-
-.photo-lens-image-back {
-  mix-blend-mode: screen;
-  opacity: 0.9;
-}
-
-.photo-lens-image-front,
-.photo-lens-image-reveal {
-  object-position: center 16%;
-}
-
-.photo-lens-image-back {
-  object-position: center 0%;
-  opacity: 0.82;
-  transform: translateY(-1.15%);
-}
-
-.photo-lens-image-reveal {
-  object-position: center 0%;
-  transform: translateY(-1.15%);
-}
-
-.photo-lens-reveal {
-  display: grid;
-  place-items: center;
-  filter: saturate(1.06) brightness(1.06);
-  will-change: clip-path, -webkit-clip-path;
-}
-
-.photo-lens-image-reveal {
-  mix-blend-mode: screen;
-  filter:
-    brightness(0.98)
-    contrast(1.08)
-    saturate(0.95);
-}
-
-.photo-lens-echo-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: visible;
-  will-change: opacity;
-}
-
-.photo-lens-shade {
-  background:
-    radial-gradient(circle at var(--lens-x) var(--lens-y), rgba(255, 255, 255, 0.14), transparent 18%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.36));
-  mix-blend-mode: screen;
-  opacity: 0.8;
-  pointer-events: none;
-  will-change: opacity, background;
-}
-
-.photo-lens-glow {
-  background:
-    radial-gradient(circle at var(--lens-x) var(--lens-y), rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08) 38%, transparent 68%);
-  filter: blur(18px);
-  opacity: calc(var(--lens-opacity) * 0.75);
-  pointer-events: none;
-  will-change: clip-path, -webkit-clip-path, opacity;
-}
-
-.photo-lens-ring {
-  position: absolute;
-  left: var(--lens-x);
-  top: var(--lens-y);
-  width: calc(var(--lens-size) * 2);
-  height: calc(var(--lens-size) * 2);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 28px rgba(255, 255, 255, 0.14),
-    inset 0 0 24px rgba(255, 255, 255, 0.07);
-  mix-blend-mode: screen;
-  pointer-events: none;
-  opacity: var(--lens-opacity);
-  will-change: width, height, left, top, opacity;
-}
-
-.photo-lens-core {
-  position: absolute;
-  left: var(--lens-x);
-  top: var(--lens-y);
-  width: calc(var(--lens-size) * 0.62);
-  height: calc(var(--lens-size) * 0.62);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.08) 62%, transparent 74%);
-  box-shadow:
-    0 0 34px rgba(255, 255, 255, 0.36),
-    0 0 90px rgba(255, 255, 255, 0.12);
-  mix-blend-mode: screen;
-  filter: blur(1px);
-  pointer-events: none;
-  opacity: calc(var(--lens-opacity) * 0.72);
-  will-change: width, height, left, top, opacity;
-}
-
-.photo-lens-echo {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow:
-    0 0 24px rgba(255, 255, 255, 0.18),
-    inset 0 0 24px rgba(255, 255, 255, 0.08);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  mix-blend-mode: screen;
-  filter: blur(0.5px);
-  will-change: transform, opacity, width, height, left, top;
+.photo-lens-fluid {
+  opacity: 0;
+  transition: opacity 140ms ease-out;
 }
 
 @media (max-width: 1100px) {
