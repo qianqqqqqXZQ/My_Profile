@@ -11,7 +11,22 @@
   isolation: isolate;
 }
 
-.lanyard-wrapper canvas {
+.lanyard-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 19;
+  pointer-events: none;
+}
+
+.lanyard-hit-area {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 0 0, 0 0);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.lanyard-viewport canvas {
   width: 100%;
   height: 100%;
 }
