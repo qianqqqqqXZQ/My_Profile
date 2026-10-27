@@ -1,14 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import BorderGlow from '../components/BorderGlow'
 import Galaxy from '../components/Galaxy'
+import { useRocketTransition } from '../components/useRocketTransition'
 import { readyPageContent, readyPageUnlockKey } from '../content/siteContent'
 
+const galaxyFocal = [0.52, 0.44]
+const galaxyRotation = [0.98, 0.18]
+
 function ReadyPage({ language }) {
+  const { registerReadyPage } = useRocketTransition()
   const hasUnlocked = typeof window !== 'undefined' && window.sessionStorage.getItem(readyPageUnlockKey) === 'true'
   const routeRef = useRef(null)
   const [isRouteVisible, setIsRouteVisible] = useState(true)
   const copy = readyPageContent[language] ?? readyPageContent.en
+
+  useLayoutEffect(() => {
+    if (hasUnlocked) return registerReadyPage(routeRef.current)
+    return undefined
+  }, [hasUnlocked, registerReadyPage])
 
   useEffect(() => {
     if (typeof window === 'undefined' || !hasUnlocked) {
@@ -46,8 +56,8 @@ function ReadyPage({ language }) {
             mouseInteraction
             mouseRepulsion
             paused={!isRouteVisible}
-            focal={[0.52, 0.44]}
-            rotation={[0.98, 0.18]}
+            focal={galaxyFocal}
+            rotation={galaxyRotation}
             density={1.08}
             glowIntensity={0.58}
             saturation={0.06}
@@ -67,7 +77,7 @@ function ReadyPage({ language }) {
       <section className="ready-hero" aria-label="Ready hero">
         <div className="section-shell ready-hero-shell">
           <div className="ready-hero-copy">
-            <h1 className="ready-hero-title">{copy.heroTitle}</h1>
+            <h1 className="ready-hero-title" tabIndex={-1}>{copy.heroTitle}</h1>
           </div>
 
           <div className="ready-hero-cards">

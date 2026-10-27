@@ -1,13 +1,16 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SplitText from '../components/SplitText'
+import { useRocketTransition } from '../components/useRocketTransition'
 import { homePageContent, readyPageUnlockKey } from '../content/siteContent'
 import './HomePage.css'
 
 const PhotoLens = lazy(() => import('../components/PhotoLens'))
 const Particles = lazy(() => import('../components/Particles'))
+const particleColors = ['#d6d1d1']
 
 function HomePage({ language }) {
+  const { phase, homeEffectsPaused, startLaunch } = useRocketTransition()
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const heroRef = useRef(null)
   const readyButtonRef = useRef(null)
@@ -64,7 +67,7 @@ function HomePage({ language }) {
   }, [])
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !readyButtonRef.current) {
+    if (typeof window === 'undefined' || !readyButtonRef.current || phase !== 'idle') {
       return undefined
     }
 
@@ -141,7 +144,7 @@ function HomePage({ language }) {
       }
       resetPull()
     }
-  }, [])
+  }, [phase])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -172,12 +175,18 @@ function HomePage({ language }) {
     }
   }, [])
 
-  const handleReady = () => {
+  const handleReady = (event) => {
     if (typeof window === 'undefined') {
       return
     }
 
     window.sessionStorage.setItem(readyPageUnlockKey, 'true')
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return
+    }
+
+    event.preventDefault()
+    startLaunch()
   }
 
   return (
@@ -186,7 +195,7 @@ function HomePage({ language }) {
         <Suspense fallback={null}>
           <Particles
             className="page-home-particles"
-            particleColors={['#d6d1d1']}
+            particleColors={particleColors}
             particleCount={760}
             particleSpread={16}
             speed={0.1}
@@ -198,7 +207,7 @@ function HomePage({ language }) {
             sizeRandomness={0.65}
             cameraDistance={34}
             pixelRatio={1}
-            paused={!isHeroVisible}
+            paused={!isHeroVisible || homeEffectsPaused}
             maxIdleFps={18}
           />
         </Suspense>
@@ -233,7 +242,7 @@ function HomePage({ language }) {
               <p className="hero-summary hero-summary-home">{copy.summary}</p>
 
               <div className="hero-actions">
-                <Link ref={readyButtonRef} className="ready-button" to="/ready" onClick={handleReady}>
+                <Link ref={readyButtonRef} className="ready-button" to="/ready" onClick={handleReady} onAuxClick={handleReady} aria-disabled={phase !== 'idle'}>
                   <span className="ready-button-label">{copy.ctaLabel}</span>
                 </Link>
               </div>
@@ -241,7 +250,7 @@ function HomePage({ language }) {
 
             <aside className="hero-visual-column">
               <Suspense fallback={<div className="hero-visual-fallback" aria-hidden="true" />}>
-                <PhotoLens paused={!isHeroVisible} />
+                <PhotoLens paused={!isHeroVisible || homeEffectsPaused} />
               </Suspense>
             </aside>
           </div>

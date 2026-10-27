@@ -1,0 +1,133 @@
+.rocket-transition-shell {
+  min-height: 100vh;
+}
+
+.rocket-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  isolation: isolate;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.rocket-transition-shell[data-launch-phase='launching'] .rocket-transition-overlay,
+.rocket-transition-shell[data-launch-phase='revealing'] .rocket-transition-overlay {
+  pointer-events: auto;
+}
+
+.rocket-transition-veil,
+.rocket-transition-atmosphere,
+.rocket-transition-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.rocket-transition-veil {
+  background: linear-gradient(180deg, #0c0e14 0%, #080a10 55%, #050505 100%);
+}
+
+.rocket-transition-atmosphere {
+  background:
+    radial-gradient(ellipse at 50% 73%, rgba(200, 206, 221, .075), transparent 32%),
+    radial-gradient(ellipse at 50% 40%, transparent 15%, rgba(3, 4, 7, .6) 85%);
+}
+
+.rocket-transition-star {
+  position: absolute;
+  left: var(--star-x);
+  top: var(--star-y);
+  width: 1px;
+  height: var(--star-length);
+  opacity: var(--star-opacity);
+  background: linear-gradient(180deg, transparent, #dadde5 70%, transparent);
+  transform-origin: 50% 0;
+}
+
+.rocket-launch {
+  position: absolute;
+  top: 68%;
+  left: calc(50% - 16px);
+  width: 32px;
+  height: 192px;
+  margin-top: -96px;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.rocket-launch-body {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rocket-launch-halo {
+  position: absolute;
+  left: -104px;
+  bottom: -145px;
+  width: 240px;
+  height: 310px;
+  background: radial-gradient(ellipse, rgba(205, 213, 232, .13), transparent 65%);
+  opacity: 0;
+  transform-origin: 50% 35%;
+}
+
+.rocket-launch-exhaust {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: calc(50% - 25px);
+  width: 50px;
+  height: 210px;
+  transform-origin: 50% 0;
+  opacity: 0;
+}
+
+.rocket-launch-exhaust svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rocket-transition-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ready-hero-title[tabindex='-1']:focus {
+  outline: none;
+}
+
+@media (max-width: 720px) {
+  .rocket-launch {
+    left: calc(50% - 12px);
+    width: 24px;
+    height: 144px;
+    margin-top: -72px;
+  }
+
+  .rocket-launch-exhaust {
+    left: calc(50% - 18px);
+    width: 36px;
+    height: 164px;
+  }
+
+  .rocket-transition-star:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-launch,
+  .rocket-transition-stars {
+    display: none;
+  }
+}

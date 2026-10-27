@@ -6,6 +6,7 @@ import HomeLanguageSelector from './components/HomeLanguageSelector'
 import MuteToggleButton from './components/MuteToggleButton'
 import SiteLayout from './components/SiteLayout'
 import ScrollToTop from './components/ScrollToTop'
+import RocketTransition from './components/RocketTransition'
 import { homePageLanguageStorageKey } from './content/siteContent'
 import ContactPage from './pages/ContactPage'
 import DancePage from './pages/DancePage'
@@ -39,20 +40,22 @@ function App() {
 
   return (
     <BackgroundAudioProvider>
-      <MuteToggleButton />
-      <HomeLanguageSelector language={homeLanguage} onLanguageChange={setHomeLanguage} />
-      <ScrollToTop />
-      <Routes>
-        <Route element={<SiteLayout language={homeLanguage} onLanguageChange={setHomeLanguage} />}>
-          <Route index element={<HomePage language={homeLanguage} />} />
-          <Route path="profile" element={<ProfilePage language={homeLanguage} />} />
-          <Route path="experience" element={<ExperiencePage language={homeLanguage} />} />
-          <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
-          <Route path="dance" element={<DancePage language={homeLanguage} />} />
-          <Route path="contact" element={<ContactPage language={homeLanguage} />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <RocketTransition language={homeLanguage}>
+        <MuteToggleButton />
+        <HomeLanguageSelector language={homeLanguage} onLanguageChange={setHomeLanguage} />
+        <ScrollToTop />
+        <Routes>
+          <Route element={<SiteLayout language={homeLanguage} onLanguageChange={setHomeLanguage} />}>
+            <Route index element={<HomePage language={homeLanguage} />} />
+            <Route path="profile" element={<ProfilePage language={homeLanguage} />} />
+            <Route path="experience" element={<ExperiencePage language={homeLanguage} />} />
+            <Route path="ready" element={<ReadyPage language={homeLanguage} />} />
+            <Route path="dance" element={<DancePage language={homeLanguage} />} />
+            <Route path="contact" element={<ContactPage language={homeLanguage} />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </RocketTransition>
     </BackgroundAudioProvider>
   )
 }

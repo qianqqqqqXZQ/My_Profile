@@ -107,6 +107,11 @@ export default function Particles({
   const isVisibleRef = useRef(true)
   const isDocumentVisibleRef = useRef(true)
   const lastRenderTimeRef = useRef(0)
+  const pausedRef = useRef(paused)
+
+  useEffect(() => {
+    pausedRef.current = paused
+  }, [paused])
 
   useEffect(() => {
     const container = containerRef.current
@@ -256,8 +261,9 @@ export default function Particles({
     const update = (time) => {
       animationFrameId = requestAnimationFrame(update)
 
-      if (paused || !isDocumentVisibleRef.current || !isVisibleRef.current) {
+      if (pausedRef.current || !isDocumentVisibleRef.current || !isVisibleRef.current) {
         lastRenderTimeRef.current = time
+        lastTime = time
         return
       }
 
@@ -323,7 +329,6 @@ export default function Particles({
     cameraDistance,
     disableRotation,
     pixelRatio,
-    paused,
     maxIdleFps,
   ])
 
