@@ -740,6 +740,9 @@ function ExperiencePage({ language = 'en' }) {
                     <p>{getLocalizedValue(item, 'description', language)}</p>
                     <div className="project-experience-actions">
                       <span className="experience-inline-tag">{getLocalizedValue(item, 'stack', language)}</span>
+                      {item.role ? (
+                        <span className="experience-inline-tag">{getLocalizedValue(item, 'role', language)}</span>
+                      ) : null}
                       {item.repositoryUrl ? (
                       <a
                         className="project-github-button"

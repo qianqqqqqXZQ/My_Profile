@@ -629,7 +629,7 @@ export const projectExperience = [
     repositoryUrl: 'https://github.com/qianqqqqqXZQ/MomoFocus',
     repositoryLabel: 'View the project on GitHub',
     repositoryLabelZh: '在 GitHub 查看项目',
-    sortValue: 202610,
+    sortValue: 202609,
   },
   {
     title: 'AI-Driven Post-Investment Quarterly Report Analysis',
@@ -638,8 +638,10 @@ export const projectExperience = [
     periodZh: '2026年10月 - 2027年6月',
     description: 'Project details will be added as the work progresses.',
     descriptionZh: '项目详情将随进展补充。',
-    stack: 'Leader',
-    stackZh: 'Leader',
+    stack: 'Group',
+    stackZh: 'Group',
+    role: 'Leader',
+    roleZh: 'Leader',
     sortValue: 202610,
   },
 ]
