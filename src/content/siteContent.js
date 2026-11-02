@@ -998,4 +998,15 @@ export const danceClips = [
     videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/judge1.mp4',
     url: '',
   },
+  {
+    id: 'dance-cover-19',
+    img: assetPath('/media/images/dance-covers/dance-cover-19.jpg'),
+    alt: 'Dancer in a black hoodie at an outdoor street dance battle surrounded by spectators at night.',
+    altZh: '夜间户外街舞比赛中，身穿黑色连帽衫的舞者站在围观人群前。',
+    aspectRatio: 1179 / 2084,
+    title: 'Battle',
+    titleZh: 'Battle',
+    videoUrl: 'https://qqqqq-videos.oss-cn-beijing.aliyuncs.com/battle3.mp4',
+    url: '',
+  },
 ]
