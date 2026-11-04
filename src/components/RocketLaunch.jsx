@@ -1,6 +1,5 @@
 import { useId } from 'react'
 
-// The long, machined silhouette deliberately keeps the language of the site's metal surfaces.
 export default function RocketLaunch() {
   const id = useId().replace(/:/g, '')
 
@@ -8,66 +7,86 @@ export default function RocketLaunch() {
     <div className="rocket-launch" aria-hidden="true">
       <div className="rocket-launch-halo" />
       <div className="rocket-launch-exhaust">
-        <svg viewBox="0 0 100 420" fill="none" focusable="false">
+        <svg viewBox="0 0 120 420" fill="none" focusable="false">
           <defs>
-            <linearGradient id={`${id}-plume`} x1="50" y1="0" x2="50" y2="420" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#e4e6ed" stopOpacity=".5" />
-              <stop offset=".25" stopColor="#c7cbd5" stopOpacity=".22" />
-              <stop offset="1" stopColor="#c7cbd5" stopOpacity="0" />
+            <linearGradient id={`${id}-plume`} x1="60" y1="0" x2="60" y2="420" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#b8dcff" stopOpacity=".8" />
+              <stop offset=".16" stopColor="#fff5dc" />
+              <stop offset=".42" stopColor="#ffc17a" stopOpacity=".85" />
+              <stop offset=".72" stopColor="#e68b4b" stopOpacity=".4" />
+              <stop offset="1" stopColor="#cf8253" stopOpacity="0" />
             </linearGradient>
-            <linearGradient id={`${id}-core`} x1="50" y1="0" x2="50" y2="290" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#fff" />
-              <stop offset=".16" stopColor="#f1f2f5" stopOpacity=".95" />
-              <stop offset=".62" stopColor="#d6dae4" stopOpacity=".3" />
-              <stop offset="1" stopColor="#d6dae4" stopOpacity="0" />
+            <linearGradient id={`${id}-core`} x1="60" y1="0" x2="60" y2="330" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#e7f6ff" />
+              <stop offset=".25" stopColor="#fffef4" />
+              <stop offset=".65" stopColor="#ffedc5" stopOpacity=".85" />
+              <stop offset="1" stopColor="#ffe7b4" stopOpacity="0" />
             </linearGradient>
+            <filter id={`${id}-flame-soft`} x="-50%" y="-10%" width="200%" height="130%">
+              <feGaussianBlur stdDeviation="3" />
+            </filter>
           </defs>
-          <path d="M39 0H61C63 55 91 99 88 169C84 251 62 342 50 420C39 342 16 251 12 169C9 99 37 55 39 0Z" fill={`url(#${id}-plume)`} />
-          <path d="M43 0H57L63 47L54 76L60 112L52 151L56 187L50 290L44 187L48 151L40 112L46 76L37 47Z" fill={`url(#${id}-core)`} />
-          <path d="M48 0H52L54 66L50 153L46 66Z" fill="#fff" fillOpacity=".8" />
+          <g className="rocket-launch-flame">
+            <path d="M43 0H77C78 40 103 85 104 145C108 225 77 344 60 418C43 344 12 225 16 145C17 85 42 40 43 0Z" fill={`url(#${id}-plume)`} filter={`url(#${id}-flame-soft)`} />
+            <path d="M47 0H73L78 53L69 83L76 124L66 157L71 195L60 331L49 195L54 157L44 124L51 83L42 53Z" fill={`url(#${id}-core)`} />
+            <path d="M53 0H67L68 45L60 107L52 45Z" fill="#f1faff" />
+            <path d="M49 55Q60 64 71 55M52 91Q60 98 68 91M53 131Q60 137 67 131" stroke="#fff" strokeOpacity=".65" strokeWidth="3" />
+          </g>
         </svg>
       </div>
       <svg className="rocket-launch-body" viewBox="0 0 100 600" fill="none" focusable="false">
         <defs>
-          <linearGradient id={`${id}-metal`} x1="17" y1="0" x2="84" y2="0" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#393c42" />
-            <stop offset=".18" stopColor="#888c93" />
-            <stop offset=".38" stopColor="#e5e5e3" />
-            <stop offset=".47" stopColor="#f6f6f3" />
-            <stop offset=".56" stopColor="#a6a9ad" />
-            <stop offset=".82" stopColor="#575b64" />
-            <stop offset="1" stopColor="#22252c" />
+          <linearGradient id={`${id}-paint`} x1="23" y1="0" x2="78" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#727b83" />
+            <stop offset=".12" stopColor="#c1c8cb" />
+            <stop offset=".32" stopColor="#fbfcf8" />
+            <stop offset=".52" stopColor="#eceee9" />
+            <stop offset=".76" stopColor="#b6bdc0" />
+            <stop offset="1" stopColor="#606b75" />
           </linearGradient>
-          <linearGradient id={`${id}-nose`} x1="28" y1="17" x2="76" y2="148" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#f2f2ee" />
-            <stop offset=".5" stopColor="#a6a9b0" />
-            <stop offset="1" stopColor="#353942" />
+          <linearGradient id={`${id}-fairing`} x1="19" y1="65" x2="81" y2="81" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#879199" />
+            <stop offset=".3" stopColor="#f8faf6" />
+            <stop offset=".5" stopColor="#f0f2ed" />
+            <stop offset="1" stopColor="#697782" />
           </linearGradient>
-          <linearGradient id={`${id}-fin`} x1="0" y1="480" x2="100" y2="560" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#bfc1c5" />
-            <stop offset=".35" stopColor="#686d77" />
-            <stop offset=".7" stopColor="#292d35" />
-            <stop offset="1" stopColor="#91959e" />
+          <linearGradient id={`${id}-carbon`} x1="27" y1="0" x2="74" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#131a22" />
+            <stop offset=".32" stopColor="#424c56" />
+            <stop offset=".6" stopColor="#242d37" />
+            <stop offset="1" stopColor="#0c1119" />
           </linearGradient>
-          <linearGradient id={`${id}-nozzle`} x1="32" y1="580" x2="70" y2="580" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#282b31" />
-            <stop offset=".4" stopColor="#90949d" />
-            <stop offset=".65" stopColor="#4a4e57" />
-            <stop offset="1" stopColor="#181b21" />
+          <linearGradient id={`${id}-nozzle`} x1="32" y1="0" x2="69" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#333d46" />
+            <stop offset=".35" stopColor="#a2a9ac" />
+            <stop offset=".62" stopColor="#535d66" />
+            <stop offset="1" stopColor="#1c2530" />
+          </linearGradient>
+          <linearGradient id={`${id}-heat`} x1="50" y1="565" x2="50" y2="598" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#e1a675" stopOpacity="0" />
+            <stop offset="1" stopColor="#ffd4a5" stopOpacity=".8" />
           </linearGradient>
         </defs>
-        <path d="M23 443L1 540V562L28 546L34 472ZM77 443L99 540V562L72 546L66 472Z" fill={`url(#${id}-fin)`} stroke="#d8dbe1" strokeOpacity=".25" />
-        <path d="M50 2C40 20 19 67 19 116V514L29 561H71L81 514V116C81 67 60 20 50 2Z" fill={`url(#${id}-metal)`} stroke="#e4e5e6" strokeOpacity=".34" strokeWidth="1.4" />
-        <path d="M50 2C40 20 19 67 19 116V137H81V116C81 67 60 20 50 2Z" fill={`url(#${id}-nose)`} />
-        <path d="M49 13C39 45 31 85 31 122V507" stroke="#fff" strokeOpacity=".38" strokeWidth="1.5" />
-        <path d="M20 138H80M20 151H80M20 298H80M20 310H80M20 449H80M24 533H76" stroke="#11151d" strokeOpacity=".64" strokeWidth="2" />
-        <path d="M20 141H80M20 313H80M24 536H76" stroke="#fff" strokeOpacity=".28" />
-        <path d="M59 170H66V239H59Z" fill="#171b23" fillOpacity=".8" />
-        <path d="M61 175H63V230H61Z" fill="#d6d9e0" fillOpacity=".35" />
-        <path d="M47 463H53L56 553H44Z" fill="#696e78" stroke="#d4d7dc" strokeOpacity=".3" />
-        <path d="M34 562H66L70 596H30Z" fill={`url(#${id}-nozzle)`} />
-        <path d="M31 596H69" stroke="#f4f5f9" strokeOpacity=".9" strokeWidth="3" />
-        <path d="M37 567L34 590M43 567L42 590M57 567L58 590M63 567L66 590" stroke="#161921" strokeOpacity=".65" strokeWidth="2" />
+        {/* Payload fairing, narrow upper stage, and a cylindrical first stage. */}
+        <path d="M50 3C37 15 20 48 20 83V126L28 151H72L80 126V83C80 48 63 15 50 3Z" fill={`url(#${id}-fairing)`} stroke="#d6dfdf" strokeOpacity=".5" />
+        <path d="M28 151H72V550L68 568H32L28 550Z" fill={`url(#${id}-paint)`} stroke="#d5dcd9" strokeOpacity=".45" />
+        <path d="M28 222H72V276H28Z" fill={`url(#${id}-carbon)`} />
+        <path d="M28 531H72V552L68 568H32L28 552Z" fill={`url(#${id}-carbon)`} />
+        <path d="M50 8V147" stroke="#53616a" strokeOpacity=".38" strokeWidth=".8" />
+        <path d="M34 151V218M34 280V526" stroke="#fff" strokeOpacity=".55" />
+        <path d="M20 119H80M28 159H72M28 215H72M28 281H72M28 377H72M28 472H72M28 525H72" stroke="#46535b" strokeOpacity=".38" />
+        <path d="M28 162H72M28 284H72M28 380H72M28 475H72" stroke="#fff" strokeOpacity=".55" />
+        <path d="M66 289V516" stroke="#606d73" strokeWidth="2" />
+        <path d="M65 300H69M65 361H69M65 423H69M65 500H69" stroke="#dae0df" strokeWidth="2" />
+        <rect x="43" y="183" width="14" height="5" rx="1" fill="#283744" />
+        <path d="M43 194H57M45 199H55" stroke="#6f7c82" strokeWidth="1.2" />
+        <path d="M28 295L21 302V322L28 318ZM72 295L79 302V322L72 318Z" fill={`url(#${id}-nozzle)`} stroke="#a1adb2" strokeWidth=".5" />
+        <path d="M29 503L19 552V566L32 554ZM71 503L81 552V566L68 554Z" fill={`url(#${id}-nozzle)`} stroke="#a1adb2" strokeWidth=".6" />
+        <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-nozzle)`} />
+        <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-heat)`} />
+        <path d="M41 572L36 593M46 572L44 593M54 572L56 593M59 572L64 593" stroke="#17212b" strokeOpacity=".7" />
+        <ellipse cx="50" cy="597" rx="18" ry="2.5" fill="#d3eaff" />
+        <ellipse cx="50" cy="597" rx="12" ry="1.5" fill="#fffef6" />
       </svg>
     </div>
   )

@@ -3,23 +3,18 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import RocketLaunch from './RocketLaunch'
+import RocketSmoke from './RocketSmoke'
 import { RocketTransitionContext } from './useRocketTransition'
 import './RocketTransition.css'
 
 gsap.registerPlugin(useGSAP)
-
-const stars = Array.from({ length: 18 }, (_, index) => ({
-  x: `${(index * 37 + 11) % 100}%`,
-  y: `${(index * 23 + 7) % 88}%`,
-  length: `${8 + (index % 5) * 7}px`,
-  opacity: 0.14 + (index % 4) * 0.08,
-}))
 
 export default function RocketTransition({ children, language }) {
   const [phase, setPhase] = useState('idle')
   const [homeEffectsPaused, setHomeEffectsPaused] = useState(false)
   const shellRef = useRef(null)
   const overlayRef = useRef(null)
+  const smokeRef = useRef(null)
   const activeRef = useRef(null)
   const sequenceRef = useRef(0)
   const focusFrameRef = useRef(null)
@@ -29,6 +24,8 @@ export default function RocketTransition({ children, language }) {
 
   const { contextSafe } = useGSAP(() => () => {
     activeRef.current?.cancelReady?.()
+    activeRef.current?.smoke?.stop()
+    activeRef.current?.context?.revert()
     activeRef.current = null
     cancelAnimationFrame(focusFrameRef.current)
   }, { scope: shellRef })
@@ -38,6 +35,7 @@ export default function RocketTransition({ children, language }) {
     if (!run) return
     activeRef.current = null
     run.context?.revert()
+    run.smoke?.stop()
     run.cancelReady?.()
     cancelAnimationFrame(focusFrameRef.current)
     setHomeEffectsPaused(false)
@@ -97,24 +95,29 @@ export default function RocketTransition({ children, language }) {
       if (run.reduced) {
         timeline.to(veil, { opacity: 1, duration: 0.1 })
       } else {
+        const rocket = select('.rocket-launch')[0]
+        const bounds = rocket.getBoundingClientRect()
+        run.smoke = smokeRef.current.start({ x: bounds.left + bounds.width / 2, y: bounds.bottom })
+        const ascent = { y: -(window.innerHeight * 0.68 + 520), duration: 1.8, ease: 'power3.in' }
+
         timeline
           .addLabel('ignition', 0)
-          .to(home, { opacity: 0.25, duration: 0.25 }, 'ignition')
-          .to(languageControl, { opacity: 0, duration: 0.25 }, 'ignition')
-          .to(select('.rocket-transition-atmosphere'), { opacity: 1, duration: 0.45 }, 'ignition')
-          .fromTo(select('.rocket-launch'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25 }, 'ignition')
-          .fromTo(select('.rocket-launch-exhaust'), { opacity: 0, scaleY: 0.15, scaleX: 0.65 }, { opacity: 1, scaleY: 0.5, scaleX: 0.8, duration: 0.25 }, 'ignition')
-          .to(select('.rocket-launch-halo'), { opacity: 1, duration: 0.3 }, 0.1)
-          .addLabel('ascent', 0.25)
-          .to(select('.rocket-launch'), { y: -(window.innerHeight * 0.68 + 420), duration: 1.05, ease: 'power3.in' }, 'ascent')
-          .to(select('.rocket-launch-exhaust'), { scaleY: 1.35, scaleX: 1, duration: 0.9, ease: 'power2.in' }, 'ascent')
-          .to(home, { y: 48, opacity: 0, duration: 0.65, ease: 'power2.in' }, 'ascent')
-          .to(background, { opacity: 0, duration: 0.7 }, 'ascent')
-          .call(() => { if (activeRef.current === run) setHomeEffectsPaused(true) }, [], 0.85)
-          .to(veil, { opacity: 1, duration: 0.45, ease: 'sine.inOut' }, 0.85)
-          .to(select('.rocket-transition-stars'), { opacity: 0.65, duration: 0.4 }, 0.7)
-          .fromTo(select('.rocket-transition-star'), { y: -80, scaleY: 0.3 }, { y: 160, scaleY: 2, duration: 0.65, ease: 'power2.in' }, 0.7)
-          .set(select('.rocket-launch'), { opacity: 0 }, 1.3)
+          .to(home, { opacity: 0.15, duration: 0.6 }, 'ignition')
+          .to(languageControl, { opacity: 0, duration: 0.3 }, 'ignition')
+          .to(select('.rocket-transition-atmosphere'), { opacity: 1, duration: 0.6 }, 'ignition')
+          .fromTo(rocket, { opacity: 0 }, { opacity: 1, duration: 0.35 }, 'ignition')
+          .fromTo(select('.rocket-launch-exhaust'), { opacity: 0, scaleY: 0.12, scaleX: 0.55 }, { opacity: 1, scaleY: 0.55, scaleX: 0.8, duration: 0.5 }, 0.1)
+          .to(select('.rocket-launch-halo'), { opacity: 1, duration: 0.45 }, 0.15)
+          .to(run.smoke.motion, { time: 2.8, duration: 2.8, ease: 'none' }, 0)
+          .addLabel('ascent', 0.6)
+          .to(rocket, ascent, 'ascent')
+          .to(run.smoke.motion, ascent, 'ascent')
+          .to(select('.rocket-launch-exhaust'), { scaleY: 1.25, scaleX: 1.1, duration: 1.1, ease: 'power2.in' }, 'ascent')
+          .to(home, { y: 36, opacity: 0, duration: 1.3, ease: 'power2.in' }, 'ascent')
+          .to(background, { opacity: 0.15, duration: 1.5 }, 'ascent')
+          .call(() => { if (activeRef.current === run) setHomeEffectsPaused(true) }, [], 1.9)
+          .to(veil, { opacity: 1, duration: 0.65, ease: 'sine.inOut' }, 2.15)
+          .set(rocket, { opacity: 0 }, 2.4)
       }
 
       timeline.call(() => {
@@ -154,6 +157,7 @@ export default function RocketTransition({ children, language }) {
               if (activeRef.current !== run) return
               activeRef.current = null
               run.context.revert()
+              run.smoke?.stop()
               setHomeEffectsPaused(false)
               setPhase('idle')
               focusFrameRef.current = requestAnimationFrame(() => {
@@ -163,12 +167,16 @@ export default function RocketTransition({ children, language }) {
               })
             },
           })
-          const duration = run.reduced ? 0.1 : 0.6
+          const duration = run.reduced ? 0.1 : 0.7
+          if (!run.reduced) {
+            timeline.to(run.smoke.motion, { reveal: 1, duration: 1.8, ease: 'none' }, 0)
+          }
           timeline
-            .to(overlay('.rocket-transition-veil, .rocket-transition-atmosphere, .rocket-transition-stars'), { opacity: 0, duration }, 0)
-            .to(select('.ready-hero-copy'), { opacity: 1, y: 0, duration }, 0)
-            .to(select('.ready-reflective-card-glow'), { opacity: 1, y: 0, duration: run.reduced ? 0.1 : 0.5, stagger: run.reduced ? 0 : 0.06 }, run.reduced ? 0 : 0.08)
-            .to(select('.ready-hero-note'), { opacity: 1, y: 0, duration: run.reduced ? 0.1 : 0.4 }, run.reduced ? 0 : 0.35)
+            .to(overlay('.rocket-transition-veil'), { opacity: 0, duration: run.reduced ? 0.1 : 1.35, ease: 'sine.inOut' }, 0)
+            .to(overlay('.rocket-transition-atmosphere'), { opacity: 0, duration }, 0)
+            .to(select('.ready-hero-copy'), { opacity: 1, y: 0, duration }, run.reduced ? 0 : 0.4)
+            .to(select('.ready-reflective-card-glow'), { opacity: 1, y: 0, duration, stagger: run.reduced ? 0 : 0.07 }, run.reduced ? 0 : 0.55)
+            .to(select('.ready-hero-note'), { opacity: 1, y: 0, duration: run.reduced ? 0.1 : 0.5 }, run.reduced ? 0 : 0.9)
         })
       })
     })
@@ -192,12 +200,8 @@ export default function RocketTransition({ children, language }) {
         <div ref={overlayRef} className="rocket-transition-overlay" aria-hidden="true">
           <div className="rocket-transition-veil" />
           <div className="rocket-transition-atmosphere" />
-          <div className="rocket-transition-stars">
-            {stars.map((star, index) => (
-              <span key={index} className="rocket-transition-star" style={{ '--star-x': star.x, '--star-y': star.y, '--star-length': star.length, '--star-opacity': star.opacity }} />
-            ))}
-          </div>
           <RocketLaunch />
+          <RocketSmoke ref={smokeRef} />
         </div>
         <span className="rocket-transition-status" role="status">
           {isActive ? (language === 'zh' ? '正在启程…' : 'Launching…') : ''}
