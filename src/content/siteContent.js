@@ -644,6 +644,19 @@ export const projectExperience = [
     roleZh: 'Leader',
     sortValue: 202610,
   },
+  {
+    title: 'Ningbo Xingning Middle School Logistics Management System',
+    titleZh: '宁波市兴宁中学后勤管理系统',
+    period: 'Nov 2026 - Present',
+    periodZh: '2026年11月至今',
+    description:
+      'Developing a Flask-based web application for Ningbo Xingning Middle School to reduce manual paperwork for logistics staff. The prototype extracts line items from electronic invoice PDFs to generate purchase requisitions and goods receipt forms using the school’s Word templates. It also supports barcode scanning for incoming goods and generates monthly inventory reports by department from receiving records.',
+    descriptionZh:
+      '为宁波市兴宁中学开发基于 Flask 的校内后勤管理系统，减少后勤人员的重复录入。现有原型可从电子发票 PDF 提取明细，按校方 Word 模板生成申购单和入库单，并支持扫码登记入库、按月份和部门汇总入库记录及生成库存月报。',
+    stack: 'Personal',
+    stackZh: '个人',
+    sortValue: 202611,
+  },
 ]
 
 export const researchExperience = [
