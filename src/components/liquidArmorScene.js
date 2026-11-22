@@ -81,7 +81,7 @@ void main() {
   vec2 visible = uSize / (uImageSize * scale);
   vec2 imageUv = vec2((vUv.x - 0.5) * visible.x + 0.5,
     1.0 - (1.0 - vUv.y) * visible.y);
-  gl_FragColor = vec4(texture2D(uArmor, imageUv).rgb, reveal);
+  gl_FragColor = vec4(texture2D(uArmor, imageUv).rgb * reveal, reveal);
 }
 `
 
@@ -92,6 +92,7 @@ export function createLiquidArmor(card, canvas, imageUrl) {
     renderer = new Renderer({
       canvas,
       alpha: true,
+      premultipliedAlpha: true,
       depth: false,
       dpr: Math.min(window.devicePixelRatio || 1, 1.5),
     })
