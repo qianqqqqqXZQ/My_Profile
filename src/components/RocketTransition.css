@@ -20,95 +20,22 @@
 }
 
 .rocket-transition-veil,
-.rocket-transition-atmosphere,
-.rocket-transition-smoke {
+.rocket-transition-video {
   position: absolute;
   inset: 0;
+  opacity: 0;
   pointer-events: none;
 }
 
 .rocket-transition-veil {
   z-index: 2;
-  opacity: 0;
-  background: #aeb3b5;
+  background: #15171b;
 }
 
-.rocket-transition-atmosphere {
-  opacity: 0;
-  background:
-    radial-gradient(ellipse at 50% 85%, rgba(197, 151, 108, .12), transparent 35%),
-    linear-gradient(180deg, rgba(4, 7, 12, .72), rgba(8, 12, 17, .3));
-}
-
-.rocket-transition-smoke {
-  z-index: 3;
-  display: block;
+.rocket-transition-video {
   width: 100%;
   height: 100%;
-}
-
-.rocket-launch {
-  position: absolute;
-  z-index: 1;
-  top: 68%;
-  left: calc(50% - 22px);
-  width: 44px;
-  height: 264px;
-  margin-top: -132px;
-  opacity: 0;
-}
-
-.rocket-transition-shell[data-launch-phase='launching'] .rocket-launch {
-  will-change: transform, opacity;
-}
-
-.rocket-launch-body {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(2px 0 4px rgba(0, 0, 0, .45));
-}
-
-.rocket-launch-halo {
-  position: absolute;
-  left: calc(50% - 130px);
-  bottom: -190px;
-  width: 260px;
-  height: 330px;
-  background: radial-gradient(ellipse at 50% 35%, rgba(255, 206, 153, .2), rgba(255, 169, 92, .06) 38%, transparent 67%);
-  opacity: 0;
-  transform-origin: 50% 35%;
-}
-
-.rocket-launch-exhaust {
-  position: absolute;
-  top: calc(100% - 2px);
-  left: calc(50% - 30px);
-  width: 60px;
-  height: 230px;
-  transform-origin: 50% 0;
-  opacity: 0;
-}
-
-.rocket-launch-exhaust svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.rocket-launch-flame {
-  transform-origin: 60px 0;
-}
-
-.rocket-transition-shell[data-launch-phase='launching'] .rocket-launch-flame {
-  animation: rocket-flame-pulse 110ms ease-in-out infinite alternate;
-}
-
-@keyframes rocket-flame-pulse {
-  from { transform: scale(.96, .94); opacity: .86; }
-  to { transform: scale(1.04, 1.05); opacity: 1; }
+  object-fit: cover;
 }
 
 .rocket-transition-status {
@@ -122,30 +49,4 @@
 
 .ready-hero-title[tabindex='-1']:focus {
   outline: none;
-}
-
-@media (max-width: 720px) {
-  .rocket-launch {
-    left: calc(50% - 16px);
-    width: 32px;
-    height: 192px;
-    margin-top: -96px;
-  }
-
-  .rocket-launch-exhaust {
-    left: calc(50% - 22px);
-    width: 44px;
-    height: 180px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rocket-launch,
-  .rocket-transition-smoke {
-    display: none;
-  }
-
-  .rocket-transition-shell[data-launch-phase='launching'] .rocket-launch-flame {
-    animation: none;
-  }
 }

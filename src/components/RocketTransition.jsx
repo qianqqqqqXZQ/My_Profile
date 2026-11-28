@@ -2,8 +2,7 @@ import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import RocketLaunch from './RocketLaunch'
-import RocketSmoke from './RocketSmoke'
+import launchVideo from '../assets/crew-9-liftoff.mp4'
 import { RocketTransitionContext } from './useRocketTransition'
 import './RocketTransition.css'
 
@@ -14,7 +13,7 @@ export default function RocketTransition({ children, language }) {
   const [homeEffectsPaused, setHomeEffectsPaused] = useState(false)
   const shellRef = useRef(null)
   const overlayRef = useRef(null)
-  const smokeRef = useRef(null)
+  const videoRef = useRef(null)
   const activeRef = useRef(null)
   const sequenceRef = useRef(0)
   const focusFrameRef = useRef(null)
@@ -24,7 +23,7 @@ export default function RocketTransition({ children, language }) {
 
   const { contextSafe } = useGSAP(() => () => {
     activeRef.current?.cancelReady?.()
-    activeRef.current?.smoke?.stop()
+    videoRef.current?.pause()
     activeRef.current?.context?.revert()
     activeRef.current = null
     cancelAnimationFrame(focusFrameRef.current)
@@ -35,7 +34,7 @@ export default function RocketTransition({ children, language }) {
     if (!run) return
     activeRef.current = null
     run.context?.revert()
-    run.smoke?.stop()
+    videoRef.current?.pause()
     run.cancelReady?.()
     cancelAnimationFrame(focusFrameRef.current)
     setHomeEffectsPaused(false)
@@ -85,9 +84,6 @@ export default function RocketTransition({ children, language }) {
 
     run.context = gsap.context(() => {
       const select = gsap.utils.selector(overlayRef.current)
-      const home = shellRef.current.querySelector('.page-home-content')
-      const background = shellRef.current.querySelector('.page-home-background')
-      const languageControl = shellRef.current.querySelector('.home-language-selector')
       const veil = select('.rocket-transition-veil')
       gsap.set(overlayRef.current, { autoAlpha: 1 })
       const timeline = gsap.timeline({ defaults: { ease: 'power2.out' } })
@@ -95,29 +91,15 @@ export default function RocketTransition({ children, language }) {
       if (run.reduced) {
         timeline.to(veil, { opacity: 1, duration: 0.1 })
       } else {
-        const rocket = select('.rocket-launch')[0]
-        const bounds = rocket.getBoundingClientRect()
-        run.smoke = smokeRef.current.start({ x: bounds.left + bounds.width / 2, y: bounds.bottom })
-        const ascent = { y: -(bounds.bottom + 240), duration: 1.7, ease: 'power1.in' }
-
+        const video = videoRef.current
+        video.currentTime = 0
+        video.play().catch(() => {})
         timeline
-          .addLabel('ignition', 0)
-          .to(home, { opacity: 0.15, duration: 0.6 }, 'ignition')
-          .to(languageControl, { opacity: 0, duration: 0.3 }, 'ignition')
-          .to(select('.rocket-transition-atmosphere'), { opacity: 1, duration: 0.6 }, 'ignition')
-          .fromTo(rocket, { opacity: 0 }, { opacity: 1, duration: 0.22 }, 'ignition')
-          .fromTo(select('.rocket-launch-exhaust'), { opacity: 0, scaleY: 0.1, scaleX: 0.65 }, { opacity: 1, scaleY: 0.9, scaleX: 0.95, duration: 0.28 }, 0.24)
-          .to(select('.rocket-launch-halo'), { opacity: 1, duration: 0.45 }, 0.15)
-          .to(run.smoke.motion, { time: 2.8, duration: 2.8, ease: 'none' }, 0)
-          .addLabel('ascent', 0.68)
-          .to(rocket, ascent, 'ascent')
-          .to(run.smoke.motion, ascent, 'ascent')
-          .to(select('.rocket-launch-exhaust'), { scaleY: 1.1, scaleX: 0.85, duration: 0.85 }, 'ascent')
-          .to(home, { opacity: 0, duration: 1.3 }, 'ascent')
-          .to(background, { opacity: 0.15, duration: 1.5 }, 'ascent')
-          .call(() => { if (activeRef.current === run) setHomeEffectsPaused(true) }, [], 1.9)
-          .to(veil, { opacity: 1, duration: 0.65, ease: 'sine.inOut' }, 2.15)
-          .set(rocket, { opacity: 0 }, 2.4)
+          .to(video, { opacity: 1, duration: 0.25 }, 0)
+          .call(() => { if (activeRef.current === run) setHomeEffectsPaused(true) }, [], 0.25)
+          .to(veil, { opacity: 1, duration: 0.55, ease: 'sine.inOut' }, 4.25)
+          .set(video, { opacity: 0 })
+          .call(() => video.pause())
       }
 
       timeline.call(() => {
@@ -157,7 +139,7 @@ export default function RocketTransition({ children, language }) {
               if (activeRef.current !== run) return
               activeRef.current = null
               run.context.revert()
-              run.smoke?.stop()
+              videoRef.current?.pause()
               setHomeEffectsPaused(false)
               setPhase('idle')
               focusFrameRef.current = requestAnimationFrame(() => {
@@ -168,12 +150,8 @@ export default function RocketTransition({ children, language }) {
             },
           })
           const duration = run.reduced ? 0.1 : 0.7
-          if (!run.reduced) {
-            timeline.to(run.smoke.motion, { reveal: 1, duration: 1.8, ease: 'none' }, 0)
-          }
           timeline
             .to(overlay('.rocket-transition-veil'), { opacity: 0, duration: run.reduced ? 0.1 : 1.35, ease: 'sine.inOut' }, 0)
-            .to(overlay('.rocket-transition-atmosphere'), { opacity: 0, duration }, 0)
             .to(select('.ready-hero-copy'), { opacity: 1, y: 0, duration }, run.reduced ? 0 : 0.4)
             .to(select('.ready-reflective-card-glow'), { opacity: 1, y: 0, duration, stagger: run.reduced ? 0 : 0.07 }, run.reduced ? 0 : 0.55)
             .to(select('.ready-hero-note'), { opacity: 1, y: 0, duration: run.reduced ? 0.1 : 0.5 }, run.reduced ? 0 : 0.9)
@@ -199,9 +177,14 @@ export default function RocketTransition({ children, language }) {
         </div>
         <div ref={overlayRef} className="rocket-transition-overlay" aria-hidden="true">
           <div className="rocket-transition-veil" />
-          <div className="rocket-transition-atmosphere" />
-          <RocketLaunch />
-          <RocketSmoke ref={smokeRef} />
+          <video
+            ref={videoRef}
+            className="rocket-transition-video"
+            src={launchVideo}
+            preload="auto"
+            muted
+            playsInline
+          />
         </div>
         <span className="rocket-transition-status" role="status">
           {isActive ? (language === 'zh' ? '正在启程…' : 'Launching…') : ''}
