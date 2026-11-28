@@ -10,7 +10,7 @@ export default function RocketLaunch() {
         <svg viewBox="0 0 120 420" fill="none" focusable="false">
           <defs>
             <linearGradient id={`${id}-plume`} x1="60" y1="0" x2="60" y2="420" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#b8dcff" stopOpacity=".8" />
+              <stop stopColor="#fff2d7" stopOpacity=".9" />
               <stop offset=".16" stopColor="#fff5dc" />
               <stop offset=".42" stopColor="#ffc17a" stopOpacity=".85" />
               <stop offset=".72" stopColor="#e68b4b" stopOpacity=".4" />
@@ -65,17 +65,17 @@ export default function RocketLaunch() {
             <stop offset="1" stopColor="#ffd4a5" stopOpacity=".8" />
           </linearGradient>
         </defs>
-        <path d="M42 15Q50 1 58 15C68 30 76 57 76 86V128L72 151H28L24 128V86C24 57 32 30 42 15Z" fill={`url(#${id}-fairing)`} />
-        <path d="M28 151H72V550L68 568H32L28 550Z" fill={`url(#${id}-paint)`} />
-        <path d="M28 222H72V232H28Z" fill={`url(#${id}-carbon)`} />
+        {/* Dragon capsule, trunk, upper stage, and first stage. */}
+        <path d="M28 48H72V550L68 568H32L28 550Z" fill={`url(#${id}-paint)`} />
+        <path d="M43 7Q50 4 57 7C63 13 68 29 73 45L71 49H29L27 45C32 29 37 13 43 7Z" fill={`url(#${id}-fairing)`} />
+        <path d="M30 41Q50 44 70 41L73 45L71 49H29L27 45Z" fill={`url(#${id}-carbon)`} />
+        <path d="M50 49H72V79H50Z" fill={`url(#${id}-carbon)`} />
+        <path d="M28 177H72V216H28Z" fill={`url(#${id}-carbon)`} />
         <path d="M28 531H72V552L68 568H32L28 552Z" fill={`url(#${id}-carbon)`} />
-        <path d="M50 8V147" stroke="#53616a" strokeOpacity=".38" strokeWidth=".8" />
-        <path d="M34 151V218M34 280V526" stroke="#fff" strokeOpacity=".55" />
-        <path d="M20 119H80M28 159H72M28 215H72M28 281H72M28 377H72M28 472H72M28 525H72" stroke="#46535b" strokeOpacity=".38" />
-        <path d="M28 162H72M28 284H72M28 380H72M28 475H72" stroke="#fff" strokeOpacity=".55" />
-        <path d="M66 289V516" stroke="#606d73" strokeWidth="2" />
-        <path d="M65 300H69M65 361H69M65 423H69M65 500H69" stroke="#dae0df" strokeWidth="2" />
-        <path d="M39 171V207M61 171V207M42 194H58" stroke="#55636c" strokeOpacity=".45" strokeWidth="1.2" />
+        <path d="M28 79H72M28 86H72M28 220H72M28 525H72" stroke="#46535b" strokeOpacity=".4" />
+        <path d="M63 225V519" stroke="#606d73" strokeOpacity=".5" strokeWidth="1.5" />
+        <path d="M29 220H36V256H29ZM64 220H71V256H64Z" fill={`url(#${id}-nozzle)`} />
+        <path d="M29 470L38 501V550H29ZM71 470L62 501V550H71Z" fill={`url(#${id}-fairing)`} />
         <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-nozzle)`} />
         <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-heat)`} />
         <path d="M41 572L36 593M46 572L44 593M54 572L56 593M59 572L64 593" stroke="#17212b" strokeOpacity=".7" />
