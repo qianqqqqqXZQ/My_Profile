@@ -27,10 +27,8 @@ export default function RocketLaunch() {
             </filter>
           </defs>
           <g className="rocket-launch-flame">
-            <path d="M43 0H77C78 40 103 85 104 145C108 225 77 344 60 418C43 344 12 225 16 145C17 85 42 40 43 0Z" fill={`url(#${id}-plume)`} filter={`url(#${id}-flame-soft)`} />
-            <path d="M47 0H73L78 53L69 83L76 124L66 157L71 195L60 331L49 195L54 157L44 124L51 83L42 53Z" fill={`url(#${id}-core)`} />
-            <path d="M53 0H67L68 45L60 107L52 45Z" fill="#f1faff" />
-            <path d="M49 55Q60 64 71 55M52 91Q60 98 68 91M53 131Q60 137 67 131" stroke="#fff" strokeOpacity=".65" strokeWidth="3" />
+            <path d="M44 0H76C76 59 82 112 90 175C98 244 105 330 116 420H3C14 326 25 246 32 175C39 112 44 59 44 0Z" fill={`url(#${id}-plume)`} filter={`url(#${id}-flame-soft)`} />
+            <path d="M48 0H72C73 43 69 76 70 117C71 195 64 269 60 331C54 266 48 200 50 120C51 76 47 42 48 0Z" fill={`url(#${id}-core)`} filter={`url(#${id}-flame-soft)`} />
           </g>
         </svg>
       </div>
@@ -67,10 +65,9 @@ export default function RocketLaunch() {
             <stop offset="1" stopColor="#ffd4a5" stopOpacity=".8" />
           </linearGradient>
         </defs>
-        {/* Payload fairing, narrow upper stage, and a cylindrical first stage. */}
-        <path d="M50 3C37 15 20 48 20 83V126L28 151H72L80 126V83C80 48 63 15 50 3Z" fill={`url(#${id}-fairing)`} stroke="#d6dfdf" strokeOpacity=".5" />
-        <path d="M28 151H72V550L68 568H32L28 550Z" fill={`url(#${id}-paint)`} stroke="#d5dcd9" strokeOpacity=".45" />
-        <path d="M28 222H72V276H28Z" fill={`url(#${id}-carbon)`} />
+        <path d="M42 15Q50 1 58 15C68 30 76 57 76 86V128L72 151H28L24 128V86C24 57 32 30 42 15Z" fill={`url(#${id}-fairing)`} />
+        <path d="M28 151H72V550L68 568H32L28 550Z" fill={`url(#${id}-paint)`} />
+        <path d="M28 222H72V232H28Z" fill={`url(#${id}-carbon)`} />
         <path d="M28 531H72V552L68 568H32L28 552Z" fill={`url(#${id}-carbon)`} />
         <path d="M50 8V147" stroke="#53616a" strokeOpacity=".38" strokeWidth=".8" />
         <path d="M34 151V218M34 280V526" stroke="#fff" strokeOpacity=".55" />
@@ -78,10 +75,7 @@ export default function RocketLaunch() {
         <path d="M28 162H72M28 284H72M28 380H72M28 475H72" stroke="#fff" strokeOpacity=".55" />
         <path d="M66 289V516" stroke="#606d73" strokeWidth="2" />
         <path d="M65 300H69M65 361H69M65 423H69M65 500H69" stroke="#dae0df" strokeWidth="2" />
-        <rect x="43" y="183" width="14" height="5" rx="1" fill="#283744" />
-        <path d="M43 194H57M45 199H55" stroke="#6f7c82" strokeWidth="1.2" />
-        <path d="M28 295L21 302V322L28 318ZM72 295L79 302V322L72 318Z" fill={`url(#${id}-nozzle)`} stroke="#a1adb2" strokeWidth=".5" />
-        <path d="M29 503L19 552V566L32 554ZM71 503L81 552V566L68 554Z" fill={`url(#${id}-nozzle)`} stroke="#a1adb2" strokeWidth=".6" />
+        <path d="M39 171V207M61 171V207M42 194H58" stroke="#55636c" strokeOpacity=".45" strokeWidth="1.2" />
         <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-nozzle)`} />
         <path d="M39 568H61C60 577 66 587 68 597H32C34 587 40 577 39 568Z" fill={`url(#${id}-heat)`} />
         <path d="M41 572L36 593M46 572L44 593M54 572L56 593M59 572L64 593" stroke="#17212b" strokeOpacity=".7" />

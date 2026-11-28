@@ -98,22 +98,22 @@ export default function RocketTransition({ children, language }) {
         const rocket = select('.rocket-launch')[0]
         const bounds = rocket.getBoundingClientRect()
         run.smoke = smokeRef.current.start({ x: bounds.left + bounds.width / 2, y: bounds.bottom })
-        const ascent = { y: -(window.innerHeight * 0.68 + 520), duration: 1.8, ease: 'power3.in' }
+        const ascent = { y: -(bounds.bottom + 240), duration: 1.7, ease: 'power1.in' }
 
         timeline
           .addLabel('ignition', 0)
           .to(home, { opacity: 0.15, duration: 0.6 }, 'ignition')
           .to(languageControl, { opacity: 0, duration: 0.3 }, 'ignition')
           .to(select('.rocket-transition-atmosphere'), { opacity: 1, duration: 0.6 }, 'ignition')
-          .fromTo(rocket, { opacity: 0 }, { opacity: 1, duration: 0.35 }, 'ignition')
-          .fromTo(select('.rocket-launch-exhaust'), { opacity: 0, scaleY: 0.12, scaleX: 0.55 }, { opacity: 1, scaleY: 0.55, scaleX: 0.8, duration: 0.5 }, 0.1)
+          .fromTo(rocket, { opacity: 0 }, { opacity: 1, duration: 0.22 }, 'ignition')
+          .fromTo(select('.rocket-launch-exhaust'), { opacity: 0, scaleY: 0.1, scaleX: 0.65 }, { opacity: 1, scaleY: 0.9, scaleX: 0.95, duration: 0.28 }, 0.24)
           .to(select('.rocket-launch-halo'), { opacity: 1, duration: 0.45 }, 0.15)
           .to(run.smoke.motion, { time: 2.8, duration: 2.8, ease: 'none' }, 0)
-          .addLabel('ascent', 0.6)
+          .addLabel('ascent', 0.68)
           .to(rocket, ascent, 'ascent')
           .to(run.smoke.motion, ascent, 'ascent')
-          .to(select('.rocket-launch-exhaust'), { scaleY: 1.25, scaleX: 1.1, duration: 1.1, ease: 'power2.in' }, 'ascent')
-          .to(home, { y: 36, opacity: 0, duration: 1.3, ease: 'power2.in' }, 'ascent')
+          .to(select('.rocket-launch-exhaust'), { scaleY: 1.1, scaleX: 0.85, duration: 0.85 }, 'ascent')
+          .to(home, { opacity: 0, duration: 1.3 }, 'ascent')
           .to(background, { opacity: 0.15, duration: 1.5 }, 'ascent')
           .call(() => { if (activeRef.current === run) setHomeEffectsPaused(true) }, [], 1.9)
           .to(veil, { opacity: 1, duration: 0.65, ease: 'sine.inOut' }, 2.15)

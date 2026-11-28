@@ -117,13 +117,13 @@ function startSmoke(canvas, origin) {
 
     // The rising emitter follows the very same GSAP translation as the rocket.
     // Ground exhaust stays at the launch point and rolls out to either side.
-    const targetCount = Math.floor(Math.max(0, Math.min(t, 2.45) - 0.12) * (mobile ? 24 : 42))
+    const targetCount = Math.floor(Math.max(0, Math.min(t, 2.22) - 0.26) * (mobile ? 36 : 60))
     while (emitted < targetCount) {
-      const ground = emitted % 3 !== 0
-      const direction = emitted % 2 ? 1 : -1
+      const ground = t < 1.12 && emitted % 3 !== 0
+      const direction = random() < 0.5 ? -1 : 1
       particles.push({
         x: view.width * originX + (random() - 0.5) * 18,
-        y: ground ? view.height * originY + 55 : view.height * originY + motion.y + 42,
+        y: ground ? Math.min(view.height, view.height * originY + 100) : view.height * originY + motion.y + 28,
         vx: ground ? direction * (45 + random() * 155) : (random() - 0.5) * 42,
         vy: ground ? 18 - random() * 45 : 75 + random() * 70,
         radius: ground ? 26 + random() * 30 : 13 + random() * 16,
@@ -151,7 +151,7 @@ function startSmoke(canvas, origin) {
     // Successive rows roll upward from the launch cloud; their overlap fills
     // wide and portrait viewports before the opaque matching cover is applied.
     for (const cloud of clouds) {
-      const progress = smooth(0.65 + cloud.row * 0.18 + cloud.offset * 0.12, 2.6 + cloud.offset * 0.12, t)
+      const progress = smooth(1.18 + cloud.row * 0.18 + cloud.offset * 0.12, 2.7 + cloud.offset * 0.1, t)
       if (!progress) continue
       const radius = Math.max(view.width / columns, view.height / rows) * 1.45
       const finalX = (cloud.column + 0.4 + cloud.offset * 0.2) * view.width / columns
